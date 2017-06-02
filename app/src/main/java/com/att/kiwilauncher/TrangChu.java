@@ -297,7 +297,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener{
                     listItem.get(listItem.size() - 1).setBackgroundResource(R.drawable.none);
                     didIndex--;
                     rcApp.getChildAt(didIndex - 12 - cates.size()).setBackgroundResource(R.drawable.border_pick);
-                    Log.e("hihi", didIndex + " ha ha ha ha");
                 } else if (didIndex == (listItem.size() - 1)) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
                     didIndex--;
@@ -338,6 +337,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener{
                 } else {
                     rcApp.getChildAt(didIndex - 12 - cates.size()).callOnClick();
                 }
+                return true;
             default:
                 return super.onKeyUp(keyCode, event);
         }
@@ -406,10 +406,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void changeListItemBackGround(int i,int j) {
-        if (i < 12) {
-            listItem.get(i).setBackgroundResource(R.drawable.none);
-            listItem.get(j).setBackgroundResource(R.drawable.border_pick);
-            didIndex = willIndex;
-        }
+        listItem.get(i).setBackgroundResource(R.drawable.none);
+        listItem.get(j).setBackgroundResource(R.drawable.border_pick);
+        didIndex = willIndex;
     }
 }

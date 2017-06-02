@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context="com.att.kiwilauncher.DanhSach">
+    tools:context="com.att.kiwilauncher.DanhSach"
+    android:background="@drawable/backgroundmain">
 
     <RelativeLayout
         android:id="@+id/relayds1"
@@ -18,15 +19,17 @@
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:src="@drawable/ic_kiwi"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:padding="1dp"/>
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/imgds1"
+            android:layout_toEndOf="@id/imgds1"
             android:layout_toStartOf="@+id/relayds11"
             android:background="@drawable/border_text"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="25dp">
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="15dp">
             <EditText
                 android:id="@+id/edtxtds1"
                 android:layout_width="fill_parent"
@@ -55,85 +58,104 @@
             android:layout_height="fill_parent"
             android:layout_alignParentRight="true"
             android:orientation="horizontal">
-            <ImageView
-                android:id="@+id/img_lichds"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_lich"
-                android:scaleType="centerCrop"/>
-            <TextView
-                android:id="@+id/txt_duonglichds"
+            <RelativeLayout
+                android:id="@+id/relayds111"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/img_lichds"
-                android:layout_marginTop="15dp"
-                android:textAllCaps="true"
-                android:text="THỨ 3 20/11/2017"
-                android:textSize="13dp"/>
-            <TextView
-                android:id="@+id/txt_amlichds"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_toEndOf="@id/img_lichds"
-                android:layout_below="@id/txt_duonglichds"
-                android:textAllCaps="true"
-                android:textSize="10dp"
-                android:text="20/03 BÍNH Dần " />
+                android:padding="5dp">
+                <ImageView
+                    android:id="@+id/img_lichds"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_lich"
+                    android:scaleType="centerCrop"/>
+                <TextView
+                    android:id="@+id/txt_duonglichds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/img_lichds"
+                    android:layout_marginTop="15dp"
+                    android:textAllCaps="true"
+                    android:text="THỨ 3 20/11/2017"
+                    android:textSize="13dp"/>
+                <TextView
+                    android:id="@+id/txt_amlichds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/img_lichds"
+                    android:layout_below="@id/txt_duonglichds"
+                    android:textAllCaps="true"
+                    android:textSize="10dp"
+                    android:text="20/03 BÍNH Dần " />
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/img_thoitietds"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/txt_duonglichds"
-                android:src="@drawable/ic_mua"
-                android:scaleType="centerCrop"/>
-            <TextView
-                android:id="@+id/txt_thanhphods"
-                android:layout_marginTop="15dp"
+            <RelativeLayout
+                android:id="@+id/relayds112"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/img_thoitietds"
-                android:text="Hà Nôi"
-                android:textAllCaps="true"
-                android:textSize="13dp"/>
-            <TextView
-                android:id="@+id/txt_nhietdods"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_toEndOf="@+id/img_thoitietds"
-                android:layout_below="@+id/txt_thanhphods"
-                android:textAllCaps="true"
-                android:textSize="10dp"
-                android:text="15 độ C" />
+                android:layout_toEndOf="@+id/relayds111"
+                android:padding="5dp">
+                <ImageView
+                    android:id="@+id/img_thoitietds"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_mua"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"/>
+                <TextView
+                    android:id="@+id/txt_thanhphods"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/img_thoitietds"
+                    android:text="Hà Nôi"
+                    android:textAllCaps="true"
+                    android:textSize="13dp"/>
+                <TextView
+                    android:id="@+id/txt_nhietdods"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/img_thoitietds"
+                    android:layout_below="@+id/txt_thanhphods"
+                    android:textAllCaps="true"
+                    android:textSize="10dp"
+                    android:text="15 độ C" />
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/img_caidatds"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/txt_thanhphods"
-                android:src="@drawable/ic_caidat"
-                android:scaleType="centerCrop"/>
-            <TextView
-                android:id="@+id/txt_caidatds"
-                android:layout_marginTop="15dp"
+            <RelativeLayout
+                android:id="@+id/relayds113"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/img_caidatds"
-                android:text="Cài Đặt"
-                android:textAllCaps="true"
-                android:textSize="13dp"/>
-            <TextView
-                android:id="@+id/txt_kiwids"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_toEndOf="@+id/img_caidatds"
-                android:layout_below="@+id/txt_caidatds"
-                android:textAllCaps="true"
-                android:textSize="10dp"
-                android:text="" />
+                android:layout_toEndOf="@+id/relayds112"
+                android:padding="5dp">
+                <ImageView
+                    android:id="@+id/img_caidatds"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_caidat"
+                    android:scaleType="centerCrop"/>
+                <TextView
+                    android:id="@+id/txt_caidatds"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/img_caidatds"
+                    android:text="Cài Đặt"
+                    android:textAllCaps="true"
+                    android:textSize="13dp"/>
+                <TextView
+                    android:id="@+id/txt_kiwids"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/img_caidatds"
+                    android:layout_below="@+id/txt_caidatds"
+                    android:textAllCaps="true"
+                    android:textSize="10dp"
+                    android:text="" />
+            </RelativeLayout>
+
         </RelativeLayout>
     </RelativeLayout>
 
