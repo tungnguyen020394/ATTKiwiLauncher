@@ -17,7 +17,7 @@
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:padding="5dp"
-            android:src="@drawable/viettelpost"
+            android:src="@drawable/ic_kiwi"
             android:scaleType="fitXY"/>
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -256,10 +256,18 @@
         android:id="@+id/relay4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_minus"/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/img_minus"
+            android:layout_marginLeft="20dp"></android.support.v7.widget.RecyclerView>
 
         <ImageView
             android:id="@+id/img_plus"

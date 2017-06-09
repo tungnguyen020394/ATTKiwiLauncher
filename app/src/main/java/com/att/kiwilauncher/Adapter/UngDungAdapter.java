@@ -50,7 +50,6 @@ public class UngDungAdapter extends RecyclerView.Adapter<UngDungAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgApp;
         RelativeLayout layout;
-        PackageManager manager;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -58,5 +57,4 @@ public class UngDungAdapter extends RecyclerView.Adapter<UngDungAdapter.ViewHold
             layout = (RelativeLayout) itemView.findViewById(R.id.relay_app);
         }
     }
-
 }

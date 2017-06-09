@@ -3,7 +3,6 @@ package com.att.kiwilauncher.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import java.io.File;
 
@@ -55,11 +54,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         File database = context.getApplicationContext().getDatabasePath(DatabaseHelper.DB_NAME);
         if (database.exists() == false) {
             this.getReadableDatabase();
-            if (copyDatabase(context)) {
-
-            } else {
-                Toast.makeText(context.getApplicationContext(), "tai that bai")
-            }
         }
     }
 }

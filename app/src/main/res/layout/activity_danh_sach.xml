@@ -173,16 +173,49 @@
         android:id="@+id/relayds3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img_minus_1_ds"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_minus"
+            android:layout_alignParentLeft="true"/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rc_ds2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/img_minus_1_ds"
+            android:layout_marginLeft="20dp"></android.support.v7.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/img_plus_1_ds"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_plus"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rltxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/dscaidat"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Ứng Dụng Đã Cài"
+            android:background="@drawable/border_cate"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/relayds4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rc_ds3"
             android:layout_width="match_parent"
@@ -193,10 +226,26 @@
         android:id="@+id/relayds5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img_minus_2_ds"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_minus"
+            android:layout_alignParentLeft="true"/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rc_ds4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/img_minus_2_ds"
+            android:layout_marginLeft="20dp"></android.support.v7.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/img_plus_2_ds"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_plus"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
 </RelativeLayout>
