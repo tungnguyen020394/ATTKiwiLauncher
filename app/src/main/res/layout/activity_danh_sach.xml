@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:id="@+id/relayds1"
-        android:layout_width="944dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp">
@@ -174,35 +174,34 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/img_minus_1_ds"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="fill_parent"
             android:src="@drawable/ic_minus"
             android:layout_alignParentLeft="true"
-            android:padding="10dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_toEndOf="@+id/img_minus_1_ds"
             android:layout_toStartOf="@+id/img_plus_1_ds"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:padding="10dp">
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rc_ds2"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true">
+                android:layout_height="match_parent">
             </android.support.v7.widget.RecyclerView>
         </RelativeLayout>
 
         <ImageView
             android:id="@+id/img_plus_1_ds"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="fill_parent"
             android:src="@drawable/ic_plus"
             android:layout_alignParentRight="true"
-            android:padding="10dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -238,34 +237,33 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/img_minus_2_ds"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="fill_parent"
             android:src="@drawable/ic_minus"
             android:layout_alignParentLeft="true"
-            android:padding="10dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_toEndOf="@+id/img_minus_2_ds"
             android:layout_toStartOf="@+id/img_plus_2_ds"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:padding="10dp">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rc_ds4"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
         </RelativeLayout>
 
         <ImageView
             android:id="@+id/img_plus_2_ds"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="fill_parent"
             android:src="@drawable/ic_plus"
             android:layout_alignParentRight="true"
-            android:padding="10dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
     </RelativeLayout>
 
 </RelativeLayout>
