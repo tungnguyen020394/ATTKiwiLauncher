@@ -81,7 +81,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         reLayDs4 = (RelativeLayout) findViewById(R.id.relayds4);
         reLayDs4.setPadding(20,(chieuRong*14)/25,20,(chieuRong*8)/25);
         reLayDs5 = (RelativeLayout) findViewById(R.id.relayds5);
-        reLayDs5.setPadding(20,(chieuRong*31)/50,20,(chieuRong*4)/25);
+        reLayDs5.setPadding(20,(chieuRong*31)/50,20,(chieuRong*3)/25);
 
         rltxt = (RelativeLayout) findViewById(R.id.rltxt);
         rltxt.setPadding(20,(chieuRong*11)/25,20,(chieuRong*11)/25);
