@@ -101,77 +101,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener{
             }
         }
 
-        for (ResolveInfo ri : availableActivities) {
-            UngDung app = new UngDung();
-            app.labelApp  = ri.loadLabel(manager);
-            app.nameApp   = ri.activityInfo.packageName;
-            app.iconApp   = ri.activityInfo.loadIcon(manager);
-            apps.add(app);
-            soUngDung++;
-            if (soUngDung == 7) {
-                listApps.add(apps);
-                apps = new ArrayList<UngDung>();
-                soUngDung = 0;
-            }
-        }
-
-        for (ResolveInfo ri : availableActivities) {
-            UngDung app = new UngDung();
-            app.labelApp  = ri.loadLabel(manager);
-            app.nameApp   = ri.activityInfo.packageName;
-            app.iconApp   = ri.activityInfo.loadIcon(manager);
-            apps.add(app);
-            soUngDung++;
-            if (soUngDung == 7) {
-                listApps.add(apps);
-                apps = new ArrayList<UngDung>();
-                soUngDung = 0;
-            }
-        }
-
-        for (ResolveInfo ri : availableActivities) {
-            UngDung app = new UngDung();
-            app.labelApp  = ri.loadLabel(manager);
-            app.nameApp   = ri.activityInfo.packageName;
-            app.iconApp   = ri.activityInfo.loadIcon(manager);
-            apps.add(app);
-            soUngDung++;
-            if (soUngDung == 7) {
-                listApps.add(apps);
-                apps = new ArrayList<UngDung>();
-                soUngDung = 0;
-            }
-        }
-
-        for (ResolveInfo ri : availableActivities) {
-            UngDung app = new UngDung();
-            app.labelApp  = ri.loadLabel(manager);
-            app.nameApp   = ri.activityInfo.packageName;
-            app.iconApp   = ri.activityInfo.loadIcon(manager);
-            apps.add(app);
-            soUngDung++;
-            if (soUngDung == 7) {
-                listApps.add(apps);
-                apps = new ArrayList<UngDung>();
-                soUngDung = 0;
-            }
-        }
-
-        for (ResolveInfo ri : availableActivities) {
-            UngDung app = new UngDung();
-            app.labelApp  = ri.loadLabel(manager);
-            app.nameApp   = ri.activityInfo.packageName;
-            app.iconApp   = ri.activityInfo.loadIcon(manager);
-            apps.add(app);
-            soUngDung++;
-            if (soUngDung == 7) {
-                listApps.add(apps);
-                apps = new ArrayList<UngDung>();
-                soUngDung = 0;
-            }
-        }
-
-
         if (apps.size() != 0) {
             listApps.add(apps);
         }
@@ -411,6 +340,32 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener{
             case R.id.img_tv:
                 Intent i = new Intent(TrangChu.this,DanhSach.class);
                 startActivity(i);
+                break;
+
+            case R.id.img_phim:
+                Intent i1 = new Intent(TrangChu.this,DanhSach.class);
+                startActivity(i1);
+                break;
+
+            case R.id.img_nhac:
+                Intent i2 = new Intent(TrangChu.this,DanhSach.class);
+                startActivity(i2);
+                break;
+
+            case R.id.img_kara:
+                Intent i3 = new Intent(TrangChu.this,DanhSach.class);
+                startActivity(i3);
+                break;
+
+            case R.id.img_youtube:
+                Intent i4 = manager.getLaunchIntentForPackage("com.google.android.apps.youtube.kids");
+                startActivity(i4);
+                break;
+
+            case R.id.img_store:
+                Intent i5 = manager.getLaunchIntentForPackage("com.store.kiwi.store");
+                startActivity(i5);
+                break;
         }
     }
 
