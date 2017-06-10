@@ -2,6 +2,7 @@ package com.att.kiwilauncher;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
@@ -14,13 +15,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.att.kiwilauncher.Adapter.ChuDeAdapter;
-import com.att.kiwilauncher.Adapter.UngDungDsAdapter;
+import com.att.kiwilauncher.adapter.ChuDeAdapter;
+import com.att.kiwilauncher.adapter.UngDungDsAdapter;
+import com.att.kiwilauncher.database.DatabaseHelper;
+import com.att.kiwilauncher.xuly.LunarCalendar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DanhSach extends AppCompatActivity implements View.OnClickListener{
     RelativeLayout reLayDs1,reLayDs2,reLayDs3,reLayDs4,reLayDs5,reLayDs111,reLayDs112,reLayDs113,rltxt;
@@ -33,12 +38,15 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
     ArrayList<View> listItem;
     int chieuDai,chieuRong,didIndex = 0,willIndex,mainRelay = 6;
     EditText    editTxt;
+    TextView mNgayDuongTxt,mNgayAmTxt,mTxtTinh,mTxtNhietDo;
     ImageView   imageSearch,imgKiwi;
     static PackageManager  manager;
     ImageView   imgMinus1,imgMinus2,imgPlus1,imgPlus2;
     public static   View.OnClickListener appClick;
     UngDungDsAdapter listapp,listapp1;
     static boolean chooseRl2 = true;
+    DatabaseHelper mDatabaseHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +58,9 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
     }
 
     private void addControls() {
+        mDatabaseHelper= new DatabaseHelper(this);
+        mDatabaseHelper.checkDatabase(this);
+
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         chieuDai = displayMetrics.widthPixels;
@@ -85,7 +96,10 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
 
         rltxt = (RelativeLayout) findViewById(R.id.rltxt);
         rltxt.setPadding(20,(chieuRong*11)/25,20,(chieuRong*11)/25);
-
+        mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglichds);
+        mNgayAmTxt = (TextView) findViewById(R.id.txt_amlichds);
+        mTxtTinh = (TextView) findViewById(R.id.txt_thanhphods);
+        mTxtNhietDo = (TextView) findViewById(R.id.txt_nhietdods);
         editTxt = (EditText) findViewById(R.id.edtxtds1);
         imageSearch = (ImageView) findViewById(R.id.imgdsSearch);
         imgKiwi = (ImageView) findViewById(R.id.imgds1);
@@ -107,6 +121,16 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
                 startActivity(i);
             }
         });
+
+        Map<String, String> today = LunarCalendar.getTodayInfo();
+        mNgayDuongTxt.setText("Thứ " + today.get("thu") + ", " + today.get("daySolar") + "/" + today.get("monthSolar") + "/" + today.get("yearSolar"));
+        mNgayAmTxt.setText(today.get("dayLunar") + "/" + today.get("monthLunar") + " " + today.get("can") + " " + today.get("chi"));
+        final String todayFormated = today.get("yearSolar") + "-" + today.get("monthSolar") + "-" + today.get("daySolar") + " "
+                + today.get("hour") + ":" + today.get("minute") + ":" + today.get("second");
+
+        SharedPreferences sharedPreferencesThoiTiet = getSharedPreferences("thoitiet",MODE_PRIVATE);
+        mTxtTinh.setText(sharedPreferencesThoiTiet.getString("tinh","Hà nội"));
+        mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo","25"));
     }
 
     private void loadData() {
