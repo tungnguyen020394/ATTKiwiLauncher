@@ -12,37 +12,44 @@
         android:id="@+id/relay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/img1"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:padding="5dp"
-            android:src="@drawable/ic_kiwi"
-            android:scaleType="fitXY"/>
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/img1"
-            android:layout_toStartOf="@+id/relay11"
-            android:background="@drawable/border_text"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="15dp">
-            <TextView
-                android:id="@+id/text1"
-                android:text="Thông tin Quảng Cáo ! Thông tin Quảng Cáo ! Thông tin Quảng Cáo ! Thông tin Quảng Cáo ! Thông tin Quảng Cáo ! Thông tin Quảng Cáo ! "
+            android:id="@+id/relay13"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <ImageView
+                android:id="@+id/img1"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:singleLine="true"
-                android:ellipsize="marquee"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:scrollHorizontally="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:gravity="center"/>
+                android:src="@drawable/ic_kiwi"
+                android:scaleType="fitXY"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relay12"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@+id/img1"
+            android:layout_toLeftOf="@+id/relay11">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_text">
+                <TextView
+                    android:id="@+id/text1"
+                    android:text=" Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! "
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:gravity="center"/>
+            </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
@@ -67,20 +74,20 @@
                     android:id="@+id/txt_duonglich"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/img_lich"
+                    android:layout_toRightOf="@id/img_lich"
                     android:layout_marginTop="15dp"
                     android:textAllCaps="true"
-                    android:text="THỨ 3 20/11/2017"
+                    android:text="Thứ 7 10/6/2017"
                     android:textSize="13dp"/>
                 <TextView
                     android:id="@+id/txt_amlich"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/img_lich"
+                    android:layout_toRightOf="@id/img_lich"
                     android:layout_below="@id/txt_duonglich"
                     android:textAllCaps="true"
                     android:textSize="10dp"
-                    android:text="20/03 BÍNH Dần " />
+                    android:text="16/5 Đinh dậu " />
             </RelativeLayout>
 
             <RelativeLayout
@@ -113,7 +120,7 @@
                     android:layout_below="@+id/txt_thanhpho"
                     android:textAllCaps="true"
                     android:textSize="10dp"
-                    android:text="15 độ C" />
+                    android:text="28 độ " />
             </RelativeLayout>
 
             <RelativeLayout
@@ -157,87 +164,111 @@
         android:layout_height="wrap_content">
         <RelativeLayout
             android:id="@+id/relay21"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="10dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/img_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:src="@drawable/img_tv"/>
+            <RelativeLayout
+                android:id="@+id/relay211"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/img_tv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="5dp"
+                    android:src="@drawable/img_tv"
+                    android:scaleType="fitXY"/>
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/img_phim"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/img_phim"
-                android:layout_toEndOf="@+id/img_tv"
-                android:padding="5dp"
-                android:layout_marginLeft="20dp"/>
+            <RelativeLayout
+                android:id="@+id/relay212"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/img_phim"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="5dp"
+                    android:src="@drawable/img_phim"
+                    android:scaleType="fitXY"/>
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/img_nhac"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/img_nhac"
-                android:layout_toEndOf="@+id/img_phim"
-                android:padding="5dp"
-                android:layout_marginLeft="20dp"/>
+            <RelativeLayout
+                android:id="@+id/relay213"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/img_nhac"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="5dp"
+                    android:src="@drawable/img_nhac"
+                    android:scaleType="fitXY"/>
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/img_kara"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/img_kara"
-                android:layout_marginTop="10dp"
-                android:padding="5dp"
-                android:layout_below="@id/img_tv" />
+            <RelativeLayout
+                android:id="@+id/relay214"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/img_kara"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="5dp"
+                    android:src="@drawable/img_kara"
+                    android:scaleType="fitXY"/>
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/img_youtube"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/img_youtube"
-                android:layout_below="@id/img_phim"
-                android:layout_toEndOf="@id/img_kara"
-                android:padding="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp" />
+            <RelativeLayout
+                android:id="@+id/relay215"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/img_youtube"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="5dp"
+                    android:src="@drawable/img_youtube"
+                    android:scaleType="fitXY"/>
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/img_store"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/img_store"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/img_nhac"
-                android:layout_toEndOf="@id/img_youtube"
-                android:padding="5dp"
-                android:layout_marginLeft="20dp" />
+            <RelativeLayout
+                android:id="@+id/relay216"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/img_store"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="5dp"
+                    android:src="@drawable/img_store"
+                    android:scaleType="fitXY"/>
+            </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/relay22"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_toEndOf="@id/relay21"
             android:layout_marginLeft="20dp"
             android:padding="2dp">
             <RelativeLayout
                 android:id="@+id/relay222"
-                android:background="@drawable/border_video"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
-                <VideoView
-                    android:id="@+id/videoView"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_centerInParent="true"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp">
+                <RelativeLayout
+                    android:id="@+id/relay2221"
+                    android:background="@drawable/border_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+                    <VideoView
+                        android:id="@+id/videoView"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>

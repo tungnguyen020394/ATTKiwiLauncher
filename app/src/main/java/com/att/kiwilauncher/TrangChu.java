@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -26,10 +27,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.att.kiwilauncher.R.id.relay2;
+import static com.att.kiwilauncher.R.id.videoView;
 
 public class TrangChu extends AppCompatActivity implements View.OnClickListener{
-    int chieuDai,chieuRong,didIndex = 0,willIndex,indexChuDe;
-    RelativeLayout reLay1,reLay2,reLay3,reLay4,reLay111,reLay112,reLay113,reLay22;
+    int chieuDai,chieuRong,didIndex = 0,willIndex,indexChuDe,mChieuDai,mChieuRong;
+    RelativeLayout reLay1,reLay2,reLay3,reLay4,reLay111,reLay112,reLay113,
+            reLay21,reLay22,reLay222,reLay211,reLay212,reLay213,reLay214,reLay215,reLay216
+            ,reLay13,reLay12;
     List<ChuDe> cates;
     ArrayList<View>       listItem;
     RecyclerView          rcCategory;
@@ -65,11 +69,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener{
     private void loadData() {
         // Load Category
         cates = new ArrayList<ChuDe>();
-        ChuDe cate1 = new ChuDe("Đối Tác",R.drawable.play,0,false);
+        ChuDe cate1 = new ChuDe("Giải Trí",R.drawable.play,0,false);
         cates.add(cate1);
-        ChuDe cate2 = new ChuDe("Đối Tác",R.drawable.play,0,false);
+        ChuDe cate2 = new ChuDe("Trò Chơi",R.drawable.ic_games,0,false);
         cates.add(cate2);
-        ChuDe cate3 = new ChuDe("Đối Tác",R.drawable.play,0,false);
+        ChuDe cate3 = new ChuDe("Giáo Dục",R.drawable.school,0,false);
         cates.add(cate3);
 
         rcCategory.setHasFixedSize(true);
@@ -112,8 +116,17 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener{
         rcApp.setAdapter(listapp);
 
         // video
-        //video.setVideoPath("https://www.viettelpost.com.vn/Video/gioithieu.mp4");
-        //video.start();
+        video.setVideoPath("http://clips.vorwaerts-gmbh.de/VfE_html5.mp4");
+        video.start();
+
+        video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                video.setVideoPath("http://clips.vorwaerts-gmbh.de/VfE_html5.mp4");
+                video.start();
+
+            }
+        });
     }
 
     private void addControls() {
@@ -121,39 +134,59 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener{
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         chieuDai = displayMetrics.widthPixels;
         chieuRong = displayMetrics.heightPixels;
+        mChieuDai = chieuDai/70;
+        mChieuRong = chieuRong/40;
 
         listItem = new ArrayList<>();
 
+        // reLaytive layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1);
-        reLay1.setPadding(20,0,20,(chieuRong*21)/25);
+        reLay1.setPadding(mChieuDai,0,mChieuDai,mChieuRong*34);
         reLay2 = (RelativeLayout) findViewById(relay2);
-        reLay2.setPadding(20,(chieuRong*4)/25,20,(chieuRong*13)/50);
+        reLay2.setPadding(mChieuDai,mChieuRong*6,mChieuDai,mChieuRong*12);
         reLay3 = (RelativeLayout) findViewById(R.id.relay3);
-        reLay3.setPadding(20,(chieuRong*18)/25,20,(chieuRong*3)/25);
+        reLay3.setPadding(mChieuDai,mChieuRong*29,mChieuDai,mChieuRong*7);
         reLay4 = (RelativeLayout) findViewById(R.id.relay4);
-        reLay4.setPadding(20,(chieuRong*39)/50,20,0);
+        reLay4.setPadding(mChieuDai,mChieuRong*31,mChieuDai,0);
+
+        reLay13  = (RelativeLayout) findViewById(R.id.relay13);
+        reLay12  = (RelativeLayout) findViewById(R.id.relay12);
+        reLay111 = (RelativeLayout) findViewById(R.id.relay111);
+        reLay112 = (RelativeLayout) findViewById(R.id.relay112);
+        reLay113 = (RelativeLayout) findViewById(R.id.relay113);
+        reLay113.setOnClickListener(this);
+        reLay13.setPadding(mChieuDai,0,mChieuDai*60,0);
+        reLay12.setPadding(mChieuDai*9,mChieuRong,0,mChieuRong);
+
+        reLay21 = (RelativeLayout) findViewById(R.id.relay21);
+        reLay22 = (RelativeLayout) findViewById(R.id.relay22);
+        reLay21.setPadding(0,0,mChieuDai*34,0);
+        reLay22.setPadding(mChieuDai*34,0,0,0);
+        reLay222 = (RelativeLayout) findViewById(R.id.relay222);
+        reLay211 = (RelativeLayout) findViewById(R.id.relay211);
+        reLay212 = (RelativeLayout) findViewById(R.id.relay212);
+        reLay213 = (RelativeLayout) findViewById(R.id.relay213);
+        reLay214 = (RelativeLayout) findViewById(R.id.relay214);
+        reLay215 = (RelativeLayout) findViewById(R.id.relay215);
+        reLay216 = (RelativeLayout) findViewById(R.id.relay216);
+        reLay211.setPadding(mChieuDai,0,mChieuDai*23,mChieuRong*11);
+        reLay212.setPadding(mChieuDai*12,0,mChieuDai*12,mChieuRong*11);
+        reLay213.setPadding(mChieuDai*23,0,mChieuDai*1,mChieuRong*11);
+        reLay214.setPadding(mChieuDai,mChieuRong*11,mChieuDai*23,0);
+        reLay215.setPadding(mChieuDai*12,mChieuRong*11,mChieuDai*12,0);
+        reLay216.setPadding(mChieuDai*23,mChieuRong*11,mChieuDai*1,0);
+
+
+
+        //end Layout
 
         rcCategory = (RecyclerView) findViewById(R.id.recycler1);
         rcApp      = (RecyclerView) findViewById(R.id.recycler2);
 
-        video = (VideoView) findViewById(R.id.videoView);
-        reLay22 = (RelativeLayout) findViewById(R.id.relay22);
+        video = (VideoView) findViewById(videoView);
 
         text = (TextView) findViewById(R.id.text1);
         text.setSelected(true);
-
-
-        reLay111 = (RelativeLayout) findViewById(R.id.relay111);
-        reLay112 = (RelativeLayout) findViewById(R.id.relay112);
-        reLay113 = (RelativeLayout) findViewById(R.id.relay113);
-
-        reLay113.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imageCaiDat.callOnClick();
-            }
-        });
-
 
         image1 = (ImageView) findViewById(R.id.img_tv);
         image2 = (ImageView) findViewById(R.id.img_phim);
@@ -363,8 +396,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener{
                 break;
 
             case R.id.img_store:
-                Intent i5 = manager.getLaunchIntentForPackage("com.store.kiwi.store");
+                Intent i5 = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
                 startActivity(i5);
+                break;
+
+            case R.id.relay113:
+                imageCaiDat.callOnClick();
                 break;
         }
     }
@@ -402,11 +439,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener{
         listItem.add(image1);
         listItem.add(image2);
         listItem.add(image3);
-        listItem.add(reLay22);
+        listItem.add(reLay222);
         listItem.add(image4);
         listItem.add(image5);
         listItem.add(image6);
-        listItem.add(reLay22);
+        listItem.add(reLay222);
 
         int soChuDe = 0;
         for (ChuDe c : cates) {
