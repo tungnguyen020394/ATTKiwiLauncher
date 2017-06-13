@@ -1,14 +1,15 @@
 package com.att.kiwilauncher;
 
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,6 +42,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -81,7 +83,28 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener{
         addNavigationItem();
         addClicks();
     }
+    public void launchApp(String packageName) {
+        Intent intent = new Intent();
+        intent.setPackage(packageName);
 
+        PackageManager pm = getPackageManager();
+        List<ResolveInfo> resolveInfos = pm.queryIntentActivities(intent, 0);
+        Collections.sort(resolveInfos, new ResolveInfo.DisplayNameComparator(pm));
+
+        if(resolveInfos.size() > 0) {
+            ResolveInfo launchable = resolveInfos.get(0);
+            ActivityInfo activity = launchable.activityInfo;
+            ComponentName name=new ComponentName(activity.applicationInfo.packageName,
+                    activity.name);
+            Intent i=new Intent(Intent.ACTION_MAIN);
+
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                    Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+            i.setComponent(name);
+
+            startActivity(i);
+        }
+    }
     private void addClicks() {
         appClick = new AppClick(this);
     }
@@ -594,7 +617,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.img_caidat:
-                TrangChu.this.startActivityForResult(new Intent(Settings.ACTION_SETTINGS),REQUEST_SETTINGS);
+                //TrangChu.this.startActivityForResult(new Intent(Settings.ACTION_SETTINGS),REQUEST_SETTINGS);
+               launchApp("com.store.kiwi.kiwistore");
                 break;
 
             case R.id.img_plus:
