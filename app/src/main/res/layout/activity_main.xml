@@ -288,26 +288,43 @@
                     android:background="@drawable/border_video"
                     android:padding="10dp">
 
-                    <Button
-                        android:visibility="gone"
-                        android:id="@+id/btnVolumeOn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:background="@drawable/ic_volume_on"/>
-
-                    <Button
-                        android:id="@+id/btnVolumeOf"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:background="@drawable/ic_volume_off"/>
-
                     <VideoView
                         android:id="@+id/videoView"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_centerInParent="true"/>
+
+                    <Button
+                        android:id="@+id/btnOn"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/speaker"/>
+
+                    <Button
+                        android:id="@+id/btnOf"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/mute"
+                        android:visibility="gone"/>
+
+                    <Button
+                        android:id="@+id/btnFull"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/btnOn"
+                        android:background="@drawable/ic_media_fullscreen_stretch"/>
+
+                    <Button
+                        android:id="@+id/btnFullOf"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/btnOn"
+                        android:background="@drawable/ic_media_fullscreen_shrink"
+                        android:visibility="gone"/>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
