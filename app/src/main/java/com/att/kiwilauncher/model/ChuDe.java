@@ -1,4 +1,4 @@
-package com.att.kiwilauncher;
+package com.att.kiwilauncher.model;
 
 /**
  * Created by mac on 5/23/17.

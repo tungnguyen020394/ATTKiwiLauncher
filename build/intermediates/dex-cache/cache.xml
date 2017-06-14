@@ -2,22 +2,22 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\tienh\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.5.2\ecf534dba3a8446ce84cbb797d314763be212a68\glide-3.5.2.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
-        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7b603fd20c4b4849bc9f9ac7d23aee0eec31dc95/classes.dex" />
+        sha1="ecf534dba3a8446ce84cbb797d314763be212a68">
+        <dex dex="E:\ATT\ATTKiwiLauncher\ATTKiwiLauncher\app\build\intermediates\pre-dexed\debug\glide-3.5.2_62a27c439f23dfc4b04ae9b58240b2d674e469f6.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\tienh\.android\build-cache\b7859e7d15207a236f49ef7d48f7f6006d857897\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="25f8871cd6f156be0bc64eeb12cd7ddc92288bfa">
-        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7b85501687aa694dbe397062d5cad16a8440327a/classes.dex" />
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="E:\ATT\ATTKiwiLauncher\ATTKiwiLauncher\app\build\intermediates\pre-dexed\debug\classes_649fa41710583ee9b6464ebaa8a2c83b985c29b4.jar" />
     </item>
 
 </items>

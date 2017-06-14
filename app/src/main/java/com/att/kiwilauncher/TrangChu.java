@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -18,6 +19,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -31,10 +33,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import com.att.kiwilauncher.Util.Define;
 import com.att.kiwilauncher.adapter.ChuDeAdapter;
-import com.att.kiwilauncher.adapter.UngDungAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
+import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.model.ThoiTiet;
+import com.att.kiwilauncher.UngDung;
+import com.att.kiwilauncher.adapter.UngDungAdapter;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
 
@@ -64,6 +70,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     static PackageManager manager;
     static List<UngDung> apps;
     static List<List<UngDung>> listApps;
+    ArrayList<String> listvideo;
     public static View.OnClickListener appClick;
     VideoView video;
     ImageView image1, image2, image3, image4, image5, image6,
@@ -74,6 +81,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     private static final String TAG = "TrangChu";
     DatabaseHelper mDatabaseHelper;
     private ProgressDialog dialog;
+
+    Button btnBack, btnNext, btnPlay, btnPause,btnVolumeOf,btnVolumeOn;
+    AudioManager audioManager;
+
+    int indexVideo = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,16 +151,22 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         rcApp.setAdapter(listapp);
 
         // video
-        if(!mDatabaseHelper.getLinkVideoQuangCao().equals("")){
+        if (!mDatabaseHelper.getLinkVideoQuangCao().equals("")) {
             video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
+                    indexVideo++;
                     video.start();
                 }
             });
-            video.setVideoPath(mDatabaseHelper.getLinkVideoQuangCao());
+            video.setVideoPath(listvideo.get(indexVideo));
             video.start();
         }
+
+        //audio
+        audioManager= (AudioManager) getSystemService(AUDIO_SERVICE);
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+
     }
 
     private void addControls() {
@@ -165,6 +183,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mChieuRong = chieuRong / 40;
 
         listItem = new ArrayList<>();
+        listvideo = new ArrayList<>();
+
+        listvideo.add(Define.URL_LINK_PLAY);
+        listvideo.add(Define.URL_LINK_NEXT);
+        listvideo.add(Define.URL_LINK_BACK);
 
         // reLaytive layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1);
@@ -224,6 +247,21 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         image4.setOnClickListener(this);
         image5.setOnClickListener(this);
         image6.setOnClickListener(this);
+
+        btnPause = (Button) findViewById(R.id.btnPause);
+        btnPlay = (Button) findViewById(R.id.btnPlay);
+        btnNext = (Button) findViewById(R.id.btnNext);
+        btnBack = (Button) findViewById(R.id.btnBack);
+        btnVolumeOf= (Button) findViewById(R.id.btnVolumeOf);
+        btnVolumeOn= (Button) findViewById(R.id.btnVolumeOn);
+        btnPause.setOnClickListener(this);
+        btnPlay.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
+        btnNext.setOnClickListener(this);
+
+        btnVolumeOf.setOnClickListener(this);
+        btnVolumeOn.setOnClickListener(this);
+
         mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich);
         mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich);
         mTxtTinh = (TextView) findViewById(R.id.txt_thanhpho);
@@ -545,6 +583,48 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btnVolumeOn:
+                btnVolumeOn.setVisibility(View.VISIBLE);
+                btnVolumeOf.setVisibility(View.GONE);
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 50, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+
+                break;
+            case R.id.btnVolumeOf:
+                btnVolumeOn.setVisibility(View.GONE);
+                btnVolumeOf.setVisibility(View.VISIBLE);
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+
+                break;
+            case R.id.btnPause:
+                btnPlay.setVisibility(View.VISIBLE);
+                btnPause.setVisibility(View.GONE);
+                video.pause();
+                break;
+            case R.id.btnPlay:
+                btnPlay.setVisibility(View.GONE);
+                btnPause.setVisibility(View.VISIBLE);
+                video.start();
+                break;
+
+            case R.id.btnNext:
+                if (indexVideo==(listvideo.size()-1))
+                {
+                    indexVideo=0;
+                }else indexVideo++;
+
+                video.setVideoPath(listvideo.get(indexVideo));
+                video.start();
+                break;
+
+            case R.id.btnBack:
+                if (indexVideo == 0) {
+                    indexVideo = listvideo.size() - 1;
+                } else indexVideo--;
+
+                video.setVideoPath(listvideo.get(indexVideo));
+                video.start();
+                break;
+
             case R.id.img_caidat:
                 TrangChu.this.startActivityForResult(new Intent(Settings.ACTION_SETTINGS), REQUEST_SETTINGS);
                 break;
@@ -672,6 +752,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         listItem.get(j).setBackgroundResource(R.drawable.border_pick);
         didIndex = willIndex;
     }
+
     public void launchApp(String packageName) {
         Intent intent = new Intent();
         intent.setPackage(packageName);
@@ -680,12 +761,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         List<ResolveInfo> resolveInfos = pm.queryIntentActivities(intent, 0);
         Collections.sort(resolveInfos, new ResolveInfo.DisplayNameComparator(pm));
 
-        if(resolveInfos.size() > 0) {
+        if (resolveInfos.size() > 0) {
             ResolveInfo launchable = resolveInfos.get(0);
             ActivityInfo activity = launchable.activityInfo;
-            ComponentName name=new ComponentName(activity.applicationInfo.packageName,
+            ComponentName name = new ComponentName(activity.applicationInfo.packageName,
                     activity.name);
-            Intent i=new Intent(Intent.ACTION_MAIN);
+            Intent i = new Intent(Intent.ACTION_MAIN);
 
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
                     Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);

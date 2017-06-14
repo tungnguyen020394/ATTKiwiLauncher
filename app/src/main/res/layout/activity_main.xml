@@ -288,6 +288,21 @@
                     android:background="@drawable/border_video"
                     android:padding="10dp">
 
+                    <Button
+                        android:visibility="gone"
+                        android:id="@+id/btnVolumeOn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/ic_volume_on"/>
+
+                    <Button
+                        android:id="@+id/btnVolumeOf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/ic_volume_off"/>
+
                     <VideoView
                         android:id="@+id/videoView"
                         android:layout_width="fill_parent"
@@ -300,26 +315,36 @@
                         android:layout_alignParentBottom="true"
                         android:orientation="horizontal">
 
+
                         <Button
-                            android:background="@drawable/rewind"
+                            android:id="@+id/btnBack"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:background="@drawable/rewind"
 
                             />
 
                         <Button
+
                             android:id="@+id/btnPlay"
-                            android:layout_centerHorizontal="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/play"/>
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/play"
+                            android:visibility="gone"/>
 
                         <Button
-                            android:layout_alignRight="@id/btnPlay"
-
+                            android:id="@+id/btnPause"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/pause"/>
 
+                        <Button
+                            android:id="@+id/btnNext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
                             android:background="@drawable/next"/>
 
                     </RelativeLayout>
