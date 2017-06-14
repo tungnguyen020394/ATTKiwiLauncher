@@ -1,54 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:background="@drawable/backgroundmain"
-    tools:context="com.att.kiwilauncher.TrangChu">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/backgroundmain"
+                android:orientation="vertical"
+                android:padding="10dp"
+                tools:context="com.att.kiwilauncher.TrangChu">
+
     <RelativeLayout
         android:id="@+id/relay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RelativeLayout
             android:id="@+id/relay13"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
+
             <ImageView
                 android:id="@+id/img1"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:src="@drawable/ic_kiwi"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_kiwi"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/relay12"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_toRightOf="@+id/img1"
-            android:layout_toLeftOf="@+id/relay11">
+            android:layout_toLeftOf="@+id/relay11"
+            android:layout_toRightOf="@+id/img1">
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_text">
+
                 <TextView
                     android:id="@+id/text1"
-                    android:text=" Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! "
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:singleLine="true"
                     android:ellipsize="marquee"
-                    android:marqueeRepeatLimit="marquee_forever"
-                    android:scrollHorizontally="true"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
-                    android:textSize="15dp"
-                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:text=" Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! "
                     android:textAllCaps="true"
-                    android:gravity="center"/>
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
             </RelativeLayout>
         </RelativeLayout>
 
@@ -58,36 +63,40 @@
             android:layout_height="fill_parent"
             android:layout_alignParentRight="true"
             android:orientation="horizontal">
+
             <RelativeLayout
                 android:id="@+id/relay111"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp">
+
                 <ImageView
                     android:id="@+id/img_lich"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_lich"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_lich"/>
+
                 <TextView
                     android:id="@+id/txt_duonglich"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/img_lich"
                     android:layout_marginTop="15dp"
-                    android:textAllCaps="true"
+                    android:layout_toRightOf="@id/img_lich"
                     android:text="Thứ 7 10/6/2017"
+                    android:textAllCaps="true"
                     android:textSize="13dp"/>
+
                 <TextView
                     android:id="@+id/txt_amlich"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/img_lich"
                     android:layout_below="@id/txt_duonglich"
+                    android:layout_toRightOf="@id/img_lich"
+                    android:text="16/5 Đinh dậu "
                     android:textAllCaps="true"
-                    android:textSize="10dp"
-                    android:text="16/5 Đinh dậu " />
+                    android:textSize="10dp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -96,31 +105,34 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/relay111"
                 android:padding="5dp">
+
                 <ImageView
                     android:id="@+id/img_thoitiet"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_mua"
                     android:layout_centerVertical="true"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_mua"/>
+
                 <TextView
                     android:id="@+id/txt_thanhpho"
-                    android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:layout_toEndOf="@+id/img_thoitiet"
                     android:text="Hà Nôi"
                     android:textAllCaps="true"
                     android:textSize="13dp"/>
+
                 <TextView
                     android:id="@+id/txt_nhietdo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/img_thoitiet"
                     android:layout_below="@+id/txt_thanhpho"
+                    android:layout_toEndOf="@+id/img_thoitiet"
+                    android:text="28 độ "
                     android:textAllCaps="true"
-                    android:textSize="10dp"
-                    android:text="28 độ " />
+                    android:textSize="10dp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -129,31 +141,34 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/relay112"
                 android:padding="5dp">
+
                 <ImageView
                     android:id="@+id/img_caidat"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_caidat"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_caidat"/>
+
                 <TextView
                     android:id="@+id/txt_caidat"
-                    android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:layout_toEndOf="@+id/img_caidat"
                     android:text="Cài Đặt"
                     android:textAllCaps="true"
                     android:textSize="13dp"/>
+
                 <TextView
                     android:id="@+id/txt_kiwi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/img_caidat"
                     android:layout_below="@+id/txt_caidat"
+                    android:layout_toEndOf="@+id/img_caidat"
+                    android:text=""
                     android:textAllCaps="true"
-                    android:textSize="10dp"
-                    android:text="" />
+                    android:textSize="10dp"/>
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
@@ -162,6 +177,7 @@
         android:id="@+id/relay2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RelativeLayout
             android:id="@+id/relay21"
             android:layout_width="match_parent"
@@ -171,78 +187,84 @@
                 android:id="@+id/relay211"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/img_tv"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:padding="5dp"
-                    android:src="@drawable/img_tv"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_tv"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay212"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/img_phim"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:padding="5dp"
-                    android:src="@drawable/img_phim"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_phim"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay213"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/img_nhac"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:padding="5dp"
-                    android:src="@drawable/img_nhac"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_nhac"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay214"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/img_kara"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:padding="5dp"
-                    android:src="@drawable/img_kara"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_kara"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay215"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/img_youtube"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:padding="5dp"
-                    android:src="@drawable/img_youtube"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_youtube"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay216"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/img_store"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:padding="5dp"
-                    android:src="@drawable/img_store"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_store"/>
             </RelativeLayout>
         </RelativeLayout>
 
@@ -252,22 +274,55 @@
             android:layout_height="fill_parent"
             android:layout_marginLeft="20dp"
             android:padding="2dp">
+
             <RelativeLayout
                 android:id="@+id/relay222"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="2dp">
+
                 <RelativeLayout
                     android:id="@+id/relay2221"
-                    android:background="@drawable/border_video"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/border_video"
                     android:padding="10dp">
+
                     <VideoView
                         android:id="@+id/videoView"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:layout_centerInParent="true" />
+                        android:layout_centerInParent="true"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:background="@drawable/rewind"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            />
+
+                        <Button
+                            android:id="@+id/btnPlay"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/play"/>
+
+                        <Button
+                            android:layout_alignRight="@id/btnPlay"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:background="@drawable/next"/>
+
+                    </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
@@ -277,6 +332,7 @@
         android:id="@+id/relay3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler1"
             android:layout_width="match_parent"
@@ -287,13 +343,14 @@
         android:id="@+id/relay4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/img_minus"
             android:layout_width="50dp"
             android:layout_height="fill_parent"
-            android:src="@drawable/ic_minus"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:src="@drawable/ic_minus"/>
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -301,6 +358,7 @@
             android:layout_toEndOf="@+id/img_minus"
             android:layout_toStartOf="@+id/img_plus"
             android:padding="10dp">
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler2"
                 android:layout_width="wrap_content"
@@ -312,10 +370,10 @@
             android:id="@+id/img_plus"
             android:layout_width="50dp"
             android:layout_height="fill_parent"
-            android:src="@drawable/ic_plus"
             android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:src="@drawable/ic_plus"/>
     </RelativeLayout>
 
 </RelativeLayout>
