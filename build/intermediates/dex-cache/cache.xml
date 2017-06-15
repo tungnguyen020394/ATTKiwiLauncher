@@ -2,22 +2,58 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\admin\.android\build-cache\8713d3b66c06065051246e1e74ed49ece6ca990b\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
-        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7b603fd20c4b4849bc9f9ac7d23aee0eec31dc95/classes.dex" />
+        sha1="3ecb9d2aad9a03dd8d0914b715cc1fc11d942c6c">
+        <dex dex="C:\Users\admin\Desktop\ATTKiwiLauncher\app\build\intermediates\pre-dexed\debug\classes_fd1f05cc03273a180342258cac2ff1e768c6ef89.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\admin\.android\build-cache\5e26d898ac77f79cb84ec7c734d7a0f4035d142c\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="25f8871cd6f156be0bc64eeb12cd7ddc92288bfa">
-        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7b85501687aa694dbe397062d5cad16a8440327a/classes.dex" />
+        sha1="1a22d14a4ee12a1fc2e765eb280d94ea73efa630">
+        <dex dex="C:\Users\admin\Desktop\ATTKiwiLauncher\app\build\intermediates\pre-dexed\debug\classes_958cd91f79b5df4b1fe327934b28efb52fe368e7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\admin\.android\build-cache\73fc61366d43a4deb416e35c4b8ed888042fdc7d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bc987989a5b6a23cc00d436f97cbf82e644c739d">
+        <dex dex="C:\Users\admin\Desktop\ATTKiwiLauncher\app\build\intermediates\pre-dexed\debug\classes_6c33450b82a0417229c441f7993dac92dd755fb8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\admin\.android\build-cache\026a6d2b5158dd0683eabca12835ad0f0845fadf\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="52f4541e66a53c22179655d7e9c6fccf12cba86a">
+        <dex dex="C:\Users\admin\Desktop\ATTKiwiLauncher\app\build\intermediates\pre-dexed\debug\classes_72d4c9821319b589ab02b10ad57089281481fe7c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\admin\.android\build-cache\6efdd692a901981e2b1f4727ce647830869892b0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cfc67519fb914bc50f2434bad36ed2001412777a">
+        <dex dex="C:\Users\admin\Desktop\ATTKiwiLauncher\app\build\intermediates\pre-dexed\debug\classes_4b9840a92e6b576493b4686a3ead54cdeab3c766.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\admin\.android\build-cache\7148cc19130aa6711e501252f18daf860ac31516\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="31abcff1d93243e1d25afda575266ca6219fadd1">
+        <dex dex="C:\Users\admin\Desktop\ATTKiwiLauncher\app\build\intermediates\pre-dexed\debug\classes_ba3678db5fc752e6f356931d89d3e64d7adeaa2b.jar" />
     </item>
 
 </items>

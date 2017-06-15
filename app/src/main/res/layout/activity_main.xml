@@ -294,32 +294,74 @@
                         android:layout_height="fill_parent"
                         android:layout_centerInParent="true"/>
 
+                    <Button
+                        android:id="@+id/btnOn"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/speaker"/>
+
+                    <Button
+                        android:id="@+id/btnOf"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/mute"
+                        android:visibility="gone"/>
+
+                    <Button
+                        android:id="@+id/btnFull"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/btnOn"
+                        android:background="@drawable/ic_media_fullscreen_stretch"/>
+
+                    <Button
+                        android:id="@+id/btnFullOf"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/btnOn"
+                        android:background="@drawable/ic_media_fullscreen_shrink"
+                        android:visibility="gone"/>
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:orientation="horizontal">
 
+
                         <Button
-                            android:background="@drawable/rewind"
+                            android:id="@+id/btnBack"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:background="@drawable/rewind"
 
                             />
 
                         <Button
+
                             android:id="@+id/btnPlay"
-                            android:layout_centerHorizontal="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/play"/>
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/play"
+                            android:visibility="gone"/>
 
                         <Button
-                            android:layout_alignRight="@id/btnPlay"
-
+                            android:id="@+id/btnPause"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/pause"/>
 
+                        <Button
+                            android:id="@+id/btnNext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
                             android:background="@drawable/next"/>
 
                     </RelativeLayout>

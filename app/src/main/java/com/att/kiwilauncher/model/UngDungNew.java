@@ -6,7 +6,7 @@ import java.util.List;
  * Created by admin on 5/25/2017.
  */
 
-public class UngDung {
+public class UngDungNew {
     String id;
     String name;
     boolean installed;
@@ -20,8 +20,8 @@ public class UngDung {
     String versionCode;
     String update;
 
-    public UngDung(String id, String name, boolean installed, String icon, List<String> anh, String des,
-                   String version, String linkCai, String luotCai, String rating, String versionCode, String update) {
+    public UngDungNew(String id, String name, boolean installed, String icon, List<String> anh, String des,
+                      String version, String linkCai, String luotCai, String rating, String versionCode, String update) {
         this.id = id;
         this.name = name;
         this.installed = installed;
@@ -92,7 +92,7 @@ public class UngDung {
         this.luotCai = luotCai;
     }
 
-    public UngDung() {
+    public UngDungNew() {
     }
 
     public String getId() {
