@@ -15,6 +15,7 @@ import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.model.TheLoai;
 import com.att.kiwilauncher.model.ThoiTiet;
 import com.att.kiwilauncher.model.UngDung;
+import com.att.kiwilauncher.xuly.DuLieu;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -303,6 +304,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         mDatabase.insert("quangcao", null, values);
         closeDatabase();
     }
+
     public String getLinkTextQuangCao() {
         String nd = "";
         openDatabase();
@@ -315,6 +317,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         closeDatabase();
         return nd;
     }
+
     public String getLinkVideoQuangCao() {
         String nd = "";
         openDatabase();
@@ -327,6 +330,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         closeDatabase();
         return nd;
     }
+
+    public ArrayList<String> getListVideoQuangCao() {
+        ArrayList<String> listVideo = new ArrayList<>();
+        String nd = "";
+        openDatabase();
+        Cursor cursor;
+        cursor = mDatabase.rawQuery("SELECT noidung FROM quangcao WHERE loaiquangcao = 1 ORDER BY id DESC LIMIT 3", null);
+        if (cursor.moveToFirst()) {
+            nd = DuLieu.splitLinkVideoWeb(cursor.getString(0))[0];
+            listVideo.add(nd);
+        }
+        while (cursor.moveToNext()) {
+            nd = DuLieu.splitLinkVideoWeb(cursor.getString(0))[0];
+            listVideo.add(nd);
+        }
+        cursor.close();
+        closeDatabase();
+        return listVideo;
+    }
+
+    public ArrayList<String> getListLinkWebQuangCao() {
+        ArrayList<String> listLinkWeb = new ArrayList<>();
+        String nd = "";
+        openDatabase();
+        Cursor cursor;
+        cursor = mDatabase.rawQuery("SELECT noidung FROM quangcao WHERE loaiquangcao = 1 ORDER BY id DESC LIMIT 3", null);
+        if (cursor.moveToFirst()) {
+            nd = DuLieu.splitLinkVideoWeb(cursor.getString(0))[1];
+            listLinkWeb.add(nd);
+        }
+        while (cursor.moveToNext()) {
+            nd = DuLieu.splitLinkVideoWeb(cursor.getString(0))[1];
+            listLinkWeb.add(nd);
+        }
+        cursor.close();
+        closeDatabase();
+        return listLinkWeb;
+    }
+
     public void deleteQuangCao() {
         openDatabase();
         mDatabase.delete("quangcao", "1", null);
@@ -350,7 +392,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ungDung.setName(ten);
             ungDungList.add(ungDung);
         }
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             id = cursor.getString(0);
             ten = cursor.getString(1);
             UngDung ungDung = new UngDung();
@@ -364,7 +406,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void insertApp(String id, String ten, int installed, String icon, String luotcai, String versions, String des,
-                          String linkcai,String rating,String versionCode,int update) {
+                          String linkcai, String rating, String versionCode, int update) {
         ContentValues values = new ContentValues();
         values.put("id", Integer.parseInt(id));
         values.put("ten", ten);

@@ -5,12 +5,12 @@ package com.att.kiwilauncher;
  */
 
 public class ChuDe {
-    int     indexCate;
-    String  nameCate;
-    int     drawCate;
+    String nameCate;
+    int drawCate;
+    int indexCate;
     boolean checkedCate;
 
-    public ChuDe(String nameCate, int drawCate , int indexCate, boolean checkedCate) {
+    public ChuDe(String nameCate, int drawCate, int indexCate, boolean checkedCate) {
         this.nameCate = nameCate;
         this.drawCate = drawCate;
         this.indexCate = indexCate;

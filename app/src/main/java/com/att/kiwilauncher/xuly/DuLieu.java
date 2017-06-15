@@ -6,6 +6,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
@@ -211,6 +212,19 @@ public class DuLieu {
         }
         return kq;
     }
+
+    public static String[] splitLinkVideoWeb(String linkVideoWeb) {
+        // phần tử 1 là link video, phần tử 2 là link web
+        String[] mangVideoWeb = linkVideoWeb.split(";");
+        return mangVideoWeb;
+    }
+    public static boolean hasInternetConnection(Context context){
+        ConnectivityManager cm =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
     /*public void hanldeDirectory(String dir) {
         File f = new File(this.destination + dir);
         if (!f.isDirectory()) {

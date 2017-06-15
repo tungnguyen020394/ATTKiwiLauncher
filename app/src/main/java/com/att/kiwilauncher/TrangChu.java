@@ -34,6 +34,7 @@ import com.android.volley.toolbox.Volley;
 import com.att.kiwilauncher.adapter.ChuDeAdapter;
 import com.att.kiwilauncher.adapter.UngDungAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
+import com.att.kiwilauncher.model.TheLoai;
 import com.att.kiwilauncher.model.ThoiTiet;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
@@ -63,6 +64,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     static RecyclerView rcApp;
     static PackageManager manager;
     static List<UngDung> apps;
+    private List<TheLoai> mListTheLoai;
     static List<List<UngDung>> listApps;
     public static View.OnClickListener appClick;
     VideoView video;
@@ -139,7 +141,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         rcApp.setAdapter(listapp);
 
         // video
-        if(!mDatabaseHelper.getLinkVideoQuangCao().equals("")){
+        if (!mDatabaseHelper.getLinkVideoQuangCao().equals("")) {
             video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
@@ -148,6 +150,16 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             });
             video.setVideoPath(mDatabaseHelper.getLinkVideoQuangCao());
             video.start();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (DuLieu.hasInternetConnection(TrangChu.this)) {
+            video.start();
+        } else {
+            Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -165,7 +177,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mChieuRong = chieuRong / 40;
 
         listItem = new ArrayList<>();
-
+        mListTheLoai=new ArrayList<>();
         // reLaytive layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1);
         reLay1.setPadding(mChieuDai, 0, mChieuDai, mChieuRong * 34);
@@ -396,8 +408,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
                     }
                 });
-                video.setVideoPath(mDatabaseHelper.getLinkVideoQuangCao());
+                video.setVideoPath(DuLieu.splitLinkVideoWeb(mDatabaseHelper.getLinkVideoQuangCao())[0]);
                 video.start();
+
+                Toast.makeText(getApplicationContext(), mDatabaseHelper.getListVideoQuangCao().size() + "", Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -672,6 +686,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         listItem.get(j).setBackgroundResource(R.drawable.border_pick);
         didIndex = willIndex;
     }
+
     public void launchApp(String packageName) {
         Intent intent = new Intent();
         intent.setPackage(packageName);
@@ -680,12 +695,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         List<ResolveInfo> resolveInfos = pm.queryIntentActivities(intent, 0);
         Collections.sort(resolveInfos, new ResolveInfo.DisplayNameComparator(pm));
 
-        if(resolveInfos.size() > 0) {
+        if (resolveInfos.size() > 0) {
             ResolveInfo launchable = resolveInfos.get(0);
             ActivityInfo activity = launchable.activityInfo;
-            ComponentName name=new ComponentName(activity.applicationInfo.packageName,
+            ComponentName name = new ComponentName(activity.applicationInfo.packageName,
                     activity.name);
-            Intent i=new Intent(Intent.ACTION_MAIN);
+            Intent i = new Intent(Intent.ACTION_MAIN);
 
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
                     Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
