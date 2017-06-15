@@ -75,18 +75,20 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_lich"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_lich"
+                    android:padding="5dp"/>
 
                 <TextView
                     android:id="@+id/txt_duonglich"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:layout_toRightOf="@id/img_lich"
                     android:text="Thứ 7 10/6/2017"
                     android:textAllCaps="true"
-                    android:textSize="13dp"/>
+                    android:textSize="11dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"/>
 
                 <TextView
                     android:id="@+id/txt_amlich"
@@ -96,14 +98,15 @@
                     android:layout_toRightOf="@id/img_lich"
                     android:text="16/5 Đinh dậu "
                     android:textAllCaps="true"
-                    android:textSize="10dp"/>
+                    android:textSize="8dp"
+                    android:layout_marginRight="5dp"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay112"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/relay111"
+                android:layout_toRightOf="@+id/relay111"
                 android:padding="5dp">
 
                 <ImageView
@@ -112,34 +115,37 @@
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_mua"/>
+                    android:src="@drawable/ic_thoitiet"
+                    android:padding="5dp"/>
 
                 <TextView
                     android:id="@+id/txt_thanhpho"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_toEndOf="@+id/img_thoitiet"
+                    android:layout_toRightOf="@+id/img_thoitiet"
                     android:text="Hà Nôi"
                     android:textAllCaps="true"
-                    android:textSize="13dp"/>
+                    android:textSize="11dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"/>
 
                 <TextView
                     android:id="@+id/txt_nhietdo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_thanhpho"
-                    android:layout_toEndOf="@+id/img_thoitiet"
+                    android:layout_toRightOf="@+id/img_thoitiet"
                     android:text="28 độ "
                     android:textAllCaps="true"
-                    android:textSize="10dp"/>
+                    android:textSize="8dp"
+                    android:layout_marginRight="5dp"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay113"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/relay112"
+                android:layout_toRightOf="@+id/relay112"
                 android:padding="5dp">
 
                 <ImageView
@@ -148,27 +154,30 @@
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_caidat"/>
+                    android:src="@drawable/ic_caidat"
+                    android:padding="5dp"/>
 
                 <TextView
                     android:id="@+id/txt_caidat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_toEndOf="@+id/img_caidat"
+                    android:layout_toRightOf="@+id/img_caidat"
                     android:text="Cài Đặt"
                     android:textAllCaps="true"
-                    android:textSize="13dp"/>
+                    android:textSize="11dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"/>
 
                 <TextView
                     android:id="@+id/txt_kiwi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_caidat"
-                    android:layout_toEndOf="@+id/img_caidat"
+                    android:layout_toRightOf="@+id/img_caidat"
                     android:text=""
                     android:textAllCaps="true"
-                    android:textSize="10dp"/>
+                    android:textSize="8dp"
+                    android:layout_marginRight="5dp"/>
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
@@ -192,9 +201,22 @@
                     android:id="@+id/img_tv"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:padding="5dp"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img_tv"/>
+                    android:src="@drawable/img_tv"
+                    android:layout_above="@+id/text_tv"/>
+
+                <TextView
+                    android:id="@+id/text_tv"
+                    android:text="Truyền Hình"
+                    android:textAllCaps="true"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -206,9 +228,22 @@
                     android:id="@+id/img_phim"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:padding="5dp"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
                     android:scaleType="fitXY"
+                    android:layout_above="@+id/text_phim"
                     android:src="@drawable/img_phim"/>
+
+                <TextView
+                    android:id="@+id/text_phim"
+                    android:text="Phim"
+                    android:textAllCaps="true"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -220,9 +255,22 @@
                     android:id="@+id/img_nhac"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:padding="5dp"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img_nhac"/>
+                    android:src="@drawable/img_nhac"
+                    android:layout_above="@+id/text_nhac"/>
+
+                <TextView
+                    android:id="@+id/text_nhac"
+                    android:text="Nhạc"
+                    android:textAllCaps="true"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -234,9 +282,22 @@
                     android:id="@+id/img_kara"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:padding="5dp"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img_kara"/>
+                    android:src="@drawable/img_kara"
+                    android:layout_above="@+id/text_kara"/>
+
+                <TextView
+                    android:id="@+id/text_kara"
+                    android:text="Karaoke"
+                    android:textAllCaps="true"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -248,9 +309,22 @@
                     android:id="@+id/img_youtube"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:padding="5dp"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img_youtube"/>
+                    android:src="@drawable/img_youtube"
+                    android:layout_above="@+id/text_youtube"/>
+
+                <TextView
+                    android:id="@+id/text_youtube"
+                    android:text="Youtube"
+                    android:textAllCaps="true"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -262,9 +336,22 @@
                     android:id="@+id/img_store"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:padding="5dp"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img_store"/>
+                    android:src="@drawable/img_store"
+                    android:layout_above="@+id/text_store"/>
+
+                <TextView
+                    android:id="@+id/text_store"
+                    android:text="KIwi Store"
+                    android:textAllCaps="true"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"/>
             </RelativeLayout>
         </RelativeLayout>
 
@@ -344,19 +431,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/img_minus"
-            android:layout_width="50dp"
-            android:layout_height="fill_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_minus"/>
-
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_toEndOf="@+id/img_minus"
-            android:layout_toStartOf="@+id/img_plus"
             android:padding="10dp">
 
             <android.support.v7.widget.RecyclerView
@@ -365,15 +442,6 @@
                 android:layout_height="match_parent"
                 ></android.support.v7.widget.RecyclerView>
         </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/img_plus"
-            android:layout_width="50dp"
-            android:layout_height="fill_parent"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_plus"/>
     </RelativeLayout>
 
 </RelativeLayout>

@@ -68,12 +68,13 @@
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_lich"
-                    android:scaleType="centerCrop"/>
+                    android:padding="5dp"/>
                 <TextView
                     android:id="@+id/txt_duonglich"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/img_lich"
+                    android:singleLine="true"
                     android:layout_marginTop="15dp"
                     android:textAllCaps="true"
                     android:text="Thứ 7 10/6/2017"
@@ -82,10 +83,11 @@
                     android:id="@+id/txt_amlich"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
                     android:layout_toRightOf="@id/img_lich"
                     android:layout_below="@id/txt_duonglich"
                     android:textAllCaps="true"
-                    android:textSize="10dp"
+                    android:textSize="12dp"
                     android:text="16/5 Đinh dậu " />
             </RelativeLayout>
 
@@ -99,14 +101,15 @@
                     android:id="@+id/img_thoitiet"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_mua"
+                    android:src="@drawable/ic_thoitiet"
                     android:layout_centerVertical="true"
-                    android:scaleType="centerCrop"/>
+                    android:padding="5dp"/>
                 <TextView
                     android:id="@+id/txt_thanhpho"
                     android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
                     android:layout_toRightOf="@+id/img_thoitiet"
                     android:text="Hà Nôi"
                     android:textAllCaps="true"
@@ -115,10 +118,11 @@
                     android:id="@+id/txt_nhietdo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
                     android:layout_toRightOf="@+id/img_thoitiet"
                     android:layout_below="@+id/txt_thanhpho"
                     android:textAllCaps="true"
-                    android:textSize="10dp"
+                    android:textSize="12dp"
                     android:text="28 độ " />
             </RelativeLayout>
 
@@ -134,12 +138,13 @@
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_caidat"
-                    android:scaleType="centerCrop"/>
+                    android:padding="5dp"/>
                 <TextView
                     android:id="@+id/txt_caidat"
                     android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
                     android:layout_toRightOf="@+id/img_caidat"
                     android:text="Cài Đặt"
                     android:textAllCaps="true"
@@ -148,10 +153,11 @@
                     android:id="@+id/txt_kiwi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
                     android:layout_toRightOf="@+id/img_caidat"
                     android:layout_below="@+id/txt_caidat"
                     android:textAllCaps="true"
-                    android:textSize="10dp"
+                    android:textSize="12dp"
                     android:text="" />
             </RelativeLayout>
         </RelativeLayout>

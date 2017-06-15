@@ -1,4 +1,4 @@
-package com.att.kiwilauncher.adapter;
+package com.att.kiwilauncher.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -40,8 +40,12 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (cates.get(position).isCheckedCate()) {
             holder.layoutCate.setBackground(context.getResources().getDrawable(R.drawable.border_cate));
+            holder.txtApp.setTextColor(context.getResources().getColor(R.color.colorcatenew));
+            holder.imgApp.setColorFilter(context.getResources().getColor(R.color.colorcatenew));
         } else {
             holder.layoutCate.setBackgroundColor(context.getResources().getColor(R.color.none));
+            holder.txtApp.setTextColor(context.getResources().getColor(R.color.colorcatenone));
+            holder.imgApp.setColorFilter(context.getResources().getColor(R.color.colorcatenone));
         }
         holder.imgApp.setImageResource(cates.get(position).getDrawCate());
         holder.txtApp.setText(cates.get(position).getNameCate());

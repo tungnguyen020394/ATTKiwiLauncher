@@ -16,8 +16,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.att.kiwilauncher.adapter.ChuDeAdapter;
-import com.att.kiwilauncher.adapter.UngDungAdapter;
+import com.att.kiwilauncher.Adapter.ChuDeAdapter;
+import com.att.kiwilauncher.Adapter.UngDungAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.xuly.LunarCalendar;
 
