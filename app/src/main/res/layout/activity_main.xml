@@ -72,10 +72,9 @@
 
                 <ImageView
                     android:id="@+id/img_lich"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:scaleType="fitXY"
                     android:src="@drawable/ic_lich"
                     android:padding="5dp"/>
 
@@ -84,9 +83,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/img_lich"
-                    android:text="Thứ 7 10/6/2017"
+                    android:text="Thứ 7 , 10/6/2017    "
                     android:textAllCaps="true"
-                    android:textSize="11dp"
+                    android:singleLine="true"
+                    android:textSize="13dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"/>
 
@@ -96,9 +96,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txt_duonglich"
                     android:layout_toRightOf="@id/img_lich"
+                    android:singleLine="true"
                     android:text="16/5 Đinh dậu "
                     android:textAllCaps="true"
-                    android:textSize="8dp"
+                    android:textSize="12dp"
                     android:layout_marginRight="5dp"/>
             </RelativeLayout>
 
@@ -106,13 +107,13 @@
                 android:id="@+id/relay112"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/relay111"
+                android:layout_toEndOf="@+id/relay111"
                 android:padding="5dp">
 
                 <ImageView
                     android:id="@+id/img_thoitiet"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_thoitiet"
@@ -123,9 +124,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/img_thoitiet"
-                    android:text="Hà Nôi"
+                    android:singleLine="true"
+                    android:text="Hà Nôi    "
                     android:textAllCaps="true"
-                    android:textSize="11dp"
+                    android:textSize="13dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"/>
 
@@ -135,9 +137,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_thanhpho"
                     android:layout_toRightOf="@+id/img_thoitiet"
-                    android:text="28 độ "
+                    android:singleLine="true"
+                    android:text="28 độ       "
                     android:textAllCaps="true"
-                    android:textSize="8dp"
+                    android:textSize="12dp"
                     android:layout_marginRight="5dp"/>
             </RelativeLayout>
 
@@ -150,8 +153,8 @@
 
                 <ImageView
                     android:id="@+id/img_caidat"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_caidat"
@@ -162,9 +165,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/img_caidat"
-                    android:text="Cài Đặt"
+                    android:text="Cấu Hình      "
+                    android:singleLine="true"
                     android:textAllCaps="true"
-                    android:textSize="11dp"
+                    android:textSize="13dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"/>
 
@@ -174,9 +178,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_caidat"
                     android:layout_toRightOf="@+id/img_caidat"
-                    android:text=""
+                    android:singleLine="true"
+                    android:text="KiwiBox       "
                     android:textAllCaps="true"
-                    android:textSize="8dp"
+                    android:textSize="12dp"
                     android:layout_marginRight="5dp"/>
             </RelativeLayout>
         </RelativeLayout>
@@ -472,10 +477,19 @@
         android:id="@+id/relay4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_minus1"/>
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_toRightOf="@+id/img_minus"
+            android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/img_plus"
+            android:layout_marginRight="10dp"
             android:padding="10dp">
 
             <android.support.v7.widget.RecyclerView
@@ -484,6 +498,13 @@
                 android:layout_height="match_parent"
                 ></android.support.v7.widget.RecyclerView>
         </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/img_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_plus1"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
 </RelativeLayout>
