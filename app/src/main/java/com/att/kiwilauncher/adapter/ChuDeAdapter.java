@@ -1,4 +1,4 @@
-package com.att.kiwilauncher.Adapter;
+package com.att.kiwilauncher.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

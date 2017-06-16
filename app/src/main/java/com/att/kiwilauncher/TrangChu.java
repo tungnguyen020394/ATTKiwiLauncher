@@ -26,8 +26,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
-import com.att.kiwilauncher.Adapter.ChuDeAdapter;
-import com.att.kiwilauncher.Adapter.UngDungAdapter;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,6 +33,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.att.kiwilauncher.adapter.ChuDeAdapter;
+import com.att.kiwilauncher.adapter.UngDungAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.model.TheLoai;
@@ -44,9 +44,11 @@ import com.att.kiwilauncher.util.Volume;
 import com.att.kiwilauncher.view.VideoFull;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -262,7 +264,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         image4.setOnClickListener(this);
         image5.setOnClickListener(this);
         image6.setOnClickListener(this);
-<<<<<<< HEAD
         int mChieuDaia = (mChieuDai*5)/8;
         int mChieuRonga = (mChieuRong*3)/4;
         image1.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
@@ -271,7 +272,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         image4.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
         image5.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
         image6.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
-=======
 
         btnPause = (Button) findViewById(R.id.btnPause);
         btnPlay = (Button) findViewById(R.id.btnPlay);
@@ -291,7 +291,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         btnFullOf.setOnClickListener(this);
         btnFull.setOnClickListener(this);
 
->>>>>>> master
         mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich);
         mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich);
         mTxtTinh = (TextView) findViewById(R.id.txt_thanhpho);
