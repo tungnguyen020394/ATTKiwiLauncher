@@ -3,21 +3,40 @@
 
     <item
         is-multidex="true"
-        jar="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7b603fd20c4b4849bc9f9ac7d23aee0eec31dc95/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
+<<<<<<< HEAD
+        sha1="74d1e584b5cd46f5c385daf874b95f1430c876ce">
+        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7b85501687aa694dbe397062d5cad16a8440327a/classes.dex" />
+=======
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7b603fd20c4b4849bc9f9ac7d23aee0eec31dc95/classes.dex" />
+>>>>>>> master
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+<<<<<<< HEAD
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7b603fd20c4b4849bc9f9ac7d23aee0eec31dc95/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/mac/.android/build-cache/82077eaf9ccfcd1b8c4167cc503453be63683a54/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/pre-dexed/debug/classes_00a97b46561696bdaa487f56056e63015b4f9b3a.jar" />
+=======
         sha1="3175c7d134dcc186fa16849c3ab1c573d450ba21">
         <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7b85501687aa694dbe397062d5cad16a8440327a/classes.dex" />
+>>>>>>> master
     </item>
 
 </items>

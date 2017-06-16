@@ -1,4 +1,4 @@
-package com.att.kiwilauncher.adapter;
+package com.att.kiwilauncher.Adapter;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
