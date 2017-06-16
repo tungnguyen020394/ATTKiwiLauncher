@@ -75,14 +75,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-<<<<<<< HEAD
                     android:src="@drawable/ic_lich"
                     android:padding="5dp"/>
-=======
-                    android:padding="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_lich"/>
->>>>>>> origin/master
 
                 <TextView
                     android:id="@+id/txt_duonglich"
@@ -93,14 +87,8 @@
                     android:layout_toRightOf="@id/img_lich"
                     android:text="Thứ 7 , 10/6/2017    "
                     android:textAllCaps="true"
-<<<<<<< HEAD
                     android:singleLine="true"
-                    android:textSize="13dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"/>
-=======
-                    android:textSize="11dp"/>
->>>>>>> origin/master
+                    android:textSize="13dp" />
 
                 <TextView
                     android:id="@+id/txt_amlich"
@@ -112,12 +100,7 @@
                     android:singleLine="true"
                     android:text="16/5 Đinh dậu "
                     android:textAllCaps="true"
-<<<<<<< HEAD
-                    android:textSize="12dp"
-                    android:layout_marginRight="5dp"/>
-=======
-                    android:textSize="8dp"/>
->>>>>>> origin/master
+                    android:textSize="12dp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -146,13 +129,7 @@
                     android:singleLine="true"
                     android:text="Hà Nôi    "
                     android:textAllCaps="true"
-<<<<<<< HEAD
-                    android:textSize="13dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"/>
-=======
-                    android:textSize="11dp"/>
->>>>>>> origin/master
+                    android:textSize="13dp" />
 
                 <TextView
                     android:id="@+id/txt_nhietdo"
@@ -164,12 +141,7 @@
                     android:singleLine="true"
                     android:text="28 độ       "
                     android:textAllCaps="true"
-<<<<<<< HEAD
-                    android:textSize="12dp"
-                    android:layout_marginRight="5dp"/>
-=======
-                    android:textSize="8dp"/>
->>>>>>> origin/master
+                    android:textSize="12dp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -198,13 +170,7 @@
                     android:text="Cấu Hình      "
                     android:singleLine="true"
                     android:textAllCaps="true"
-<<<<<<< HEAD
-                    android:textSize="13dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"/>
-=======
-                    android:textSize="11dp"/>
->>>>>>> origin/master
+                    android:textSize="13dp" />
 
                 <TextView
                     android:id="@+id/txt_kiwi"
@@ -216,12 +182,7 @@
                     android:singleLine="true"
                     android:text="KiwiBox       "
                     android:textAllCaps="true"
-<<<<<<< HEAD
-                    android:textSize="12dp"
-                    android:layout_marginRight="5dp"/>
-=======
-                    android:textSize="8dp"/>
->>>>>>> origin/master
+                    android:textSize="12dp" />
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>

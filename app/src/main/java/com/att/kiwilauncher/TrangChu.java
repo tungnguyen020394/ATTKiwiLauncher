@@ -9,7 +9,6 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -41,7 +41,6 @@ import com.att.kiwilauncher.model.TheLoai;
 import com.att.kiwilauncher.model.ThoiTiet;
 import com.att.kiwilauncher.util.Define;
 import com.att.kiwilauncher.util.Volume;
-import com.att.kiwilauncher.view.VideoFull;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
 
@@ -288,30 +287,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         image5.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
         image6.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
 
-<<<<<<< HEAD
         imageMinus = (ImageView) findViewById(R.id.img_minus);
         imagePlus  = (ImageView) findViewById(R.id.img_plus);
         imageMinus.setOnClickListener(this);
         imagePlus.setOnClickListener(this);
 
-        btnPause = (Button) findViewById(R.id.btnPause);
-        btnPlay = (Button) findViewById(R.id.btnPlay);
-        btnNext = (Button) findViewById(R.id.btnNext);
-        btnBack = (Button) findViewById(R.id.btnBack);
-        btnOf = (Button) findViewById(R.id.btnOf);
-        btnOn = (Button) findViewById(R.id.btnOn);
-        btnFull = (Button) findViewById(R.id.btnFull);
-        btnFullOf = (Button) findViewById(R.id.btnFullOf);
-
-        btnPause.setOnClickListener(this);
-        btnPlay.setOnClickListener(this);
-        btnBack.setOnClickListener(this);
-        btnNext.setOnClickListener(this);
-        btnOf.setOnClickListener(this);
-        btnOn.setOnClickListener(this);
-        btnFullOf.setOnClickListener(this);
-        btnFull.setOnClickListener(this);
-=======
 //        btnPause = (Button) findViewById(R.id.btnPause);
 //        btnPlay = (Button) findViewById(R.id.btnPlay);
 //        btnNext = (Button) findViewById(R.id.btnNext);
@@ -320,7 +300,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 //        btnOn = (Button) findViewById(R.id.btnOn);
 //        btnFull = (Button) findViewById(R.id.btnFull);
 //        btnFullOf = (Button) findViewById(R.id.btnFullOf);
-
+//
 //        btnPause.setOnClickListener(this);
 //        btnPlay.setOnClickListener(this);
 //        btnBack.setOnClickListener(this);
@@ -329,7 +309,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 //        btnOn.setOnClickListener(this);
 //        btnFullOf.setOnClickListener(this);
 //        btnFull.setOnClickListener(this);
->>>>>>> origin/master
 
         mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich);
         mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich);
