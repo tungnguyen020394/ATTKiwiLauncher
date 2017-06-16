@@ -18,14 +18,17 @@ import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -39,11 +42,29 @@ import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.model.TheLoai;
 import com.att.kiwilauncher.model.ThoiTiet;
+import com.att.kiwilauncher.util.CheckLink;
 import com.att.kiwilauncher.util.Define;
 import com.att.kiwilauncher.util.Volume;
 import com.att.kiwilauncher.view.VideoFull;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
+import com.bumptech.glide.Glide;
+import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
+import com.google.android.exoplayer2.extractor.ExtractorsFactory;
+import com.google.android.exoplayer2.source.ExtractorMediaSource;
+import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+import com.google.android.exoplayer2.trackselection.TrackSelection;
+import com.google.android.exoplayer2.trackselection.TrackSelector;
+import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
+import com.google.android.exoplayer2.upstream.BandwidthMeter;
+import com.google.android.exoplayer2.upstream.DataSource;
+import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
+import com.google.android.exoplayer2.util.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,9 +79,9 @@ import java.util.Map;
 import static com.att.kiwilauncher.R.id.relay2;
 import static com.att.kiwilauncher.R.id.videoView;
 
-public class TrangChu extends AppCompatActivity implements View.OnClickListener {
+public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
-    int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe, mChieuDai, mChieuRong , main = 12;
+    int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe, mChieuDai, mChieuRong, main = 12;
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113,
             reLay21, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12;
     List<ChuDe> cates;
@@ -84,9 +105,15 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     DatabaseHelper mDatabaseHelper;
     private ProgressDialog dialog;
 
-    Button btnBack, btnNext, btnPlay, btnPause, btnOn, btnOf, btnFull, btnFullOf;
     Volume volume;
-    MediaController.MediaPlayerControl mplayyer;
+    ImageView imgView, imgWeb;
+    ImageButton ibtNext, ibtPlay, ibtBack, ibtVolume;
+    TextView tvTimeStart, tvTimeEnd;
+    CheckLink checkLink;
+    SimpleExoPlayerView exoPlayer;
+    SimpleExoPlayer player;
+    TrackSelector trackSelector;
+    private long timePause = 0;
 
     int indexVideo = 0;
 
@@ -154,21 +181,23 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         rcApp.setLayoutManager(layoutManager);
         listapp = new UngDungAdapter(this, listApps.get(demdsApp));
         rcApp.setAdapter(listapp);
+
         listvideo = mDatabaseHelper.getListVideoQuangCao();
+
         // video
-        if (!mDatabaseHelper.getLinkVideoQuangCao().equals("")) {
-            video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    indexVideo++;
-                    video.setVideoPath(listvideo.get(indexVideo));
-                    video.start();
-                }
-            });
-            //video.setVideoPath(listvideo.get(indexVideo));
-            video.setVideoPath(listvideo.get(indexVideo));
-            video.start();
-        }
+//        if (!mDatabaseHelper.getLinkVideoQuangCao().equals("")) {
+//            video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                @Override
+//                public void onCompletion(MediaPlayer mp) {
+//                    indexVideo++;
+////                    setVideoOrImager(listvideo.get(indexVideo));
+//                    setVideoOrImager(Define.URL_LINK_PLAY);
+//                }
+//            });
+//            //video.setVideoPath(listvideo.get(indexVideo));
+////            setVideoOrImager(listvideo.get(indexVideo));
+//            setVideoOrImager(Define.URL_LINK_BACK);
+//        }
 
         //audio
         volume.MuteAudio(this);
@@ -177,10 +206,50 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onResume() {
         super.onResume();
-        if (DuLieu.hasInternetConnection(TrangChu.this)) {
-            video.start();
-        } else {
-            Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
+
+        createPlayer(Define.URL_LINK_PLAY);
+        exoPlayer.setOnTouchListener(this);
+
+//        if (DuLieu.hasInternetConnection(TrangChu.this)) {
+//            video.start();
+//        } else {
+//            Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
+//        }
+    }
+
+    public void createPlayer(String link) {
+
+        BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
+        TrackSelection.Factory videoTrackSelectionFactory =
+                new AdaptiveTrackSelection.Factory(bandwidthMeter);
+        trackSelector =
+                new DefaultTrackSelector(videoTrackSelectionFactory);
+
+        player = ExoPlayerFactory.newSimpleInstance(this, trackSelector);
+        exoPlayer.setPlayer(player);
+        exoPlayer.setControllerHideOnTouch(false);
+        prepareVideo(link);
+    }
+
+    public void prepareVideo(String link) {
+        DefaultBandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
+        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
+                Util.getUserAgent(this, "ShweVideo"), bandwidthMeter);
+        ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
+        MediaSource videoSource = new ExtractorMediaSource(Uri.parse(link),
+                dataSourceFactory, extractorsFactory, null, null);
+
+        player.prepare(videoSource);
+        player.seekTo(timePause);
+
+    }
+
+    private void killPlayer() {
+        if (player != null) {
+            player.release();
+            timePause = player.getCurrentPosition();
+            //  player = null;
+            //   player.setPlayWhenReady(false);
         }
     }
 
@@ -198,12 +267,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mChieuRong = chieuRong / 40;
 
         listItem = new ArrayList<>();
-        mListTheLoai=new ArrayList<>();
+        mListTheLoai = new ArrayList<>();
         listvideo = new ArrayList<>();
-
-        listvideo.add(Define.URL_LINK_PLAY);
-        listvideo.add(Define.URL_LINK_NEXT);
-        listvideo.add(Define.URL_LINK_BACK);
 
         // reLaytive layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1);
@@ -246,8 +311,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         rcCategory = (RecyclerView) findViewById(R.id.recycler1);
         rcApp = (RecyclerView) findViewById(R.id.recycler2);
 
-        video = (VideoView) findViewById(videoView);
+//        video = (VideoView) findViewById(R.id.videoView);
+        exoPlayer = (SimpleExoPlayerView) findViewById(R.id.videoView);
         volume = new Volume();
+        checkLink = new CheckLink();
+        ibtPlay = (ImageButton) findViewById(R.id.imgPlay);
+        ibtPlay.setOnClickListener(this);
 
         text = (TextView) findViewById(R.id.text1);
         text.setSelected(true);
@@ -258,38 +327,21 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         image4 = (ImageView) findViewById(R.id.img_kara);
         image5 = (ImageView) findViewById(R.id.img_youtube);
         image6 = (ImageView) findViewById(R.id.img_store);
+        imgView = (ImageView) findViewById(R.id.imgView);
         image1.setOnClickListener(this);
         image2.setOnClickListener(this);
         image3.setOnClickListener(this);
         image4.setOnClickListener(this);
         image5.setOnClickListener(this);
         image6.setOnClickListener(this);
-        int mChieuDaia = (mChieuDai*5)/8;
-        int mChieuRonga = (mChieuRong*3)/4;
-        image1.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
-        image2.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
-        image3.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
-        image4.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
-        image5.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
-        image6.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
-
-//        btnPause = (Button) findViewById(R.id.btnPause);
-//        btnPlay = (Button) findViewById(R.id.btnPlay);
-//        btnNext = (Button) findViewById(R.id.btnNext);
-//        btnBack = (Button) findViewById(R.id.btnBack);
-//        btnOf = (Button) findViewById(R.id.btnOf);
-//        btnOn = (Button) findViewById(R.id.btnOn);
-//        btnFull = (Button) findViewById(R.id.btnFull);
-//        btnFullOf = (Button) findViewById(R.id.btnFullOf);
-
-//        btnPause.setOnClickListener(this);
-//        btnPlay.setOnClickListener(this);
-//        btnBack.setOnClickListener(this);
-//        btnNext.setOnClickListener(this);
-//        btnOf.setOnClickListener(this);
-//        btnOn.setOnClickListener(this);
-//        btnFullOf.setOnClickListener(this);
-//        btnFull.setOnClickListener(this);
+        int mChieuDaia = (mChieuDai * 5) / 8;
+        int mChieuRonga = (mChieuRong * 3) / 4;
+        image1.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
+        image2.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
+        image3.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
+        image4.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
+        image5.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
+        image6.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
 
         mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich);
         mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich);
@@ -451,19 +503,20 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 }
                 dialog.dismiss();
                 text.setText(mDatabaseHelper.getLinkTextQuangCao());
-                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        indexVideo++;
-                      //  video.setVideoPath(listvideo.get(indexVideo));
-                        video.setVideoPath(DuLieu.splitLinkVideoWeb(mDatabaseHelper.getLinkVideoQuangCao())[0]);
-                        video.start();
-                    }
-                });
 
-              //  video.start();
+//                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                    @Override
+//                    public void onCompletion(MediaPlayer mp) {
+//                        indexVideo++;
+//                      //  video.setVideoPath(listvideo.get(indexVideo));
+//                        video.setVideoPath(DuLieu.splitLinkVideoWeb(mDatabaseHelper.getLinkVideoQuangCao())[0]);
+//                        video.start();
+//                    }
+//                });
 
-             //   Toast.makeText(getApplicationContext(), mDatabaseHelper.getListVideoQuangCao().size() + "", Toast.LENGTH_LONG).show();
+                //  video.start();
+
+                //   Toast.makeText(getApplicationContext(), mDatabaseHelper.getListVideoQuangCao().size() + "", Toast.LENGTH_LONG).show();
 
             }
         }, new Response.ErrorListener() {
@@ -608,6 +661,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.imgPlay:
+
+                break;
 //            case R.id.btnFullOf:
 //                btnFull.setVisibility(View.VISIBLE);
 //                btnFullOf.setVisibility(View.GONE);
@@ -743,6 +799,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return false;
+    }
+
     public static class AppClick implements View.OnClickListener {
 
         private final Context context;
@@ -811,6 +872,49 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             i.setComponent(name);
 
             startActivity(i);
+        }
+    }
+
+    private void setVideoOrImager(String check) {
+
+        int position = checkLink.CheckLinkURL(check);
+
+        if (position == 1) {
+            imgView.setVisibility(View.VISIBLE);
+            video.setVisibility(View.GONE);
+
+            Glide.with(this)
+                    .load(listvideo.get(indexVideo))
+                    .into(imgView);
+
+
+        } else if (position == 2) {
+            imgView.setVisibility(View.GONE);
+            video.setVisibility(View.VISIBLE);
+
+            video.setVideoPath(listvideo.get(indexVideo));
+            video.start();
+
+            video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    indexVideo++;
+                    setVideoOrImager(listvideo.get(indexVideo));
+                }
+            });
+        } else if (position == 3) {
+            imgView.setVisibility(View.GONE);
+            video.setVisibility(View.VISIBLE);
+
+            MediaController mc = new MediaController(this);
+            video.setMediaController(mc);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    video.setVideoURI(Uri.parse(listvideo.get(indexVideo)));
+                    video.start();
+                }
+            });
         }
     }
 }
