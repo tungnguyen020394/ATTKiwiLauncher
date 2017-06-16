@@ -78,7 +78,7 @@ import static com.att.kiwilauncher.R.id.relay2;
 
 public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
-    int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe, mChieuDai, mChieuRong , main = 12;
+    int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong , main = 12;
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113,reLay11,
             reLay21, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12;
     List<ChuDe> cates;
@@ -101,7 +101,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     private static final String TAG = "TrangChu";
     DatabaseHelper mDatabaseHelper;
     private ProgressDialog dialog;
-
     Volume volume;
     ImageView imgView, imgWeb;
     ImageButton ibtNext, ibtPlay, ibtBack, ibtVolume;
@@ -589,8 +588,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     changeListItemBackGround(didIndex, willIndex);
                 } else if ((didIndex >= main - 4) && (didIndex < main)) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
-                    didIndex = main;
-                    rcCategory.getChildAt(0).callOnClick();
+                    didIndex = indexChuDe + main;
+                    rcCategory.getChildAt(didIndex - main).callOnClick();
                 } else if ((didIndex >= main) && (didIndex < main + cates.size())) {
                     indexChuDe = didIndex - main;
                     didIndex = main + 1 + cates.size();

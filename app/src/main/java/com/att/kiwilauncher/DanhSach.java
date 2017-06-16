@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,15 +26,15 @@ import java.util.List;
 import java.util.Map;
 
 public class DanhSach extends AppCompatActivity {
-    RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113;
-    int chieuDai, chieuRong, mChieuDai, mChieuRong, didIndex = 0, main = 4, indexChuDe;
+    RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112;
+    int chieuDai, chieuRong, mChieuDai, mChieuRong, didIndex = 0, main = 5, indexChuDe;
     List<ChuDe> dsChuDe;
     List<UngDung> dsUngDung;
     RecyclerView rcChuDe, rcUngDung;
     PackageManager manager;
-    ImageView imageKiwi, imageSearch;
+    ImageView imageKiwi;
     ArrayList<View> listItem;
-    EditText editText;
+    TextView text;
     TextView mNgayDuongTxt, mNgayAmTxt, mTxtTinh, mTxtNhietDo;
     DatabaseHelper mDatabaseHelper;
 
@@ -64,13 +63,15 @@ public class DanhSach extends AppCompatActivity {
         reLay3 = (RelativeLayout) findViewById(R.id.relay3_ds);
         reLay1.setPadding(mChieuDai, 0, mChieuDai, mChieuRong * 34);
         reLay2.setPadding(mChieuDai * 2, mChieuRong * 7, mChieuDai, mChieuRong * 29);
-        reLay3.setPadding(mChieuDai * 2, mChieuRong * 10, mChieuDai, mChieuRong);
+        reLay3.setPadding(mChieuDai * 2, mChieuRong * 12, mChieuDai, mChieuRong);
 
         reLay13 = (RelativeLayout) findViewById(R.id.relay13_ds);
         reLay12 = (RelativeLayout) findViewById(R.id.relay12_ds);
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
         reLay12.setPadding(mChieuDai * 10, mChieuRong, mChieuDai, mChieuRong * 2);
         reLay113 = (RelativeLayout) findViewById(R.id.relay113_ds);
+        reLay111 = (RelativeLayout) findViewById(R.id.relay111_ds);
+        reLay112 = (RelativeLayout) findViewById(R.id.relay112_ds);
 
         //end layout
         rcChuDe = (RecyclerView) findViewById(R.id.recycler1_ds);
@@ -78,30 +79,33 @@ public class DanhSach extends AppCompatActivity {
 
         imageKiwi = (ImageView) findViewById(R.id.img1_ds);
         imageKiwi.setBackgroundResource(R.drawable.border_pick);
-        imageSearch = (ImageView) findViewById(R.id.imgsearch_ds);
-        editText = (EditText) findViewById(R.id.edittxt_ds);
+
+        text = (TextView) findViewById(R.id.text1_ds);
+        text.setSelected(true);
 
     }
 
     public void addLoadData() {
         // Load Category
         dsChuDe = new ArrayList<ChuDe>();
-        ChuDe cate1 = new ChuDe("Giải Trí", R.drawable.play, 0, false);
+        ChuDe cate1 = new ChuDe("Giải Trí", R.drawable.ic_giaitri, 0, true);
         dsChuDe.add(cate1);
-        ChuDe cate2 = new ChuDe("Trò Chơi", R.drawable.ic_games, 0, false);
+        ChuDe cate2 = new ChuDe("Trò Chơi", R.drawable.ic_trochoi, 0, false);
         dsChuDe.add(cate2);
-        ChuDe cate3 = new ChuDe("Giáo Dục", R.drawable.school, 0, false);
+        ChuDe cate3 = new ChuDe("Giáo Dục & Sức Khoẻ", R.drawable.ic_suckhoe, 0, false);
         dsChuDe.add(cate3);
+        ChuDe cate4 = new ChuDe("Tiện Ích", R.drawable.ic_tienich, 0, false);
+        dsChuDe.add(cate4);
 
         rcChuDe.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcChuDe.setLayoutManager(layoutManager1);
         ChuDeAdapter categoryAdapter = new ChuDeAdapter(this, dsChuDe);
         rcChuDe.setAdapter(categoryAdapter);
-        mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich);
-        mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich);
-        mTxtTinh = (TextView) findViewById(R.id.txt_thanhpho);
-        mTxtNhietDo = (TextView) findViewById(R.id.txt_nhietdo);
+        mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich_ds);
+        mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich_ds);
+        mTxtTinh = (TextView) findViewById(R.id.txt_thanhpho_ds);
+        mTxtNhietDo = (TextView) findViewById(R.id.txt_nhietdo_ds);
 
         // Load App
         manager = getPackageManager();
@@ -137,8 +141,9 @@ public class DanhSach extends AppCompatActivity {
     public void addMove() {
         listItem = new ArrayList<>();
         listItem.add(imageKiwi);
-        listItem.add(editText);
-        listItem.add(imageSearch);
+        listItem.add(text);
+        listItem.add(reLay111);
+        listItem.add(reLay112);
         listItem.add(reLay113);
     }
 
@@ -147,18 +152,20 @@ public class DanhSach extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_DOWN:
+                text.setSelected(true);
                 if (didIndex < main) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
                     rcChuDe.getChildAt(0).callOnClick();
-                    didIndex = 4;
+                    didIndex = main;
                 } else if ((didIndex >= main) && (didIndex < main + dsChuDe.size())) {
                     indexChuDe = didIndex;
-                    didIndex = 7;
+                    didIndex = main + dsChuDe.size();
                     rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
                 }
                 break;
 
             case KeyEvent.KEYCODE_DPAD_UP:
+                text.setSelected(true);
                 if (didIndex >= main && didIndex < main + dsChuDe.size()) {
                     didIndex = 0;
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
@@ -170,6 +177,7 @@ public class DanhSach extends AppCompatActivity {
                 break;
 
             case KeyEvent.KEYCODE_DPAD_LEFT:
+                text.setSelected(true);
                 if (didIndex > 0 && didIndex <= main) {
                     if (didIndex != main) {
                         listItem.get(didIndex).setBackgroundResource(R.drawable.none);
@@ -191,6 +199,7 @@ public class DanhSach extends AppCompatActivity {
                 break;
 
             case KeyEvent.KEYCODE_DPAD_RIGHT:
+                text.setSelected(true);
                 if (didIndex < main - 1) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
                     didIndex++;
