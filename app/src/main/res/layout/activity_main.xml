@@ -4,7 +4,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/backgroundmain"
+                android:background="@drawable/ic_bgmain"
                 android:orientation="vertical"
                 android:padding="10dp"
                 tools:context="com.att.kiwilauncher.TrangChu">
@@ -75,31 +75,31 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
+                    android:padding="5dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_lich"
-                    android:padding="5dp"/>
+                    android:src="@drawable/ic_lich"/>
 
                 <TextView
                     android:id="@+id/txt_duonglich"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_toRightOf="@id/img_lich"
                     android:text="Thứ 7 10/6/2017"
                     android:textAllCaps="true"
-                    android:textSize="11dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"/>
+                    android:textSize="11dp"/>
 
                 <TextView
                     android:id="@+id/txt_amlich"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txt_duonglich"
+                    android:layout_marginRight="5dp"
                     android:layout_toRightOf="@id/img_lich"
                     android:text="16/5 Đinh dậu "
                     android:textAllCaps="true"
-                    android:textSize="8dp"
-                    android:layout_marginRight="5dp"/>
+                    android:textSize="8dp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -114,31 +114,31 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
+                    android:padding="5dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_thoitiet"
-                    android:padding="5dp"/>
+                    android:src="@drawable/ic_thoitiet"/>
 
                 <TextView
                     android:id="@+id/txt_thanhpho"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/img_thoitiet"
                     android:text="Hà Nôi"
                     android:textAllCaps="true"
-                    android:textSize="11dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"/>
+                    android:textSize="11dp"/>
 
                 <TextView
                     android:id="@+id/txt_nhietdo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_thanhpho"
+                    android:layout_marginRight="5dp"
                     android:layout_toRightOf="@+id/img_thoitiet"
                     android:text="28 độ "
                     android:textAllCaps="true"
-                    android:textSize="8dp"
-                    android:layout_marginRight="5dp"/>
+                    android:textSize="8dp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -153,31 +153,31 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
+                    android:padding="5dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_caidat"
-                    android:padding="5dp"/>
+                    android:src="@drawable/ic_caidat"/>
 
                 <TextView
                     android:id="@+id/txt_caidat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/img_caidat"
                     android:text="Cài Đặt"
                     android:textAllCaps="true"
-                    android:textSize="11dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"/>
+                    android:textSize="11dp"/>
 
                 <TextView
                     android:id="@+id/txt_kiwi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_caidat"
+                    android:layout_marginRight="5dp"
                     android:layout_toRightOf="@+id/img_caidat"
                     android:text=""
                     android:textAllCaps="true"
-                    android:textSize="8dp"
-                    android:layout_marginRight="5dp"/>
+                    android:textSize="8dp"/>
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
@@ -201,22 +201,22 @@
                     android:id="@+id/img_tv"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:paddingRight="8dp"
-                    android:paddingLeft="8dp"
+                    android:layout_above="@+id/text_tv"
                     android:paddingBottom="10dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
                     android:paddingTop="10dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img_tv"
-                    android:layout_above="@+id/text_tv"/>
+                    android:src="@drawable/img_tv"/>
 
                 <TextView
                     android:id="@+id/text_tv"
-                    android:text="Truyền Hình"
-                    android:textAllCaps="true"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:layout_alignParentBottom="true"/>
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="Truyền Hình"
+                    android:textAllCaps="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -228,22 +228,22 @@
                     android:id="@+id/img_phim"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:paddingRight="8dp"
-                    android:paddingLeft="8dp"
+                    android:layout_above="@+id/text_phim"
                     android:paddingBottom="10dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
                     android:paddingTop="10dp"
                     android:scaleType="fitXY"
-                    android:layout_above="@+id/text_phim"
                     android:src="@drawable/img_phim"/>
 
                 <TextView
                     android:id="@+id/text_phim"
-                    android:text="Phim"
-                    android:textAllCaps="true"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:layout_alignParentBottom="true"/>
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="Phim"
+                    android:textAllCaps="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -255,22 +255,22 @@
                     android:id="@+id/img_nhac"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:paddingRight="8dp"
-                    android:paddingLeft="8dp"
+                    android:layout_above="@+id/text_nhac"
                     android:paddingBottom="10dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
                     android:paddingTop="10dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img_nhac"
-                    android:layout_above="@+id/text_nhac"/>
+                    android:src="@drawable/img_nhac"/>
 
                 <TextView
                     android:id="@+id/text_nhac"
-                    android:text="Nhạc"
-                    android:textAllCaps="true"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:layout_alignParentBottom="true"/>
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="Nhạc"
+                    android:textAllCaps="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -282,22 +282,22 @@
                     android:id="@+id/img_kara"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:paddingRight="8dp"
-                    android:paddingLeft="8dp"
+                    android:layout_above="@+id/text_kara"
                     android:paddingBottom="10dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
                     android:paddingTop="10dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img_kara"
-                    android:layout_above="@+id/text_kara"/>
+                    android:src="@drawable/img_kara"/>
 
                 <TextView
                     android:id="@+id/text_kara"
-                    android:text="Karaoke"
-                    android:textAllCaps="true"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:layout_alignParentBottom="true"/>
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="Karaoke"
+                    android:textAllCaps="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -309,22 +309,22 @@
                     android:id="@+id/img_youtube"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:paddingRight="8dp"
-                    android:paddingLeft="8dp"
+                    android:layout_above="@+id/text_youtube"
                     android:paddingBottom="10dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
                     android:paddingTop="10dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img_youtube"
-                    android:layout_above="@+id/text_youtube"/>
+                    android:src="@drawable/img_youtube"/>
 
                 <TextView
                     android:id="@+id/text_youtube"
-                    android:text="Youtube"
-                    android:textAllCaps="true"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:layout_alignParentBottom="true"/>
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="Youtube"
+                    android:textAllCaps="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -336,22 +336,22 @@
                     android:id="@+id/img_store"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:paddingRight="8dp"
-                    android:paddingLeft="8dp"
+                    android:layout_above="@+id/text_store"
                     android:paddingBottom="10dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
                     android:paddingTop="10dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img_store"
-                    android:layout_above="@+id/text_store"/>
+                    android:src="@drawable/img_store"/>
 
                 <TextView
                     android:id="@+id/text_store"
-                    android:text="KIwi Store"
-                    android:textAllCaps="true"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:layout_alignParentBottom="true"/>
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="KIwi Store"
+                    android:textAllCaps="true"/>
             </RelativeLayout>
         </RelativeLayout>
 
@@ -381,77 +381,93 @@
                         android:layout_height="fill_parent"
                         android:layout_centerInParent="true"/>
 
-                    <Button
-                        android:id="@+id/btnOn"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_alignParentRight="true"
-                        android:background="@drawable/speaker"/>
 
-                    <Button
-                        android:id="@+id/btnOf"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_alignParentRight="true"
-                        android:background="@drawable/mute"
-                        android:visibility="gone"/>
-
-                    <Button
-                        android:id="@+id/btnFull"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@id/btnOn"
-                        android:background="@drawable/ic_media_fullscreen_stretch"/>
-
-                    <Button
-                        android:id="@+id/btnFullOf"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@id/btnOn"
-                        android:background="@drawable/ic_media_fullscreen_shrink"
-                        android:visibility="gone"/>
-
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:orientation="horizontal">
+                        android:background="@drawable/ic_bgvideo"
+                        android:orientation="horizontal"
+                        >
 
 
-                        <Button
-                            android:id="@+id/btnBack"
+                        <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/rewind"
-
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:src="@drawable/ic_website"
                             />
 
-                        <Button
-
-                            android:id="@+id/btnPlay"
+                        <ImageButton
+                            android:id="@+id/imgFull"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/play"
-                            android:visibility="gone"/>
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:background="@drawable/ic_fullvideo"/>
 
-                        <Button
-                            android:id="@+id/btnPause"
+
+                        <ImageButton
+                            android:id="@+id/imgBack"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/pause"/>
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:background="@drawable/ic_back"/>
 
-                        <Button
-                            android:id="@+id/btnNext"
+                        <ImageButton
+                            android:id="@+id/imgPlay"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:background="@drawable/next"/>
+                            android:layout_alignLeft="@id/imgBack"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:background="@drawable/ic_play"/>
 
-                    </RelativeLayout>
+
+                        <ImageButton
+                            android:id="@+id/imgNext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/imgPlay"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:background="@drawable/ic_next"/>
+
+                        <TextView
+                            android:id="@+id/tvTimeBegin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:text="00:00"/>
+
+                        <SeekBar
+                            android:id="@+id/seeBarTime"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/tvTimeEnd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:text="1:30:35"/>
+
+                        <ImageButton
+                            android:id="@+id/imgVolumeOf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:background="@drawable/ic_volumeoff"/>
+
+                    </LinearLayout>
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
