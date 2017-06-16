@@ -288,6 +288,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         image5.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
         image6.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
 
+<<<<<<< HEAD
         imageMinus = (ImageView) findViewById(R.id.img_minus);
         imagePlus  = (ImageView) findViewById(R.id.img_plus);
         imageMinus.setOnClickListener(this);
@@ -310,6 +311,25 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         btnOn.setOnClickListener(this);
         btnFullOf.setOnClickListener(this);
         btnFull.setOnClickListener(this);
+=======
+//        btnPause = (Button) findViewById(R.id.btnPause);
+//        btnPlay = (Button) findViewById(R.id.btnPlay);
+//        btnNext = (Button) findViewById(R.id.btnNext);
+//        btnBack = (Button) findViewById(R.id.btnBack);
+//        btnOf = (Button) findViewById(R.id.btnOf);
+//        btnOn = (Button) findViewById(R.id.btnOn);
+//        btnFull = (Button) findViewById(R.id.btnFull);
+//        btnFullOf = (Button) findViewById(R.id.btnFullOf);
+
+//        btnPause.setOnClickListener(this);
+//        btnPlay.setOnClickListener(this);
+//        btnBack.setOnClickListener(this);
+//        btnNext.setOnClickListener(this);
+//        btnOf.setOnClickListener(this);
+//        btnOn.setOnClickListener(this);
+//        btnFullOf.setOnClickListener(this);
+//        btnFull.setOnClickListener(this);
+>>>>>>> origin/master
 
         mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich);
         mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich);
@@ -640,84 +660,84 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 //
 //                video.start();
 //                break;
-            case R.id.btnFull:
-//                btnFull.setVisibility(View.GONE);
-//                btnFullOf.setVisibility(View.VISIBLE);
-
-                Intent intent = new Intent(getBaseContext(), VideoFull.class);
-                intent.putExtra("index", indexVideo);
-                intent.putExtra("list", listvideo);
-                String str = listvideo.get(indexVideo);
-
-                // độ dài video đang chạy
-                long timepause= video.getCurrentPosition();
-                intent.putExtra("timePause",timepause);
-
-                // đọ dài của video
-                MediaPlayer mp = MediaPlayer.create(this, Uri.parse(str));
-                int duration = mp.getDuration();
-                mp.release();
-
-
-                startActivity(intent);
-                break;
-            case R.id.btnOf:
-                btnOn.setVisibility(View.GONE);
-                btnOf.setVisibility(View.VISIBLE);
-                volume.MuteAudio(this);
-                break;
-
-            case R.id.btnOn:
-                btnOn.setVisibility(View.VISIBLE);
-                btnOf.setVisibility(View.GONE);
-                volume.UnMuteAudio(this);
-                break;
-
-            case R.id.btnPause:
-                btnPlay.setVisibility(View.VISIBLE);
-                btnPause.setVisibility(View.GONE);
-                video.pause();
-                break;
-            case R.id.btnPlay:
-                btnPlay.setVisibility(View.GONE);
-                btnPause.setVisibility(View.VISIBLE);
-                video.start();
-                break;
-
-            case R.id.btnNext:
-                if (indexVideo == (listvideo.size() - 1)) {
-                    indexVideo = 0;
-                } else indexVideo++;
-                video.setVideoPath(listvideo.get(indexVideo));
-                video.start();
-
-                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        indexVideo++;
-                        video.setVideoPath(listvideo.get(indexVideo));
-                        video.start();
-                    }
-                });
-                break;
-
-            case R.id.btnBack:
-                if (indexVideo == 0) {
-                    indexVideo = listvideo.size() - 1;
-                } else indexVideo--;
-
-                video.setVideoPath(listvideo.get(indexVideo));
-                video.start();
-
-                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        indexVideo++;
-                        video.setVideoPath(listvideo.get(indexVideo));
-                        video.start();
-                    }
-                });
-                break;
+//            case R.id.btnFull:
+////                btnFull.setVisibility(View.GONE);
+////                btnFullOf.setVisibility(View.VISIBLE);
+//
+//                Intent intent = new Intent(getBaseContext(), VideoFull.class);
+//                intent.putExtra("index", indexVideo);
+//                intent.putExtra("list", listvideo);
+//                String str = listvideo.get(indexVideo);
+//
+//                // độ dài video đang chạy
+//                long timepause= video.getCurrentPosition();
+//                intent.putExtra("timePause",timepause);
+//
+//                // đọ dài của video
+//                MediaPlayer mp = MediaPlayer.create(this, Uri.parse(str));
+//                int duration = mp.getDuration();
+//                mp.release();
+//
+//
+//                startActivity(intent);
+//                break;
+//            case R.id.btnOf:
+//                btnOn.setVisibility(View.GONE);
+//                btnOf.setVisibility(View.VISIBLE);
+//                volume.MuteAudio(this);
+//                break;
+//
+//            case R.id.btnOn:
+//                btnOn.setVisibility(View.VISIBLE);
+//                btnOf.setVisibility(View.GONE);
+//                volume.UnMuteAudio(this);
+//                break;
+//
+//            case R.id.btnPause:
+//                btnPlay.setVisibility(View.VISIBLE);
+//                btnPause.setVisibility(View.GONE);
+//                video.pause();
+//                break;
+//            case R.id.btnPlay:
+//                btnPlay.setVisibility(View.GONE);
+//                btnPause.setVisibility(View.VISIBLE);
+//                video.start();
+//                break;
+//
+//            case R.id.btnNext:
+//                if (indexVideo == (listvideo.size() - 1)) {
+//                    indexVideo = 0;
+//                } else indexVideo++;
+//                video.setVideoPath(listvideo.get(indexVideo));
+//                video.start();
+//
+//                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                    @Override
+//                    public void onCompletion(MediaPlayer mp) {
+//                        indexVideo++;
+//                        video.setVideoPath(listvideo.get(indexVideo));
+//                        video.start();
+//                    }
+//                });
+//                break;
+//
+//            case R.id.btnBack:
+//                if (indexVideo == 0) {
+//                    indexVideo = listvideo.size() - 1;
+//                } else indexVideo--;
+//
+//                video.setVideoPath(listvideo.get(indexVideo));
+//                video.start();
+//
+//                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                    @Override
+//                    public void onCompletion(MediaPlayer mp) {
+//                        indexVideo++;
+//                        video.setVideoPath(listvideo.get(indexVideo));
+//                        video.start();
+//                    }
+//                });
+//                break;
 
             case R.id.img_caidat:
                 TrangChu.this.startActivityForResult(new Intent(Settings.ACTION_SETTINGS), REQUEST_SETTINGS);

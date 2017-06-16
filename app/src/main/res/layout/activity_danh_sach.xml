@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.att.kiwilauncher.DanhSach"
-    android:background="@drawable/backgroundmain">
+    android:background="@drawable/ic_bgmain">
     <RelativeLayout
         android:id="@+id/relay1_ds"
         android:layout_width="match_parent"
