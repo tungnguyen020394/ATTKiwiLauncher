@@ -218,6 +218,11 @@ public class DuLieu {
         String[] mangVideoWeb = linkVideoWeb.split(";");
         return mangVideoWeb;
     }
+    public static String[] splitLinkImageWeb(String linkImageWeb) {
+        // phần tử 1 là link video, phần tử 2 là link web
+        String[] mangImageWeb = linkImageWeb.split(";");
+        return mangImageWeb;
+    }
     public static boolean hasInternetConnection(Context context){
         ConnectivityManager cm =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

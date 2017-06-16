@@ -14,8 +14,8 @@ import android.widget.Toast;
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.model.TheLoai;
 import com.att.kiwilauncher.model.ThoiTiet;
-import com.att.kiwilauncher.model.UngDung;
 import com.att.kiwilauncher.xuly.DuLieu;
+import com.att.kiwilauncher.model.UngDungNew;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -144,8 +144,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // lấy danh sách tất cả các ứng dụng của thẻ loại xyz
-    public List<UngDung> getListUngDung(TheLoai theLoai) {
-        List<UngDung> listUngDung = new ArrayList<>();
+    public List<UngDungNew> getListUngDung(TheLoai theLoai) {
+        List<UngDungNew> listUngDungNew = new ArrayList<>();
         String maTheLoai = theLoai.getId();
         List<String> listAnh;
         openDatabase();
@@ -160,49 +160,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "ungdung.version,ungdung.des,ungdung.linkcai ,ungdung.rating,ungdung.version_code,ungdung.capnhat FROM ungdung JOIN theloai_ungdung ON ungdung.id=theloai_ungdung.ungdungid WHERE theloai_ungdung.theloaiid=" + maTheLoai, null);
         }
         if (cursor.moveToFirst()) {
-            UngDung ungDung = new UngDung();
-            ungDung.setId(cursor.getString(0));
-            ungDung.setName(cursor.getString(1));
+            UngDungNew ungDungNew = new UngDungNew();
+            ungDungNew.setId(cursor.getString(0));
+            ungDungNew.setName(cursor.getString(1));
             if (cursor.getInt(2) == 0) {
-                ungDung.setInstalled(false);
+                ungDungNew.setInstalled(false);
             } else {
-                ungDung.setInstalled(true);
+                ungDungNew.setInstalled(true);
             }
-            ungDung.setIcon(cursor.getString(3));
-            ungDung.setLuotCai(cursor.getString(4));
-            ungDung.setVersion(cursor.getString(5));
-            ungDung.setDes(cursor.getString(6));
-            ungDung.setLinkCai(cursor.getString(7));
-            ungDung.setRating(cursor.getString(8));
-            ungDung.setVersionCode(cursor.getString(9));
-            ungDung.setUpdate(cursor.getString(10));
-            ungDung.setAnh(listAnh);
-            listUngDung.add(ungDung);
+            ungDungNew.setIcon(cursor.getString(3));
+            ungDungNew.setLuotCai(cursor.getString(4));
+            ungDungNew.setVersion(cursor.getString(5));
+            ungDungNew.setDes(cursor.getString(6));
+            ungDungNew.setLinkCai(cursor.getString(7));
+            ungDungNew.setRating(cursor.getString(8));
+            ungDungNew.setVersionCode(cursor.getString(9));
+            ungDungNew.setUpdate(cursor.getString(10));
+            ungDungNew.setAnh(listAnh);
+            listUngDungNew.add(ungDungNew);
         }
         while (cursor.moveToNext()) {
-            UngDung ungDung = new UngDung();
-            ungDung.setId(cursor.getString(0));
-            ungDung.setName(cursor.getString(1));
+            UngDungNew ungDungNew = new UngDungNew();
+            ungDungNew.setId(cursor.getString(0));
+            ungDungNew.setName(cursor.getString(1));
             if (cursor.getInt(2) == 0) {
-                ungDung.setInstalled(false);
+                ungDungNew.setInstalled(false);
             } else {
-                ungDung.setInstalled(true);
+                ungDungNew.setInstalled(true);
             }
-            ungDung.setIcon(cursor.getString(3));
-            ungDung.setLuotCai(cursor.getString(4));
-            ungDung.setVersion(cursor.getString(5));
-            ungDung.setDes(cursor.getString(6));
-            ungDung.setLinkCai(cursor.getString(7));
-            ungDung.setRating(cursor.getString(8));
-            ungDung.setVersionCode(cursor.getString(9));
-            ungDung.setUpdate(cursor.getString(10));
-            ungDung.setAnh(listAnh);
-            listUngDung.add(ungDung);
+            ungDungNew.setIcon(cursor.getString(3));
+            ungDungNew.setLuotCai(cursor.getString(4));
+            ungDungNew.setVersion(cursor.getString(5));
+            ungDungNew.setDes(cursor.getString(6));
+            ungDungNew.setLinkCai(cursor.getString(7));
+            ungDungNew.setRating(cursor.getString(8));
+            ungDungNew.setVersionCode(cursor.getString(9));
+            ungDungNew.setUpdate(cursor.getString(10));
+            ungDungNew.setAnh(listAnh);
+            listUngDungNew.add(ungDungNew);
         }
         cursor.close();
         closeDatabase();
 
-        return listUngDung;
+        return listUngDungNew;
     }
 
     //lấy ra thông tin về id địa chỉ thời tiết và tên của tỉnh
@@ -223,10 +223,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // lấy danh sách tất cả các điện thoại của thương hiệu xyz
-    public List<String> getListAnhChiTietUngDung(UngDung ungDung) {
+    public List<String> getListAnhChiTietUngDung(UngDungNew ungDungNew) {
         List<String> listAnh = new ArrayList<>();
         String ungDungId = "";
-        String maUngDung = ungDung.getId();
+        String maUngDung = ungDungNew.getId();
         openDatabase();
         Cursor cursor;
         // cursor = mDatabase.rawQuery("SELECT * FROM anhchitiet WHERE ungdungid = " + maUngDung, null);
@@ -337,14 +337,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         openDatabase();
         Cursor cursor;
         cursor = mDatabase.rawQuery("SELECT noidung FROM quangcao WHERE loaiquangcao = 1 ORDER BY id DESC LIMIT 3", null);
+
         if (cursor.moveToFirst()) {
             nd = DuLieu.splitLinkVideoWeb(cursor.getString(0))[0];
             listVideo.add(nd);
         }
+
         while (cursor.moveToNext()) {
             nd = DuLieu.splitLinkVideoWeb(cursor.getString(0))[0];
             listVideo.add(nd);
         }
+
         cursor.close();
         closeDatabase();
         return listVideo;
@@ -356,14 +359,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         openDatabase();
         Cursor cursor;
         cursor = mDatabase.rawQuery("SELECT noidung FROM quangcao WHERE loaiquangcao = 1 ORDER BY id DESC LIMIT 3", null);
+
         if (cursor.moveToFirst()) {
             nd = DuLieu.splitLinkVideoWeb(cursor.getString(0))[1];
             listLinkWeb.add(nd);
         }
+
         while (cursor.moveToNext()) {
             nd = DuLieu.splitLinkVideoWeb(cursor.getString(0))[1];
             listLinkWeb.add(nd);
         }
+
         cursor.close();
         closeDatabase();
         return listLinkWeb;
@@ -375,8 +381,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         closeDatabase();
     }
 
-    public List<UngDung> getLissAppName() {
-        List<UngDung> ungDungList = new ArrayList<>();
+    public List<UngDungNew> getLissAppName() {
+        List<UngDungNew> ungDungNewList = new ArrayList<>();
         String id = "0";
         String ten = "0";
         int count = 0;
@@ -387,22 +393,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             id = cursor.getString(0);
             ten = cursor.getString(1);
-            UngDung ungDung = new UngDung();
-            ungDung.setId(id);
-            ungDung.setName(ten);
-            ungDungList.add(ungDung);
+            UngDungNew ungDungNew = new UngDungNew();
+            ungDungNew.setId(id);
+            ungDungNew.setName(ten);
+            ungDungNewList.add(ungDungNew);
         }
         while (cursor.moveToNext()) {
             id = cursor.getString(0);
             ten = cursor.getString(1);
-            UngDung ungDung = new UngDung();
-            ungDung.setId(id);
-            ungDung.setName(ten);
-            ungDungList.add(ungDung);
+            UngDungNew ungDungNew = new UngDungNew();
+            ungDungNew.setId(id);
+            ungDungNew.setName(ten);
+            ungDungNewList.add(ungDungNew);
         }
         cursor.close();
         closeDatabase();
-        return ungDungList;
+        return ungDungNewList;
     }
 
     public void insertApp(String id, String ten, int installed, String icon, String luotcai, String versions, String des,

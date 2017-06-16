@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.att.kiwilauncher.ChuDe;
+import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.R;
 
 import java.util.List;

@@ -1,0 +1,148 @@
+﻿Merge branch 'float85'
+
+# Conflicts:
+#	.gradle/3.3/taskArtifacts/fileHashes.bin
+#	.gradle/3.3/taskArtifacts/fileSnapshots.bin
+#	.gradle/3.3/taskArtifacts/taskArtifacts.bin
+#	.gradle/3.3/taskArtifacts/taskArtifacts.lock
+#	.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin
+#	.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock
+#	.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock
+#	app/src/main/java/com/att/kiwilauncher/TrangChu.java
+#	app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   .gradle/3.3/taskArtifacts/fileHashes.bin
+#	modified:   .gradle/3.3/taskArtifacts/fileSnapshots.bin
+#	modified:   .gradle/3.3/taskArtifacts/taskArtifacts.bin
+#	modified:   .gradle/3.3/taskArtifacts/taskArtifacts.lock
+#	modified:   .gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin
+#	modified:   .gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock
+#	modified:   .gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin
+#	modified:   .gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock
+#	new file:   .idea/libraries/exoplayer_core_r2_4_0.xml
+#	new file:   .idea/libraries/exoplayer_dash_r2_4_0.xml
+#	new file:   .idea/libraries/exoplayer_hls_r2_4_0.xml
+#	new file:   .idea/libraries/exoplayer_r2_4_0.xml
+#	new file:   .idea/libraries/exoplayer_smoothstreaming_r2_4_0.xml
+#	new file:   .idea/libraries/exoplayer_ui_r2_4_0.xml
+#	modified:   .idea/misc.xml
+#	modified:   .idea/vcs.xml
+#	modified:   .idea/workspace.xml
+#	modified:   app/app.iml
+#	modified:   app/build.gradle
+#	modified:   app/src/main/AndroidManifest.xml
+#	modified:   app/src/main/java/com/att/kiwilauncher/Adapter/ChuDeAdapter.java
+#	modified:   app/src/main/java/com/att/kiwilauncher/DanhSach.java
+#	modified:   app/src/main/java/com/att/kiwilauncher/TrangChu.java
+#	modified:   app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java
+#	renamed:    app/src/main/java/com/att/kiwilauncher/ChuDe.java -> app/src/main/java/com/att/kiwilauncher/model/ChuDe.java
+#	renamed:    app/src/main/java/com/att/kiwilauncher/model/UngDung.java -> app/src/main/java/com/att/kiwilauncher/model/UngDungNew.java
+#	new file:   app/src/main/java/com/att/kiwilauncher/util/Define.java
+#	new file:   app/src/main/java/com/att/kiwilauncher/util/Volume.java
+#	new file:   app/src/main/java/com/att/kiwilauncher/view/VideoFull.java
+#	modified:   app/src/main/java/com/att/kiwilauncher/xuly/DuLieu.java
+#	new file:   app/src/main/res/drawable-hdpi/mute.png
+#	new file:   app/src/main/res/drawable-hdpi/speaker.png
+#	new file:   app/src/main/res/drawable-ldpi/mute.png
+#	new file:   app/src/main/res/drawable-ldpi/speaker.png
+#	new file:   app/src/main/res/drawable-mdpi/mute.png
+#	new file:   app/src/main/res/drawable-mdpi/speaker.png
+#	new file:   app/src/main/res/drawable-tvdpi/mute.png
+#	new file:   app/src/main/res/drawable-tvdpi/speaker.png
+#	new file:   app/src/main/res/drawable-xhdpi/mute.png
+#	new file:   app/src/main/res/drawable-xhdpi/speaker.png
+#	new file:   app/src/main/res/drawable-xxhdpi/mute.png
+#	new file:   app/src/main/res/drawable-xxhdpi/speaker.png
+#	new file:   app/src/main/res/drawable-xxxhdpi/mute.png
+#	new file:   app/src/main/res/drawable-xxxhdpi/speaker.png
+#	new file:   app/src/main/res/drawable/ic_media_fullscreen_shrink.png
+#	new file:   app/src/main/res/drawable/ic_media_fullscreen_stretch.png
+#	new file:   app/src/main/res/drawable/ic_volume_off.xml
+#	new file:   app/src/main/res/drawable/ic_volume_on.xml
+#	modified:   app/src/main/res/layout/activity_main.xml
+#	new file:   app/src/main/res/layout/activity_video_full.xml
+#	new file:   app/src/main/res/mipmap-hdpi/ic_volumme_of.png
+#	new file:   app/src/main/res/mipmap-hdpi/ic_volumme_on.png
+#	new file:   app/src/main/res/mipmap-mdpi/ic_volumme_of.png
+#	new file:   app/src/main/res/mipmap-mdpi/ic_volumme_on.png
+#	new file:   app/src/main/res/mipmap-xhdpi/ic_volumme_of.png
+#	new file:   app/src/main/res/mipmap-xhdpi/ic_volumme_on.png
+#	new file:   app/src/main/res/mipmap-xxhdpi/ic_volumme_of.png
+#	new file:   app/src/main/res/mipmap-xxhdpi/ic_volumme_on.png
+#	new file:   app/src/main/res/mipmap-xxxhdpi/ic_volumme_of.png
+#	new file:   app/src/main/res/mipmap-xxxhdpi/ic_volumme_on.png
+#	new file:   build/android-profile/profile-2017-06-14-13-17-32-299.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-13-17-34-253.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-13-26-54-365.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-13-28-04-894.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-13-39-32-630.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-13-39-34-801.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-13-48-55-691.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-13-53-37-194.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-13-55-12-213.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-14-15-21-203.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-14-16-50-548.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-14-20-06-731.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-14-23-02-140.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-14-24-32-322.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-14-24-43-537.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-14-29-42-095.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-14-56-47-826.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-15-02-06-035.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-15-02-44-375.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-15-04-49-234.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-15-08-17-443.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-15-10-34-725.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-15-17-17-928.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-15-18-22-663.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-15-19-30-330.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-15-20-56-134.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-15-27-41-464.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-15-28-01-993.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-16-11-13-722.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-16-12-26-861.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-16-19-01-024.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-16-21-54-022.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-16-29-59-789.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-16-32-17-438.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-16-47-17-440.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-16-47-19-626.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-16-53-32-476.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-16-53-33-907.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-17-06-14-012.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-17-10-13-109.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-17-21-54-563.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-17-27-06-397.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-17-29-14-638.rawproto
+#	new file:   build/android-profile/profile-2017-06-14-17-29-35-143.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-10-03-15-247.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-10-04-28-598.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-10-51-57-721.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-10-52-54-157.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-10-55-21-882.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-10-56-05-457.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-10-56-35-051.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-10-56-53-787.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-11-01-24-604.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-11-07-28-732.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-11-15-08-678.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-11-17-29-049.rawproto
+#	new file:   build/android-profile/profile-2017-06-15-13-44-15-153.rawproto
+#	modified:   build/intermediates/dex-cache/cache.xml
+#	modified:   local.properties
+#
+
