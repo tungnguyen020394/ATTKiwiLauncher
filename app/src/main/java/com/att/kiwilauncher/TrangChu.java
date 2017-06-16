@@ -9,6 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +20,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MediaController;
@@ -75,17 +75,11 @@ import java.util.List;
 import java.util.Map;
 
 import static com.att.kiwilauncher.R.id.relay2;
-import static com.att.kiwilauncher.R.id.videoView;
 
 public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
-<<<<<<< HEAD
-    int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe, mChieuDai, mChieuRong, main = 12;
-    RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113,
-=======
     int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe, mChieuDai, mChieuRong , main = 12;
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113,reLay11,
->>>>>>> 1d05b8b9d31802d7633895a51032e1bf723e82ec
             reLay21, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12;
     List<ChuDe> cates;
     ArrayList<View> listItem;
@@ -352,16 +346,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         image4.setOnClickListener(this);
         image5.setOnClickListener(this);
         image6.setOnClickListener(this);
-<<<<<<< HEAD
-        int mChieuDaia = (mChieuDai * 5) / 8;
-        int mChieuRonga = (mChieuRong * 3) / 4;
-        image1.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
-        image2.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
-        image3.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
-        image4.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
-        image5.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
-        image6.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
-=======
+
         int mChieuDaia = (mChieuDai*5)/8;
         int mChieuRonga = (mChieuRong*3)/4;
         image1.setPadding(mChieuDaia,mChieuRonga,mChieuDaia,mChieuRonga);
@@ -375,25 +360,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         imagePlus  = (ImageView) findViewById(R.id.img_plus);
         imageMinus.setOnClickListener(this);
         imagePlus.setOnClickListener(this);
-
-//        btnPause = (Button) findViewById(R.id.btnPause);
-//        btnPlay = (Button) findViewById(R.id.btnPlay);
-//        btnNext = (Button) findViewById(R.id.btnNext);
-//        btnBack = (Button) findViewById(R.id.btnBack);
-//        btnOf = (Button) findViewById(R.id.btnOf);
-//        btnOn = (Button) findViewById(R.id.btnOn);
-//        btnFull = (Button) findViewById(R.id.btnFull);
-//        btnFullOf = (Button) findViewById(R.id.btnFullOf);
-//
-//        btnPause.setOnClickListener(this);
-//        btnPlay.setOnClickListener(this);
-//        btnBack.setOnClickListener(this);
-//        btnNext.setOnClickListener(this);
-//        btnOf.setOnClickListener(this);
-//        btnOn.setOnClickListener(this);
-//        btnFullOf.setOnClickListener(this);
-//        btnFull.setOnClickListener(this);
->>>>>>> 1d05b8b9d31802d7633895a51032e1bf723e82ec
 
         mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich);
         mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich);
