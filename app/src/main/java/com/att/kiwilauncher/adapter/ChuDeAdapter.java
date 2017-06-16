@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.att.kiwilauncher.model.ChuDe;
@@ -39,7 +40,7 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (cates.get(position).isCheckedCate()) {
-            holder.layoutCate.setBackground(context.getResources().getDrawable(R.drawable.border_cate));
+            holder.layoutCate.setBackground(context.getResources().getDrawable(R.drawable.bordercate));
             holder.txtApp.setTextColor(context.getResources().getColor(R.color.colorcatenew));
             holder.imgApp.setColorFilter(context.getResources().getColor(R.color.colorcatenew));
         } else {
@@ -59,13 +60,13 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgApp;
         TextView txtApp;
-        LinearLayout layoutCate;
+        RelativeLayout layoutCate;
 
         public ViewHolder(View itemView) {
             super(itemView);
             imgApp = (ImageView) itemView.findViewById(R.id.image_category);
             txtApp = (TextView)  itemView.findViewById(R.id.txt_catego);
-            layoutCate = (LinearLayout) itemView.findViewById(R.id.layout_category);
+            layoutCate = (RelativeLayout) itemView.findViewById(R.id.layout_category);
             layoutCate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
