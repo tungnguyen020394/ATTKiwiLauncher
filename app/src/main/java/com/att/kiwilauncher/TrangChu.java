@@ -72,8 +72,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import static com.att.kiwilauncher.R.id.imgFull;
@@ -112,9 +114,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     TextView tvTimeStart, tvTimeEnd;
     CheckLink checkLink;
     MediaPlayer mp;
-    SimpleExoPlayerView exoPlayer;
-    SimpleExoPlayer player;
-    TrackSelector trackSelector;
     private long timePause = 0;
     private boolean dragging;
     Intent intent;
@@ -237,41 +236,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         }
     }
 
-    public void createPlayer(String link) {
-
-        BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
-        TrackSelection.Factory videoTrackSelectionFactory =
-                new AdaptiveTrackSelection.Factory(bandwidthMeter);
-        trackSelector =
-                new DefaultTrackSelector(videoTrackSelectionFactory);
-
-        player = ExoPlayerFactory.newSimpleInstance(this, trackSelector);
-        exoPlayer.setPlayer(player);
-        exoPlayer.setControllerHideOnTouch(false);
-        prepareVideo(link);
-    }
-
-    public void prepareVideo(String link) {
-        DefaultBandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
-        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
-                Util.getUserAgent(this, "ShweVideo"), bandwidthMeter);
-        ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
-        MediaSource videoSource = new ExtractorMediaSource(Uri.parse(link),
-                dataSourceFactory, extractorsFactory, null, null);
-
-        player.prepare(videoSource);
-        player.seekTo(timePause);
-
-    }
-
-    private void killPlayer() {
-        if (player != null) {
-            player.release();
-            timePause = player.getCurrentPosition();
-            //  player = null;
-            //   player.setPlayWhenReady(false);
-        }
-    }
 
     private void addControls() {
         SharedPreferences sharedPreferences = getSharedPreferences("thoitiet", MODE_PRIVATE);
@@ -562,16 +526,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     @Override
                     public void onCompletion(MediaPlayer mp) {
                         indexVideo++;
-                        setVideoOrImager(listvideo.get(indexVideo));
-//                        video.setVideoPath(DuLieu.splitLinkVideoWeb(mDatabaseHelper.getLinkVideoQuangCao())[0]);
-
+                        setVideoOrImager(listvideo.get(indexVideo));//
                     }
                 });
                 setVideoOrImager(listvideo.get(indexVideo));
-
-
-                //   Toast.makeText(getApplicationContext(), mDatabaseHelper.getListVideoQuangCao().size() + "", Toast.LENGTH_LONG).show();
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -975,6 +933,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             mp.release();
 
             tvTimeEnd.setText(checkLink.stringForTime(duration));
+            updateTime();
+
             video.setVideoPath(listvideo.get(indexVideo));
             video.start();
 
@@ -1001,20 +961,28 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         }
     }
 
-    private class ViewUpdater implements Runnable {
-        private String mString;
-        private TextView mtv;
+    private void updateTime(){
+        Thread t = new Thread() {
 
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // update TextView here!
+                                tvTimeStart.setText(checkLink.stringForTime(video.getCurrentPosition()));
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
 
-        public ViewUpdater(String string, TextView _mtv) {
-            mString = string;
-            mtv = _mtv;
-        }
-
-        @Override
-        public void run() {
-            mtv.setText(mString);
-        }
+        t.start();
     }
 
 //

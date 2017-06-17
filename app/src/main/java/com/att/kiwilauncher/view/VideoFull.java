@@ -54,19 +54,10 @@ public class VideoFull extends AppCompatActivity implements View.OnTouchListener
         list=intent.getStringArrayListExtra("list");
         timePause =intent.getIntExtra("timePause",0);
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
         video.setVideoPath(list.get(indexvideo));
         video.seekTo(timePause);
         video.start();
-
     }
-
-
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {

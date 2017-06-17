@@ -23,7 +23,7 @@ public class CheckLink {
 
     public String stringForTime(int timeMs) {
       StringBuilder formatBuilder = new StringBuilder();
-        Formatter formatter=new Formatter(formatBuilder, Locale.getDefault());;
+        Formatter formatter=new Formatter(formatBuilder, Locale.getDefault());
         if (timeMs == C.TIME_UNSET) {
             timeMs = 0;
         }
