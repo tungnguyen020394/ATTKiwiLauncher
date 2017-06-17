@@ -167,7 +167,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/img_caidat"
-                    android:text="Cấu Hình      "
+                    android:text="Cấu Hình        "
                     android:singleLine="true"
                     android:textAllCaps="true"
                     android:textSize="13dp" />
@@ -520,13 +520,13 @@
             android:src="@drawable/ic_minus1"/>
 
         <RelativeLayout
+            android:id="@+id/relay41"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_toRightOf="@+id/img_minus"
             android:layout_marginLeft="10dp"
             android:layout_toLeftOf="@+id/img_plus"
-            android:layout_marginRight="10dp"
-            android:padding="10dp">
+            android:layout_marginRight="10dp">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler2"

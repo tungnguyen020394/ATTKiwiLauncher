@@ -370,7 +370,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         imageCaiDat = (ImageView) findViewById(R.id.img_caidat);
         imageCaiDat.setOnClickListener(this);
         Map<String, String> today = LunarCalendar.getTodayInfo();
-        mNgayDuongTxt.setText("Thứ " + today.get("thu") + ", " + today.get("daySolar") + "/" + today.get("monthSolar") + "/" + today.get("yearSolar"));
+        mNgayDuongTxt.setText("Thứ " + today.get("thu") + ", " + today.get("daySolar") + "/" + today.get("monthSolar") + "/" + today.get("yearSolar") + "     ");
         mNgayAmTxt.setText(today.get("dayLunar") + "/" + today.get("monthLunar") + " " + today.get("can") + " " + today.get("chi"));
         final String todayFormated = today.get("yearSolar") + "-" + today.get("monthSolar") + "-" + today.get("daySolar") + " "
                 + today.get("hour") + ":" + today.get("minute") + ":" + today.get("second");
@@ -378,7 +378,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         ThoiTiet thoiTiet = mDatabaseHelper.getThongTinThoiTiet(idThoiTiet);
 
         SharedPreferences sharedPreferencesThoiTiet = getSharedPreferences("thoitiet", MODE_PRIVATE);
-        mTxtTinh.setText(sharedPreferencesThoiTiet.getString("tinh", "Hà nội"));
+        mTxtTinh.setText(sharedPreferencesThoiTiet.getString("tinh", "Hà nội" + "      "));
         mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25"));
 
         final SharedPreferences.Editor editor = sharedPreferencesThoiTiet.edit();
@@ -563,7 +563,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 } else if ((didIndex >= main) && (didIndex < main + cates.size())) {
                     rcCategory.getChildAt(didIndex - main).callOnClick();
                     if ((didIndex - 4) < main) {
-                        didIndex = didIndex - main;
+                        didIndex = didIndex - 4;
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
                     } else {
                         didIndex = main - 1;
