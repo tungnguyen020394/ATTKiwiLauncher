@@ -9,5 +9,5 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="fitXY"
-        android:padding="10dp"/>
+        android:padding="5dp"/>
 </RelativeLayout>

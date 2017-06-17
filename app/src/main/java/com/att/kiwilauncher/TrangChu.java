@@ -78,8 +78,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import static com.att.kiwilauncher.R.id.imgFull;
-import static com.att.kiwilauncher.R.id.imgPlay;
 import static com.att.kiwilauncher.R.id.relay2;
 
 public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
@@ -277,7 +275,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay113.setOnClickListener(this);
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
-        reLay12.setPadding(mChieuDai * 9, mChieuRong, 0, mChieuRong * 2);
+        reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai*35, mChieuRong * 2);
+        reLay11.setPadding(mChieuDai*33,0,mChieuDai,0);
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
@@ -525,6 +524,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
+                        if (indexVideo == listvideo.size() - 1) {
+                            indexVideo = -1;
+                        }
                         indexVideo++;
                         setVideoOrImager(listvideo.get(indexVideo));//
                     }

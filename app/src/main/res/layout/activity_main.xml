@@ -30,9 +30,7 @@
         <RelativeLayout
             android:id="@+id/relay12"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_toLeftOf="@+id/relay11"
-            android:layout_toRightOf="@+id/img1">
+            android:layout_height="fill_parent">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -68,6 +66,7 @@
                 android:id="@+id/relay111"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:padding="5dp">
 
                 <ImageView
@@ -107,7 +106,8 @@
                 android:id="@+id/relay112"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/relay111"
+                android:layout_toLeftOf="@+id/relay113"
+                android:layout_toRightOf="@+id/relay111"
                 android:padding="5dp">
 
                 <ImageView
@@ -148,7 +148,7 @@
                 android:id="@+id/relay113"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/relay112"
+                android:layout_alignParentRight="true"
                 android:padding="5dp">
 
                 <ImageView
