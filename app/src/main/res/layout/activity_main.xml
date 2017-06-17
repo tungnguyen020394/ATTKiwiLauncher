@@ -380,12 +380,18 @@
                     android:background="@drawable/border_video"
                     android:padding="4dp">
 
-                    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+
+                    <VideoView
                         android:id="@+id/videoView"
-                        app:use_controller="false"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"/>
+                    <!--<com.google.android.exoplayer2.ui.SimpleExoPlayerView-->
+                        <!--android:id="@+id/videoView"-->
+                        <!--app:use_controller="false"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_centerInParent="true"/>-->
 
                     <ImageView
                         android:id="@+id/imgView"
@@ -397,7 +403,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_17sdp"
                         android:layout_alignParentBottom="true"
                         android:background="@drawable/ic_bgvideo"
                         android:orientation="horizontal"
@@ -443,6 +449,7 @@
                             android:background="@drawable/ic_backvideo"/>
 
                         <ImageButton
+                            android:visibility="gone"
                             android:id="@+id/imgPlay"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -450,7 +457,14 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:background="@drawable/ic_playvideo"/>
-
+                        <ImageButton
+                            android:id="@+id/imgPause"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/imgBack"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:background="@drawable/ic_pause"/>
 
                         <ImageButton
                             android:id="@+id/imgNext"
@@ -491,6 +505,15 @@
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_5sdp"
                             android:background="@drawable/ic_volumeoff"/>
+                        <ImageButton
+                            android:visibility="gone"
+                            android:id="@+id/imgVolumeOn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:background="@drawable/ic_volumeon"/>
 
                     </LinearLayout>
                 </RelativeLayout>

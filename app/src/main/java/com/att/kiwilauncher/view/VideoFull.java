@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.VideoView;
 
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.database.DatabaseHelper;
@@ -34,8 +35,10 @@ public class VideoFull extends AppCompatActivity implements View.OnTouchListener
     SimpleExoPlayer player;
     TrackSelector trackSelector;
     Intent intent;
+
+    VideoView video;
     ArrayList<String> list;
-    private long timePause;
+    int timePause;
     int indexvideo;
     ArrayList<String> listvideo;
     DatabaseHelper mDatabaseHelper;
@@ -45,15 +48,19 @@ public class VideoFull extends AppCompatActivity implements View.OnTouchListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_full);
         listvideo=new ArrayList<>();
+        list=new ArrayList<>();
         mDatabaseHelper=new DatabaseHelper(this);
-        listvideo= mDatabaseHelper.getListVideoQuangCao();
-        exoPlayer= (SimpleExoPlayerView) findViewById(R.id.video_Full);
+
+//        listvideo= mDatabaseHelper.getListVideoQuangCao();
+//        exoPlayer= (SimpleExoPlayerView) findViewById(R.id.video_Full);
+
+        video= (VideoView) findViewById(R.id.video_Full);
 
         intent =getIntent();
 
         indexvideo = intent.getIntExtra("index",0);
         list=intent.getStringArrayListExtra("list");
-        timePause =intent.getLongExtra("timePause",0);
+        timePause =intent.getIntExtra("timePause",0);
 
     }
 
@@ -61,8 +68,12 @@ public class VideoFull extends AppCompatActivity implements View.OnTouchListener
     protected void onResume() {
         super.onResume();
 
-        createPlayer(listvideo.get(indexvideo));
-        exoPlayer.setOnTouchListener(this);
+        video.setVideoPath(list.get(indexvideo));
+        video.seekTo(timePause);
+        video.start();
+
+//        createPlayer(list.get(indexvideo));
+//        exoPlayer.setOnTouchListener(this);
 
     }
 
