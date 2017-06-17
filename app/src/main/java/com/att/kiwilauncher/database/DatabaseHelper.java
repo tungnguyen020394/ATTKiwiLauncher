@@ -331,20 +331,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return nd;
     }
 
-    public ArrayList<String> getListVideoQuangCao() {
+    // nên lấy 1 link rồi chia thành nhiều phần khi xử lý thì tránh được phải cấp phất bộ nhớ nhiều + gọi db nhiều
+    public ArrayList<String> getListVideoAnhQuangCao() {
         ArrayList<String> listVideo = new ArrayList<>();
         String nd = "";
         openDatabase();
         Cursor cursor;
-        cursor = mDatabase.rawQuery("SELECT noidung FROM quangcao WHERE loaiquangcao = 1 ORDER BY id DESC LIMIT 3", null);
+        cursor = mDatabase.rawQuery("SELECT noidung FROM quangcao WHERE loaiquangcao = 4 OR loaiquangcao = 1 ORDER BY id DESC ", null);
 
         if (cursor.moveToFirst()) {
-            nd = DuLieu.splitLinkVideoWeb(cursor.getString(0))[0];
+        //    nd = DuLieu.splitLinkVideoWeb(cursor.getString(0))[0];
+            nd =cursor.getString(0);
             listVideo.add(nd);
         }
 
         while (cursor.moveToNext()) {
-            nd = DuLieu.splitLinkVideoWeb(cursor.getString(0))[0];
+            nd =cursor.getString(0);
             listVideo.add(nd);
         }
 
@@ -352,6 +354,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         closeDatabase();
         return listVideo;
     }
+
 
     public ArrayList<String> getListLinkWebQuangCao() {
         ArrayList<String> listLinkWeb = new ArrayList<>();

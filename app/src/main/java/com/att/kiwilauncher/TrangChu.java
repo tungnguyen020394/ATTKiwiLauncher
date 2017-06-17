@@ -40,7 +40,6 @@ import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.model.TheLoai;
 import com.att.kiwilauncher.model.ThoiTiet;
-import com.att.kiwilauncher.util.Define;
 import com.att.kiwilauncher.util.Volume;
 import com.att.kiwilauncher.view.VideoFull;
 import com.att.kiwilauncher.xuly.DuLieu;
@@ -153,21 +152,33 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         rcApp.setLayoutManager(layoutManager);
         listapp = new UngDungAdapter(this, listApps.get(demdsApp));
         rcApp.setAdapter(listapp);
-        listvideo = mDatabaseHelper.getListVideoQuangCao();
+        listvideo = mDatabaseHelper.getListVideoAnhQuangCao();
         // video
-        if (!mDatabaseHelper.getLinkVideoQuangCao().equals("")) {
-            video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    indexVideo++;
-                    video.setVideoPath(listvideo.get(indexVideo));
+
+        video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                indexVideo++;
+                if (DuLieu.isLinkVideoWeb(listvideo.get(indexVideo)) == 1) {
+                    video.setVideoPath(listvideo.get(indexVideo).split(";")[0]);
                     video.start();
                 }
-            });
-            //video.setVideoPath(listvideo.get(indexVideo));
-            video.setVideoPath(listvideo.get(indexVideo));
+                if (indexVideo == listvideo.size()) {
+                    indexVideo = -1;
+                }
+            }
+        });
+        //video.setVideoPath(listvideo.get(indexVideo));
+        Toast.makeText(getApplicationContext(), listvideo.size() + "", Toast.LENGTH_LONG).show();
+
+        /*while (DuLieu.isLinkVideoWeb(listvideo.get(indexVideo)) != 1) {
+            indexVideo++;
+        }*/
+        /*if (DuLieu.isLinkVideoWeb(listvideo.get(indexVideo)) == 1) {
+            Toast.makeText(getApplicationContext(), listvideo.get(indexVideo) + "", Toast.LENGTH_LONG).show();
+            video.setVideoPath(listvideo.get(indexVideo).split(";")[0]);
             video.start();
-        }
+        }*/
 
         //audio
         volume.MuteAudio(this);
@@ -197,12 +208,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mChieuRong = chieuRong / 40;
 
         listItem = new ArrayList<>();
-        mListTheLoai=new ArrayList<>();
+        mListTheLoai = new ArrayList<>();
         listvideo = new ArrayList<>();
 
-        listvideo.add(Define.URL_LINK_PLAY);
+        /*listvideo.add(Define.URL_LINK_PLAY);
         listvideo.add(Define.URL_LINK_NEXT);
-        listvideo.add(Define.URL_LINK_BACK);
+        listvideo.add(Define.URL_LINK_BACK);*/
 
         // reLaytive layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1);
@@ -451,15 +462,15 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     @Override
                     public void onCompletion(MediaPlayer mp) {
                         indexVideo++;
-                      //  video.setVideoPath(listvideo.get(indexVideo));
+                        //  video.setVideoPath(listvideo.get(indexVideo));
                         video.setVideoPath(DuLieu.splitLinkVideoWeb(mDatabaseHelper.getLinkVideoQuangCao())[0]);
                         video.start();
                     }
                 });
 
-              //  video.start();
+                //  video.start();
 
-             //   Toast.makeText(getApplicationContext(), mDatabaseHelper.getListVideoQuangCao().size() + "", Toast.LENGTH_LONG).show();
+                //   Toast.makeText(getApplicationContext(), mDatabaseHelper.getListVideoQuangCao().size() + "", Toast.LENGTH_LONG).show();
 
             }
         }, new Response.ErrorListener() {
@@ -624,8 +635,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 String str = listvideo.get(indexVideo);
 
                 // độ dài video đang chạy
-                long timepause= video.getCurrentPosition();
-                intent.putExtra("timePause",timepause);
+                long timepause = video.getCurrentPosition();
+                intent.putExtra("timePause", timepause);
 
                 // đọ dài của video
                 MediaPlayer mp = MediaPlayer.create(this, Uri.parse(str));
@@ -662,14 +673,15 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 if (indexVideo == (listvideo.size() - 1)) {
                     indexVideo = 0;
                 } else indexVideo++;
-                video.setVideoPath(listvideo.get(indexVideo));
+                video.setVideoPath(listvideo.get(indexVideo).split(";")[0]);
+                //Toast.makeText(getApplicationContext(),listvideo.get(indexVideo),Toast.LENGTH_LONG).show();
                 video.start();
 
                 video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
                         indexVideo++;
-                        video.setVideoPath(listvideo.get(indexVideo));
+                        video.setVideoPath(listvideo.get(indexVideo).split(";")[0]);
                         video.start();
                     }
                 });
@@ -680,14 +692,14 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     indexVideo = listvideo.size() - 1;
                 } else indexVideo--;
 
-                video.setVideoPath(listvideo.get(indexVideo));
+                video.setVideoPath(listvideo.get(indexVideo).split(";")[0]);
                 video.start();
 
                 video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
                         indexVideo++;
-                        video.setVideoPath(listvideo.get(indexVideo));
+                        video.setVideoPath(listvideo.get(indexVideo).split(";")[0]);
                         video.start();
                     }
                 });
@@ -839,7 +851,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
                     Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
             i.setComponent(name);
-
             startActivity(i);
         }
     }
