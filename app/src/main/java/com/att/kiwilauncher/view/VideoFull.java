@@ -57,7 +57,6 @@ public class VideoFull extends AppCompatActivity implements View.OnTouchListener
         video= (VideoView) findViewById(R.id.video_Full);
 
         intent =getIntent();
-
         indexvideo = intent.getIntExtra("index",0);
         list=intent.getStringArrayListExtra("list");
         timePause =intent.getIntExtra("timePause",0);
