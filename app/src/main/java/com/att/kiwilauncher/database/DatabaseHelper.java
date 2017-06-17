@@ -12,10 +12,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import com.att.kiwilauncher.R;
+import com.att.kiwilauncher.UngDung;
+import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.model.TheLoai;
 import com.att.kiwilauncher.model.ThoiTiet;
-import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.model.UngDungNew;
+import com.att.kiwilauncher.xuly.DuLieu;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -53,6 +55,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         listIcon.put("ic_giaitri", R.drawable.ic_giaitri);
         listIcon.put("ic_giaoduc", R.drawable.ic_giaoduc);
         listIcon.put("ic_trochoi", R.drawable.ic_trochoi);
+        listIcon.put("ic_suckhoe", R.drawable.ic_suckhoe);
+        listIcon.put("ic_tienich", R.drawable.ic_tienich);
     }
 
     @Override
@@ -143,8 +147,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return listTheLoai;
     }
 
+    // lấy danh sách tất cả các thể loại cửa ứng dụng
+    public List<ChuDe> getListChuDe() {
+        ChuDe chuDe;
+        List<ChuDe> chuDeList = new ArrayList<>();
+        openDatabase();
+        Cursor cursor = mDatabase.rawQuery("SELECT id,ten,soluong,icon FROM theloai", null);
+        if (cursor.moveToFirst()) {
+            if (cursor.getString(3).equals("ic_tatca")) {
+                if (cursor.moveToNext()) {
+                    chuDe = new ChuDe();
+                    chuDe.setCheckedCate(true);
+                    chuDe.setIndexCate(cursor.getInt(0));
+                    chuDe.setDrawCate(listIcon.get(cursor.getString(3)));
+                    chuDe.setNameCate(cursor.getString(1));
+                    chuDeList.add(chuDe);
+                }
+            } else {
+                chuDe = new ChuDe();
+                chuDe.setCheckedCate(true);
+                chuDe.setIndexCate(cursor.getInt(0));
+                chuDe.setDrawCate(listIcon.get(cursor.getString(3)));
+                chuDe.setNameCate(cursor.getString(1));
+                chuDeList.add(chuDe);
+            }
+        }
+        while (cursor.moveToNext()) {
+            chuDe = new ChuDe();
+            chuDe.setCheckedCate(false);
+            chuDe.setIndexCate(cursor.getInt(0));
+            chuDe.setDrawCate(listIcon.get(cursor.getString(3)));
+            chuDe.setNameCate(cursor.getString(1));
+            chuDeList.add(chuDe);
+        }
+        cursor.close();
+        closeDatabase();
+        return chuDeList;
+    }
+
     // lấy danh sách tất cả các ứng dụng của thẻ loại xyz
-    public List<UngDungNew> getListUngDung(TheLoai theLoai) {
+    public List<UngDungNew> getListUngDungNew(TheLoai theLoai) {
         List<UngDungNew> listUngDungNew = new ArrayList<>();
         String maTheLoai = theLoai.getId();
         List<String> listAnh;
@@ -203,6 +245,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         closeDatabase();
 
         return listUngDungNew;
+    }
+
+    // lấy danh sách tất cả các ứng dụng của thẻ loại xyz
+    public List<UngDung> getListUngDung(ChuDe chuDe) {
+        List<UngDung> listUngDung = new ArrayList<>();
+        String maTheLoai = chuDe.getIndexCate() + "";
+        openDatabase();
+        Cursor cursor;
+        cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.icon FROM ungdung JOIN theloai_ungdung ON ungdung.id=theloai_ungdung.ungdungid WHERE theloai_ungdung.theloaiid=" + maTheLoai, null);
+
+        if (cursor.moveToFirst()) {
+            UngDung ungDungNew = new UngDung();
+            ungDungNew.setId(cursor.getString(0));
+            ungDungNew.setNameApp(cursor.getString(1));
+            ungDungNew.setIcon(cursor.getString(2));
+            listUngDung.add(ungDungNew);
+        }
+        while (cursor.moveToNext()) {
+            UngDung ungDungNew = new UngDung();
+            ungDungNew.setId(cursor.getString(0));
+            ungDungNew.setNameApp(cursor.getString(1));
+            ungDungNew.setIcon(cursor.getString(2));
+            listUngDung.add(ungDungNew);
+        }
+        cursor.close();
+        closeDatabase();
+
+        return listUngDung;
     }
 
     //lấy ra thông tin về id địa chỉ thời tiết và tên của tỉnh

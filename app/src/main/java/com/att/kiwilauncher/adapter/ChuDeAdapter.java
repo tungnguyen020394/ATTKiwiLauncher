@@ -6,14 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.R;
+import com.att.kiwilauncher.TrangChu;
+import com.att.kiwilauncher.UngDung;
+import com.att.kiwilauncher.database.DatabaseHelper;
+import com.att.kiwilauncher.model.ChuDe;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.att.kiwilauncher.TrangChu.demdsApp;
+import static com.att.kiwilauncher.TrangChu.listApps;
 
 /**
  * Created by mac on 5/23/17.
@@ -64,6 +70,8 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
+            final DatabaseHelper mDadabaseHelper;
+            mDadabaseHelper=new DatabaseHelper(context);
             imgApp = (ImageView) itemView.findViewById(R.id.image_category);
             txtApp = (TextView)  itemView.findViewById(R.id.txt_catego);
             layoutCate = (RelativeLayout) itemView.findViewById(R.id.layout_category);
@@ -74,6 +82,32 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
                     ChuDe cate = cates.get(getAdapterPosition());
                     cate.setCheckedCate(true);
                     notifyDataSetChanged();
+                    TrangChu.demdsApp=0;
+                    listApps.clear();
+                    List<UngDung> checkedList = new ArrayList<>();
+                    checkedList = mDadabaseHelper.getListUngDung(cate);
+                    List<UngDung> tmpList = new ArrayList<>();
+                    //   listApps.add(mDatabaseHelper.getListUngDung(cates.get(0)));
+                    for (int j = 1; j <= checkedList.size(); j++) {
+                        UngDung ungDung = new UngDung();
+                        ungDung.setNameApp(checkedList.get(j - 1).getNameApp());
+                        ungDung.setIcon(checkedList.get(j - 1).getIcon());
+                        ungDung.setId(checkedList.get(j - 1).getId());
+                        tmpList.add(ungDung);
+                        if (j % 7 == 0 || j == checkedList.size()) {
+                            listApps.add(tmpList);
+                            tmpList = new ArrayList<>();
+                            tmpList.clear();
+                        }
+                    }
+                    //Toast.makeText(this, listApps.size() + "s" + listApps.get(0).size(), Toast.LENGTH_SHORT).show();
+                    TrangChu.listAppBottom.clear();
+                    if (listApps.size()>0){
+                        TrangChu.listAppBottom.addAll(listApps.get(TrangChu.demdsApp));
+                    }else{
+                        TrangChu.listAppBottom.clear();
+                    }
+                    TrangChu.listapp.notifyDataSetChanged();
                 }
             });
         }
