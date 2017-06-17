@@ -21,7 +21,7 @@ public class CheckLink {
         return check;
     }
 
-    public String stringForTime(long timeMs) {
+    public String stringForTime(int timeMs) {
       StringBuilder formatBuilder = new StringBuilder();
         Formatter formatter=new Formatter(formatBuilder, Locale.getDefault());;
         if (timeMs == C.TIME_UNSET) {

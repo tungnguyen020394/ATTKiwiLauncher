@@ -15,12 +15,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db0a5892-de13-4dc8-912a-09d7018d3481" name="Default" comment="">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-06-17-11-28-09-845.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-06-17-11-28-28-194.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-06-17-11-29-11-643.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-06-17-11-35-04-689.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-06-17-11-40-16-871.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-06-17-11-43-31-780.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-06-17-11-49-45-591.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-06-17-13-13-04-845.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-06-17-13-13-06-939.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-06-17-13-13-29-307.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-06-17-13-15-40-359.rawproto" afterPath="" />
+>>>>>>> 0353a82d44ffab9f0b0bf2f73ac60ecb07c0f892
+>>>>>>> origin/master
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/CheckLink.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/CheckLink.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/mockable-android-25.jar" afterPath="$PROJECT_DIR$/build/generated/mockable-android-25.jar" />
+>>>>>>> origin/master
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/DanhSach.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/DanhSach.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
@@ -28,6 +55,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_app.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_app.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+>>>>>>> 0353a82d44ffab9f0b0bf2f73ac60ecb07c0f892
     </list>
     <ignored path="ATTKiwiLauncher.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,6 +86,39 @@
     <favorites_list name="ATTKiwiLauncher" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
+    <leaf>
+      <file leaf-file-name="TrangChu.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="980" column="27" selection-start-line="980" selection-start-column="27" selection-end-line="980" selection-end-column="27" />
+              <folding>
+                <element signature="e#8074#8368#0" expanded="true" />
+                <element signature="e#8367#8368#0" expanded="true" />
+                <element signature="method#createPlayer#0;class#TrangChu#0" expanded="false" />
+                <element signature="method#prepareVideo#0;class#TrangChu#0" expanded="false" />
+                <element signature="method#killPlayer#0;class#TrangChu#0" expanded="false" />
+                <element signature="e#36908#37188#0" expanded="true" />
+                <element signature="e#37187#37188#0" expanded="true" />
+                <element signature="e#37488#37768#0" expanded="true" />
+                <element signature="e#37767#37768#0" expanded="true" />
+                <element signature="e#45094#45095#0" expanded="true" />
+                <element signature="e#45138#45139#0" expanded="true" />
+                <element signature="e#45147#45149#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheckLink.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/CheckLink.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+=======
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="TrangChu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
@@ -77,34 +138,84 @@
                 <element signature="method#changeListItemBackGround#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#launchApp#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#setVideoOrImager#0;class#TrangChu#0" expanded="false" />
+>>>>>>> 0353a82d44ffab9f0b0bf2f73ac60ecb07c0f892
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="activity_danh_sach.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_danh_sach.xml">
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="Define.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/Define.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_video_full.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_video_full.xml">
+>>>>>>> origin/master
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="83">
               <caret line="101" column="12" selection-start-line="101" selection-start-column="12" selection-end-line="107" selection-end-column="38" />
               <folding>
                 <element signature="e#1002#2371#0" expanded="false" />
               </folding>
+=======
+            <state relative-caret-position="275">
+              <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+              <folding />
+>>>>>>> origin/master
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="true">
+=======
+      <file leaf-file-name="VideoFull.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
+>>>>>>> origin/master
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
+<<<<<<< HEAD
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
               <caret line="62" column="45" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
+=======
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="412" column="51" selection-start-line="412" selection-start-column="45" selection-end-line="412" selection-end-column="51" />
+=======
+      <file leaf-file-name="DanhSach.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/DanhSach.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="248" column="38" selection-start-line="248" selection-start-column="38" selection-end-line="248" selection-end-column="38" />
+>>>>>>> 0353a82d44ffab9f0b0bf2f73ac60ecb07c0f892
+>>>>>>> origin/master
               <folding>
                 <element signature="e#1513#2459#0" expanded="false" />
                 <element signature="e#4532#6380#0" expanded="false" />
@@ -2104,10 +2215,19 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/exo_playback_control_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/customvideo/CustomExoPlayerView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/customvideo/CustomPlaybackControlView.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/CheckLink.java" />
+=======
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+>>>>>>> origin/master
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_video_full.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/Define.java" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/CheckLink.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
+>>>>>>> origin/master
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/adapter/UngDungDsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/DanhSach.java" />
@@ -2168,6 +2288,14 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kiwilauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+=======
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
             </PATH_ELEMENT>
@@ -2198,6 +2326,7 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+>>>>>>> 0353a82d44ffab9f0b0bf2f73ac60ecb07c0f892
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2211,6 +2340,17 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+<<<<<<< HEAD
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kiwilauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+=======
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2230,6 +2370,7 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="kiwilauncher" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+>>>>>>> 0353a82d44ffab9f0b0bf2f73ac60ecb07c0f892
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2270,9 +2411,22 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../KiwiStore" />
+=======
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="device.picker.selection" value="192.168.240.101:5555" />
+    <property name="DEBUGGABLE_DEVICE" value="genymotion-sony_xperia_tablet_z___4_1_1___api_16___1920x1200-192.168.240.101:5555" />
+    <property name="DEBUGGABLE_PROCESS" value="com.att.kiwilauncher" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="DEBUGGER_ID" value="Auto" />
+=======
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/ATTKiwiLauncher-fixgd" />
+>>>>>>> origin/master
     <property name="device.picker.selection" value="Android_TV_1080p_API_25" />
     <property name="FullScreen" value="true" />
+>>>>>>> 0353a82d44ffab9f0b0bf2f73ac60ecb07c0f892
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -2603,8 +2757,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
+    <frame x="-8" y="-8" width="1612" height="876" extended-state="0" />
+    <editor active="false" />
+=======
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
+>>>>>>> 0353a82d44ffab9f0b0bf2f73ac60ecb07c0f892
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952926" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2620,11 +2779,19 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15522175" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+<<<<<<< HEAD
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24967659" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1595136" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> 0353a82d44ffab9f0b0bf2f73ac60ecb07c0f892
+>>>>>>> origin/master
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39942938" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2651,12 +2818,13 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java</url>
-          <line>62</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java</url>
+          <line>726</line>
           <properties />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -3016,6 +3184,8 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/CheckLink.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="387">
@@ -3023,6 +3193,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> 0353a82d44ffab9f0b0bf2f73ac60ecb07c0f892
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_video_full.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3034,6 +3205,68 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/Define.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="107">
+          <caret line="412" column="51" selection-start-line="412" selection-start-column="45" selection-end-line="412" selection-end-column="51" />
+          <folding>
+            <element signature="e#17126#17141#0" expanded="true" />
+            <element signature="e#17945#17959#0" expanded="true" />
+            <element signature="e#20281#20295#0" expanded="true" />
+            <element signature="e#22754#22768#0" expanded="true" />
+            <element signature="e#22824#22838#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="980" column="27" selection-start-line="980" selection-start-column="27" selection-end-line="980" selection-end-column="27" />
+          <folding>
+            <element signature="e#8074#8368#0" expanded="true" />
+            <element signature="e#8367#8368#0" expanded="true" />
+            <element signature="method#createPlayer#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#prepareVideo#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#killPlayer#0;class#TrangChu#0" expanded="false" />
+            <element signature="e#36908#37188#0" expanded="true" />
+            <element signature="e#37187#37188#0" expanded="true" />
+            <element signature="e#37488#37768#0" expanded="true" />
+            <element signature="e#37767#37768#0" expanded="true" />
+            <element signature="e#45094#45095#0" expanded="true" />
+            <element signature="e#45138#45139#0" expanded="true" />
+            <element signature="e#45147#45149#0" expanded="false" />
+          </folding>
+=======
+        <state relative-caret-position="7650">
+          <caret line="510" column="35" selection-start-line="510" selection-start-column="35" selection-end-line="510" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> origin/master
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -3047,9 +3280,11 @@
         <state relative-caret-position="150">
           <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
           <folding />
+>>>>>>> 0353a82d44ffab9f0b0bf2f73ac60ecb07c0f892
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/adapter/UngDungDsAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -3062,6 +3297,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
           <caret line="309" column="55" selection-start-line="309" selection-start-column="8" selection-end-line="309" selection-end-column="55" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/CheckLink.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="287">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+=======
+        <state relative-caret-position="157">
+          <caret line="789" column="109" selection-start-line="789" selection-start-column="16" selection-end-line="789" selection-end-column="109" />
+>>>>>>> origin/master
           <folding>
             <element signature="method#loadData#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
@@ -3124,11 +3371,18 @@
         <state relative-caret-position="221">
           <caret line="62" column="45" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="45" />
           <folding>
+<<<<<<< HEAD
             <element signature="e#1513#2459#0" expanded="false" />
             <element signature="e#4532#6380#0" expanded="false" />
             <element signature="e#6394#8175#0" expanded="false" />
             <element signature="e#6669#7047#0" expanded="false" />
             <element signature="e#8229#23070#0" expanded="false" />
+=======
+            <element signature="imports" expanded="true" />
+            <element signature="class#AppClick#0;class#DanhSach#0" expanded="false" />
+            <element signature="method#onClick#0;class#DanhSach#0" expanded="false" />
+>>>>>>> 0353a82d44ffab9f0b0bf2f73ac60ecb07c0f892
+>>>>>>> origin/master
           </folding>
         </state>
       </provider>

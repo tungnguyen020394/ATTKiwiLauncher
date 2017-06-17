@@ -11,6 +11,7 @@ import android.content.pm.ResolveInfo;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -105,7 +106,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
     Volume volume;
     ImageView imgView, imgWeb;
-    ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOf,ibtVolumeOn, ibtPause,ibtFull;
+    ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOf, ibtVolumeOn, ibtPause, ibtFull;
     TextView tvTimeStart, tvTimeEnd;
     CheckLink checkLink;
     MediaPlayer mp;
@@ -113,6 +114,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     SimpleExoPlayer player;
     TrackSelector trackSelector;
     private long timePause = 0;
+    private boolean dragging;
+    Intent intent;
+    Handler handler = new Handler();
 
     int indexVideo = 0;
 
@@ -198,19 +202,19 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 //        listvideo = mDatabaseHelper.getListVideoQuangCao();
 
         // video
-        if (!mDatabaseHelper.getLinkVideoQuangCao().equals("")) {
-            video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    indexVideo++;
-                    setVideoOrImager(listvideo.get(indexVideo));
+//        if (!mDatabaseHelper.getLinkVideoQuangCao().equals("")) {
+        video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                indexVideo++;
+                setVideoOrImager(listvideo.get(indexVideo));
 //                    setVideoOrImager(Define.URL_LINK_PLAY);
-                }
-            });
-            //video.setVideoPath(listvideo.get(indexVideo));
-            setVideoOrImager(listvideo.get(indexVideo));
+            }
+        });
+        //video.setVideoPath(listvideo.get(indexVideo));
+        setVideoOrImager(listvideo.get(indexVideo));
 //            setVideoOrImager(Define.URL_LINK_BACK);
-        }
+//        }
 
         //audio
         volume.MuteAudio(this);
@@ -223,11 +227,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 //        createPlayer(Define.URL_LINK_PLAY);
 //        exoPlayer.setOnTouchListener(this);
 
-//        if (DuLieu.hasInternetConnection(TrangChu.this)) {
-//            video.start();
-//        } else {
-//            Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
-//        }
+        if (DuLieu.hasInternetConnection(TrangChu.this)) {
+            setVideoOrImager(listvideo.get(indexVideo));
+        } else {
+
+            Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void createPlayer(String link) {
@@ -340,7 +345,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         ibtPause = (ImageButton) findViewById(R.id.imgPause);
         ibtVolumeOf = (ImageButton) findViewById(R.id.imgVolumeOf);
         ibtVolumeOn = (ImageButton) findViewById(R.id.imgVolumeOn);
-        ibtFull= (ImageButton) findViewById(R.id.imgFull);
+        ibtFull = (ImageButton) findViewById(R.id.imgFull);
 
         ibtNext.setOnClickListener(this);
         ibtPlay.setOnClickListener(this);
@@ -368,12 +373,14 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         image5 = (ImageView) findViewById(R.id.img_youtube);
         image6 = (ImageView) findViewById(R.id.img_store);
         imgView = (ImageView) findViewById(R.id.imgView);
+        imgWeb= (ImageView) findViewById(R.id.imgWeb);
         image1.setOnClickListener(this);
         image2.setOnClickListener(this);
         image3.setOnClickListener(this);
         image4.setOnClickListener(this);
         image5.setOnClickListener(this);
         image6.setOnClickListener(this);
+        imgWeb.setOnClickListener(this);
 
         int mChieuDaia = (mChieuDai * 5) / 8;
         int mChieuRonga = (mChieuRong * 3) / 4;
@@ -557,13 +564,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                             indexVideo = -1;
                         }
                         indexVideo++;
-                        video.setVideoPath(listvideo.get(indexVideo));
+                        setVideoOrImager(listvideo.get(indexVideo));
 //                        video.setVideoPath(DuLieu.splitLinkVideoWeb(mDatabaseHelper.getLinkVideoQuangCao())[0]);
-                        video.start();
+
                     }
                 });
-                video.setVideoPath(listvideo.get(indexVideo));
-                video.start();
+                setVideoOrImager(listvideo.get(indexVideo));
+
 
                 //   Toast.makeText(getApplicationContext(), mDatabaseHelper.getListVideoQuangCao().size() + "", Toast.LENGTH_LONG).show();
 
@@ -716,19 +723,21 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.imgWeb:
+                Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
+                intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                break;
 
             case R.id.imgFull:
-//                btnFull.setVisibility(View.GONE);
-//                btnFullOf.setVisibility(View.VISIBLE);
-
-                Intent intent = new Intent(getBaseContext(), VideoFull.class);
+                intent = new Intent(getBaseContext(), VideoFull.class);
                 intent.putExtra("index", indexVideo);
                 intent.putExtra("list", listvideo);
                 String str = listvideo.get(indexVideo);
 
                 // độ dài video đang chạy
-                int timepause= video.getCurrentPosition();
-                intent.putExtra("timePause",timepause);
+                int timepause = video.getCurrentPosition();
+                intent.putExtra("timePause", timepause);
                 startActivity(intent);
                 break;
             case R.id.imgVolumeOf:
@@ -959,13 +968,15 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             imgView.setVisibility(View.GONE);
             video.setVisibility(View.VISIBLE);
 
+//            handler.postDelayed(new ViewUpdater(checkLink.stringForTime(video.getCurrentPosition()),tvTimeEnd),1000);
+
+
             // đọ dài của video
             mp = MediaPlayer.create(this, Uri.parse(check));
-            long duration = mp.getDuration();
+            int duration = mp.getDuration();
             mp.release();
 
             tvTimeEnd.setText(checkLink.stringForTime(duration));
-
             video.setVideoPath(listvideo.get(indexVideo));
             video.start();
 
@@ -991,4 +1002,38 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             });
         }
     }
+
+    private class ViewUpdater implements Runnable {
+        private String mString;
+        private TextView mtv;
+
+
+        public ViewUpdater(String string, TextView _mtv) {
+            mString = string;
+            mtv = _mtv;
+        }
+
+        @Override
+        public void run() {
+            mtv.setText(mString);
+        }
+    }
+
+//
+//    private final Runnable updateProgressAction = new Runnable() {
+//        @Override
+//        public void run() {
+//            updateProgress();
+//        }
+//    };
+//
+//    private void updateProgress() {
+//
+//        long position = video == null ? 0 : video.getCurrentPosition();
+//
+//        if (!dragging) {
+//            tvTimeStart.setText(checkLink.stringForTime(position));
+//        }
+//        postDelayed(updateProgressAction, 1000);
+//    }
 }
