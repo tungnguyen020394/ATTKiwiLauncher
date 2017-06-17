@@ -64,9 +64,9 @@
 
             <RelativeLayout
                 android:id="@+id/relay111"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/relay112"
                 android:padding="5dp">
 
                 <ImageView
@@ -104,10 +104,9 @@
 
             <RelativeLayout
                 android:id="@+id/relay112"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/relay113"
-                android:layout_toRightOf="@+id/relay111"
                 android:padding="5dp">
 
                 <ImageView
@@ -146,7 +145,7 @@
 
             <RelativeLayout
                 android:id="@+id/relay113"
-                android:layout_width="wrap_content"
+                android:layout_width="145dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:padding="5dp">
@@ -184,6 +183,7 @@
                     android:textAllCaps="true"
                     android:textSize="12dp"/>
             </RelativeLayout>
+
         </RelativeLayout>
     </RelativeLayout>
 
@@ -370,15 +370,18 @@
             <RelativeLayout
                 android:id="@+id/relay222"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
 
                 <RelativeLayout
                     android:id="@+id/relay2221"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/border_video"
+<<<<<<< HEAD
                     >
+=======
+                    android:padding="10dp">
+>>>>>>> bf6909a5017f8a669ab61a47966e00e6fe03bf3c
 
 
                     <VideoView
@@ -386,7 +389,24 @@
                         android:id="@+id/videoView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+<<<<<<< HEAD
                         android:layout_centerInParent="true"/>
+=======
+                        android:layout_centerHorizontal="true"/>
+                    <!--<com.google.android.exoplayer2.ui.SimpleExoPlayerView-->
+                        <!--android:id="@+id/videoView"-->
+                        <!--app:use_controller="false"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_centerInParent="true"/>-->
+
+                    <ImageView
+                        android:id="@+id/imgView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitXY"/>
+>>>>>>> bf6909a5017f8a669ab61a47966e00e6fe03bf3c
 
                         <ImageView
                             android:id="@+id/imgView"
@@ -396,11 +416,13 @@
                             android:scaleType="fitXY"/>
 
                     <LinearLayout
+                        android:id="@+id/linear1"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_17sdp"
                         android:layout_alignParentBottom="true"
                         android:background="@drawable/ic_bgvideo"
                         android:orientation="horizontal"
+                        android:visibility="gone"
                         >
 
                         <ImageView
@@ -427,7 +449,8 @@
                             android:layout_alignRight="@id/imgWeb"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_2sdp"
-                            android:background="@drawable/ic_fullvideo"/>
+                            android:src="@drawable/ic_fullvideo"
+                            android:background="@drawable/none"/>
 
                         <TextView
                             android:layout_width="0dp"
@@ -440,7 +463,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
-                            android:background="@drawable/ic_backvideo"/>
+                            android:src="@drawable/ic_backvideo"
+                            android:background="@drawable/none"/>
 
                         <ImageButton
                             android:id="@+id/imgPlay"
@@ -449,9 +473,14 @@
                             android:layout_alignLeft="@id/imgBack"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
+<<<<<<< HEAD
                             android:background="@drawable/ic_playvideo"
                             android:visibility="gone"/>
 
+=======
+                            android:src="@drawable/ic_playvideo"
+                            android:background="@drawable/none"/>
+>>>>>>> bf6909a5017f8a669ab61a47966e00e6fe03bf3c
                         <ImageButton
                             android:id="@+id/imgPause"
                             android:layout_width="wrap_content"
@@ -459,7 +488,8 @@
                             android:layout_alignLeft="@id/imgBack"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
-                            android:background="@drawable/ic_pause"/>
+                            android:src="@drawable/ic_pause"
+                            android:background="@drawable/none"/>
 
                         <ImageButton
                             android:id="@+id/imgNext"
@@ -468,7 +498,8 @@
                             android:layout_alignLeft="@id/imgPlay"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
-                            android:background="@drawable/ic_nextvideo"/>
+                            android:src="@drawable/ic_nextvideo"
+                            android:background="@drawable/none"/>
 
                         <TextView
                             android:id="@+id/tvTimeBegin"

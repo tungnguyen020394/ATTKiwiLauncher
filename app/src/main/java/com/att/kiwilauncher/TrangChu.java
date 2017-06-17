@@ -24,6 +24,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -50,22 +51,6 @@ import com.att.kiwilauncher.view.VideoFull;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
 import com.bumptech.glide.Glide;
-import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
-import com.google.android.exoplayer2.extractor.ExtractorsFactory;
-import com.google.android.exoplayer2.source.ExtractorMediaSource;
-import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.trackselection.TrackSelection;
-import com.google.android.exoplayer2.trackselection.TrackSelector;
-import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
-import com.google.android.exoplayer2.upstream.BandwidthMeter;
-import com.google.android.exoplayer2.upstream.DataSource;
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
-import com.google.android.exoplayer2.util.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,10 +58,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import static com.att.kiwilauncher.R.id.relay2;
@@ -85,7 +68,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
     int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12;
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11,
-            reLay21, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12;
+            reLay21, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,
+            reLay2221;
     List<ChuDe> cates;
     ArrayList<View> listItem;
     TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo;
@@ -107,6 +91,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     DatabaseHelper mDatabaseHelper;
     private ProgressDialog dialog;
 
+    LinearLayout linNear1;
     Volume volume;
     ImageView imgView, imgWeb;
     ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOf, ibtVolumeOn, ibtPause, ibtFull;
@@ -115,7 +100,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     MediaPlayer mp;
 
     private long timePause = 0;
-    private boolean dragging;
+    private boolean dragging,playing = true,mute = true;
     Intent intent;
     Handler handler = new Handler();
 
@@ -277,8 +262,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay113.setOnClickListener(this);
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
-        reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai * 35, mChieuRong * 2);
-        reLay11.setPadding(mChieuDai * 33, 0, mChieuDai, 0);
+        reLay12.setPadding(mChieuDai * 9, mChieuRong*2, mChieuDai*35, mChieuRong);
+        reLay11.setPadding(mChieuDai*33,0,mChieuDai,0);
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
@@ -297,6 +282,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay214.setPadding(mChieuDai, mChieuRong * 11, mChieuDai * 23, 0);
         reLay215.setPadding(mChieuDai * 12, mChieuRong * 11, mChieuDai * 12, 0);
         reLay216.setPadding(mChieuDai * 23, mChieuRong * 11, mChieuDai * 1, 0);
+        reLay2221 = (RelativeLayout) findViewById(R.id.relay2221);
+        reLay2221.setOnClickListener(this);
+
+        linNear1 = (LinearLayout) findViewById(R.id.linear1);
 
         //end Layout
         rcCategory = (RecyclerView) findViewById(R.id.recycler1);
@@ -561,8 +550,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 } else if ((didIndex >= main) && (didIndex < main + cates.size())) {
                     rcCategory.getChildAt(didIndex - main).callOnClick();
                     if ((didIndex - 4) < main) {
-                        didIndex = didIndex - main;
+                        didIndex = didIndex - cates.size();
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
+                        if (didIndex == 7 || didIndex == 11) {
+                            listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
+                        }
                     } else {
                         didIndex = main - 1;
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
@@ -577,6 +569,17 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 } else if (didIndex == main + cates.size()) {
                     imageMinus.setImageResource(R.drawable.ic_minus1);
                     didIndex = indexChuDe + main;
+                } else if (didIndex >= main + cates.size() + listApps.get(0).size() + 2
+                        && didIndex <= listItem.size() - 1) {
+                    listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                    if (didIndex == listItem.size() -1) {
+                        ibtVolumeOf.setBackgroundResource(R.drawable.none);
+                    }
+                    if (didIndex == listItem.size() - 3) {
+                        ibtPause.setBackgroundResource(R.drawable.none);
+                    }
+                    linNear1.setVisibility(View.GONE);
+                    didIndex = 7;
                 }
                 return true;
             case KeyEvent.KEYCODE_DPAD_DOWN:
@@ -592,6 +595,17 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     indexChuDe = didIndex - main;
                     didIndex = main + 1 + cates.size();
                     rcApp.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
+                } else if (didIndex >= main + cates.size() + listApps.get(0).size() + 2
+                        && didIndex <= listItem.size() - 1) {
+                    listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                    if (didIndex == listItem.size() -1) {
+                        ibtVolumeOf.setBackgroundResource(R.drawable.none);
+                    }
+                    if (didIndex == listItem.size() - 3) {
+                        ibtPause.setBackgroundResource(R.drawable.none);
+                    }
+                    linNear1.setVisibility(View.GONE);
+                    didIndex = 11;
                 }
                 return true;
 
@@ -601,7 +615,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     if (didIndex == main) {
                         didIndex--;
                         rcCategory.getChildAt(0).setBackgroundResource(R.drawable.none);
-                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
                         return true;
                     }
                     willIndex = didIndex - 1;
@@ -626,6 +640,29 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     imagePlus.setImageResource(R.drawable.ic_plus1);
                     didIndex--;
                     rcApp.getChildAt(didIndex - main - 1 - cates.size()).setBackgroundResource(R.drawable.border_pick);
+                } else if (didIndex >= main + cates.size() + listApps.get(0).size() + 2
+                        && didIndex <= listItem.size() - 1) {
+                    if (didIndex != main + cates.size() + listApps.get(0).size() + 2) {
+                        if (didIndex == listItem.size() -1) {
+                            ibtVolumeOf.setBackgroundResource(R.drawable.none);
+                        }
+                        if (didIndex == listItem.size() - 3) {
+                            ibtPause.setBackgroundResource(R.drawable.none);
+                        }
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                        didIndex--;
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
+                        if (didIndex == listItem.size() -1) {
+                            ibtVolumeOf.setBackgroundResource(R.drawable.border_videopick);
+                        }
+                        if (didIndex == listItem.size() - 3) {
+                            ibtPause.setBackgroundResource(R.drawable.border_videopick);
+                        }
+                    } else {
+                        linNear1.setVisibility(View.GONE);
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                        didIndex = 7;
+                    }
                 }
                 return true;
 
@@ -638,7 +675,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     if (didIndex == main - 1 + cates.size()) {
                         didIndex = main - 1;
                     }
-                    listItem.get(main - 1).setBackgroundResource(R.drawable.none);
+                    listItem.get(main - 1).setBackgroundResource(R.drawable.border_video);
                     didIndex++;
                     rcCategory.getChildAt(didIndex - main).callOnClick();
                     indexChuDe = didIndex - main;
@@ -652,10 +689,33 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     }
                     didIndex++;
                     rcApp.getChildAt(didIndex - main - 1 - cates.size()).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex == main + cates.size() + listApps.get(demdsApp).size()) {
-                    rcApp.getChildAt(didIndex - main - 1 - cates.size()).setBackgroundResource(R.drawable.none);
+                } else if (didIndex == main + cates.size() + listApps.get(demdsApp).size() - 1) {
+                    rcApp.getChildAt(didIndex - main - cates.size()).setBackgroundResource(R.drawable.none);
                     imagePlus.setImageResource(R.drawable.ic_plus);
-                    didIndex++;
+                } else if (didIndex >= main + cates.size() + listApps.get(0).size() + 2
+                        && didIndex <= listItem.size() - 1) {
+                    if (didIndex != listItem.size() - 1) {
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                        if (didIndex == listItem.size() -1) {
+                            ibtVolumeOf.setBackgroundResource(R.drawable.none);
+                        }
+                        if (didIndex == listItem.size() - 3) {
+                            ibtPause.setBackgroundResource(R.drawable.none);
+                        }
+                        didIndex++;
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
+                        if (didIndex == listItem.size() -1) {
+                            ibtVolumeOf.setBackgroundResource(R.drawable.border_videopick);
+                        }
+
+                        if (playing == true && didIndex == listItem.size() - 3) {
+                            ibtPause.setBackgroundResource(R.drawable.border_videopick);
+                        }
+                    } else {
+                        linNear1.setVisibility(View.GONE);
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                        didIndex = 7;
+                    }
                 }
                 return true;
 
@@ -670,9 +730,30 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     listItem.get(listItem.size() - 1).callOnClick();
                 } else if (didIndex == main + cates.size()) {
                     listItem.get(main + cates.size()).callOnClick();
+                } else if (didIndex >= main + cates.size() + listApps.get(0).size() + 2
+                        && didIndex <= listItem.size() - 1) {
+                    if (mute == true && didIndex == listItem.size() -1) {
+                        ibtVolumeOf.callOnClick();
+                        mute = false;
+                        return true;
+                    } else if (mute == false && didIndex == listItem.size() -1) {
+                        mute = true;
+                    }
+
+                    if (playing == true && didIndex == listItem.size() - 3) {
+                        ibtPause.callOnClick();
+                        playing = false;
+                        return true;
+                    } else if (playing == false && didIndex == listItem.size() - 3) {
+                        playing = true;
+                    }
+
+                    listItem.get(didIndex).callOnClick();
+
                 } else {
                     rcApp.getChildAt(didIndex - main - 1 - cates.size()).callOnClick();
                 }
+
                 return true;
             default:
                 return super.onKeyUp(keyCode, event);
@@ -819,6 +900,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     Toast.makeText(getApplicationContext(), "Bạn đang ở danh sách các ứng dụng đầu tiên ", Toast.LENGTH_SHORT).show();
                 }
                 break;
+
+            case R.id.relay2221:
+                linNear1.setVisibility(View.VISIBLE);
+                didIndex = main + cates.size() + listApps.get(0).size() + 2;
+                listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
+                break;
         }
     }
 
@@ -860,11 +947,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         listItem.add(image1);
         listItem.add(image2);
         listItem.add(image3);
-        listItem.add(reLay222);
+        listItem.add(reLay2221);
         listItem.add(image4);
         listItem.add(image5);
         listItem.add(image6);
-        listItem.add(reLay222);
+        listItem.add(reLay2221);
 
         int soChuDe = 0;
         for (ChuDe c : cates) {
@@ -880,11 +967,24 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         }
 
         listItem.add(imagePlus);
+
+        listItem.add(imgWeb);
+        listItem.add(ibtFull);
+        listItem.add(ibtBack);
+        listItem.add(ibtPlay);
+        listItem.add(ibtNext);
+        listItem.add(ibtVolumeOn);
     }
 
     public void changeListItemBackGround(int i, int j) {
         listItem.get(i).setBackgroundResource(R.drawable.none);
+        if (i == 7 || i == 11) {
+            listItem.get(i).setBackgroundResource(R.drawable.border_video);
+        }
         listItem.get(j).setBackgroundResource(R.drawable.border_pick);
+        if (j == 7 || j == 11) {
+            listItem.get(j).setBackgroundResource(R.drawable.border_videopick);
+        }
         didIndex = willIndex;
     }
 
