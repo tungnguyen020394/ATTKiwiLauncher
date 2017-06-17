@@ -109,7 +109,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     Volume volume;
     ImageView imgView, imgWeb;
     ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOf, ibtVolumeOn, ibtPause, ibtFull;
-    TextView tvTimeStart, tvTimeEnd;
+    TextView tvTimeStart, tvTimeEnd, tvTime;
     CheckLink checkLink;
     MediaPlayer mp;
     private long timePause = 0;
@@ -275,8 +275,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay113.setOnClickListener(this);
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
-        reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai*35, mChieuRong * 2);
-        reLay11.setPadding(mChieuDai*33,0,mChieuDai,0);
+        reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai * 35, mChieuRong * 2);
+        reLay11.setPadding(mChieuDai * 33, 0, mChieuDai, 0);
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
@@ -321,6 +321,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
         tvTimeStart = (TextView) findViewById(R.id.tvTimeBegin);
         tvTimeEnd = (TextView) findViewById(R.id.tvTimeEnd);
+        tvTime = (TextView) findViewById(R.id.tvTime);
 
         volume = new Volume();
         checkLink = new CheckLink();
@@ -337,7 +338,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         image5 = (ImageView) findViewById(R.id.img_youtube);
         image6 = (ImageView) findViewById(R.id.img_store);
         imgView = (ImageView) findViewById(R.id.imgView);
-        imgWeb= (ImageView) findViewById(R.id.imgWeb);
+        imgWeb = (ImageView) findViewById(R.id.imgWeb);
         image1.setOnClickListener(this);
         image2.setOnClickListener(this);
         image3.setOnClickListener(this);
@@ -917,17 +918,36 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         if (position == 1) {
             imgView.setVisibility(View.VISIBLE);
             video.setVisibility(View.GONE);
+            ibtPause.setVisibility(View.GONE);
+            ibtVolumeOf.setVisibility(View.GONE);
+            tvTimeStart.setVisibility(View.GONE);
+            tvTime.setVisibility(View.GONE);
+
+            tvTimeEnd.setText("   ");
 
             Glide.with(this)
                     .load(listvideo.get(indexVideo))
                     .into(imgView);
 
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    if (indexVideo==listvideo.size()-1) indexVideo=0;
+                    else indexVideo++;
+
+                    setVideoOrImager(listvideo.get(indexVideo));
+                }
+            }, 5000);
+
         } else if (position == 2) {
             imgView.setVisibility(View.GONE);
             video.setVisibility(View.VISIBLE);
 
-//            handler.postDelayed(new ViewUpdater(checkLink.stringForTime(video.getCurrentPosition()),tvTimeEnd),1000);
-
+            ibtPause.setVisibility(View.VISIBLE);
+            ibtVolumeOf.setVisibility(View.VISIBLE);
+            tvTimeStart.setVisibility(View.VISIBLE);
+            tvTime.setVisibility(View.VISIBLE);
 
             // đọ dài của video
             mp = MediaPlayer.create(this, Uri.parse(check));
@@ -935,7 +955,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             mp.release();
 
             tvTimeEnd.setText(checkLink.stringForTime(duration));
-            updateTime();
+            updateTime(tvTimeStart);
 
             video.setVideoPath(listvideo.get(indexVideo));
             video.start();
@@ -963,7 +983,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         }
     }
 
-    private void updateTime(){
+    private void updateTime(final TextView tv) {
         Thread t = new Thread() {
 
             @Override
@@ -975,7 +995,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                             @Override
                             public void run() {
                                 // update TextView here!
-                                tvTimeStart.setText(checkLink.stringForTime(video.getCurrentPosition()));
+                                tv.setText(checkLink.stringForTime(video.getCurrentPosition()));
                             }
                         });
                     }
@@ -986,22 +1006,4 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
         t.start();
     }
-
-//
-//    private final Runnable updateProgressAction = new Runnable() {
-//        @Override
-//        public void run() {
-//            updateProgress();
-//        }
-//    };
-//
-//    private void updateProgress() {
-//
-//        long position = video == null ? 0 : video.getCurrentPosition();
-//
-//        if (!dragging) {
-//            tvTimeStart.setText(checkLink.stringForTime(position));
-//        }
-//        postDelayed(updateProgressAction, 1000);
-//    }
 }

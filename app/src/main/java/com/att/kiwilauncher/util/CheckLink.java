@@ -1,5 +1,9 @@
 package com.att.kiwilauncher.util;
 
+import android.content.Context;
+import android.widget.TextView;
+import android.widget.VideoView;
+
 import com.google.android.exoplayer2.C;
 
 import java.util.Formatter;
