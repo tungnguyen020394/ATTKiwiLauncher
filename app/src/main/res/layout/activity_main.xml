@@ -74,8 +74,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_lich"
-                    android:padding="5dp"/>
+                    android:padding="5dp"
+                    android:src="@drawable/ic_lich"/>
 
                 <TextView
                     android:id="@+id/txt_duonglich"
@@ -84,10 +84,10 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@id/img_lich"
+                    android:singleLine="true"
                     android:text="Thứ 7 , 10/6/2017    "
                     android:textAllCaps="true"
-                    android:singleLine="true"
-                    android:textSize="13dp" />
+                    android:textSize="13dp"/>
 
                 <TextView
                     android:id="@+id/txt_amlich"
@@ -99,7 +99,7 @@
                     android:singleLine="true"
                     android:text="16/5 Đinh dậu "
                     android:textAllCaps="true"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -129,7 +129,7 @@
                     android:singleLine="true"
                     android:text="Hà Nôi    "
                     android:textAllCaps="true"
-                    android:textSize="13dp" />
+                    android:textSize="13dp"/>
 
                 <TextView
                     android:id="@+id/txt_nhietdo"
@@ -141,7 +141,7 @@
                     android:singleLine="true"
                     android:text="28 độ       "
                     android:textAllCaps="true"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -167,10 +167,10 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/img_caidat"
-                    android:text="Cấu Hình      "
                     android:singleLine="true"
+                    android:text="Cấu Hình      "
                     android:textAllCaps="true"
-                    android:textSize="13dp" />
+                    android:textSize="13dp"/>
 
                 <TextView
                     android:id="@+id/txt_kiwi"
@@ -182,7 +182,7 @@
                     android:singleLine="true"
                     android:text="KiwiBox       "
                     android:textAllCaps="true"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"/>
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
@@ -378,28 +378,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/border_video"
-                    android:padding="4dp">
+                    >
 
 
                     <VideoView
+                        android:layout_margin="@dimen/_4sdp"
                         android:id="@+id/videoView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"/>
-                    <!--<com.google.android.exoplayer2.ui.SimpleExoPlayerView-->
-                        <!--android:id="@+id/videoView"-->
-                        <!--app:use_controller="false"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_centerInParent="true"/>-->
 
-                    <ImageView
-                        android:id="@+id/imgView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:scaleType="fitXY"/>
-
+                        <ImageView
+                            android:id="@+id/imgView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitXY"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -419,12 +413,12 @@
                             />
 
                         <TextView
-                            android:layout_marginLeft="@dimen/_5sdp"
-                            android:textSize="@dimen/_5sdp"
-                            android:text="Toàn màn hình"
-                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:text="Toàn màn hình"
+                            android:textSize="@dimen/_5sdp"/>
 
                         <ImageButton
                             android:id="@+id/imgFull"
@@ -449,14 +443,15 @@
                             android:background="@drawable/ic_backvideo"/>
 
                         <ImageButton
-                            android:visibility="gone"
                             android:id="@+id/imgPlay"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignLeft="@id/imgBack"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
-                            android:background="@drawable/ic_playvideo"/>
+                            android:background="@drawable/ic_playvideo"
+                            android:visibility="gone"/>
+
                         <ImageButton
                             android:id="@+id/imgPause"
                             android:layout_width="wrap_content"
@@ -506,15 +501,16 @@
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_5sdp"
                             android:background="@drawable/ic_volumeoff"/>
+
                         <ImageButton
-                            android:visibility="gone"
                             android:id="@+id/imgVolumeOn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/ic_volumeon"/>
+                            android:background="@drawable/ic_volumeon"
+                            android:visibility="gone"/>
 
                     </LinearLayout>
                 </RelativeLayout>
@@ -537,6 +533,7 @@
         android:id="@+id/relay4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/img_minus"
             android:layout_width="wrap_content"
@@ -546,10 +543,10 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_toRightOf="@+id/img_minus"
             android:layout_marginLeft="10dp"
-            android:layout_toLeftOf="@+id/img_plus"
             android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/img_plus"
+            android:layout_toRightOf="@+id/img_minus"
             android:padding="10dp">
 
             <android.support.v7.widget.RecyclerView
@@ -563,8 +560,8 @@
             android:id="@+id/img_plus"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:src="@drawable/ic_plus1"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_plus1"/>
     </RelativeLayout>
 
 </RelativeLayout>

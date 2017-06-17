@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -112,6 +113,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     TextView tvTimeStart, tvTimeEnd, tvTime;
     CheckLink checkLink;
     MediaPlayer mp;
+
     private long timePause = 0;
     private boolean dragging;
     Intent intent;
@@ -325,8 +327,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
         volume = new Volume();
         checkLink = new CheckLink();
-        ibtPlay = (ImageButton) findViewById(R.id.imgPlay);
-        ibtPlay.setOnClickListener(this);
 
         text = (TextView) findViewById(R.id.text1);
         text.setSelected(true);
@@ -916,6 +916,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         int position = checkLink.CheckLinkURL(check);
 
         if (position == 1) {
+
             imgView.setVisibility(View.VISIBLE);
             video.setVisibility(View.GONE);
             ibtPause.setVisibility(View.GONE);
@@ -924,7 +925,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             tvTime.setVisibility(View.GONE);
 
             tvTimeEnd.setText("   ");
-
             Glide.with(this)
                     .load(listvideo.get(indexVideo))
                     .into(imgView);
