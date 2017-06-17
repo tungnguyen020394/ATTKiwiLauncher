@@ -31,7 +31,7 @@ import java.util.Map;
 import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
 
 public class DanhSach extends AppCompatActivity implements View.OnClickListener{
-    RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112;
+    RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112,reLay11;
     int chieuDai, chieuRong, mChieuDai, mChieuRong, didIndex = 0, main = 5, indexChuDe;
     List<ChuDe> dsChuDe;
     static List<UngDung> dsUngDung;
@@ -74,8 +74,10 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
 
         reLay13 = (RelativeLayout) findViewById(R.id.relay13_ds);
         reLay12 = (RelativeLayout) findViewById(R.id.relay12_ds);
+        reLay11 = (RelativeLayout) findViewById(R.id.relay11_ds);
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
-        reLay12.setPadding(mChieuDai * 10, mChieuRong, mChieuDai, mChieuRong * 2);
+        reLay12.setPadding(mChieuDai * 10, mChieuRong, mChieuDai*35, mChieuRong * 2);
+        reLay11.setPadding(mChieuDai*35,0,mChieuDai,0);
         reLay113 = (RelativeLayout) findViewById(R.id.relay113_ds);
         reLay111 = (RelativeLayout) findViewById(R.id.relay111_ds);
         reLay112 = (RelativeLayout) findViewById(R.id.relay112_ds);

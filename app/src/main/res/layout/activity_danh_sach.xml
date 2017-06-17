@@ -27,9 +27,7 @@
         <RelativeLayout
             android:id="@+id/relay12_ds"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_toLeftOf="@+id/relay11_ds"
-            android:layout_toRightOf="@+id/img1">
+            android:layout_height="fill_parent">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -56,8 +54,8 @@
 
         <RelativeLayout
             android:id="@+id/relay11_ds"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:orientation="horizontal">
 
@@ -65,6 +63,7 @@
                 android:id="@+id/relay111_ds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:padding="5dp">
 
                 <ImageView
@@ -104,7 +103,8 @@
                 android:id="@+id/relay112_ds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/relay111_ds"
+                android:layout_toLeftOf="@+id/relay113_ds"
+                android:layout_toRightOf="@+id/relay111_ds"
                 android:padding="5dp">
 
                 <ImageView
@@ -143,9 +143,9 @@
 
             <RelativeLayout
                 android:id="@+id/relay113_ds"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/relay112_ds"
+                android:layout_alignParentRight="true"
                 android:padding="5dp">
 
                 <ImageView
