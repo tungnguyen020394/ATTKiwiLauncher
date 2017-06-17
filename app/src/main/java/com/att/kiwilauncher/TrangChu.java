@@ -260,13 +260,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay113.setOnClickListener(this);
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
-<<<<<<< Updated upstream
-        reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai * 35, mChieuRong * 2);
-        reLay11.setPadding(mChieuDai * 33, 0, mChieuDai, 0);
-=======
-        reLay12.setPadding(mChieuDai * 9, mChieuRong*2, mChieuDai*35, mChieuRong * 2);
+        reLay12.setPadding(mChieuDai * 9, mChieuRong*2, mChieuDai*35, mChieuRong);
         reLay11.setPadding(mChieuDai*33,0,mChieuDai,0);
->>>>>>> Stashed changes
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
@@ -694,10 +689,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     }
                     didIndex++;
                     rcApp.getChildAt(didIndex - main - 1 - cates.size()).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex == main + cates.size() + listApps.get(demdsApp).size()) {
-                    rcApp.getChildAt(didIndex - main - 1 - cates.size()).setBackgroundResource(R.drawable.none);
+                } else if (didIndex == main + cates.size() + listApps.get(demdsApp).size() - 1) {
+                    rcApp.getChildAt(didIndex - main - cates.size()).setBackgroundResource(R.drawable.none);
                     imagePlus.setImageResource(R.drawable.ic_plus);
-                    didIndex++;
                 } else if (didIndex >= main + cates.size() + listApps.get(0).size() + 2
                         && didIndex <= listItem.size() - 1) {
                     if (didIndex != listItem.size() - 1) {
