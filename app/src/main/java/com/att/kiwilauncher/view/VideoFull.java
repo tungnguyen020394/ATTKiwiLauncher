@@ -31,9 +31,6 @@ import java.util.ArrayList;
 
 public class VideoFull extends AppCompatActivity implements View.OnTouchListener{
 
-    SimpleExoPlayerView exoPlayer;
-    SimpleExoPlayer player;
-    TrackSelector trackSelector;
     Intent intent;
 
     VideoView video;
@@ -41,7 +38,7 @@ public class VideoFull extends AppCompatActivity implements View.OnTouchListener
     int timePause;
     int indexvideo;
     ArrayList<String> listvideo;
-    DatabaseHelper mDatabaseHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +46,6 @@ public class VideoFull extends AppCompatActivity implements View.OnTouchListener
         setContentView(R.layout.activity_video_full);
         listvideo=new ArrayList<>();
         list=new ArrayList<>();
-        mDatabaseHelper=new DatabaseHelper(this);
-
-//        listvideo= mDatabaseHelper.getListVideoQuangCao();
-//        exoPlayer= (SimpleExoPlayerView) findViewById(R.id.video_Full);
 
         video= (VideoView) findViewById(R.id.video_Full);
 
@@ -71,36 +64,9 @@ public class VideoFull extends AppCompatActivity implements View.OnTouchListener
         video.seekTo(timePause);
         video.start();
 
-//        createPlayer(list.get(indexvideo));
-//        exoPlayer.setOnTouchListener(this);
-
     }
 
-    public void createPlayer(String link) {
 
-        BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
-        TrackSelection.Factory videoTrackSelectionFactory =
-                new AdaptiveTrackSelection.Factory(bandwidthMeter);
-        trackSelector =
-                new DefaultTrackSelector(videoTrackSelectionFactory);
-
-        player = ExoPlayerFactory.newSimpleInstance(this, trackSelector);
-        exoPlayer.setPlayer(player);
-        prepareVideo(link);
-    }
-
-    public void prepareVideo(String link) {
-        DefaultBandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
-        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
-                Util.getUserAgent(this, "ShweVideo"), bandwidthMeter);
-        ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
-        MediaSource videoSource = new ExtractorMediaSource(Uri.parse(link),
-                dataSourceFactory, extractorsFactory, null, null);
-
-        player.prepare(videoSource);
-        player.seekTo(timePause);
-        player.setPlayWhenReady(true);
-    }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
