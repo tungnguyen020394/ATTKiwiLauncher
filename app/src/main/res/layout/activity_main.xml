@@ -30,14 +30,15 @@
         <RelativeLayout
             android:id="@+id/relay12"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_toLeftOf="@+id/relay11"
-            android:layout_toRightOf="@+id/img1">
+            android:layout_height="fill_parent">
 
             <RelativeLayout
+                android:id="@+id/relay121"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_text">
+                android:background="@drawable/border_text"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
                 <TextView
                     android:id="@+id/text1"
@@ -49,6 +50,7 @@
                     android:gravity="center"
                     android:marqueeRepeatLimit="marquee_forever"
                     android:scrollHorizontally="true"
+                    android:layout_centerHorizontal="true"
                     android:singleLine="true"
                     android:text=" Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! "
                     android:textAllCaps="true"
@@ -66,8 +68,9 @@
 
             <RelativeLayout
                 android:id="@+id/relay111"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/relay112"
                 android:padding="5dp">
 
                 <ImageView
@@ -75,8 +78,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_lich"
-                    android:padding="5dp"/>
+                    android:padding="5dp"
+                    android:src="@drawable/ic_lich"/>
 
                 <TextView
                     android:id="@+id/txt_duonglich"
@@ -85,10 +88,10 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@id/img_lich"
+                    android:singleLine="true"
                     android:text="Thứ 7 , 10/6/2017    "
                     android:textAllCaps="true"
-                    android:singleLine="true"
-                    android:textSize="13dp" />
+                    android:textSize="13dp"/>
 
                 <TextView
                     android:id="@+id/txt_amlich"
@@ -100,14 +103,14 @@
                     android:singleLine="true"
                     android:text="16/5 Đinh dậu "
                     android:textAllCaps="true"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay112"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/relay111"
+                android:layout_toLeftOf="@+id/relay113"
                 android:padding="5dp">
 
                 <ImageView
@@ -129,7 +132,7 @@
                     android:singleLine="true"
                     android:text="Hà Nôi    "
                     android:textAllCaps="true"
-                    android:textSize="13dp" />
+                    android:textSize="13dp"/>
 
                 <TextView
                     android:id="@+id/txt_nhietdo"
@@ -141,14 +144,14 @@
                     android:singleLine="true"
                     android:text="28 độ       "
                     android:textAllCaps="true"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay113"
-                android:layout_width="wrap_content"
+                android:layout_width="145dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/relay112"
+                android:layout_alignParentRight="true"
                 android:padding="5dp">
 
                 <ImageView
@@ -167,10 +170,10 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/img_caidat"
-                    android:text="Cấu Hình      "
                     android:singleLine="true"
+                    android:text="Cấu Hình      "
                     android:textAllCaps="true"
-                    android:textSize="13dp" />
+                    android:textSize="13dp"/>
 
                 <TextView
                     android:id="@+id/txt_kiwi"
@@ -182,8 +185,9 @@
                     android:singleLine="true"
                     android:text="KiwiBox       "
                     android:textAllCaps="true"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"/>
             </RelativeLayout>
+
         </RelativeLayout>
     </RelativeLayout>
 
@@ -370,22 +374,27 @@
             <RelativeLayout
                 android:id="@+id/relay222"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
 
                 <RelativeLayout
                     android:id="@+id/relay2221"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/border_video"
-                    android:padding="4dp">
+                    android:padding="10dp"
+                    >
 
-                    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                    <VideoView
                         android:id="@+id/videoView"
-                        app:use_controller="false"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerInParent="true"/>
+                        android:layout_centerHorizontal="true"/>
+                    <!--<com.google.android.exoplayer2.ui.SimpleExoPlayerView-->
+                        <!--android:id="@+id/videoView"-->
+                        <!--app:use_controller="false"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_centerInParent="true"/>-->
 
                     <ImageView
                         android:id="@+id/imgView"
@@ -394,13 +403,14 @@
                         android:layout_centerInParent="true"
                         android:scaleType="fitXY"/>
 
-
                     <LinearLayout
+                        android:id="@+id/linear1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_17sdp"
                         android:layout_alignParentBottom="true"
                         android:background="@drawable/ic_bgvideo"
                         android:orientation="horizontal"
+                        android:layout_marginBottom="5dp"
                         >
 
                         <ImageView
@@ -408,17 +418,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_2sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
                             android:src="@drawable/ic_website"
                             />
 
                         <TextView
-                            android:layout_marginLeft="@dimen/_5sdp"
-                            android:textSize="@dimen/_5sdp"
-                            android:text="Toàn màn hình"
-                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:text="Toàn màn hình"
+                            android:textSize="@dimen/_5sdp"/>
 
                         <ImageButton
                             android:id="@+id/imgFull"
@@ -427,7 +437,8 @@
                             android:layout_alignRight="@id/imgWeb"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_2sdp"
-                            android:background="@drawable/ic_fullvideo"/>
+                            android:src="@drawable/ic_fullvideo"
+                            android:background="@drawable/none"/>
 
                         <TextView
                             android:layout_width="0dp"
@@ -440,7 +451,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
-                            android:background="@drawable/ic_backvideo"/>
+                            android:src="@drawable/ic_backvideo"
+                            android:background="@drawable/none"/>
 
                         <ImageButton
                             android:id="@+id/imgPlay"
@@ -449,8 +461,8 @@
                             android:layout_alignLeft="@id/imgBack"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
-                            android:background="@drawable/ic_playvideo"/>
-
+                            android:src="@drawable/ic_pause"
+                            android:background="@drawable/none" />
 
                         <ImageButton
                             android:id="@+id/imgNext"
@@ -459,7 +471,8 @@
                             android:layout_alignLeft="@id/imgPlay"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
-                            android:background="@drawable/ic_nextvideo"/>
+                            android:src="@drawable/ic_nextvideo"
+                            android:background="@drawable/none"/>
 
                         <TextView
                             android:id="@+id/tvTimeBegin"
@@ -470,11 +483,11 @@
                             android:text="00:00"/>
 
                         <TextView
+                            android:id="@+id/tvTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text=" / "/>
-
 
                         <TextView
                             android:id="@+id/tvTimeEnd"
@@ -484,13 +497,14 @@
                             android:text="03:35"/>
 
                         <ImageButton
-                            android:id="@+id/imgVolumeOf"
+                            android:id="@+id/imgVolumeOn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/ic_volumeoff"/>
+                            android:src="@drawable/ic_volumeoff"
+                            android:background="@drawable/none" />
 
                     </LinearLayout>
                 </RelativeLayout>
@@ -507,12 +521,18 @@
             android:id="@+id/recycler1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/relay3"></RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/relay4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/img_minus"
             android:layout_width="wrap_content"
@@ -522,10 +542,10 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_toRightOf="@+id/img_minus"
             android:layout_marginLeft="10dp"
-            android:layout_toLeftOf="@+id/img_plus"
             android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/img_plus"
+            android:layout_toRightOf="@+id/img_minus"
             android:padding="10dp">
 
             <android.support.v7.widget.RecyclerView
@@ -539,8 +559,8 @@
             android:id="@+id/img_plus"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:src="@drawable/ic_plus1"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_plus1"/>
     </RelativeLayout>
 
 </RelativeLayout>

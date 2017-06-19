@@ -6,12 +6,19 @@
     <color name="colorWhite">#ffffff</color>
     <color name="blue1">#90CAF9</color>
     <color name="none">#00ffffff</color>
-    <color name="bordervideo">#454a59</color>
+    <color name="bordervideo">#233126</color>
     <color name="bordercate">#23391d</color>
     <color name="colorthemetext">#151a28</color>
     <color name="colorcatenew">#c4eb6a</color>
     <color name="colorcatenone">#828882</color>
     <color name="colorbordertextnew">#0a1808</color>
     <color name="colorbordercate1">#afe435</color>
+<<<<<<< HEAD
     <color name="lightGreen">#00e676</color>
+=======
+    <color name="colorWhite1">#e5ededed</color>
+    <color name="colorWhite2">#ffffff</color>
+    <color name="backpick">#051904</color>
+
+>>>>>>> master
 </resources>

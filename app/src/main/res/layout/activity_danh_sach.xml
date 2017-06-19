@@ -27,9 +27,7 @@
         <RelativeLayout
             android:id="@+id/relay12_ds"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_toLeftOf="@+id/relay11_ds"
-            android:layout_toRightOf="@+id/img1">
+            android:layout_height="fill_parent">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -47,6 +45,7 @@
                     android:marqueeRepeatLimit="marquee_forever"
                     android:scrollHorizontally="true"
                     android:singleLine="true"
+                    android:layout_centerHorizontal="true"
                     android:text=" Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! "
                     android:textAllCaps="true"
                     android:textSize="15dp"
@@ -56,15 +55,16 @@
 
         <RelativeLayout
             android:id="@+id/relay11_ds"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:orientation="horizontal">
 
             <RelativeLayout
                 android:id="@+id/relay111_ds"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/relay112_ds"
                 android:padding="5dp">
 
                 <ImageView
@@ -102,9 +102,9 @@
 
             <RelativeLayout
                 android:id="@+id/relay112_ds"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/relay111_ds"
+                android:layout_toLeftOf="@+id/relay113_ds"
                 android:padding="5dp">
 
                 <ImageView
@@ -143,9 +143,9 @@
 
             <RelativeLayout
                 android:id="@+id/relay113_ds"
-                android:layout_width="wrap_content"
+                android:layout_width="145dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/relay112_ds"
+                android:layout_alignParentRight="true"
                 android:padding="5dp">
 
                 <ImageView
