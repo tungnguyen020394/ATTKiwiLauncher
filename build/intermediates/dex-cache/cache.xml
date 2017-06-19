@@ -12,15 +12,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/mac/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.5.1/bb67dad90bab7cd77a8f7f1b8442b47e3a2326bc/butterknife-annotations-8.5.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="bb67dad90bab7cd77a8f7f1b8442b47e3a2326bc">
-        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-annotations-8.5.1_74bb2ad0b024aaa8dd42bb21d0ad809902e3da88/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -29,13 +20,22 @@
         <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7b603fd20c4b4849bc9f9ac7d23aee0eec31dc95/classes.dex" />
     </item>
     <item
-        is-multidex="true"
+        is-multidex="false"
+        jar="/Users/mac/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.5.1/bb67dad90bab7cd77a8f7f1b8442b47e3a2326bc/butterknife-annotations-8.5.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bb67dad90bab7cd77a8f7f1b8442b47e3a2326bc">
+        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/pre-dexed/debug/butterknife-annotations-8.5.1_74bb2ad0b024aaa8dd42bb21d0ad809902e3da88.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/mac/.android/build-cache/a02d0230c70cb4c7af366bd33023ae1b4f038a6f/output/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="19f281a785ca0eb5f6799fc7bf7ca199a9ca1e8b">
-        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3868614e3bf874b080675b9065fc0df1141c9e90/classes.dex" />
+        <dex dex="/Users/mac/Desktop/ATTKiwiLauncher/app/build/intermediates/pre-dexed/debug/classes_3868614e3bf874b080675b9065fc0df1141c9e90.jar" />
     </item>
 
 </items>
