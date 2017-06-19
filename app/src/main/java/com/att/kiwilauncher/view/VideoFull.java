@@ -292,10 +292,10 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case KeyEvent.KEYCODE_DPAD_LEFT:
-                if (didIndex < 6) {
+                if (didIndex < 6 && didIndex > 0) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
                     if (didIndex == 4 && position == 1) {
-                        didIndex++;
+                        didIndex--;
                     }
                     didIndex--;
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
@@ -303,7 +303,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case KeyEvent.KEYCODE_DPAD_RIGHT:
-                if (didIndex < 6) {
+                if (didIndex < 5) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
                     if (didIndex == 2 && position == 1) {
                         didIndex++;

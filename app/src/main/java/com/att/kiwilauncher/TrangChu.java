@@ -92,7 +92,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
     LinearLayout linNear1;
     Volume volume;
-    boolean checkNextBack = false;
     ImageView imgView, imgWeb;
     ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOn,ibtFull;
     TextView tvTimeStart, tvTimeEnd, tvTime;
@@ -257,7 +256,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay113.setOnClickListener(this);
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
-        reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai*35, mChieuRong);
+        reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai*33, mChieuRong);
         reLay11.setPadding(mChieuDai*33,0,mChieuDai,0);
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
@@ -538,7 +537,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 if ((didIndex >= 4) && (didIndex < main)) {
                     willIndex = didIndex - 4;
                     changeListItemBackGround(didIndex, willIndex);
-                    if (didIndex == 7) {
+                    if (didIndex == 7 || didIndex == 11) {
                         listItem.get(didIndex).callOnClick();
                     }
                 } else if ((didIndex >= main) && (didIndex < main + cates.size())) {
@@ -547,7 +546,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                         didIndex = didIndex - cates.size();
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
                         if (didIndex == 7 || didIndex == 11) {
-                            listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
+                            listItem.get(didIndex).setBackgroundResource(R.drawable.border_video);
                         }
                     } else {
                         didIndex = main - 1;
@@ -575,7 +574,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 if ((didIndex >= 0) && (didIndex < main - 4)) {
                     willIndex = didIndex + 4;
                     changeListItemBackGround(didIndex, willIndex);
-                    if (didIndex == 7) {
+                    if (didIndex == 7 || didIndex == 11) {
                         listItem.get(didIndex).callOnClick();
                     }
                 } else if ((didIndex >= main - 4) && (didIndex < main)) {
@@ -601,12 +600,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 if ((didIndex > 0) && (didIndex < main + 1)) {
                     if (didIndex == main) {
                         didIndex--;
-                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_video);
                         return true;
                     }
                     willIndex = didIndex - 1;
                     changeListItemBackGround(didIndex, willIndex);
-                    if (didIndex == 7) {
+                    if (didIndex == 7 || didIndex == 11) {
                         listItem.get(didIndex).callOnClick();
                     }
                 } else if ((didIndex >= main + 1) && (didIndex < (main + 1 + cates.size()))) {
@@ -625,7 +624,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     imagePlus.setImageResource(R.drawable.ic_plus1);
                     didIndex--;
                     rcApp.getChildAt(didIndex - main - 1 - cates.size()).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex == main + 1 + cates.size() + listApps.get(demdsApp).size()) {
+                } else if (didIndex == main + cates.size() + listApps.get(demdsApp).size() + 1) {
                     imagePlus.setImageResource(R.drawable.ic_plus1);
                     didIndex--;
                     rcApp.getChildAt(didIndex - main - 1 - cates.size()).setBackgroundResource(R.drawable.border_pick);
@@ -637,7 +636,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                             didIndex--;
                         }
                         didIndex--;
-                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_video);
                     } else {
                         listItem.get(didIndex).setBackgroundResource(R.drawable.none);
                         didIndex = 7;
@@ -650,7 +649,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 if (didIndex < main - 1) {
                     willIndex = didIndex + 1;
                     changeListItemBackGround(didIndex, willIndex);
-                    if (didIndex == 7) {
+                    if (didIndex == 7 || didIndex == 11) {
                         listItem.get(didIndex).callOnClick();
                     }
                 } else if (didIndex <= (main - 1 + cates.size())) {
@@ -671,8 +670,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     }
                     didIndex++;
                     rcApp.getChildAt(didIndex - main - 1 - cates.size()).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex == main + cates.size() + listApps.get(demdsApp).size() - 1) {
-                    rcApp.getChildAt(didIndex - main - cates.size()).setBackgroundResource(R.drawable.none);
+                } else if (didIndex == main + cates.size() + listApps.get(demdsApp).size()) {
+                    rcApp.getChildAt(didIndex - main - cates.size() - 1).setBackgroundResource(R.drawable.none);
+                    didIndex++;
                     imagePlus.setImageResource(R.drawable.ic_plus);
                 } else if (didIndex >= main + cates.size() + listApps.get(0).size() + 2
                         && didIndex <= listItem.size() - 1) {
@@ -687,7 +687,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                             return true;
                         }
                         didIndex++;
-                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_video);
 
                     } else {
                         listItem.get(didIndex).setBackgroundResource(R.drawable.none);
@@ -766,18 +766,17 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.imgNext:
-                checkNextBack = true;
+                handler.removeCallbacks(nextvideo);
                 if (indexVideo == listvideo.size() - 1) indexVideo = 0;
                 else indexVideo++;
                 setVideoOrImager(listvideo.get(indexVideo));
                 break;
 //
             case R.id.imgBack:
-                checkNextBack = true;
+                handler.removeCallbacks(nextvideo);
                 if (indexVideo == 0) indexVideo = (listvideo.size() - 1);
                 else indexVideo--;
                 setVideoOrImager(listvideo.get(indexVideo));
-
                 break;
 
             case R.id.img_caidat:
@@ -926,7 +925,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         }
         listItem.get(j).setBackgroundResource(R.drawable.border_pick);
         if (j == 7 || j == 11) {
-            listItem.get(j).setBackgroundResource(R.drawable.border_videopick);
+            listItem.get(j).setBackgroundResource(R.drawable.border_video);
         }
         didIndex = willIndex;
     }
@@ -959,7 +958,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         position = checkLink.CheckLinkURL(check);
 
         if (position == 1) {
-            checkNextBack = false;
             imgView.setVisibility(View.VISIBLE);
             ibtPlay.setVisibility(View.GONE);
             video.setVisibility(View.GONE);
@@ -972,17 +970,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     .load(listvideo.get(indexVideo))
                     .into(imgView);
 
-            if (checkNextBack == false) {
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (indexVideo == listvideo.size() - 1) indexVideo = 0;
-                        else indexVideo++;
-                        checkNextBack = true;
-                        setVideoOrImager(listvideo.get(indexVideo));
-                    }
-                }, 5000);
-            }
+            handler.postDelayed(nextvideo,5000);
         } else if (position == 2) {
             imgView.setVisibility(View.GONE);
             video.setVisibility(View.VISIBLE);
@@ -1049,4 +1037,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
         t.start();
     }
+
+    private Runnable nextvideo = new Runnable() {
+        @Override
+        public void run() {
+            if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+            else indexVideo++;
+            setVideoOrImager(listvideo.get(indexVideo));
+        }
+    };
 }
