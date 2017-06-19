@@ -66,62 +66,34 @@ import static com.att.kiwilauncher.R.id.relay2;
 
 public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
-<<<<<<< HEAD
-    RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11,
-            reLay21, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12;
-=======
     int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position;
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11,
             reLay21, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,
             reLay2221,reLay121;
-    List<ChuDe> cates;
->>>>>>> master
     ArrayList<View> listItem;
-    TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo, tvTimeStart, tvTimeEnd;
+    TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo;
     VideoView video;
     ImageView image1, image2, image3, image4, image5, image6,
-            imageCaiDat, imageMinus, imagePlus, imgView, imgWeb;
-    ImageButton ibtNext, ibtPlay, ibtBack, ibtVolume;
-    private ProgressDialog dialog;
+            imageCaiDat, imageMinus, imagePlus;
     private AlertDialog mNetworkConnectionNoticeDialog;
     private AlertDialog.Builder mNetworkConnectionNoticeDialogBuilder;
     RecyclerView rcCategory;
     static RecyclerView rcApp;
-    public static View.OnClickListener appClick;
     public static UngDungAdapter listapp;
-
     static List<UngDung> apps;
     List<ChuDe> cates;
     public static List<List<UngDung>> listApps;
     public static List<UngDung> listAppBottom;
     ArrayList<String> listvideo;
-<<<<<<< HEAD
     private RequestQueue requestQueue;
     static PackageManager manager;
-
-    int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12;
-=======
     public static View.OnClickListener appClick;
-    VideoView video;
-    ImageView image1, image2, image3, image4, image5, image6,
-            imageCaiDat, imageMinus, imagePlus;
->>>>>>> master
     public static final int REQUEST_SETTINGS = 101;
     public static int demdsApp = 0;
-    private long timePause = 0;
     int indexVideo = 0;
     private static final String TAG = "TrangChu";
-
     DatabaseHelper mDatabaseHelper;
-<<<<<<< HEAD
-    Volume volume;
-    CheckLink checkLink;
-    SimpleExoPlayerView exoPlayer;
-    SimpleExoPlayer player;
-    TrackSelector trackSelector;
-=======
     private ProgressDialog dialog;
-
     LinearLayout linNear1;
     Volume volume;
     ImageView imgView, imgWeb;
@@ -129,12 +101,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     TextView tvTimeStart, tvTimeEnd, tvTime;
     CheckLink checkLink;
     MediaPlayer mp;
-
     private int timePause = 0;
     private boolean dragging, playing = true, mute = true;
     Intent intent;
     Handler handler = new Handler();
->>>>>>> master
 
 
     @Override
@@ -460,11 +430,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay2 = (RelativeLayout) findViewById(relay2);
         reLay2.setPadding(mChieuDai, mChieuRong * 6, mChieuDai, mChieuRong * 12);
         reLay3 = (RelativeLayout) findViewById(R.id.relay3);
-<<<<<<< HEAD
-        reLay3.setPadding(mChieuDai * 2, mChieuRong * 27, mChieuDai, mChieuRong * 8);
-=======
         reLay3.setPadding(mChieuDai * 3, mChieuRong * 27, mChieuDai, mChieuRong * 8);
->>>>>>> master
         reLay4 = (RelativeLayout) findViewById(R.id.relay4);
         reLay4.setPadding(0, mChieuRong * 31, 0, 0);
 
@@ -476,13 +442,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay113.setOnClickListener(this);
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
-<<<<<<< HEAD
-        reLay12.setPadding(mChieuDai * 9, mChieuRong, 0, mChieuRong * 2);
-=======
         reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai * 35, mChieuRong);
         reLay11.setPadding(mChieuDai * 33, 0, mChieuDai, 0);
         reLay121 = (RelativeLayout) findViewById(R.id.relay121);
->>>>>>> master
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
@@ -510,17 +472,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         rcCategory = (RecyclerView) findViewById(R.id.recycler1);
         rcApp = (RecyclerView) findViewById(R.id.recycler2);
 
-<<<<<<< HEAD
-        //video = (VideoView) findViewById(R.id.videoView);
-        exoPlayer = (SimpleExoPlayerView) findViewById(R.id.videoView);
-        volume = new Volume();
-        checkLink = new CheckLink();
-=======
         video = (VideoView) findViewById(R.id.videoView);
 //        exoPlayer = (SimpleExoPlayerView) findViewById(R.id.videoView);
 
         ibtNext = (ImageButton) findViewById(R.id.imgNext);
->>>>>>> master
         ibtPlay = (ImageButton) findViewById(R.id.imgPlay);
         ibtBack = (ImageButton) findViewById(R.id.imgBack);
         ibtVolumeOn = (ImageButton) findViewById(R.id.imgVolumeOn);
@@ -637,9 +592,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         requestQueue.add(stringRequest);
         mTxtTinh.setText(thoiTiet.getTen());
 
-<<<<<<< HEAD
-
-=======
         dialog = new ProgressDialog(this);
         dialog.setTitle("Đang tải");
         dialog.setMessage("Vui lòng đợi ứng dụng tải dữ liệu");
@@ -762,7 +714,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             }
         };
         requestQueue.add(stringRequest2);
->>>>>>> master
     }
 
     @Override

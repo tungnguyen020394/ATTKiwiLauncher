@@ -1,13 +1,8 @@
 <component name="libraryTable">
   <library name="sdp-android-1.0.3">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="file://$USER_HOME$/.android/build-cache/3df838eabadbad18526a728dfdaa35f7f3f19670/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/3df838eabadbad18526a728dfdaa35f7f3f19670/output/jars/classes.jar!/" />
-=======
       <root url="file://$USER_HOME$/.android/build-cache/1749245b5bb9daddf06b9c4a0995a7cae0002256/output/res" />
       <root url="jar://$USER_HOME$/.android/build-cache/1749245b5bb9daddf06b9c4a0995a7cae0002256/output/jars/classes.jar!/" />
->>>>>>> master
     </CLASSES>
     <JAVADOC />
     <SOURCES />
