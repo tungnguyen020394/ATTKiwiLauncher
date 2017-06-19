@@ -7,9 +7,38 @@ import android.graphics.drawable.Drawable;
  */
 
 public class UngDung {
-    CharSequence    labelApp;
-    CharSequence    nameApp;
-    Drawable        iconApp;
+    CharSequence labelApp;
+    CharSequence nameApp;
+    Drawable iconApp;
+    String icon;
+    String id;
+
+    public UngDung() {
+    }
+
+    public UngDung(CharSequence labelApp, CharSequence nameApp, Drawable iconApp, String icon, String id) {
+        this.labelApp = labelApp;
+        this.nameApp = nameApp;
+        this.iconApp = iconApp;
+        this.icon = icon;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 
     public CharSequence getNameApp() {
         return nameApp;

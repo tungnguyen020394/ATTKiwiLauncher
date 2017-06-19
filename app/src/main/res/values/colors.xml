@@ -13,8 +13,8 @@
     <color name="colorcatenone">#828882</color>
     <color name="colorbordertextnew">#0a1808</color>
     <color name="colorbordercate1">#afe435</color>
+    <color name="lightGreen">#00e676</color>
     <color name="colorWhite1">#e5ededed</color>
     <color name="colorWhite2">#ffffff</color>
     <color name="backpick">#051904</color>
-
 </resources>

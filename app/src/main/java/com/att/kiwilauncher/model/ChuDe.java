@@ -6,8 +6,11 @@ package com.att.kiwilauncher.model;
 
 public class ChuDe {
     String nameCate;
+    // ảnh thể loại
     int drawCate;
+    //id thể loại
     int indexCate;
+    // chủ đề được chọn hay không ?
     boolean checkedCate;
 
     public ChuDe(String nameCate, int drawCate, int indexCate, boolean checkedCate) {
@@ -15,6 +18,9 @@ public class ChuDe {
         this.drawCate = drawCate;
         this.indexCate = indexCate;
         this.checkedCate = checkedCate;
+    }
+
+    public ChuDe() {
     }
 
     public boolean isCheckedCate() {
