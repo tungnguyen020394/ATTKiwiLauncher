@@ -168,6 +168,9 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
                 text.setSelected(true);
                 if (didIndex < main) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                    if (didIndex == 1) {
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
+                    }
                     rcChuDe.getChildAt(0).callOnClick();
                     didIndex = main;
                 } else if ((didIndex >= main) && (didIndex < main + dsChuDe.size())) {
@@ -186,7 +189,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
                 text.setSelected(true);
                 if (didIndex >= main && didIndex < main + dsChuDe.size()) {
                     didIndex = 0;
-                    listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
+                    listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
                 } else if ((didIndex >= main + dsChuDe.size()) && (didIndex < main + dsChuDe.size() + 7)) {
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
                     didIndex = indexChuDe;
@@ -204,10 +207,11 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
                 if (didIndex > 0 && didIndex <= main) {
                     if (didIndex != main) {
                         listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                        if (didIndex == 1) listItem.get(didIndex).setBackgroundResource(R.drawable.border_text);
                     }
-
                     didIndex--;
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
+                    if (didIndex == 1) listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
                 } else if (didIndex > main && didIndex <= main + dsChuDe.size()) {
                     if (didIndex == main + dsChuDe.size()) {
                         rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.none);
@@ -225,8 +229,10 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
                 text.setSelected(true);
                 if (didIndex < main - 1) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                    if (didIndex == 1) listItem.get(didIndex).setBackgroundResource(R.drawable.border_text);
                     didIndex++;
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
+                    if (didIndex == 1) listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
                 } else if ((didIndex >= main - 1) && (didIndex <= main - 1 + dsChuDe.size())) {
                     if (didIndex == main - 1) {
                         listItem.get(main - 1).setBackgroundResource(R.drawable.none);

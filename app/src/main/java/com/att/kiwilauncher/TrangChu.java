@@ -68,7 +68,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position;
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11,
             reLay21, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,
-            reLay2221;
+            reLay2221,reLay121;
     List<ChuDe> cates;
     ArrayList<View> listItem;
     TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo;
@@ -258,6 +258,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
         reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai * 35, mChieuRong);
         reLay11.setPadding(mChieuDai * 33, 0, mChieuDai, 0);
+        reLay121 = (RelativeLayout) findViewById(R.id.relay121);
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
@@ -883,7 +884,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     }
 
     public void addNavigationItem() {
-        listItem.add(text);
+        listItem.add(reLay121);
         listItem.add(reLay111);
         listItem.add(reLay112);
         listItem.add(reLay113);
@@ -921,6 +922,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
     public void changeListItemBackGround(int i, int j) {
         listItem.get(i).setBackgroundResource(R.drawable.none);
+        if (i == 0) listItem.get(i).setBackgroundResource(R.drawable.border_text);
         if (i == 7 || i == 11) {
             listItem.get(i).setBackgroundResource(R.drawable.border_video);
         }
@@ -928,6 +930,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         if (j == 7 || j == 11) {
             listItem.get(j).setBackgroundResource(R.drawable.border_video);
         }
+        if (j == 0) listItem.get(j).setBackgroundResource(R.drawable.border_textpick);
         didIndex = willIndex;
     }
 
