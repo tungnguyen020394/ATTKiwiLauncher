@@ -43,43 +43,16 @@ import butterknife.BindView;
 
 public class VideoFull extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
 
-    @BindView(R.id.imgPlay_video)
-    ImageButton ibtPlayVideo;
-    @BindView(R.id.imgNext_video)
-    ImageButton ibtNextVideo;
-    @BindView(R.id.imgBack_video)
-    ImageButton ibtBackVideo;
-    @BindView(R.id.imgPause_video)
-    ImageButton ibtPauseVideo;
-    @BindView(R.id.imgExitFull)
-    ImageButton ibtExitFullVideo;
-    @BindView(R.id.imgVolumeOf_video)
-    ImageButton ibtVolumeOfVideo;
-    @BindView(R.id.imgVolumeOn_video)
-    ImageButton ibtVolumeOnVideo;
-    @BindView(R.id.imgWeb_video)
-    ImageView imgWebVideo;
-    @BindView(R.id.video_Full)
-    VideoView video;
-    @BindView(R.id.imgView_Full)
-    ImageView imgView;
-    @BindView(R.id.tvTime_video)
-    TextView tvTimeVideo;
-    @BindView(R.id.tvTimeBegin_video)
-    TextView tvTimeStartVideo;
-    @BindView(R.id.tvTimeEnd_video)
-    TextView tvTimeEndVideo;
-
     Intent intent;
     int timePause;
-    int indexVideo;
+    int indexVideo=0;
     MediaPlayer mp;
     Handler handler;
     ArrayList<String> listvideo;
-    ArrayList<String> list;
+
     CheckLink checkLink;
     Volume volume;
-
+    ViewHoder vh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,48 +60,77 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_video_full);
 
         initVideo();
-
-        indexVideo = intent.getIntExtra("index", 0);
-        list = intent.getStringArrayListExtra("list");
-        timePause = intent.getIntExtra("timePause", 0);
-        setVideoOrImager(list.get(indexVideo));
-
     }
 
     private void initVideo() {
+        vh=new ViewHoder();
         listvideo = new ArrayList<>();
-        list = new ArrayList<>();
+//        list = new ArrayList<>();
         checkLink = new CheckLink();
         intent = getIntent();
         handler = new Handler();
         volume = new Volume();
 
-        ibtNextVideo.setOnClickListener(this);
-        ibtPlayVideo.setOnClickListener(this);
-        ibtBackVideo.setOnClickListener(this);
-        ibtExitFullVideo.setOnClickListener(this);
-        ibtVolumeOfVideo.setOnClickListener(this);
-        ibtVolumeOnVideo.setOnClickListener(this);
-        ibtPauseVideo.setOnClickListener(this);
-        imgWebVideo.setOnClickListener(this);
+        vh.ibtNextVideo.setOnClickListener(this);
+        vh.ibtPlayVideo.setOnClickListener(this);
+        vh.ibtBackVideo.setOnClickListener(this);
+        vh.ibtExitFullVideo.setOnClickListener(this);
+        vh.ibtVolumeOfVideo.setOnClickListener(this);
+        vh.ibtVolumeOnVideo.setOnClickListener(this);
+        vh.ibtPauseVideo.setOnClickListener(this);
+        vh.imgWebVideo.setOnClickListener(this);
+
+        indexVideo = intent.getIntExtra("index", 0);
+        listvideo = intent.getStringArrayListExtra("list");
+        timePause = intent.getIntExtra("timePause", 0);
+
+        setVideoOrImager(listvideo.get(indexVideo));
     }
 
+    private class ViewHoder{
+
+        ImageButton ibtPlayVideo,ibtNextVideo,ibtBackVideo,ibtPauseVideo,ibtExitFullVideo,ibtVolumeOfVideo,ibtVolumeOnVideo;
+
+        ImageView imgWebVideo,imgView;
+        VideoView video;
+        TextView tvTimeVideo,tvTimeStartVideo,tvTimeEndVideo;
+
+        public ViewHoder() {
+            ibtBackVideo= (ImageButton) findViewById(R.id.imgBack_video);
+            ibtPlayVideo= (ImageButton) findViewById(R.id.imgPlay_video);
+            ibtNextVideo= (ImageButton) findViewById(R.id.imgNext_video);
+            ibtPauseVideo= (ImageButton) findViewById(R.id.imgPause_video);
+            ibtExitFullVideo= (ImageButton) findViewById(R.id.imgExitFull);
+            ibtVolumeOfVideo= (ImageButton) findViewById(R.id.imgVolumeOf_video);
+            ibtVolumeOnVideo= (ImageButton) findViewById(R.id.imgVolumeOn_video);
+
+            video= (VideoView) findViewById(R.id.video_Full);
+
+            imgWebVideo= (ImageView) findViewById(R.id.imgWeb_video);
+            imgView= (ImageView) findViewById(R.id.imgView_Full);
+
+            tvTimeVideo= (TextView) findViewById(R.id.tvTime_video);
+            tvTimeStartVideo= (TextView) findViewById(R.id.tvTimeBegin_video);
+            tvTimeEndVideo= (TextView) findViewById(R.id.tvTimeEnd_video);
+
+        }
+    }
 
     private void setVideoOrImager(String check) {
 
         int position = checkLink.CheckLinkURL(check);
         if (position == 1) {
-            imgView.setVisibility(View.VISIBLE);
-            video.setVisibility(View.GONE);
-            ibtPauseVideo.setVisibility(View.GONE);
-            ibtVolumeOfVideo.setVisibility(View.GONE);
-            tvTimeStartVideo.setVisibility(View.GONE);
-            tvTimeVideo.setVisibility(View.GONE);
+            vh.imgView.setVisibility(View.VISIBLE);
+            vh.video.setVisibility(View.GONE);
+            vh.ibtPauseVideo.setVisibility(View.GONE);
+            vh.ibtVolumeOfVideo.setVisibility(View.GONE);
+            vh.tvTimeStartVideo.setVisibility(View.GONE);
+            vh.tvTimeVideo.setVisibility(View.GONE);
 
-            tvTimeEndVideo.setText("   ");
+            vh.tvTimeEndVideo.setText("   ");
             Glide.with(this)
                     .load(listvideo.get(indexVideo))
-                    .into(imgView);
+                    .into(vh.imgView);
 
             handler.postDelayed(new Runnable() {
                 @Override
@@ -142,26 +144,28 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             }, 5000);
 
         } else if (position == 2) {
-            imgView.setVisibility(View.GONE);
-            video.setVisibility(View.VISIBLE);
+            vh.imgView.setVisibility(View.GONE);
+            vh.video.setVisibility(View.VISIBLE);
 
-            ibtPauseVideo.setVisibility(View.VISIBLE);
-            ibtVolumeOfVideo.setVisibility(View.VISIBLE);
-            tvTimeStartVideo.setVisibility(View.VISIBLE);
-            tvTimeVideo.setVisibility(View.VISIBLE);
+            vh.ibtPauseVideo.setVisibility(View.VISIBLE);
+            vh.ibtVolumeOfVideo.setVisibility(View.VISIBLE);
+            vh.tvTimeStartVideo.setVisibility(View.VISIBLE);
+            vh.tvTimeVideo.setVisibility(View.VISIBLE);
 
             // đọ dài của video
             mp = MediaPlayer.create(this, Uri.parse(check));
             int duration = mp.getDuration();
             mp.release();
 
-            tvTimeEndVideo.setText(checkLink.stringForTime(duration));
-            updateTime(tvTimeStartVideo);
+            vh.tvTimeEndVideo.setText(checkLink.stringForTime(duration));
+            updateTime(vh.tvTimeStartVideo);
 
-            video.setVideoPath(listvideo.get(indexVideo));
-            video.start();
+            vh.video.setVideoPath(listvideo.get(indexVideo));
 
-            video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            vh.video.start();
+            vh.video.seekTo(timePause);
+
+            vh.video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     indexVideo++;
@@ -169,16 +173,16 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 }
             });
         } else if (position == 3) {
-            imgView.setVisibility(View.GONE);
-            video.setVisibility(View.VISIBLE);
+            vh.imgView.setVisibility(View.GONE);
+            vh.video.setVisibility(View.VISIBLE);
 
             MediaController mc = new MediaController(this);
-            video.setMediaController(mc);
+            vh.video.setMediaController(mc);
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    video.setVideoURI(Uri.parse(listvideo.get(indexVideo)));
-                    video.start();
+                    vh.video.setVideoURI(Uri.parse(listvideo.get(indexVideo)));
+                    vh.video.start();
                 }
             });
         }
@@ -196,7 +200,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                             @Override
                             public void run() {
                                 // update TextView here!
-                                tv.setText(checkLink.stringForTime(video.getCurrentPosition()));
+                                tv.setText(checkLink.stringForTime(vh.video.getCurrentPosition()));
                             }
                         });
                     }
@@ -218,71 +222,54 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.imgExitFull:
-                intent = new Intent(getBaseContext(), VideoFull.class);
+                intent = new Intent();
                 intent.putExtra("index", indexVideo);
                 intent.putExtra("list", listvideo);
-                String str = listvideo.get(indexVideo);
 
                 // độ dài video đang chạy
-                int timepause = video.getCurrentPosition();
+                int timepause = vh.video.getCurrentPosition();
                 intent.putExtra("timePause", timepause);
-                startActivity(intent);
+
+                onBackPressed();
                 break;
             case R.id.imgVolumeOf_video:
-                ibtVolumeOnVideo.setVisibility(View.VISIBLE);
-                ibtVolumeOfVideo.setVisibility(View.GONE);
+                vh.ibtVolumeOnVideo.setVisibility(View.VISIBLE);
+                vh.ibtVolumeOfVideo.setVisibility(View.GONE);
 
                 volume.MuteAudio(this);
                 break;
 
             case R.id.imgVolumeOn_video:
-                ibtVolumeOnVideo.setVisibility(View.GONE);
-                ibtVolumeOfVideo.setVisibility(View.VISIBLE);
+                vh.ibtVolumeOnVideo.setVisibility(View.GONE);
+                vh.ibtVolumeOfVideo.setVisibility(View.VISIBLE);
                 volume.UnMuteAudio(this);
 
                 break;
 //
             case R.id.imgPause_video:
-                ibtPlayVideo.setVisibility(View.VISIBLE);
-                ibtPauseVideo.setVisibility(View.GONE);
-                video.pause();
+                vh.ibtPlayVideo.setVisibility(View.VISIBLE);
+                vh.ibtPauseVideo.setVisibility(View.GONE);
+                vh.video.pause();
                 break;
             case R.id.imgPlay_video:
-                ibtPlayVideo.setVisibility(View.GONE);
-                ibtPauseVideo.setVisibility(View.VISIBLE);
-                video.start();
+                vh.ibtPlayVideo.setVisibility(View.GONE);
+                vh.ibtPauseVideo.setVisibility(View.VISIBLE);
+                vh.video.start();
                 break;
 
             case R.id.imgNext_video:
                 if (indexVideo == (listvideo.size() - 1)) {
                     indexVideo = 0;
                 } else indexVideo++;
-
                 setVideoOrImager(listvideo.get(indexVideo));
 
-                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        indexVideo++;
-                        setVideoOrImager(listvideo.get(indexVideo));
-                    }
-                });
                 break;
-//
             case R.id.imgBack_video:
                 if (indexVideo == 0) {
                     indexVideo = listvideo.size() - 1;
                 } else indexVideo--;
 
                 setVideoOrImager(listvideo.get(indexVideo));
-
-                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        indexVideo++;
-                        setVideoOrImager(listvideo.get(indexVideo));
-                    }
-                });
                 break;
         }
 

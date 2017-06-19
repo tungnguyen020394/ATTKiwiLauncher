@@ -378,7 +378,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/border_video"
+<<<<<<< HEAD
                     android:padding="5dp"
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 132f177184b2e498dcab0326fa0e42b4b4f3393d
+>>>>>>> origin/master
                     >
 
                     <VideoView
@@ -386,7 +393,13 @@
                         android:id="@+id/videoView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+<<<<<<< HEAD
+
+                        android:layout_centerInParent="true"/>
+
+=======
                         android:layout_centerHorizontal="true"/>
+>>>>>>> 132f177184b2e498dcab0326fa0e42b4b4f3393d
                     <!--<com.google.android.exoplayer2.ui.SimpleExoPlayerView-->
                         <!--android:id="@+id/videoView"-->
                         <!--app:use_controller="false"-->
@@ -400,6 +413,17 @@
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:scaleType="fitXY"/>
+<<<<<<< HEAD
+
+
+                        <ImageView
+                            android:id="@+id/imgView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitXY"/>
+=======
+>>>>>>> 132f177184b2e498dcab0326fa0e42b4b4f3393d
 
                     <LinearLayout
                         android:id="@+id/linear1"
@@ -460,6 +484,21 @@
                             android:layout_alignLeft="@id/imgBack"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
+<<<<<<< HEAD
+
+                            android:background="@drawable/ic_playvideo"
+                            android:visibility="gone"/>
+
+
+                        <ImageButton
+                            android:id="@+id/imgPause"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@id/imgBack"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/_5sdp"
+=======
+>>>>>>> 132f177184b2e498dcab0326fa0e42b4b4f3393d
                             android:src="@drawable/ic_pause"
                             android:background="@drawable/none"
                             android:visibility="visible"/>
