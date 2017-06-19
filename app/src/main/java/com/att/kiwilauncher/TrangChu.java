@@ -1065,7 +1065,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         public void onClick(View v) {
             int position = rcApp.getChildPosition(v);
             Intent i = manager.getLaunchIntentForPackage(listApps.get(demdsApp).get(position).getNameApp().toString());
-            context.startActivity(i);
+            try {
+                context.startActivity(i);
+            } catch (Exception e) {
+                Intent intent = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
+                context.startActivity(intent);
+            }
         }
     }
 
