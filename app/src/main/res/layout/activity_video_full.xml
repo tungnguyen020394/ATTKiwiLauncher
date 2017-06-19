@@ -19,12 +19,13 @@
         android:visibility="gone"/>
 
     <LinearLayout
+        android:id="@+id/layout_control"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_20sdp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/ic_bgvideo"
         android:orientation="horizontal"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <ImageView
 
@@ -34,6 +35,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/_10sdp"
             android:src="@drawable/ic_website"
+            android:background="@drawable/border_videopick"
             />
 
         <TextView
@@ -51,7 +53,8 @@
             android:layout_alignRight="@id/imgWeb"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/_2sdp"
-            android:background="@drawable/ic_nonefull"/>
+            android:src="@drawable/ic_nonefull"
+            android:background="@drawable/none"/>
 
         <TextView
             android:layout_width="0dp"
@@ -64,7 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/_5sdp"
-            android:background="@drawable/ic_backvideo"/>
+            android:src="@drawable/ic_backvideo"
+            android:background="@drawable/none"/>
 
         <ImageButton
             android:id="@+id/imgPlay_video"
@@ -73,17 +77,8 @@
             android:layout_alignLeft="@id/imgBack"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/_5sdp"
-            android:background="@drawable/ic_playvideo"
-            android:visibility="gone"/>
-
-        <ImageButton
-            android:id="@+id/imgPause_video"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/imgBack"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:background="@drawable/ic_pause"/>
+            android:src="@drawable/ic_pause"
+            android:background="@drawable/none"/>
 
         <ImageButton
             android:id="@+id/imgNext_video"
@@ -92,7 +87,8 @@
             android:layout_alignLeft="@id/imgPlay"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/_5sdp"
-            android:background="@drawable/ic_nextvideo"/>
+            android:src="@drawable/ic_nextvideo"
+            android:background="@drawable/none"/>
 
         <TextView
             android:id="@+id/tvTimeBegin_video"
@@ -118,23 +114,15 @@
             android:text="03:35"/>
 
         <ImageButton
-            android:id="@+id/imgVolumeOf_video"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="@drawable/ic_volumeoff"/>
-
-        <ImageButton
             android:id="@+id/imgVolumeOn_video"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/_5sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:background="@drawable/ic_volumeon"
-            android:visibility="gone"/>
+            android:src="@drawable/ic_volumeon"
+            android:visibility="visible"
+            android:background="@drawable/none"/>
 
     </LinearLayout>
 

@@ -751,7 +751,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     volume.MuteAudio(this);
                     mute = true;
                 }
-
                 break;
 
             case R.id.imgPlay:
