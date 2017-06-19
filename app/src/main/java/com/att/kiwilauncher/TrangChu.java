@@ -93,14 +93,15 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
     LinearLayout linNear1;
     Volume volume;
+    boolean checkNextBack = false;
     ImageView imgView, imgWeb;
     ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOf, ibtVolumeOn, ibtPause, ibtFull;
     TextView tvTimeStart, tvTimeEnd, tvTime;
     CheckLink checkLink;
     MediaPlayer mp;
 
-    private long timePause = 0;
-    private boolean dragging,playing = true,mute = true;
+    private int timePause = 0;
+    private boolean dragging, playing = true, mute = true;
     Intent intent;
     Handler handler = new Handler();
 
@@ -189,17 +190,16 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
         // video
 //        if (!mDatabaseHelper.getLinkVideoQuangCao().equals("")) {
-        video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                indexVideo++;
-                setVideoOrImager(listvideo.get(indexVideo));
-//                    setVideoOrImager(Define.URL_LINK_PLAY);
-            }
-        });
+//        video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+//                indexVideo++;
+//                setVideoOrImager(listvideo.get(indexVideo));
+////                    setVideoOrImager(Define.URL_LINK_PLAY);
+//            }
+//        });
         //video.setVideoPath(listvideo.get(indexVideo));
         setVideoOrImager(listvideo.get(indexVideo));
-//            setVideoOrImager(Define.URL_LINK_BACK);
 //        }
 
         //audio
@@ -209,9 +209,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     @Override
     protected void onResume() {
         super.onResume();
-
-//        createPlayer(Define.URL_LINK_PLAY);
-//        exoPlayer.setOnTouchListener(this);
 
         if (DuLieu.hasInternetConnection(TrangChu.this)) {
             setVideoOrImager(listvideo.get(indexVideo));
@@ -262,8 +259,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay113.setOnClickListener(this);
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
-        reLay12.setPadding(mChieuDai * 9, mChieuRong*2, mChieuDai*35, mChieuRong);
-        reLay11.setPadding(mChieuDai*33,0,mChieuDai,0);
+        reLay12.setPadding(mChieuDai * 9, mChieuRong * 2, mChieuDai * 35, mChieuRong);
+        reLay11.setPadding(mChieuDai * 33, 0, mChieuDai, 0);
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
@@ -511,16 +508,16 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 dialog.dismiss();
                 text.setText(mDatabaseHelper.getLinkTextQuangCao());
 
-                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        if (indexVideo == listvideo.size() - 1) {
-                            indexVideo = -1;
-                        }
-                        indexVideo++;
-                        setVideoOrImager(listvideo.get(indexVideo));//
-                    }
-                });
+//                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                    @Override
+//                    public void onCompletion(MediaPlayer mp) {
+//                        if (indexVideo == listvideo.size() - 1) {
+//                            indexVideo = -1;
+//                        }
+//                        indexVideo++;
+//                        setVideoOrImager(listvideo.get(indexVideo));
+//                    }
+//                });
                 setVideoOrImager(listvideo.get(indexVideo));
             }
         }, new Response.ErrorListener() {
@@ -572,7 +569,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 } else if (didIndex >= main + cates.size() + listApps.get(0).size() + 2
                         && didIndex <= listItem.size() - 1) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
-                    if (didIndex == listItem.size() -1) {
+                    if (didIndex == listItem.size() - 1) {
                         ibtVolumeOf.setBackgroundResource(R.drawable.none);
                     }
                     if (didIndex == listItem.size() - 3) {
@@ -598,7 +595,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 } else if (didIndex >= main + cates.size() + listApps.get(0).size() + 2
                         && didIndex <= listItem.size() - 1) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
-                    if (didIndex == listItem.size() -1) {
+                    if (didIndex == listItem.size() - 1) {
                         ibtVolumeOf.setBackgroundResource(R.drawable.none);
                     }
                     if (didIndex == listItem.size() - 3) {
@@ -643,7 +640,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 } else if (didIndex >= main + cates.size() + listApps.get(0).size() + 2
                         && didIndex <= listItem.size() - 1) {
                     if (didIndex != main + cates.size() + listApps.get(0).size() + 2) {
-                        if (didIndex == listItem.size() -1) {
+                        if (didIndex == listItem.size() - 1) {
                             ibtVolumeOf.setBackgroundResource(R.drawable.none);
                         }
                         if (didIndex == listItem.size() - 3) {
@@ -652,7 +649,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                         listItem.get(didIndex).setBackgroundResource(R.drawable.none);
                         didIndex--;
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
-                        if (didIndex == listItem.size() -1) {
+                        if (didIndex == listItem.size() - 1) {
                             ibtVolumeOf.setBackgroundResource(R.drawable.border_videopick);
                         }
                         if (didIndex == listItem.size() - 3) {
@@ -696,7 +693,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                         && didIndex <= listItem.size() - 1) {
                     if (didIndex != listItem.size() - 1) {
                         listItem.get(didIndex).setBackgroundResource(R.drawable.none);
-                        if (didIndex == listItem.size() -1) {
+                        if (didIndex == listItem.size() - 1) {
                             ibtVolumeOf.setBackgroundResource(R.drawable.none);
                         }
                         if (didIndex == listItem.size() - 3) {
@@ -704,7 +701,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                         }
                         didIndex++;
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
-                        if (didIndex == listItem.size() -1) {
+                        if (didIndex == listItem.size() - 1) {
                             ibtVolumeOf.setBackgroundResource(R.drawable.border_videopick);
                         }
 
@@ -732,11 +729,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     listItem.get(main + cates.size()).callOnClick();
                 } else if (didIndex >= main + cates.size() + listApps.get(0).size() + 2
                         && didIndex <= listItem.size() - 1) {
-                    if (mute == true && didIndex == listItem.size() -1) {
+                    if (mute == true && didIndex == listItem.size() - 1) {
                         ibtVolumeOf.callOnClick();
                         mute = false;
                         return true;
-                    } else if (mute == false && didIndex == listItem.size() -1) {
+                    } else if (mute == false && didIndex == listItem.size() - 1) {
                         mute = true;
                     }
 
@@ -793,7 +790,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 volume.UnMuteAudio(this);
 
                 break;
-//
             case R.id.imgPause:
                 ibtPlay.setVisibility(View.VISIBLE);
                 ibtPause.setVisibility(View.GONE);
@@ -806,35 +802,18 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.imgNext:
-                if (indexVideo == (listvideo.size() - 1)) {
-                    indexVideo = 0;
-                } else indexVideo++;
-
+                checkNextBack = true;
+                if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                else indexVideo++;
                 setVideoOrImager(listvideo.get(indexVideo));
-
-                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        indexVideo++;
-                        setVideoOrImager(listvideo.get(indexVideo));
-                    }
-                });
                 break;
 //
             case R.id.imgBack:
-                if (indexVideo == 0) {
-                    indexVideo = listvideo.size() - 1;
-                } else indexVideo--;
-
+                checkNextBack = true;
+                if (indexVideo == 0) indexVideo = (listvideo.size() - 1);
+                else indexVideo--;
                 setVideoOrImager(listvideo.get(indexVideo));
 
-                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        indexVideo++;
-                        setVideoOrImager(listvideo.get(indexVideo));
-                    }
-                });
                 break;
 
             case R.id.img_caidat:
@@ -1016,7 +995,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         int position = checkLink.CheckLinkURL(check);
 
         if (position == 1) {
-
+            checkNextBack = false;
             imgView.setVisibility(View.VISIBLE);
             video.setVisibility(View.GONE);
             ibtPause.setVisibility(View.GONE);
@@ -1029,17 +1008,17 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     .load(listvideo.get(indexVideo))
                     .into(imgView);
 
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    if (indexVideo==listvideo.size()-1) indexVideo=0;
-                    else indexVideo++;
-
-                    setVideoOrImager(listvideo.get(indexVideo));
-                }
-            }, 5000);
-
+            if (checkNextBack == false) {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                        else indexVideo++;
+                        checkNextBack = true;
+                        setVideoOrImager(listvideo.get(indexVideo));
+                    }
+                }, 5000);
+            }
         } else if (position == 2) {
             imgView.setVisibility(View.GONE);
             video.setVisibility(View.VISIBLE);
@@ -1059,6 +1038,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
             video.setVideoPath(listvideo.get(indexVideo));
             video.start();
+            video.seekTo(timePause);
 
             video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
