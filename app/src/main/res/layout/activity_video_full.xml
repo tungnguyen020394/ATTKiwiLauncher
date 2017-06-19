@@ -21,11 +21,15 @@
     <LinearLayout
         android:id="@+id/layout_control"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_20sdp"
+        android:layout_height="@dimen/_25sdp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/ic_bgvideo"
         android:orientation="horizontal"
+<<<<<<< HEAD
+      >
+=======
         android:visibility="visible">
+>>>>>>> dac72bfbace6aace0730db0dc75c6a84220a6ad5
 
         <ImageView
 
