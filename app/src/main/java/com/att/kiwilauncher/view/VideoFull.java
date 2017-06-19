@@ -18,6 +18,7 @@ import android.widget.VideoView;
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.util.CheckLink;
+import com.att.kiwilauncher.util.Define;
 import com.att.kiwilauncher.util.Volume;
 import com.bumptech.glide.Glide;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -49,7 +50,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     MediaPlayer mp;
     Handler handler;
     ArrayList<String> listvideo;
-
     CheckLink checkLink;
     Volume volume;
     ViewHoder vh;
@@ -84,7 +84,10 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         listvideo = intent.getStringArrayListExtra("list");
         timePause = intent.getIntExtra("timePause", 0);
 
-        setVideoOrImager(listvideo.get(indexVideo));
+        vh.video.setVideoPath(Define.URL_LINK_BACK);
+        vh.video.start();
+
+//        setVideoOrImager(listvideo.get(indexVideo));
     }
 
     private class ViewHoder{

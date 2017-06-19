@@ -47,6 +47,7 @@ import com.att.kiwilauncher.util.CheckLink;
 import com.att.kiwilauncher.util.Define;
 import com.att.kiwilauncher.util.Volume;
 import com.att.kiwilauncher.view.VideoFull;
+import com.att.kiwilauncher.view.VideoFullTest;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
 import com.bumptech.glide.Glide;
@@ -65,7 +66,7 @@ import static com.att.kiwilauncher.R.id.relay2;
 
 public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
-    int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12,position;
+    int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position;
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11,
             reLay21, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,
             reLay2221;
@@ -94,7 +95,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     Volume volume;
     boolean checkNextBack = false;
     ImageView imgView, imgWeb;
-    ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOn,ibtFull;
+    ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOn, ibtFull;
     TextView tvTimeStart, tvTimeEnd, tvTime;
     CheckLink checkLink;
     MediaPlayer mp;
@@ -236,7 +237,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
         listvideo.add(Define.URL_LINK_PLAY);
         listvideo.add(Define.URL_LINK_IMG01);
-//        listvideo.add(Define.URL_LINK_BACK);
+        listvideo.add(Define.URL_LINK_BACK);
         listvideo.add(Define.URL_LINK_IMG02);
 
         // reLaytive layout
@@ -257,8 +258,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay113.setOnClickListener(this);
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
-        reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai*35, mChieuRong);
-        reLay11.setPadding(mChieuDai*33,0,mChieuDai,0);
+        reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai * 35, mChieuRong);
+        reLay11.setPadding(mChieuDai * 33, 0, mChieuDai, 0);
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
@@ -730,7 +731,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.imgFull:
-                intent = new Intent(getBaseContext(), VideoFull.class);
+                intent = new Intent(getBaseContext(), VideoFullTest.class);
                 intent.putExtra("index", indexVideo);
                 intent.putExtra("list", listvideo);
                 String str = listvideo.get(indexVideo);
@@ -770,7 +771,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 checkNextBack = true;
                 if (indexVideo == listvideo.size() - 1) indexVideo = 0;
                 else indexVideo++;
+                if (position==2) checkNextBack=false;
                 setVideoOrImager(listvideo.get(indexVideo));
+
                 break;
 //
             case R.id.imgBack:
@@ -960,7 +963,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         position = checkLink.CheckLinkURL(check);
 
         if (position == 1) {
-            checkNextBack = false;
             imgView.setVisibility(View.VISIBLE);
             ibtPlay.setVisibility(View.GONE);
             video.setVisibility(View.GONE);
@@ -973,17 +975,19 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     .load(listvideo.get(indexVideo))
                     .into(imgView);
 
-            if (checkNextBack == false) {
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (!checkNextBack ) {
                         if (indexVideo == listvideo.size() - 1) indexVideo = 0;
                         else indexVideo++;
-                        checkNextBack = true;
                         setVideoOrImager(listvideo.get(indexVideo));
-                    }
-                }, 5000);
-            }
+                    }else checkNextBack=false;
+
+                }
+            }, 5000);
+
+
         } else if (position == 2) {
             imgView.setVisibility(View.GONE);
             video.setVisibility(View.VISIBLE);
@@ -994,7 +998,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
             // đọ dài của video
             mp = MediaPlayer.create(this, Uri.parse(check));
-            int duration = mp.getDuration();
+            long duration = mp.getDuration();
             mp.release();
 
             tvTimeEnd.setText(checkLink.stringForTime(duration));
@@ -1002,7 +1006,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
             video.setVideoPath(listvideo.get(indexVideo));
             video.start();
-            video.seekTo(timePause);
+//            video.seekTo(timePause);
 
             video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
@@ -1011,6 +1015,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     setVideoOrImager(listvideo.get(indexVideo));
                 }
             });
+            checkNextBack=false;
         } else if (position == 3) {
             imgView.setVisibility(View.GONE);
             video.setVisibility(View.VISIBLE);

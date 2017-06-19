@@ -29,8 +29,12 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".DanhSach"></activity>
-        <activity android:name=".view.VideoFull" android:screenOrientation="landscape">
+        <activity android:name=".DanhSach"/>
+        <activity
+            android:name=".view.VideoFull"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity android:name=".view.VideoFullTest">
         </activity>
     </application>
 

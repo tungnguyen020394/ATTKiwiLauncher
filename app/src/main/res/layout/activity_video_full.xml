@@ -20,11 +20,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_20sdp"
+        android:layout_height="@dimen/_25sdp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/ic_bgvideo"
         android:orientation="horizontal"
-        android:visibility="gone">
+      >
 
         <ImageView
 
