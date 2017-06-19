@@ -47,6 +47,7 @@
                     android:gravity="center"
                     android:marqueeRepeatLimit="marquee_forever"
                     android:scrollHorizontally="true"
+                    android:layout_centerHorizontal="true"
                     android:singleLine="true"
                     android:text=" Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! "
                     android:textAllCaps="true"
@@ -377,21 +378,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/border_video"
-<<<<<<< HEAD
                     >
-=======
-                    android:padding="10dp">
->>>>>>> bf6909a5017f8a669ab61a47966e00e6fe03bf3c
-
 
                     <VideoView
                         android:layout_margin="@dimen/_4sdp"
                         android:id="@+id/videoView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-<<<<<<< HEAD
-                        android:layout_centerInParent="true"/>
-=======
                         android:layout_centerHorizontal="true"/>
                     <!--<com.google.android.exoplayer2.ui.SimpleExoPlayerView-->
                         <!--android:id="@+id/videoView"-->
@@ -406,14 +399,6 @@
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:scaleType="fitXY"/>
->>>>>>> bf6909a5017f8a669ab61a47966e00e6fe03bf3c
-
-                        <ImageView
-                            android:id="@+id/imgView"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_centerInParent="true"
-                            android:scaleType="fitXY"/>
 
                     <LinearLayout
                         android:id="@+id/linear1"
@@ -422,7 +407,6 @@
                         android:layout_alignParentBottom="true"
                         android:background="@drawable/ic_bgvideo"
                         android:orientation="horizontal"
-                        android:visibility="gone"
                         >
 
                         <ImageView
@@ -473,23 +457,9 @@
                             android:layout_alignLeft="@id/imgBack"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
-<<<<<<< HEAD
-                            android:background="@drawable/ic_playvideo"
-                            android:visibility="gone"/>
-
-=======
-                            android:src="@drawable/ic_playvideo"
-                            android:background="@drawable/none"/>
->>>>>>> bf6909a5017f8a669ab61a47966e00e6fe03bf3c
-                        <ImageButton
-                            android:id="@+id/imgPause"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignLeft="@id/imgBack"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_5sdp"
                             android:src="@drawable/ic_pause"
-                            android:background="@drawable/none"/>
+                            android:background="@drawable/none"
+                            android:visibility="visible"/>
 
                         <ImageButton
                             android:id="@+id/imgNext"
@@ -516,7 +486,6 @@
                             android:layout_gravity="center"
                             android:text=" / "/>
 
-
                         <TextView
                             android:id="@+id/tvTimeEnd"
                             android:layout_width="wrap_content"
@@ -525,23 +494,14 @@
                             android:text="03:35"/>
 
                         <ImageButton
-                            android:id="@+id/imgVolumeOf"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_5sdp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/ic_volumeoff"/>
-
-                        <ImageButton
                             android:id="@+id/imgVolumeOn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:background="@drawable/ic_volumeon"
-                            android:visibility="gone"/>
+                            android:src="@drawable/ic_volumeoff"
+                            android:background="@drawable/none" />
 
                     </LinearLayout>
                 </RelativeLayout>
