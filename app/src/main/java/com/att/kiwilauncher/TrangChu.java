@@ -46,7 +46,6 @@ import com.att.kiwilauncher.model.ThoiTiet;
 import com.att.kiwilauncher.util.CheckLink;
 import com.att.kiwilauncher.util.Define;
 import com.att.kiwilauncher.util.Volume;
-import com.att.kiwilauncher.view.VideoFull;
 import com.att.kiwilauncher.view.VideoFullTest;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
@@ -257,13 +256,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay113.setOnClickListener(this);
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
-<<<<<<< HEAD
-        reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai*33, mChieuRong);
-        reLay11.setPadding(mChieuDai*33,0,mChieuDai,0);
-=======
         reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai * 35, mChieuRong);
         reLay11.setPadding(mChieuDai * 33, 0, mChieuDai, 0);
->>>>>>> origin/master
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
@@ -775,7 +769,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 handler.removeCallbacks(nextvideo);
                 if (indexVideo == listvideo.size() - 1) indexVideo = 0;
                 else indexVideo++;
-                if (position==2) checkNextBack=false;
                 setVideoOrImager(listvideo.get(indexVideo));
 
                 break;
@@ -978,23 +971,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     .load(listvideo.get(indexVideo))
                     .into(imgView);
 
-<<<<<<< HEAD
             handler.postDelayed(nextvideo,5000);
-=======
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (!checkNextBack ) {
-                        if (indexVideo == listvideo.size() - 1) indexVideo = 0;
-                        else indexVideo++;
-                        setVideoOrImager(listvideo.get(indexVideo));
-                    }else checkNextBack=false;
-
-                }
-            }, 5000);
-
-
->>>>>>> origin/master
         } else if (position == 2) {
             imgView.setVisibility(View.GONE);
             video.setVisibility(View.VISIBLE);
@@ -1022,7 +999,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     setVideoOrImager(listvideo.get(indexVideo));
                 }
             });
-            checkNextBack=false;
         } else if (position == 3) {
             imgView.setVisibility(View.GONE);
             video.setVisibility(View.VISIBLE);

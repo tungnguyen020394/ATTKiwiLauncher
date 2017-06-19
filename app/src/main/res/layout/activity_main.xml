@@ -380,7 +380,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/border_video"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     >
 
                     <VideoView
@@ -409,12 +409,7 @@
                         android:layout_alignParentBottom="true"
                         android:background="@drawable/ic_bgvideo"
                         android:orientation="horizontal"
-<<<<<<< HEAD
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
                         android:layout_marginBottom="5dp"
-=======
->>>>>>> origin/master
                         >
 
                         <ImageView
