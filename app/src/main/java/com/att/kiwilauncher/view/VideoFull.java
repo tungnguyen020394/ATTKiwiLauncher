@@ -1,6 +1,7 @@
 package com.att.kiwilauncher.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,9 +29,10 @@ import java.util.List;
 public class VideoFull extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
 
     Intent intent;
-    int timePause,didIndex = 0;
-    int indexVideo=0 , position;
+    int timePause, didIndex = 0;
+    int indexVideo = 0, position;
     MediaPlayer mp;
+    MediaController mc;
     Handler handler;
     ArrayList<String> listvideo;
     List<View> listItem;
@@ -38,7 +40,9 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     Volume volume;
     ViewHoder vh;
     LinearLayout layoutControl;
-    boolean playing = true,mute = true;
+    boolean playing = true, mute = true;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +54,16 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     }
 
     private void initVideo() {
-        vh=new ViewHoder();
+        vh = new ViewHoder();
         listvideo = new ArrayList<>();
 //        list = new ArrayList<>();
         checkLink = new CheckLink();
         intent = getIntent();
         handler = new Handler();
         volume = new Volume();
+
+        preferences=getSharedPreferences("volume",MODE_PRIVATE);
+        mute=preferences.getBoolean("volume",true);
 
         vh.ibtNextVideo.setOnClickListener(this);
         vh.ibtPlayVideo.setOnClickListener(this);
@@ -69,44 +76,43 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         listvideo = intent.getStringArrayListExtra("list");
         timePause = intent.getIntExtra("timePause", 0);
 
-
-//        vh.video.setVideoPath(Define.URL_LINK_BACK);
-//        vh.video.start();
-
-//        setVideoOrImager(listvideo.get(indexVideo));
+        if (mute == true ) {
+            vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
+            volume.UnMuteAudio(this);
+        } else {
+            vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeoff);
+            volume.MuteAudio(this);
+        }
 
         setVideoOrImager(listvideo.get(indexVideo));
-//        if ()
-//        {
-//            vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volume_off);
-//        }else vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volume_on);
 
         layoutControl = (LinearLayout) findViewById(R.id.layout_control);
+
     }
 
-    private class ViewHoder{
+    private class ViewHoder {
 
-        ImageButton ibtPlayVideo,ibtNextVideo,ibtBackVideo,ibtExitFullVideo,ibtVolumeOnVideo;
+        ImageButton ibtPlayVideo, ibtNextVideo, ibtBackVideo, ibtExitFullVideo, ibtVolumeOnVideo;
 
-        ImageView imgWebVideo,imgView;
+        ImageView imgWebVideo, imgView;
         VideoView video;
-        TextView tvTimeVideo,tvTimeStartVideo,tvTimeEndVideo;
+        TextView tvTimeVideo, tvTimeStartVideo, tvTimeEndVideo;
 
         public ViewHoder() {
-            ibtBackVideo= (ImageButton) findViewById(R.id.imgBack_video);
-            ibtPlayVideo= (ImageButton) findViewById(R.id.imgPlay_video);
-            ibtNextVideo= (ImageButton) findViewById(R.id.imgNext_video);
-            ibtExitFullVideo= (ImageButton) findViewById(R.id.imgExitFull);
-            ibtVolumeOnVideo= (ImageButton) findViewById(R.id.imgVolumeOn_video);
+            ibtBackVideo = (ImageButton) findViewById(R.id.imgBack_video);
+            ibtPlayVideo = (ImageButton) findViewById(R.id.imgPlay_video);
+            ibtNextVideo = (ImageButton) findViewById(R.id.imgNext_video);
+            ibtExitFullVideo = (ImageButton) findViewById(R.id.imgExitFull);
+            ibtVolumeOnVideo = (ImageButton) findViewById(R.id.imgVolumeOn_video);
 
-            video= (VideoView) findViewById(R.id.video_Full);
+            video = (VideoView) findViewById(R.id.video_Full);
 
-            imgWebVideo= (ImageView) findViewById(R.id.imgWeb_video);
-            imgView= (ImageView) findViewById(R.id.imgView_Full);
+            imgWebVideo = (ImageView) findViewById(R.id.imgWeb_video);
+            imgView = (ImageView) findViewById(R.id.imgView_Full);
 
-            tvTimeVideo= (TextView) findViewById(R.id.tvTime_video);
-            tvTimeStartVideo= (TextView) findViewById(R.id.tvTimeBegin_video);
-            tvTimeEndVideo= (TextView) findViewById(R.id.tvTimeEnd_video);
+            tvTimeVideo = (TextView) findViewById(R.id.tvTime_video);
+            tvTimeStartVideo = (TextView) findViewById(R.id.tvTimeBegin_video);
+            tvTimeEndVideo = (TextView) findViewById(R.id.tvTimeEnd_video);
 
         }
     }
@@ -132,7 +138,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                     .load(listvideo.get(indexVideo))
                     .into(vh.imgView);
 
-            handler.postDelayed(nextvideo,5000);
+            handler.postDelayed(nextvideo, 5000);
 
         } else if (position == 2) {
             vh.imgView.setVisibility(View.GONE);
@@ -155,7 +161,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
             vh.video.start();
             vh.video.seekTo(timePause);
-            timePause=0;
+            timePause = 0;
 
             vh.video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
@@ -226,7 +232,8 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.imgVolumeOn_video:
-                if (mute == true&&checkLink.changeRingerMode(this)) {
+
+                if (mute == true ) {
                     vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
                     volume.UnMuteAudio(this);
                     mute = false;
@@ -326,6 +333,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         }
         return super.onKeyDown(keyCode, event);
     }
+
     private Runnable nextvideo = new Runnable() {
         @Override
         public void run() {

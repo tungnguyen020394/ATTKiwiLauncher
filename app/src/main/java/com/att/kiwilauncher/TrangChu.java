@@ -101,6 +101,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     TextView tvTimeStart, tvTimeEnd, tvTime;
     CheckLink checkLink;
     MediaPlayer mp;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editorfull;
     private int timePause = 0;
     private boolean dragging, playing = true, mute = true;
     Intent intent;
@@ -493,6 +495,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
         volume = new Volume();
         checkLink = new CheckLink();
+        sharedPreferences=getSharedPreferences("volume",MODE_PRIVATE);
+        editorfull =sharedPreferences.edit();
 
         text = (TextView) findViewById(R.id.text1);
         text.setSelected(true);
@@ -933,11 +937,14 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     ibtVolumeOn.setImageResource(R.drawable.ic_volumeon);
                     volume.UnMuteAudio(this);
                     mute = false;
+                    editorfull.putBoolean("volume",!mute);
                 } else {
                     ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
-                    volume.MuteAudio(this);
                     mute = true;
+                    volume.MuteAudio(this);
+                    editorfull.putBoolean("volume",!mute);
                 }
+                editorfull.commit();
                 break;
 
             case R.id.imgPlay:
@@ -1177,6 +1184,20 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             mp = MediaPlayer.create(this, Uri.parse(check));
             long duration = mp.getDuration();
             mp.release();
+
+
+//            if (mute == true) {
+//                ibtVolumeOn.setImageResource(R.drawable.ic_volumeon);
+//                volume.UnMuteAudio(this);
+//
+//                mute = false;
+//                editorfull.putBoolean("volume",!mute);
+//            } else {
+//                ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
+//                mute = true;
+//                volume.MuteAudio(this);
+//                editorfull.putBoolean("volume",!mute);
+//            }
 
             tvTimeEnd.setText(checkLink.stringForTime(duration));
             updateTime(tvTimeStart);
