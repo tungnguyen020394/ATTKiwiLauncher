@@ -410,7 +410,6 @@
                         android:layout_alignParentBottom="true"
                         android:background="@drawable/ic_bgvideo"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="5dp"
                         >
 
                         <ImageView
