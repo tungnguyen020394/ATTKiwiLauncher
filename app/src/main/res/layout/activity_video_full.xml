@@ -5,9 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#222222"
     tools:context="com.att.kiwilauncher.view.VideoFull">
 
     <VideoView
+        android:layout_centerInParent="true"
         android:id="@+id/video_Full"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
