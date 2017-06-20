@@ -48,7 +48,6 @@ import com.att.kiwilauncher.util.CheckLink;
 import com.att.kiwilauncher.util.Define;
 import com.att.kiwilauncher.util.Volume;
 import com.att.kiwilauncher.view.VideoFull;
-import com.att.kiwilauncher.view.VideoFullTest;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
 import com.bumptech.glide.Glide;
@@ -824,7 +823,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                             didIndex--;
                         }
                         didIndex--;
-                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_video);
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
                     } else {
                         listItem.get(didIndex).setBackgroundResource(R.drawable.none);
                         didIndex = 7;
@@ -875,7 +874,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                             return true;
                         }
                         didIndex++;
-                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_video);
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
 
                     } else {
                         listItem.get(didIndex).setBackgroundResource(R.drawable.none);
@@ -1033,9 +1032,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.relay2221:
-                linNear1.setVisibility(View.VISIBLE);
                 didIndex = main + cates.size() + listApps.get(0).size() + 2;
-                listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
+                listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
                 break;
         }
     }
@@ -1098,7 +1096,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         listItem.add(imageMinus);
 
         int soUngDung = 0;
-        for (UngDung app : listApps.get(demdsApp)) {
+        for (UngDung app : listApps.get(0)) {
             listItem.add(rcApp.getChildAt(soUngDung));
         }
 
