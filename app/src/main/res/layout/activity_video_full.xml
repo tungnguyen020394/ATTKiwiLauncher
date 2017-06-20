@@ -86,6 +86,7 @@
             android:layout_alignLeft="@id/imgPlay"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_10sdp"
             android:src="@drawable/ic_nextvideo"
             android:background="@drawable/none"/>
 

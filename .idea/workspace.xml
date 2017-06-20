@@ -7,7 +7,7 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f5142ce-2fd9-4fce-8705-136a085be021" name="Default" comment="">
@@ -53,8 +53,28 @@
       <file leaf-file-name="TrangChu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="303">
               <caret line="825" column="96" selection-start-line="825" selection-start-column="96" selection-end-line="825" selection-end-column="96" />
+=======
+            <state relative-caret-position="17475">
+              <caret line="1234" column="5" selection-start-line="1234" selection-start-column="5" selection-end-line="1234" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VideoFull.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="152">
+              <caret line="145" column="73" selection-start-line="145" selection-start-column="73" selection-end-line="145" selection-end-column="73" />
+=======
+            <state relative-caret-position="2025">
+              <caret line="161" column="48" selection-start-line="161" selection-start-column="48" selection-end-line="161" selection-end-column="48" />
+>>>>>>> 4a5e84ededf2d084e766d41b09e3ce1353f7dad4
+>>>>>>> origin/master
               <folding>
                 <element signature="method#onClick#0;class#TrangChu#0" expanded="false" />
                 <element signature="class#AppClick#0;class#TrangChu#0" expanded="false" />
@@ -2829,8 +2849,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="1034">
           <caret line="259" column="33" selection-start-line="259" selection-start-column="33" selection-end-line="259" selection-end-column="33" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="152">
+          <caret line="145" column="73" selection-start-line="145" selection-start-column="73" selection-end-line="145" selection-end-column="73" />
+=======
+        <state relative-caret-position="2025">
+          <caret line="161" column="48" selection-start-line="161" selection-start-column="48" selection-end-line="161" selection-end-column="48" />
+>>>>>>> 4a5e84ededf2d084e766d41b09e3ce1353f7dad4
+>>>>>>> origin/master
           <folding>
             <element signature="method#updateTime#0;class#VideoFull#0" expanded="false" />
             <element signature="method#addListMap#0;class#VideoFull#0" expanded="false" />
