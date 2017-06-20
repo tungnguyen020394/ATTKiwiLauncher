@@ -226,7 +226,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.imgVolumeOn_video:
-                if (mute == true&&!checkLink.changeRingerMode(this)) {
+                if (mute == true&&checkLink.changeRingerMode(this)) {
                     vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
                     volume.UnMuteAudio(this);
                     mute = false;
