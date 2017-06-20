@@ -150,6 +150,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
             vh.video.start();
             vh.video.seekTo(timePause);
+            timePause=0;
 
             vh.video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
