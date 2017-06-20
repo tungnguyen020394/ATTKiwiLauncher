@@ -70,11 +70,16 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         timePause = intent.getIntExtra("timePause", 0);
 
 
-        vh.video.setVideoPath(Define.URL_LINK_BACK);
-        vh.video.start();
+//        vh.video.setVideoPath(Define.URL_LINK_BACK);
+//        vh.video.start();
 
 //        setVideoOrImager(listvideo.get(indexVideo));
+
         setVideoOrImager(listvideo.get(indexVideo));
+//        if ()
+//        {
+//            vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volume_off);
+//        }else vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volume_on);
 
         layoutControl = (LinearLayout) findViewById(R.id.layout_control);
     }
@@ -221,7 +226,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.imgVolumeOn_video:
-                if (mute == true) {
+                if (mute == true&&checkLink.changeRingerMode(this)) {
                     vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
                     volume.UnMuteAudio(this);
                     mute = false;

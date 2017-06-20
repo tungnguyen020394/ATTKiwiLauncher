@@ -1,6 +1,7 @@
 package com.att.kiwilauncher.util;
 
 import android.content.Context;
+import android.media.AudioManager;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -38,5 +39,32 @@ public class CheckLink {
         formatBuilder.setLength(0);
         return hours > 0 ? formatter.format("%d:%02d:%02d", hours, minutes, seconds).toString()
                 : formatter.format("%02d:%02d", minutes, seconds).toString();
+    }
+
+    public boolean changeRingerMode(Context context){
+        boolean check=false;
+
+        AudioManager audio = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+
+        /**
+         * To Enable silent mode.....
+         *
+         */
+        switch (audio.getRingerMode()){
+            case AudioManager.RINGER_MODE_SILENT:
+                check=false;
+                break;
+            case AudioManager.RINGER_MODE_NORMAL:
+                check=true;
+                break;
+        }
+//        audio.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+//
+//        /**
+//         * To Enable Ringer mode.....
+//         */
+//        audio.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+
+        return check;
     }
 }
