@@ -127,16 +127,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                     .load(listvideo.get(indexVideo))
                     .into(vh.imgView);
 
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    if (indexVideo == listvideo.size() - 1) indexVideo = 0;
-                    else indexVideo++;
-
-                    setVideoOrImager(listvideo.get(indexVideo));
-                }
-            }, 5000);
+            handler.postDelayed(nextvideo,5000);
 
         } else if (position == 2) {
             vh.imgView.setVisibility(View.GONE);
@@ -253,6 +244,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.imgNext_video:
+                handler.removeCallbacks(nextvideo);
                 if (indexVideo == (listvideo.size() - 1)) {
                     indexVideo = 0;
                 } else indexVideo++;
@@ -260,6 +252,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
                 break;
             case R.id.imgBack_video:
+                handler.removeCallbacks(nextvideo);
                 if (indexVideo == 0) {
                     indexVideo = listvideo.size() - 1;
                 } else indexVideo--;
@@ -327,4 +320,12 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         }
         return super.onKeyDown(keyCode, event);
     }
+    private Runnable nextvideo = new Runnable() {
+        @Override
+        public void run() {
+            if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+            else indexVideo++;
+            setVideoOrImager(listvideo.get(indexVideo));
+        }
+    };
 }
