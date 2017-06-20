@@ -47,6 +47,7 @@ import com.att.kiwilauncher.model.ThoiTiet;
 import com.att.kiwilauncher.util.CheckLink;
 import com.att.kiwilauncher.util.Define;
 import com.att.kiwilauncher.util.Volume;
+import com.att.kiwilauncher.view.VideoFull;
 import com.att.kiwilauncher.view.VideoFullTest;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
@@ -917,7 +918,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.imgFull:
-                intent = new Intent(getBaseContext(), VideoFullTest.class);
+                intent = new Intent(getBaseContext(), VideoFull.class);
                 intent.putExtra("index", indexVideo);
                 intent.putExtra("list", listvideo);
                 String str = listvideo.get(indexVideo);
