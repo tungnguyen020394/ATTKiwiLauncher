@@ -4,7 +4,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/ic_bgmain"
+                android:background="@drawable/bgnew"
                 android:orientation="vertical"
                 android:padding="10dp"
                 tools:context="com.att.kiwilauncher.TrangChu">ckground="@drawable/ic_bgmain">
@@ -32,12 +32,17 @@
             android:id="@+id/relay12"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_toRightOf="@+id/relay13"
             android:layout_toLeftOf="@+id/relay11"
+<<<<<<< HEAD
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
+=======
+            android:layout_toRightOf="@+id/relay13"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp">
+>>>>>>> origin/master
 
             <RelativeLayout
                 android:id="@+id/relay121"
@@ -51,13 +56,13 @@
                     android:id="@+id/text1"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:layout_centerHorizontal="true"
                     android:ellipsize="marquee"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:gravity="center"
                     android:marqueeRepeatLimit="marquee_forever"
                     android:scrollHorizontally="true"
-                    android:layout_centerHorizontal="true"
                     android:singleLine="true"
                     android:text=" Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! "
                     android:textAllCaps="true"
@@ -198,15 +203,25 @@
         </RelativeLayout>
     </RelativeLayout>
 
+
+
+
     <RelativeLayout
         android:id="@+id/relay2"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        android:layout_below="@+id/relay1"
         android:layout_above="@+id/relay3"
+        android:layout_below="@+id/relay1"
+        android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+<<<<<<< HEAD
         android:layout_marginLeft="20dp">
         <LinearLayout
+=======
+       >
+
+        <RelativeLayout
+>>>>>>> origin/master
             android:id="@+id/relay21"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -400,7 +415,10 @@
             android:padding="2dp">
 
             <RelativeLayout
+
                 android:id="@+id/relay222"
+                android:layout_centerVertical="true"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -418,23 +436,28 @@
                         android:layout_height="match_parent"
                         android:layout_centerHorizontal="true"/>
                     <!--<com.google.android.exoplayer2.ui.SimpleExoPlayerView-->
-                        <!--android:id="@+id/videoView"-->
-                        <!--app:use_controller="false"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_centerInParent="true"/>-->
+                    <!--android:id="@+id/videoView"-->
+                    <!--app:use_controller="false"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_centerInParent="true"/>-->
 
                     <ImageView
                         android:id="@+id/imgView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+<<<<<<< HEAD
                         android:layout_centerInParent="true" />
+=======
+                        android:layout_centerInParent="true"
+                        />
+>>>>>>> origin/master
 
                     <LinearLayout
                         android:id="@+id/linear1"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_17sdp"
-                        android:layout_alignParentBottom="true"
+                        android:layout_below="@id/videoView"
                         android:background="@drawable/ic_bgvideo"
                         android:orientation="horizontal"
                         >
@@ -463,8 +486,8 @@
                             android:layout_alignRight="@id/imgWeb"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_2sdp"
-                            android:src="@drawable/ic_fullvideo"
-                            android:background="@drawable/none"/>
+                            android:background="@drawable/none"
+                            android:src="@drawable/ic_fullvideo"/>
 
                         <TextView
                             android:layout_width="0dp"
@@ -477,8 +500,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
-                            android:src="@drawable/ic_backvideo"
-                            android:background="@drawable/none"/>
+                            android:background="@drawable/none"
+                            android:src="@drawable/ic_backvideo"/>
 
                         <ImageButton
                             android:id="@+id/imgPlay"
@@ -487,8 +510,8 @@
                             android:layout_alignLeft="@id/imgBack"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
-                            android:src="@drawable/ic_pause"
-                            android:background="@drawable/none" />
+                            android:background="@drawable/none"
+                            android:src="@drawable/ic_pause"/>
 
                         <ImageButton
                             android:id="@+id/imgNext"
@@ -497,8 +520,8 @@
                             android:layout_alignLeft="@id/imgPlay"
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
-                            android:src="@drawable/ic_nextvideo"
-                            android:background="@drawable/none"/>
+                            android:background="@drawable/none"
+                            android:src="@drawable/ic_nextvideo"/>
 
                         <TextView
                             android:id="@+id/tvTimeBegin"
@@ -529,8 +552,8 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_5sdp"
-                            android:src="@drawable/ic_volumeoff"
-                            android:background="@drawable/none" />
+                            android:background="@drawable/none"
+                            android:src="@drawable/ic_volumeoff"/>
 
                     </LinearLayout>
                 </RelativeLayout>
@@ -543,9 +566,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_above="@+id/relay4"
-        android:paddingTop="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp">
+        android:paddingTop="10dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler1"
