@@ -7,16 +7,17 @@
                 android:background="@drawable/ic_bgmain"
                 android:orientation="vertical"
                 android:padding="10dp"
-                tools:context="com.att.kiwilauncher.TrangChu">
+                tools:context="com.att.kiwilauncher.TrangChu">ckground="@drawable/ic_bgmain">
 
     <RelativeLayout
         android:id="@+id/relay1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true">
 
         <RelativeLayout
             android:id="@+id/relay13"
-            android:layout_width="fill_parent"
+            android:layout_width="100dp"
             android:layout_height="fill_parent">
 
             <ImageView
@@ -30,7 +31,11 @@
         <RelativeLayout
             android:id="@+id/relay12"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@+id/relay13"
+            android:layout_toLeftOf="@+id/relay11"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
             <RelativeLayout
                 android:id="@+id/relay121"
@@ -61,7 +66,7 @@
 
         <RelativeLayout
             android:id="@+id/relay11"
-            android:layout_width="wrap_content"
+            android:layout_width="465dp"
             android:layout_height="fill_parent"
             android:layout_alignParentRight="true"
             android:orientation="horizontal">
@@ -194,8 +199,11 @@
     <RelativeLayout
         android:id="@+id/relay2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="500dp"
+        android:layout_below="@+id/relay1"
+        android:layout_above="@+id/relay3"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
         <RelativeLayout
             android:id="@+id/relay21"
             android:layout_width="match_parent"
@@ -514,7 +522,11 @@
     <RelativeLayout
         android:id="@+id/relay3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp"
+        android:layout_above="@+id/relay4"
+        android:paddingTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler1"
@@ -530,7 +542,8 @@
     <RelativeLayout
         android:id="@+id/relay4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true">
 
         <ImageView
             android:id="@+id/img_minus"

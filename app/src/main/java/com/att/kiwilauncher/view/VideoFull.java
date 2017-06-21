@@ -19,7 +19,6 @@ import android.widget.VideoView;
 
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.util.CheckLink;
-import com.att.kiwilauncher.util.Define;
 import com.att.kiwilauncher.util.Volume;
 import com.bumptech.glide.Glide;
 
@@ -40,7 +39,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     Volume volume;
     ViewHoder vh;
     LinearLayout layoutControl;
-    boolean playing = true, mute = true;
+    boolean playing = true, mute = true , canclick = true;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
@@ -297,38 +296,50 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_DOWN:
                 layoutControl.setVisibility(View.GONE);
+                canclick = false;
                 break;
 
             case KeyEvent.KEYCODE_DPAD_UP:
                 layoutControl.setVisibility(View.VISIBLE);
+                canclick = true;
                 break;
 
             case KeyEvent.KEYCODE_DPAD_LEFT:
                 if (didIndex < 6 && didIndex > 0) {
-                    listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                    if (listItem.get(didIndex) instanceof ImageButton) {
+                        ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
+                    }
                     if (didIndex == 4 && position == 1) {
                         didIndex--;
                     }
                     didIndex--;
-                    listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
+                    if (listItem.get(didIndex) instanceof ImageButton) {
+                        ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
+                    }
+                    if (didIndex == 0 && listItem.get(didIndex) instanceof ImageButton) ((ImageButton) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                 }
                 break;
 
             case KeyEvent.KEYCODE_DPAD_RIGHT:
                 if (didIndex < 5) {
-                    listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                    if (listItem.get(didIndex) instanceof ImageButton) {
+                        ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
+                    }
+                    if (didIndex == 0 && listItem.get(didIndex) instanceof ImageButton) ((ImageButton) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                     if (didIndex == 2 && position == 1) {
                         didIndex++;
                     }
                     didIndex++;
-                    listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
+                    if (listItem.get(didIndex) instanceof ImageButton) {
+                        ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
+                    }
                 }
                 break;
 
             case KeyEvent.KEYCODE_DPAD_CENTER:
             case KeyEvent.KEYCODE_ENTER:
             case KeyEvent.KEYCODE_NUMPAD_ENTER:
-                listItem.get(didIndex).callOnClick();
+                if (canclick = true) listItem.get(didIndex).callOnClick();
                 break;
         }
         return super.onKeyDown(keyCode, event);
