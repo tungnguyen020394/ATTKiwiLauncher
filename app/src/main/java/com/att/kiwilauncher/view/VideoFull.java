@@ -178,6 +178,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 public void onCompletion(MediaPlayer mp) {
                     indexVideo++;
                     setVideoOrImager(listvideo.get(indexVideo));
+                    vh.video.clearFocus();
                 }
             });
         } else if (position == 3) {

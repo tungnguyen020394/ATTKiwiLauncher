@@ -397,9 +397,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         listAppBottom = new ArrayList<>();
 
 //        listvideo.add(Define.URL_LINK_PLAY);
-        listvideo.add(Define.URL_LINK_IMG01);
-        listvideo.add(Define.URL_LINK_BACK);
+//        listvideo.add(Define.URL_LINK_IMG01);
         listvideo.add(Define.URL_LINK_IMG02);
+        listvideo.add(Define.URL_LINK_BACK);
+
 
         // reLaytive layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1);
