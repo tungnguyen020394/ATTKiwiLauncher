@@ -748,7 +748,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                         listItem.get(didIndex).callOnClick();
                     }
                 } else if (didIndex >= main && didIndex < main + bonusmain) {
-                    if (listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
+                    if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                     }
@@ -793,7 +793,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_video);
                     }
 
-                    if (listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
+                    if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                     }
@@ -810,7 +810,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 text.setSelected(true);
                 if ((didIndex > 0) && (didIndex < main + 1)) {
                     if (didIndex == main) {
-                        listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                        if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                         didIndex--;
                     } else if ( didIndex == 8) {
                         listItem.get(didIndex).setBackgroundResource(R.drawable.none);
@@ -835,9 +835,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                         if (listItem.get(didIndex) instanceof ImageButton) {
                             ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
                         }
-                        if (listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
+                        if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                     } else {
-                        if (listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
+                        if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                         didIndex = 7;
                     }
                 } else if ((didIndex >= main + 1 + bonusmain) && (didIndex < (main + 1 + cates.size() + bonusmain))) {
@@ -882,7 +882,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                             ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                         }
 
-                        if (listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
+                        if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
 
                         if (didIndex == main + 2 && position == 1) {
                             didIndex++;

@@ -230,7 +230,7 @@
                 <TextView
                     android:id="@+id/text_tv"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Truyền Hình"
@@ -254,7 +254,7 @@
                 <TextView
                     android:id="@+id/text_phim"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Phim"
@@ -278,7 +278,7 @@
                 <TextView
                     android:id="@+id/text_nhac"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Nhạc"
@@ -308,7 +308,7 @@
                 <TextView
                     android:id="@+id/text_kara"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Karaoke"
@@ -332,7 +332,7 @@
                 <TextView
                     android:id="@+id/text_youtube"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Youtube"
@@ -356,7 +356,7 @@
                 <TextView
                     android:id="@+id/text_store"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="KIwi Store"
