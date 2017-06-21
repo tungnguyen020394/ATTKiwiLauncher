@@ -196,9 +196,6 @@
         </RelativeLayout>
     </RelativeLayout>
 
-
-
-
     <RelativeLayout
         android:id="@+id/relay2"
         android:layout_width="match_parent"
@@ -228,10 +225,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_tv"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="10dp"
                     android:src="@drawable/img_tv"/>
 
                 <TextView
@@ -256,10 +249,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_phim"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="10dp"
                     android:src="@drawable/img_phim"/>
 
                 <TextView
@@ -284,10 +273,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_nhac"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="10dp"
                     android:src="@drawable/img_nhac"/>
 
                 <TextView
@@ -318,10 +303,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_kara"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="10dp"
                     android:src="@drawable/img_kara"/>
 
                 <TextView
@@ -346,10 +327,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_youtube"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="10dp"
                     android:src="@drawable/img_youtube"/>
 
                 <TextView
@@ -374,10 +351,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_store"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="10dp"
                     android:src="@drawable/img_store"/>
 
                 <TextView
