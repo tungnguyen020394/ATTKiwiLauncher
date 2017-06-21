@@ -33,16 +33,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_toLeftOf="@+id/relay11"
-<<<<<<< HEAD
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
-=======
             android:layout_toRightOf="@+id/relay13"
             android:paddingBottom="20dp"
             android:paddingTop="20dp">
->>>>>>> origin/master
 
             <RelativeLayout
                 android:id="@+id/relay121"
@@ -212,16 +205,9 @@
         android:layout_height="500dp"
         android:layout_above="@+id/relay3"
         android:layout_below="@+id/relay1"
-        android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-<<<<<<< HEAD
         android:layout_marginLeft="20dp">
         <LinearLayout
-=======
-       >
-
-        <RelativeLayout
->>>>>>> origin/master
             android:id="@+id/relay21"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -251,12 +237,12 @@
                 <TextView
                     android:id="@+id/text_tv"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Truyền Hình"
                     android:textAllCaps="true"
-                    android:textSize="20dp"/>
+                    android:textSize="18dp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -279,12 +265,12 @@
                 <TextView
                     android:id="@+id/text_phim"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Phim"
                     android:textAllCaps="true"
-                    android:textSize="20dp"/>
+                    android:textSize="18dp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -307,12 +293,12 @@
                 <TextView
                     android:id="@+id/text_nhac"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Nhạc"
                     android:textAllCaps="true"
-                    android:textSize="20dp"/>
+                    android:textSize="18dp"/>
             </RelativeLayout>
             </LinearLayout>
 
@@ -341,12 +327,12 @@
                 <TextView
                     android:id="@+id/text_kara"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Karaoke"
                     android:textAllCaps="true"
-                    android:textSize="20dp"/>
+                    android:textSize="18dp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -369,12 +355,12 @@
                 <TextView
                     android:id="@+id/text_youtube"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Youtube"
                     android:textAllCaps="true"
-                    android:textSize="20dp"/>
+                    android:textSize="18dp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -397,12 +383,12 @@
                 <TextView
                     android:id="@+id/text_store"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="KIwi Store"
                     android:textAllCaps="true"
-                    android:textSize="20dp"/>
+                    android:textSize="18dp"/>
             </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -446,12 +432,8 @@
                         android:id="@+id/imgView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-<<<<<<< HEAD
-                        android:layout_centerInParent="true" />
-=======
                         android:layout_centerInParent="true"
                         />
->>>>>>> origin/master
 
                     <LinearLayout
                         android:id="@+id/linear1"
