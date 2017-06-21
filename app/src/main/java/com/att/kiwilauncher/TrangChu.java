@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -97,6 +98,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     private ProgressDialog dialog;
     LinearLayout linNear1;
     Volume volume;
+    int intVolume;
     ImageView imgView, imgWeb;
     ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOn, ibtFull;
     TextView tvTimeStart, tvTimeEnd, tvTime;
@@ -106,6 +108,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     SharedPreferences.Editor editorfull;
     private int timePause = 0;
     private boolean dragging, playing = true, mute = true;
+    private AudioManager audioManager;
     Intent intent;
     Handler handler = new Handler();
 
@@ -184,7 +187,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 //        }
 
         //audio
+        intVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+//        audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,AudioManager.ADJUST_MUTE,0);
         volume.MuteAudio(this);
+
 
         dialog = new ProgressDialog(this);
         dialog.setTitle("Đang tải");
@@ -443,6 +449,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         rcApp = (RecyclerView) findViewById(R.id.recycler2);
 
         video = (VideoView) findViewById(R.id.videoView);
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+
+
 //        exoPlayer = (SimpleExoPlayerView) findViewById(R.id.videoView);
 
         ibtNext = (ImageButton) findViewById(R.id.imgNext);
@@ -910,20 +919,27 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 // độ dài video đang chạy
                 int timepause = video.getCurrentPosition();
                 intent.putExtra("timePause", timepause);
+                intent.putExtra("mute",mute);
+                editorfull.putInt("volume",intVolume);
+                editorfull.commit();
                 startActivity(intent);
                 break;
 
             case R.id.imgVolumeOn:
                 if (mute == true) {
                     ibtVolumeOn.setImageResource(R.drawable.ic_volumeon);
-                    volume.UnMuteAudio(this);
+
+                    volume.UnMuteAudio(this,intVolume);
+//                    audioManager.setStreamMute(AudioManager.STREAM_MUSIC,false);
                     mute = false;
-                    editorfull.putBoolean("volume",!mute);
+                    editorfull.putInt("volume",intVolume);
                 } else {
-                    ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
+
                     mute = true;
-                    volume.MuteAudio(this);
-                    editorfull.putBoolean("volume",!mute);
+//                    volume.MuteAudio(this);
+//                    audioManager.setStreamMute(AudioManager.STREAM_MUSIC,true);
+
+                    editorfull.putInt("volume",intVolume);
                 }
                 editorfull.commit();
                 break;

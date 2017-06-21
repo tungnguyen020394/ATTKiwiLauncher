@@ -2,6 +2,7 @@ package com.att.kiwilauncher.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,9 +41,11 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     Volume volume;
     ViewHoder vh;
     LinearLayout layoutControl;
-    boolean playing = true, mute = true;
+    boolean playing = true, mute;
+    int intVolum;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+    AudioManager audioManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +64,11 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         intent = getIntent();
         handler = new Handler();
         volume = new Volume();
+        audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
-        preferences=getSharedPreferences("volume",MODE_PRIVATE);
-        mute=preferences.getBoolean("volume",true);
+        preferences = getSharedPreferences("volume", MODE_PRIVATE);
+        mute = intent.getBooleanExtra("mute", false);
+
 
         vh.ibtNextVideo.setOnClickListener(this);
         vh.ibtPlayVideo.setOnClickListener(this);
@@ -75,12 +80,14 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         indexVideo = intent.getIntExtra("index", 0);
         listvideo = intent.getStringArrayListExtra("list");
         timePause = intent.getIntExtra("timePause", 0);
+        intVolum = preferences.getInt("volume",0);
 
-        if (mute == true ) {
-            vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
-            volume.UnMuteAudio(this);
+        if (mute == true) {
+            vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volume_on);
+            volume.UnMuteAudio(this, intVolum);
         } else {
             vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeoff);
+//            audioManager.setStreamMute(AudioManager.STREAM_MUSIC, false);
             volume.MuteAudio(this);
         }
 
@@ -229,13 +236,14 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 intent.putExtra("timePause", timepause);
 
                 onBackPressed();
+
                 break;
 
             case R.id.imgVolumeOn_video:
 
-                if (mute == true ) {
+                if (mute == true) {
                     vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
-                    volume.UnMuteAudio(this);
+                    volume.UnMuteAudio(this,intVolum);
                     mute = false;
                 } else {
                     vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeoff);
