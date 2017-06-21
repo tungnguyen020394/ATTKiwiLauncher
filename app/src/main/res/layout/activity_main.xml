@@ -197,8 +197,6 @@
     </RelativeLayout>
 
 
-
-
     <RelativeLayout
         android:id="@+id/relay2"
         android:layout_width="match_parent"
@@ -207,7 +205,7 @@
         android:layout_below="@+id/relay1"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-       >
+        >
 
         <RelativeLayout
             android:id="@+id/relay21"
@@ -224,10 +222,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_above="@+id/text_tv"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="10dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_tv"/>
 
@@ -251,10 +245,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_above="@+id/text_phim"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="10dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_phim"/>
 
@@ -278,10 +268,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_above="@+id/text_nhac"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="10dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/img_nhac"/>
 
@@ -305,10 +291,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_above="@+id/text_kara"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="10dp"
+
                     android:scaleType="fitXY"
                     android:src="@drawable/img_kara"/>
 
@@ -332,10 +315,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_above="@+id/text_youtube"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="10dp"
+
                     android:scaleType="fitXY"
                     android:src="@drawable/img_youtube"/>
 
@@ -359,10 +339,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_above="@+id/text_store"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="10dp"
+
                     android:scaleType="fitXY"
                     android:src="@drawable/img_store"/>
 
@@ -387,10 +364,10 @@
             <RelativeLayout
 
                 android:id="@+id/relay222"
-                android:layout_centerVertical="true"
-
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
 
                 <RelativeLayout
                     android:id="@+id/relay2221"
@@ -400,30 +377,35 @@
                     android:padding="10dp"
                     >
 
-                    <VideoView
-                        android:id="@+id/videoView"
+                    <RelativeLayout
+                        android:id="@+id/vVI"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerHorizontal="true"/>
-                    <!--<com.google.android.exoplayer2.ui.SimpleExoPlayerView-->
-                    <!--android:id="@+id/videoView"-->
-                    <!--app:use_controller="false"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_centerInParent="true"/>-->
+                        android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/imgView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        />
+                        <VideoView
+                            android:id="@+id/videoView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            />
+
+                        <ImageView
+                            android:id="@+id/imgView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitXY"
+                            android:visibility="gone"
+                            />
+
+                    </RelativeLayout>
+
 
                     <LinearLayout
                         android:id="@+id/linear1"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_17sdp"
-                        android:layout_below="@id/videoView"
+                        android:layout_below="@id/vVI"
                         android:background="@drawable/ic_bgvideo"
                         android:orientation="horizontal"
                         >

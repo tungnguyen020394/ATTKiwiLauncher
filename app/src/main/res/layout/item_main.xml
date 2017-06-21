@@ -32,6 +32,7 @@
                         android:id="@+id/img1"
                         android:src="@drawable/img_tv"
                         android:layout_width="wrap_content"
+
                         android:layout_height="100dp"/>
                     <TextView
                         android:text="Truyền Hình"
