@@ -196,25 +196,15 @@
         </RelativeLayout>
     </RelativeLayout>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
     <RelativeLayout
         android:id="@+id/relay2"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_above="@+id/relay3"
         android:layout_below="@+id/relay1"
-        android:layout_marginRight="20dp"
-<<<<<<< HEAD
-        >
+        android:layout_marginRight="20dp">
 
-        <RelativeLayout
-=======
-        android:layout_marginLeft="20dp">
         <LinearLayout
->>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
             android:id="@+id/relay21"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -235,10 +225,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_tv"
-<<<<<<< HEAD
-                    android:scaleType="fitXY"
-=======
->>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
                     android:src="@drawable/img_tv"/>
 
                 <TextView
@@ -263,10 +249,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_phim"
-<<<<<<< HEAD
-                    android:scaleType="fitXY"
-=======
->>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
                     android:src="@drawable/img_phim"/>
 
                 <TextView
@@ -291,10 +273,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_nhac"
-<<<<<<< HEAD
-                    android:scaleType="fitXY"
-=======
->>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
                     android:src="@drawable/img_nhac"/>
 
                 <TextView
@@ -325,11 +303,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_kara"
-<<<<<<< HEAD
-
-                    android:scaleType="fitXY"
-=======
->>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
                     android:src="@drawable/img_kara"/>
 
                 <TextView
@@ -354,11 +327,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_youtube"
-<<<<<<< HEAD
-
-                    android:scaleType="fitXY"
-=======
->>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
                     android:src="@drawable/img_youtube"/>
 
                 <TextView
@@ -383,11 +351,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_store"
-<<<<<<< HEAD
-
-                    android:scaleType="fitXY"
-=======
->>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
                     android:src="@drawable/img_store"/>
 
                 <TextView

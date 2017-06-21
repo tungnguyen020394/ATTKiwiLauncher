@@ -187,12 +187,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 //        }
 
         //audio
-<<<<<<< HEAD
-=======
         intVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 //        audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,AudioManager.ADJUST_MUTE,0);
 //        volume.MuteAudio(this);
->>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
 
         volume.MuteAudio(this);
 
