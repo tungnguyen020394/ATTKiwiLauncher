@@ -66,9 +66,9 @@ import java.util.Map;
 public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
     int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position,bonusmain = 6;
-    RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11,
-            reLay21, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,
+    RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,
             reLay2221,reLay121;
+    LinearLayout reLay21;
     ArrayList<View> listItem;
     TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo;
     VideoView video;
@@ -107,6 +107,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     Intent intent;
     Handler handler = new Handler();
     private int currentApiVersion;
+    private int hidetabbar = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -407,7 +408,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113.setOnClickListener(this);
         reLay121 = (RelativeLayout) findViewById(R.id.relay121);
 
-        reLay21 = (RelativeLayout) findViewById(R.id.relay21);
+        reLay21 = (LinearLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
         reLay21.setPadding(0, 0, mChieuDai * 34, 0);
         reLay22.setPadding(mChieuDai * 34, 0, 0, 0);
@@ -418,14 +419,61 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay214 = (RelativeLayout) findViewById(R.id.relay214);
         reLay215 = (RelativeLayout) findViewById(R.id.relay215);
         reLay216 = (RelativeLayout) findViewById(R.id.relay216);
-        reLay211.setPadding(0, 0, mChieuDai * 23, mChieuRong * 12);
-        reLay212.setPadding(mChieuDai * 11, 0, mChieuDai * 12, mChieuRong * 12);
-        reLay213.setPadding(mChieuDai * 22, 0, mChieuDai * 1, mChieuRong * 12);
-        reLay214.setPadding(0, mChieuRong * 12, mChieuDai * 23, 0);
-        reLay215.setPadding(mChieuDai * 11, mChieuRong * 12, mChieuDai * 12, 0);
-        reLay216.setPadding(mChieuDai * 22, mChieuRong * 12, mChieuDai * 1, 0);
+//        reLay211.setPadding(0, 0, mChieuDai * 23, mChieuRong * 13);
+//        reLay212.setPadding(mChieuDai * 11, 0, mChieuDai * 12, mChieuRong * 13);
+//        reLay213.setPadding(mChieuDai * 22, 0, mChieuDai * 1, mChieuRong * 13);
+//        reLay214.setPadding(0, mChieuRong * 13, mChieuDai * 23, 0);
+//        reLay215.setPadding(mChieuDai * 11, mChieuRong * 13, mChieuDai * 12, 0);
+//        reLay216.setPadding(mChieuDai * 22, mChieuRong * 13, mChieuDai * 1, 0);
         reLay2221 = (RelativeLayout) findViewById(R.id.relay2221);
         reLay2221.setOnClickListener(this);
+
+        /*
+        reLay2.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                int heightWas = oldBottom - oldTop; // bottom exclusive, top inclusive
+                if( v.getHeight() != heightWas ) {
+                    switch (hidetabbar) {
+                        case 2:
+                        case 3:
+                            Toast.makeText(getApplicationContext(), "hihi " + hidetabbar, Toast.LENGTH_SHORT).show();
+//                            DisplayMetrics displayMetrics = new DisplayMetrics();
+//                            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+//                            chieuDai = displayMetrics.widthPixels;
+//                            chieuRong = displayMetrics.heightPixels;
+//                            mChieuDai = chieuDai / 70;
+//                            mChieuRong = chieuRong / 40;
+                            reLay211.setPadding(0, 0, mChieuDai * 23, mChieuRong * 15);
+                            reLay212.setPadding(mChieuDai * 11, 0, mChieuDai * 12, mChieuRong * 15);
+                            reLay213.setPadding(mChieuDai * 22, 0, mChieuDai * 1, mChieuRong * 15);
+                            reLay214.setPadding(0, mChieuRong * 15, mChieuDai * 23, 0);
+                            reLay215.setPadding(mChieuDai * 11, mChieuRong * 15, mChieuDai * 12, 0);
+                            reLay216.setPadding(mChieuDai * 22, mChieuRong * 15, mChieuDai * 1, 0);
+                            hidetabbar ++;
+                            if (hidetabbar == 4) hidetabbar = 1;
+                            break;
+
+                        case 1:
+                            Toast.makeText(getApplicationContext(), "hihi " + hidetabbar, Toast.LENGTH_SHORT).show();
+//                            DisplayMetrics displayMetrics1 = new DisplayMetrics();
+//                            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics1);
+//                            chieuDai = displayMetrics.widthPixels;
+//                            chieuRong = displayMetrics.heightPixels;
+//                            mChieuDai = chieuDai / 70;
+//                            mChieuRong = chieuRong / 40;
+                            reLay211.setPadding(0, 0, mChieuDai * 23, mChieuRong * 13);
+                            reLay212.setPadding(mChieuDai * 11, 0, mChieuDai * 12, mChieuRong * 13);
+                            reLay213.setPadding(mChieuDai * 22, 0, mChieuDai * 1, mChieuRong * 13);
+                            reLay214.setPadding(0, mChieuRong * 13, mChieuDai * 23, 0);
+                            reLay215.setPadding(mChieuDai * 11, mChieuRong * 13, mChieuDai * 12, 0);
+                            reLay216.setPadding(mChieuDai * 22, mChieuRong * 13, mChieuDai * 1, 0);
+                            hidetabbar = 2;
+                            break;
+                    }
+                }
+            }
+        });*/
 
         linNear1 = (LinearLayout) findViewById(R.id.linear1);
 
@@ -1232,5 +1280,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             setVideoOrImager(listvideo.get(indexVideo));
         }
     };
+
+
 
 }
