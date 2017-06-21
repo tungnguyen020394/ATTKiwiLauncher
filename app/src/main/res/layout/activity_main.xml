@@ -196,163 +196,212 @@
         </RelativeLayout>
     </RelativeLayout>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
     <RelativeLayout
         android:id="@+id/relay2"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_above="@+id/relay3"
         android:layout_below="@+id/relay1"
-        android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+<<<<<<< HEAD
         >
 
         <RelativeLayout
+=======
+        android:layout_marginLeft="20dp">
+        <LinearLayout
+>>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
             android:id="@+id/relay21"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal">
             <RelativeLayout
                 android:id="@+id/relay211"
-                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/img_tv"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_above="@+id/text_tv"
+<<<<<<< HEAD
                     android:scaleType="fitXY"
+=======
+>>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
                     android:src="@drawable/img_tv"/>
 
                 <TextView
                     android:id="@+id/text_tv"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Truyền Hình"
-                    android:textAllCaps="true"/>
+                    android:textAllCaps="true"
+                    android:textSize="18dp"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay212"
-                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/img_phim"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_above="@+id/text_phim"
+<<<<<<< HEAD
                     android:scaleType="fitXY"
+=======
+>>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
                     android:src="@drawable/img_phim"/>
 
                 <TextView
                     android:id="@+id/text_phim"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Phim"
-                    android:textAllCaps="true"/>
+                    android:textAllCaps="true"
+                    android:textSize="18dp"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay213"
-                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/img_nhac"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_above="@+id/text_nhac"
+<<<<<<< HEAD
                     android:scaleType="fitXY"
+=======
+>>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
                     android:src="@drawable/img_nhac"/>
 
                 <TextView
                     android:id="@+id/text_nhac"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Nhạc"
-                    android:textAllCaps="true"/>
+                    android:textAllCaps="true"
+                    android:textSize="18dp"/>
             </RelativeLayout>
+            </LinearLayout>
 
+            <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+                android:orientation="horizontal">
             <RelativeLayout
                 android:id="@+id/relay214"
-                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/img_kara"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_above="@+id/text_kara"
+<<<<<<< HEAD
 
                     android:scaleType="fitXY"
+=======
+>>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
                     android:src="@drawable/img_kara"/>
 
                 <TextView
                     android:id="@+id/text_kara"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Karaoke"
-                    android:textAllCaps="true"/>
+                    android:textAllCaps="true"
+                    android:textSize="18dp"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay215"
-                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/img_youtube"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_above="@+id/text_youtube"
+<<<<<<< HEAD
 
                     android:scaleType="fitXY"
+=======
+>>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
                     android:src="@drawable/img_youtube"/>
 
                 <TextView
                     android:id="@+id/text_youtube"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="Youtube"
-                    android:textAllCaps="true"/>
+                    android:textAllCaps="true"
+                    android:textSize="18dp"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay216"
-                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/img_store"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_above="@+id/text_store"
+<<<<<<< HEAD
 
                     android:scaleType="fitXY"
+=======
+>>>>>>> e959fcf7331a3bf77c2c672e27f495831fd96cf3
                     android:src="@drawable/img_store"/>
 
                 <TextView
                     android:id="@+id/text_store"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:gravity="center"
                     android:text="KIwi Store"
-                    android:textAllCaps="true"/>
+                    android:textAllCaps="true"
+                    android:textSize="18dp"/>
             </RelativeLayout>
-        </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/relay22"
