@@ -40,12 +40,12 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     Volume volume;
     ViewHoder vh;
     LinearLayout layoutControl;
-<<<<<<< HEAD
-    boolean playing = true, mute;
+
+
     int intVolum;
-=======
+
     boolean playing = true, mute = true , canclick = true;
->>>>>>> afeb2691d8c045a11481a5741ac8601d44fc603f
+
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     AudioManager audioManager;
