@@ -35,8 +35,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:src="@drawable/ic_website"
-            android:background="@drawable/border_videopick"
+            android:src="@drawable/ic_web"
             />
 
         <TextView

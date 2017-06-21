@@ -64,8 +64,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.att.kiwilauncher.R.id.relay2;
-
 public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
     int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position,bonusmain = 6;
@@ -111,7 +109,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     private AudioManager audioManager;
     Intent intent;
     Handler handler = new Handler();
-
+    private int currentApiVersion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -402,13 +400,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
         // reLaytive layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1);
-        reLay1.setPadding(mChieuDai, 0, mChieuDai, mChieuRong * 33);
-        reLay2 = (RelativeLayout) findViewById(relay2);
-        reLay2.setPadding(mChieuDai, mChieuRong * 6, mChieuDai, mChieuRong * 12);
+        reLay2 = (RelativeLayout) findViewById(R.id.relay2);
         reLay3 = (RelativeLayout) findViewById(R.id.relay3);
-        reLay3.setPadding(mChieuDai * 3, mChieuRong * 27, mChieuDai, mChieuRong * 8);
         reLay4 = (RelativeLayout) findViewById(R.id.relay4);
-        reLay4.setPadding(0, mChieuRong * 31, 0, 0);
 
         reLay13 = (RelativeLayout) findViewById(R.id.relay13);
         reLay12 = (RelativeLayout) findViewById(R.id.relay12);
@@ -417,9 +411,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay112 = (RelativeLayout) findViewById(R.id.relay112);
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay113.setOnClickListener(this);
-        reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
-        reLay12.setPadding(mChieuDai * 9, mChieuRong, mChieuDai * 35, mChieuRong);
-        reLay11.setPadding(mChieuDai * 33, 0, mChieuDai, 0);
         reLay121 = (RelativeLayout) findViewById(R.id.relay121);
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
@@ -433,12 +424,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay214 = (RelativeLayout) findViewById(R.id.relay214);
         reLay215 = (RelativeLayout) findViewById(R.id.relay215);
         reLay216 = (RelativeLayout) findViewById(R.id.relay216);
-        reLay211.setPadding(mChieuDai, 0, mChieuDai * 23, mChieuRong * 11);
-        reLay212.setPadding(mChieuDai * 12, 0, mChieuDai * 12, mChieuRong * 11);
-        reLay213.setPadding(mChieuDai * 23, 0, mChieuDai * 1, mChieuRong * 11);
-        reLay214.setPadding(mChieuDai, mChieuRong * 11, mChieuDai * 23, 0);
-        reLay215.setPadding(mChieuDai * 12, mChieuRong * 11, mChieuDai * 12, 0);
-        reLay216.setPadding(mChieuDai * 23, mChieuRong * 11, mChieuDai * 1, 0);
+        reLay211.setPadding(0, 0, mChieuDai * 23, mChieuRong * 12);
+        reLay212.setPadding(mChieuDai * 11, 0, mChieuDai * 12, mChieuRong * 12);
+        reLay213.setPadding(mChieuDai * 22, 0, mChieuDai * 1, mChieuRong * 12);
+        reLay214.setPadding(0, mChieuRong * 12, mChieuDai * 23, 0);
+        reLay215.setPadding(mChieuDai * 11, mChieuRong * 12, mChieuDai * 12, 0);
+        reLay216.setPadding(mChieuDai * 22, mChieuRong * 12, mChieuDai * 1, 0);
         reLay2221 = (RelativeLayout) findViewById(R.id.relay2221);
         reLay2221.setOnClickListener(this);
 
@@ -788,9 +779,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                         if (listItem.get(didIndex) instanceof ImageButton) {
                             ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
                         }
-                        if (didIndex == 12) listItem.get(didIndex).setBackgroundResource(R.drawable.ic_web);
+                        if (didIndex == 0 && listItem.get(didIndex) instanceof ImageButton) ((ImageButton) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                     } else {
-                        listItem.get(didIndex).setBackgroundResource(R.drawable.ic_website);
+                        if (didIndex == 0 && listItem.get(didIndex) instanceof ImageButton) ((ImageButton) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                         didIndex = 7;
                     }
                 } else if ((didIndex >= main + 1 + bonusmain) && (didIndex < (main + 1 + cates.size() + bonusmain))) {
@@ -834,9 +825,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                         if (listItem.get(didIndex) instanceof ImageButton) {
                             ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                         }
-                        if (didIndex == 12) {
-                            listItem.get(didIndex).setBackgroundResource(R.drawable.ic_website);
-                        }
+
+                        if (didIndex == 0 && listItem.get(didIndex) instanceof ImageButton) ((ImageButton) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
+
                         if (didIndex == main + 2 && position == 1) {
                             didIndex++;
                         }
@@ -991,8 +982,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.img_kara:
-                Intent i3 = new Intent(TrangChu.this, DanhSach.class);
-                startActivity(i3);
+                Toast.makeText(getApplicationContext(),chieuDai + " -" + chieuRong,Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.img_youtube:
@@ -1037,7 +1027,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
             case R.id.relay2221:
                 didIndex = 12;
-                listItem.get(didIndex).setBackgroundResource(R.drawable.ic_web);
+                if (listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                 break;
         }
     }
@@ -1258,4 +1248,5 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             setVideoOrImager(listvideo.get(indexVideo));
         }
     };
+
 }
