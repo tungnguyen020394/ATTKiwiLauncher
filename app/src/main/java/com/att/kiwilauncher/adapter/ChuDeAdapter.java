@@ -70,14 +70,19 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgApp;
         TextView txtApp;
-        RelativeLayout layoutCate;
+        RelativeLayout layoutCate,layoutCate1;
 
         public ViewHolder(View itemView) {
             super(itemView);
             final DatabaseHelper mDadabaseHelper;
             mDadabaseHelper = new DatabaseHelper(context);
             imgApp = (ImageView) itemView.findViewById(R.id.image_category);
+<<<<<<< HEAD
             txtApp = (TextView) itemView.findViewById(R.id.txt_catego);
+=======
+            txtApp = (TextView)  itemView.findViewById(R.id.txt_catego);
+            layoutCate1 = (RelativeLayout) itemView.findViewById(R.id.layout_category1);
+>>>>>>> master
             layoutCate = (RelativeLayout) itemView.findViewById(R.id.layout_category);
             layoutCate.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -112,6 +117,14 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
                         TrangChu.listAppBottom.clear();
                     }
                     TrangChu.listapp.notifyDataSetChanged();
+
+                }
+            });
+
+            layoutCate1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    layoutCate.callOnClick();
                 }
             });
         }
