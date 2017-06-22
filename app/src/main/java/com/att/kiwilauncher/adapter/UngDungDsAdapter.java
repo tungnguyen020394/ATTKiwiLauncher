@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.att.kiwilauncher.DanhSach;
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.UngDung;
 
@@ -33,7 +32,7 @@ public class UngDungDsAdapter extends RecyclerView.Adapter<UngDungDsAdapter.View
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         final View itemView = layoutInflater.inflate(R.layout.item_app, parent, false);
-        itemView.setOnClickListener(DanhSach.appClick);
+        //itemView.setOnClickListener(DanhSach.appClick);
         return new ViewHolder(itemView);
     }
 
