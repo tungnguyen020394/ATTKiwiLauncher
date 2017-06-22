@@ -411,61 +411,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay214 = (RelativeLayout) findViewById(R.id.relay214);
         reLay215 = (RelativeLayout) findViewById(R.id.relay215);
         reLay216 = (RelativeLayout) findViewById(R.id.relay216);
-//        reLay211.setPadding(0, 0, mChieuDai * 23, mChieuRong * 13);
-//        reLay212.setPadding(mChieuDai * 11, 0, mChieuDai * 12, mChieuRong * 13);
-//        reLay213.setPadding(mChieuDai * 22, 0, mChieuDai * 1, mChieuRong * 13);
-//        reLay214.setPadding(0, mChieuRong * 13, mChieuDai * 23, 0);
-//        reLay215.setPadding(mChieuDai * 11, mChieuRong * 13, mChieuDai * 12, 0);
-//        reLay216.setPadding(mChieuDai * 22, mChieuRong * 13, mChieuDai * 1, 0);
+
         reLay2221 = (RelativeLayout) findViewById(R.id.relay2221);
         reLay2221.setOnClickListener(this);
 
-        /*
-        reLay2.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
-            @Override
-            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-                int heightWas = oldBottom - oldTop; // bottom exclusive, top inclusive
-                if( v.getHeight() != heightWas ) {
-                    switch (hidetabbar) {
-                        case 2:
-                        case 3:
-                            Toast.makeText(getApplicationContext(), "hihi " + hidetabbar, Toast.LENGTH_SHORT).show();
-//                            DisplayMetrics displayMetrics = new DisplayMetrics();
-//                            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-//                            chieuDai = displayMetrics.widthPixels;
-//                            chieuRong = displayMetrics.heightPixels;
-//                            mChieuDai = chieuDai / 70;
-//                            mChieuRong = chieuRong / 40;
-                            reLay211.setPadding(0, 0, mChieuDai * 23, mChieuRong * 15);
-                            reLay212.setPadding(mChieuDai * 11, 0, mChieuDai * 12, mChieuRong * 15);
-                            reLay213.setPadding(mChieuDai * 22, 0, mChieuDai * 1, mChieuRong * 15);
-                            reLay214.setPadding(0, mChieuRong * 15, mChieuDai * 23, 0);
-                            reLay215.setPadding(mChieuDai * 11, mChieuRong * 15, mChieuDai * 12, 0);
-                            reLay216.setPadding(mChieuDai * 22, mChieuRong * 15, mChieuDai * 1, 0);
-                            hidetabbar ++;
-                            if (hidetabbar == 4) hidetabbar = 1;
-                            break;
-
-                        case 1:
-                            Toast.makeText(getApplicationContext(), "hihi " + hidetabbar, Toast.LENGTH_SHORT).show();
-//                            DisplayMetrics displayMetrics1 = new DisplayMetrics();
-//                            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics1);
-//                            chieuDai = displayMetrics.widthPixels;
-//                            chieuRong = displayMetrics.heightPixels;
-//                            mChieuDai = chieuDai / 70;
-//                            mChieuRong = chieuRong / 40;
-                            reLay211.setPadding(0, 0, mChieuDai * 23, mChieuRong * 13);
-                            reLay212.setPadding(mChieuDai * 11, 0, mChieuDai * 12, mChieuRong * 13);
-                            reLay213.setPadding(mChieuDai * 22, 0, mChieuDai * 1, mChieuRong * 13);
-                            reLay214.setPadding(0, mChieuRong * 13, mChieuDai * 23, 0);
-                            reLay215.setPadding(mChieuDai * 11, mChieuRong * 13, mChieuDai * 12, 0);
-                            reLay216.setPadding(mChieuDai * 22, mChieuRong * 13, mChieuDai * 1, 0);
-                            hidetabbar = 2;
-                            break;
-                    }
-                }
-            }
-        });*/
 
         linNear1 = (LinearLayout) findViewById(R.id.linear1);
 
@@ -518,15 +467,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         image5.setOnClickListener(this);
         image6.setOnClickListener(this);
         imgWeb.setOnClickListener(this);
-
-        int mChieuDaia = (mChieuDai * 5) / 8;
-        int mChieuRonga = (mChieuRong * 3) / 4;
-        image1.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
-        image2.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
-        image3.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
-        image4.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
-        image5.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
-        image6.setPadding(mChieuDaia, mChieuRonga, mChieuDaia, mChieuRonga);
 
         imageMinus = (ImageView) findViewById(R.id.img_minus);
         imagePlus = (ImageView) findViewById(R.id.img_plus);
