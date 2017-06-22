@@ -6,7 +6,6 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/bgnew"
                 android:orientation="vertical"
-                android:padding="10dp"
                 tools:context="com.att.kiwilauncher.TrangChu">ckground="@drawable/ic_bgmain">
 
     <RelativeLayout
@@ -228,7 +227,8 @@
                         android:layout_height="wrap_content"
                         android:layout_above="@+id/text_tv"
                         android:scaleType="fitXY"
-                        android:src="@drawable/img_tv"/>
+                        android:src="@drawable/img_tv"
+                        android:padding="@dimen/_4sdp"/>
 
                     <TextView
                         android:id="@+id/text_tv"
@@ -255,7 +255,8 @@
                         android:layout_height="wrap_content"
                         android:layout_above="@+id/text_phim"
                         android:scaleType="fitXY"
-                        android:src="@drawable/img_phim"/>
+                        android:src="@drawable/img_phim"
+                        android:padding="@dimen/_4sdp"/>
 
                     <TextView
                         android:id="@+id/text_phim"
@@ -280,7 +281,8 @@
                         android:layout_height="wrap_content"
                         android:layout_above="@+id/text_nhac"
                         android:scaleType="fitXY"
-                        android:src="@drawable/img_nhac"/>
+                        android:src="@drawable/img_nhac"
+                        android:padding="@dimen/_4sdp"/>
 
                     <TextView
                         android:id="@+id/text_nhac"
@@ -306,7 +308,8 @@
                         android:layout_height="wrap_content"
                         android:layout_above="@+id/text_kara"
                         android:scaleType="fitXY"
-                        android:src="@drawable/img_kara"/>
+                        android:src="@drawable/img_kara"
+                        android:padding="@dimen/_4sdp"/>
 
                     <TextView
                         android:id="@+id/text_kara"
@@ -335,7 +338,8 @@
                         android:layout_height="wrap_content"
                         android:layout_above="@+id/text_youtube"
                         android:scaleType="fitXY"
-                        android:src="@drawable/img_youtube"/>
+                        android:src="@drawable/img_youtube"
+                        android:padding="@dimen/_4sdp"/>
 
                     <TextView
                         android:id="@+id/text_youtube"
@@ -362,7 +366,8 @@
                         android:layout_height="wrap_content"
                         android:layout_above="@+id/text_store"
                         android:scaleType="fitXY"
-                        android:src="@drawable/img_store"/>
+                        android:src="@drawable/img_store"
+                        android:padding="@dimen/_4sdp"/>
 
                     <TextView
                         android:id="@+id/text_store"
