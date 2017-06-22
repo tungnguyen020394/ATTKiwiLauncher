@@ -1186,7 +1186,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         position = checkLink.CheckLinkURL(check);
 
         if (position == 1) {
-            if (didIndex == main + bonusmain) {
+            if (didIndex == main + bonusmain - 1) {
                 ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                 didIndex--;
                 ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));

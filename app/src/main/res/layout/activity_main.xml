@@ -19,7 +19,7 @@
             android:id="@+id/relay13"
             android:layout_width="@dimen/_86sdp"
             android:layout_height="fill_parent"
-            android:paddingLeft="@dimen/_10sdp">
+            android:paddingLeft="@dimen/_17sdp">
 
             <ImageView
                 android:id="@+id/img1"
@@ -208,7 +208,7 @@
         android:layout_height="@dimen/_140sdp"
         android:layout_below="@+id/relay1"
         android:layout_marginLeft="@dimen/_17sdp"
-        android:layout_marginRight="@dimen/_17sdp">
+        android:layout_marginRight="@dimen/_1sdp">
 
         <RelativeLayout
             android:id="@+id/relay21"
@@ -381,7 +381,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_140sdp"
                 android:layout_toRightOf="@+id/relay21"
-                android:paddingLeft="@dimen/_5sdp">
+                android:paddingLeft="@dimen/_21sdp">
 
                 <RelativeLayout
                     android:id="@+id/relay222"
@@ -531,7 +531,7 @@
         android:id="@+id/relay3"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_height="@dimen/_26sdp"
+        android:layout_height="@dimen/_24sdp"
         android:layout_below="@+id/relay2"
         android:layout_marginLeft="@dimen/_17sdp"
         android:layout_marginRight="@dimen/_17sdp">
@@ -558,18 +558,22 @@
             android:id="@+id/img_minus"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_55sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:scaleType="fitStart"
             android:src="@drawable/ic_minus1"/>
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="@dimen/_55sdp"
             android:layout_toLeftOf="@+id/img_plus"
-            android:layout_toRightOf="@+id/img_minus">
+            android:layout_toRightOf="@+id/img_minus"
+            android:gravity="center">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler2"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
+                android:layout_height="@dimen/_55sdp"
                 ></android.support.v7.widget.RecyclerView>
         </RelativeLayout>
 
@@ -578,6 +582,9 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_55sdp"
             android:layout_alignParentRight="true"
+            android:scaleType="fitEnd"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
             android:src="@drawable/ic_plus1"/>
     </RelativeLayout>
 
