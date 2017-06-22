@@ -37,7 +37,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     ArrayList<String> listvideo;
     List<View> listItem;
     CheckLink checkLink;
-    Volume volume;
+//    Volume volume;
     ViewHoder vh;
     LinearLayout layoutControl;
 
@@ -66,7 +66,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         checkLink = new CheckLink();
         intent = getIntent();
         handler = new Handler();
-        volume = new Volume();
+//        volume = new Volume();
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
         preferences = getSharedPreferences("volume", MODE_PRIVATE);
@@ -86,12 +86,13 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         intVolum = preferences.getInt("volume",0);
 
         if (mute == true) {
-            vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volume_on);
-            volume.UnMuteAudio(this, intVolum);
+            vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+
         } else {
             vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeoff);
-//            audioManager.setStreamMute(AudioManager.STREAM_MUSIC, false);
-            volume.MuteAudio(this);
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+
         }
 
         setVideoOrImager(listvideo.get(indexVideo));
@@ -131,11 +132,11 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
         position = checkLink.CheckLinkURL(check);
         if (position == 1) {
-//            if (didIndex == 5) {
-//                listItem.get(didIndex).setBackgroundResource(R.drawable.none);
-//                didIndex--;
-//                listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
-//            }
+            if (didIndex == 5) {
+                listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+                didIndex--;
+                listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
+            }
             vh.imgView.setVisibility(View.VISIBLE);
             vh.video.setVisibility(View.GONE);
             vh.ibtPlayVideo.setVisibility(View.GONE);
@@ -250,11 +251,15 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
                 if (mute == true) {
                     vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
-                    volume.UnMuteAudio(this,intVolum);
+//                    volume.UnMuteAudio(this,intVolum);
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+
                     mute = false;
                 } else {
                     vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeoff);
-                    volume.MuteAudio(this);
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+
+//                    volume.MuteAudio(this);
                     mute = true;
                 }
                 break;

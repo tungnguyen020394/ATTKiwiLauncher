@@ -66,9 +66,9 @@ import java.util.Map;
 
 public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
-    int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position,bonusmain = 6;
+    int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position, bonusmain = 6;
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,
-            reLay2221,reLay121;
+            reLay2221, reLay121;
     LinearLayout reLay21;
     ArrayList<View> listItem;
     TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo;
@@ -95,8 +95,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     DatabaseHelper mDatabaseHelper;
     private ProgressDialog dialog;
     LinearLayout linNear1;
-//    Volume volume;
-    int intVolume=15;
+    //    Volume volume;
+    int intVolume = 15;
     RelativeLayout.LayoutParams params;
     ImageView imgView, imgWeb;
     ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOn, ibtFull;
@@ -170,7 +170,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         listapp = new UngDungAdapter(this, listAppBottom);
         rcApp.setAdapter(listapp);
 
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,0,AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
 
         setVideoOrImager(listvideo.get(indexVideo));
 
@@ -335,8 +335,18 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     protected void onResume() {
         super.onResume();
 
+        if (mute == true) {
+            ibtVolumeOn.setImageResource(R.drawable.ic_volumeon);
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+
+        } else {
+            ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+
+        }
+
         if (DuLieu.hasInternetConnection(TrangChu.this)) {
-//            setVideoOrImager(listvideo.get(indexVideo));
+            setVideoOrImager(listvideo.get(indexVideo));
         } else {
 
             Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
@@ -368,7 +378,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             mNetworkConnectionNoticeDialog.show();
         }
 
-        SharedPreferences sharedPreferences = getSharedPreferences("thoitiet", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("thoitiet", MODE_PRIVATE);
         String idThoiTiet = sharedPreferences.getString("idthoitiet", "24");
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper.checkDatabase(this);
@@ -502,8 +512,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
 //        volume = new Volume();
         checkLink = new CheckLink();
-        sharedPreferences=getSharedPreferences("volume",MODE_PRIVATE);
-        editorfull =sharedPreferences.edit();
+        sharedPreferences = getSharedPreferences("volume", MODE_PRIVATE);
+        editorfull = sharedPreferences.edit();
 
         text = (TextView) findViewById(R.id.text1);
         text.setSelected(true);
@@ -729,13 +739,14 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                         listItem.get(didIndex).callOnClick();
                     }
                 } else if (didIndex >= main && didIndex < main + bonusmain) {
-                    if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
+                    if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView)
+                        ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                     }
                     didIndex = 1;
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
-                }else if ((didIndex >= main + bonusmain) && (didIndex < main + bonusmain + cates.size())) {
+                } else if ((didIndex >= main + bonusmain) && (didIndex < main + bonusmain + cates.size())) {
                     rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
                     if ((didIndex - 4) < main + bonusmain) {
                         didIndex = didIndex - cates.size() - bonusmain;
@@ -774,7 +785,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_video);
                     }
 
-                    if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
+                    if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView)
+                        ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                     }
@@ -791,9 +803,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 text.setSelected(true);
                 if ((didIndex > 0) && (didIndex < main + 1)) {
                     if (didIndex == main) {
-                        if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
+                        if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView)
+                            ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                         didIndex--;
-                    } else if ( didIndex == 8) {
+                    } else if (didIndex == 8) {
                         listItem.get(didIndex).setBackgroundResource(R.drawable.none);
                         didIndex = 7;
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
@@ -816,9 +829,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                         if (listItem.get(didIndex) instanceof ImageButton) {
                             ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
                         }
-                        if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
+                        if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView)
+                            ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                     } else {
-                        if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
+                        if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView)
+                            ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                         didIndex = 7;
                     }
                 } else if ((didIndex >= main + 1 + bonusmain) && (didIndex < (main + 1 + cates.size() + bonusmain))) {
@@ -828,7 +843,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     didIndex--;
                     rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
                     indexChuDe = didIndex - main - bonusmain;
-                } else if ( didIndex == main + bonusmain){
+                } else if (didIndex == main + bonusmain) {
                     indexChuDe = 0;
                     didIndex = 10;
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
@@ -863,7 +878,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                             ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                         }
 
-                        if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
+                        if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView)
+                            ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
 
                         if (didIndex == main + 2 && position == 1) {
                             didIndex++;
@@ -947,8 +963,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 // độ dài video đang chạy
                 int timepause = video.getCurrentPosition();
                 intent.putExtra("timePause", timepause);
-                intent.putExtra("mute",mute);
-                editorfull.putInt("volume",intVolume);
+                intent.putExtra("mute", mute);
+                editorfull.putInt("volume", intVolume);
                 editorfull.commit();
                 startActivity(intent);
                 break;
@@ -958,19 +974,19 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     ibtVolumeOn.setImageResource(R.drawable.ic_volumeon);
 
 //                    volume.UnMuteAudio(this,intVolume);
-                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,intVolume,AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, intVolume, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
 //                    audioManager.setStreamMute(AudioManager.STREAM_MUSIC,false);
                     mute = false;
-                    editorfull.putInt("volume",intVolume);
+                    editorfull.putInt("volume", intVolume);
                 } else {
                     ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
                     mute = true;
-                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,0,AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
 
 //                    volume.MuteAudio(this);
 //                    audioManager.setStreamMute(AudioManager.STREAM_MUSIC,true);
 
-                    editorfull.putInt("volume",intVolume);
+                    editorfull.putInt("volume", intVolume);
                 }
                 editorfull.commit();
                 break;
@@ -1022,7 +1038,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.img_kara:
-                Toast.makeText(getApplicationContext(),chieuDai + " -" + chieuRong,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), chieuDai + " -" + chieuRong, Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.img_youtube:
@@ -1067,7 +1083,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
             case R.id.relay2221:
                 didIndex = 12;
-                if (listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
+                if (listItem.get(didIndex) instanceof ImageView)
+                    ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                 break;
         }
     }
@@ -1198,7 +1215,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     .load(listvideo.get(indexVideo))
                     .into(imgView);
 
-            handler.postDelayed(nextvideo,5000);
+            handler.postDelayed(nextvideo, 5000);
         } else if (position == 2) {
             imgView.setVisibility(View.GONE);
             video.setVisibility(View.VISIBLE);
@@ -1284,7 +1301,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             setVideoOrImager(listvideo.get(indexVideo));
         }
     };
-
 
 
 }
