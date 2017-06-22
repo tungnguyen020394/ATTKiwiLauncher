@@ -128,12 +128,15 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         i.addCategory(Intent.CATEGORY_LAUNCHER);
         List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
 
+        int soUngDung = 0;
         for (ResolveInfo ri : availableActivities) {
             UngDung app = new UngDung();
             app.labelApp = ri.loadLabel(manager);
             app.nameApp = ri.activityInfo.packageName;
             app.iconApp = ri.activityInfo.loadIcon(manager);
             dsUngDung.add(app);
+            soUngDung++;
+            if (soUngDung == 36) { break;}
         }
 
         rcUngDung.setHasFixedSize(true);
