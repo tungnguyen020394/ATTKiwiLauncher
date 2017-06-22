@@ -131,11 +131,11 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
         position = checkLink.CheckLinkURL(check);
         if (position == 1) {
-            if (didIndex == 5) {
-                listItem.get(didIndex).setBackgroundResource(R.drawable.none);
-                didIndex--;
-                listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
-            }
+//            if (didIndex == 5) {
+//                listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+//                didIndex--;
+//                listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
+//            }
             vh.imgView.setVisibility(View.VISIBLE);
             vh.video.setVisibility(View.GONE);
             vh.ibtPlayVideo.setVisibility(View.GONE);
@@ -176,7 +176,10 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             vh.video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-                    indexVideo++;
+
+                    if (indexVideo==listvideo.size()-1) indexVideo=0;
+                    else indexVideo++;
+
                     setVideoOrImager(listvideo.get(indexVideo));
                     vh.video.clearFocus();
                 }
@@ -185,13 +188,14 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             vh.imgView.setVisibility(View.GONE);
             vh.video.setVisibility(View.VISIBLE);
 
-            MediaController mc = new MediaController(this);
-            vh.video.setMediaController(mc);
+//            MediaController mc = new MediaController(this);
+//            vh.video.setMediaController(mc);
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     vh.video.setVideoURI(Uri.parse(listvideo.get(indexVideo)));
                     vh.video.start();
+
                 }
             });
         }
@@ -240,7 +244,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 intent.putExtra("timePause", timepause);
 
                 onBackPressed();
-
                 break;
 
             case R.id.imgVolumeOn_video:
