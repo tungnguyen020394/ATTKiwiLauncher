@@ -20,7 +20,6 @@ import android.widget.VideoView;
 
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.util.CheckLink;
-import com.att.kiwilauncher.util.Volume;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -133,28 +132,10 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         position = checkLink.CheckLinkURL(check);
         if (position == 1) {
             if (didIndex == 5) {
-                listItem.get(didIndex).setBackgroundResource(R.drawable.none);
-                didIndex--;
-                listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
-            }
-=======
-<<<<<<< HEAD
-            if (didIndex == 5) {
                 ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                 didIndex--;
                 ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
             }
-<<<<<<< Updated upstream
-=======
-//            if (didIndex == 5) {
-//                listItem.get(didIndex).setBackgroundResource(R.drawable.none);
-//                didIndex--;
-//                listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
-//            }
->>>>>>> origin/master
->>>>>>> fc745c098b298fab810481ba1ee422432615cc68
-=======
->>>>>>> Stashed changes
             vh.imgView.setVisibility(View.VISIBLE);
             vh.video.setVisibility(View.GONE);
             vh.ibtPlayVideo.setVisibility(View.GONE);

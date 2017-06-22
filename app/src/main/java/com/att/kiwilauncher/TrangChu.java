@@ -66,13 +66,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
     int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position, bonusmain = 6;
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,
-<<<<<<< HEAD
-            reLay2221, reLay121;
-    LinearLayout reLay21;
-=======
             reLay2221,reLay121;
     RelativeLayout reLay21;
->>>>>>> fc745c098b298fab810481ba1ee422432615cc68
     ArrayList<View> listItem;
     TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo;
     VideoView video;
