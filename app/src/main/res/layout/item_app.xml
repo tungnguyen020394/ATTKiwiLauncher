@@ -3,11 +3,13 @@
     android:orientation="vertical" android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/relay_app"
-    android:padding="@dimen/_7sdp">
+    android:paddingTop="@dimen/_5sdp"
+    android:paddingBottom="@dimen/_5sdp"
+    android:paddingLeft="@dimen/_8sdp">
     <ImageView
         android:id="@+id/image_app"
-        android:layout_width="@dimen/_37sdp"
-        android:layout_height="@dimen/_37sdp"
+        android:layout_width="@dimen/_39sdp"
+        android:layout_height="@dimen/_39sdp"
         android:scaleType="fitXY"
-        android:src="@drawable/img_kara"/>
+        android:src="@drawable/img_kara" />
 </RelativeLayout>

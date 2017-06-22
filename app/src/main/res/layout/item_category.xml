@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/_5sdp"
-    android:paddingRight="@dimen/_5sdp"
-    android:paddingTop="@dimen/_5sdp"
-    android:paddingBottom="@dimen/_5sdp"
+    android:id="@+id/layout_category1"
+    android:paddingLeft="@dimen/_6sdp"
+    android:paddingRight="@dimen/_6sdp"
+    android:paddingTop="@dimen/_4sdp"
+    android:paddingBottom="@dimen/_4sdp"
     android:layout_marginRight="@dimen/_3sdp">
     <RelativeLayout
         android:id="@+id/layout_category"
