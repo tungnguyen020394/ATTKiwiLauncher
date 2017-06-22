@@ -14,7 +14,9 @@ import android.widget.Toast;
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.UngDung;
 import com.att.kiwilauncher.model.ChuDe;
+import com.att.kiwilauncher.model.QuangCao;
 import com.att.kiwilauncher.model.TheLoai;
+import com.att.kiwilauncher.model.TheLoaiUngDung;
 import com.att.kiwilauncher.model.ThoiTiet;
 import com.att.kiwilauncher.model.UngDungNew;
 import com.att.kiwilauncher.xuly.DuLieu;
@@ -147,6 +149,106 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return listTheLoai;
     }
 
+    public HashMap<String, List> getAllList() {
+        HashMap<String, List> finalListMap = new HashMap<>();
+        List<ChuDe> chuDeList = new ArrayList<>();
+        List<UngDung> ungDungList = new ArrayList<>();
+        List<QuangCao> quangCaoList = new ArrayList<>();
+        List<TheLoaiUngDung> theLoaiUngDungList = new ArrayList<>();
+        List<String> capNhatList = new ArrayList<>();
+        openDatabase();
+        //get List Category
+        ChuDe chuDe;
+        int loopTurn = 1;
+        Cursor cursor = mDatabase.rawQuery("SELECT id,ten,soluong,icon FROM theloai", null);
+        while (cursor.moveToNext()) {
+            if (cursor.getString(3).equals("ic_tatca")) {
+                if (cursor.moveToNext()) {
+                    chuDe = new ChuDe();
+                    if (loopTurn == 1) {
+                        chuDe.setCheckedCate(true);
+                    } else {
+                        chuDe.setCheckedCate(false);
+                    }
+                    chuDe.setIndexCate(cursor.getInt(0));
+                    chuDe.setDrawCate(listIcon.get(cursor.getString(3)));
+                    chuDe.setNameCate(cursor.getString(1));
+                    chuDeList.add(chuDe);
+                }
+            } else {
+                chuDe = new ChuDe();
+                if (loopTurn == 1) {
+                    chuDe.setCheckedCate(true);
+                } else {
+                    chuDe.setCheckedCate(false);
+                }
+                chuDe.setIndexCate(cursor.getInt(0));
+                chuDe.setDrawCate(listIcon.get(cursor.getString(3)));
+                chuDe.setNameCate(cursor.getString(1));
+                chuDeList.add(chuDe);
+            }
+            loopTurn++;
+        }
+        // get quang cao
+        cursor = mDatabase.rawQuery("SELECT noidung,loaiquangcao FROM quangcao", null);
+        while (cursor.moveToNext()) {
+            if (cursor.getString(1).equals("1")) {
+                QuangCao quangCao = new QuangCao();
+                quangCao.setNoiDung(cursor.getString(0));
+                quangCao.setLoaiQuangCao(cursor.getString(1));
+                quangCao.setLinkVideo(quangCao.getNoiDung().split(";")[0]);
+                quangCao.setLinkWeb(quangCao.getNoiDung().split(";")[1]);
+                quangCaoList.add(quangCao);
+            } else if (cursor.getString(1).equals("3")) {
+                QuangCao quangCao = new QuangCao();
+                quangCao.setNoiDung(cursor.getString(0));
+                quangCao.setLoaiQuangCao(cursor.getString(1));
+                quangCao.setText(cursor.getString(0));
+                quangCaoList.add(quangCao);
+            } else if (cursor.getString(1).equals("4")) {
+                QuangCao quangCao = new QuangCao();
+                quangCao.setNoiDung(cursor.getString(0));
+                quangCao.setLoaiQuangCao(cursor.getString(1));
+                quangCao.setLinkImage(quangCao.getNoiDung().split(";")[0]);
+                quangCao.setLinkWeb(quangCao.getNoiDung().split(";")[1]);
+                quangCao.setTime(quangCao.getNoiDung().split(";")[2]);
+                quangCaoList.add(quangCao);
+            }
+        }
+//get app list
+        cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.icon FROM ungdung", null);
+        while (cursor.moveToNext()) {
+            UngDung ungDung = new UngDung();
+            ungDung.setId(cursor.getString(0));
+            ungDung.setNameApp(cursor.getString(1));
+            ungDung.setIcon(cursor.getString(2));
+            ungDungList.add(ungDung);
+        }
+// get table theloai_ungdung list
+        cursor = mDatabase.rawQuery("SELECT theloaiid,ungdungid FROM theloai_ungdung", null);
+        while (cursor.moveToNext()) {
+            TheLoaiUngDung theLoaiUngDung = new TheLoaiUngDung();
+            theLoaiUngDung.setIdTheLoai(cursor.getString(0));
+            theLoaiUngDung.setIdUngDung(cursor.getString(1));
+            theLoaiUngDungList.add(theLoaiUngDung);
+        }
+// get id cap nhat
+        cursor = mDatabase.rawQuery("SELECT value FROM capnhat ORDER BY id DESC LIMIT 1", null);
+        if (cursor.moveToFirst()) {
+            String value = cursor.getString(0);
+            capNhatList.add(value);
+        }
+        cursor.close();
+        closeDatabase();
+        finalListMap.put("theloai", chuDeList);
+        finalListMap.put("ungdung", ungDungList);
+        finalListMap.put("quangcao", quangCaoList);
+        finalListMap.put("theloaiungdung", theLoaiUngDungList);
+        finalListMap.put("capnhat", capNhatList);
+
+        return finalListMap;
+    }
+
     // lấy danh sách tất cả các thể loại cửa ứng dụng
     public List<ChuDe> getListChuDe() {
         ChuDe chuDe;
@@ -183,68 +285,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         closeDatabase();
         return chuDeList;
-    }
-
-    // lấy danh sách tất cả các ứng dụng của thẻ loại xyz
-    public List<UngDungNew> getListUngDungNew(TheLoai theLoai) {
-        List<UngDungNew> listUngDungNew = new ArrayList<>();
-        String maTheLoai = theLoai.getId();
-        List<String> listAnh;
-        openDatabase();
-        listAnh = new ArrayList<>();
-        Cursor cursor;
-        if (theLoai.getIcon() == R.drawable.ic_tatca) {
-            cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.installed,ungdung.icon,ungdung.luotcai" +
-                    ",ungdung.version,ungdung.des,ungdung.linkcai,ungdung.rating,ungdung.version_code,ungdung.capnhat" +
-                    " FROM ungdung", null);
-        } else {
-            cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.installed,ungdung.icon,ungdung.luotcai," +
-                    "ungdung.version,ungdung.des,ungdung.linkcai ,ungdung.rating,ungdung.version_code,ungdung.capnhat FROM ungdung JOIN theloai_ungdung ON ungdung.id=theloai_ungdung.ungdungid WHERE theloai_ungdung.theloaiid=" + maTheLoai, null);
-        }
-        if (cursor.moveToFirst()) {
-            UngDungNew ungDungNew = new UngDungNew();
-            ungDungNew.setId(cursor.getString(0));
-            ungDungNew.setName(cursor.getString(1));
-            if (cursor.getInt(2) == 0) {
-                ungDungNew.setInstalled(false);
-            } else {
-                ungDungNew.setInstalled(true);
-            }
-            ungDungNew.setIcon(cursor.getString(3));
-            ungDungNew.setLuotCai(cursor.getString(4));
-            ungDungNew.setVersion(cursor.getString(5));
-            ungDungNew.setDes(cursor.getString(6));
-            ungDungNew.setLinkCai(cursor.getString(7));
-            ungDungNew.setRating(cursor.getString(8));
-            ungDungNew.setVersionCode(cursor.getString(9));
-            ungDungNew.setUpdate(cursor.getString(10));
-            ungDungNew.setAnh(listAnh);
-            listUngDungNew.add(ungDungNew);
-        }
-        while (cursor.moveToNext()) {
-            UngDungNew ungDungNew = new UngDungNew();
-            ungDungNew.setId(cursor.getString(0));
-            ungDungNew.setName(cursor.getString(1));
-            if (cursor.getInt(2) == 0) {
-                ungDungNew.setInstalled(false);
-            } else {
-                ungDungNew.setInstalled(true);
-            }
-            ungDungNew.setIcon(cursor.getString(3));
-            ungDungNew.setLuotCai(cursor.getString(4));
-            ungDungNew.setVersion(cursor.getString(5));
-            ungDungNew.setDes(cursor.getString(6));
-            ungDungNew.setLinkCai(cursor.getString(7));
-            ungDungNew.setRating(cursor.getString(8));
-            ungDungNew.setVersionCode(cursor.getString(9));
-            ungDungNew.setUpdate(cursor.getString(10));
-            ungDungNew.setAnh(listAnh);
-            listUngDungNew.add(ungDungNew);
-        }
-        cursor.close();
-        closeDatabase();
-
-        return listUngDungNew;
     }
 
     // lấy danh sách tất cả các ứng dụng của thẻ loại xyz
@@ -292,33 +332,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return thoiTiet;
     }
 
-    // lấy danh sách tất cả các điện thoại của thương hiệu xyz
-    public List<String> getListAnhChiTietUngDung(UngDungNew ungDungNew) {
-        List<String> listAnh = new ArrayList<>();
-        String ungDungId = "";
-        String maUngDung = ungDungNew.getId();
-        openDatabase();
-        Cursor cursor;
-        // cursor = mDatabase.rawQuery("SELECT * FROM anhchitiet WHERE ungdungid = " + maUngDung, null);
-        cursor = mDatabase.rawQuery("SELECT * FROM anhchitiet", null);
-        if (cursor.moveToFirst()) {
-            ungDungId = cursor.getString(1);
-            if (ungDungId.equals(maUngDung)) {
-                listAnh.add(cursor.getString(2));
-            }
-        }
-        while (cursor.moveToNext()) {
-            ungDungId = cursor.getString(1);
-            if (ungDungId.equals(maUngDung)) {
-                listAnh.add(cursor.getString(2));
-            }
-        }
-
-        cursor.close();
-        closeDatabase();
-
-        return listAnh;
-    }
 
     //lấy ra thông tin về id cập nhật
     public String getMaxCapNhatId() {
@@ -352,19 +365,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id + "," + nd + "," + count;
     }
 
-    public String getLinkAnhQuangCao() {
-        String nd = "";
-        openDatabase();
-        Cursor cursor;
-        cursor = mDatabase.rawQuery("SELECT noidung FROM quangcao WHERE loaiquangcao = 2 ORDER BY id DESC", null);
-        if (cursor.moveToFirst()) {
-            nd = cursor.getString(0);
-        }
-        cursor.close();
-        closeDatabase();
-        return nd;
-    }
-
     public void insertQuangCao(String id, String noiDung, String loaiQuangCaoId) {
         ContentValues values = new ContentValues();
         values.put("id", Integer.parseInt(id));
@@ -375,7 +375,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         closeDatabase();
     }
 
-    public String getLinkTextQuangCao() {
+    public String getLinkTextQuangCa() {
         String nd = "";
         openDatabase();
         Cursor cursor;
@@ -401,7 +401,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return nd;
     }
 
-    public ArrayList<String> getListVideoQuangCao() {
+    public ArrayList<String> getListVideoQuangCa() {
         ArrayList<String> listVideo = new ArrayList<>();
         String nd = "";
         openDatabase();

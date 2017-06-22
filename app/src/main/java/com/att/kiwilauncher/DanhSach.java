@@ -100,7 +100,7 @@ public class DanhSach extends AppCompatActivity {
         rcChuDe.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcChuDe.setLayoutManager(layoutManager1);
-        ChuDeAdapter categoryAdapter = new ChuDeAdapter(this, dsChuDe);
+        ChuDeAdapter categoryAdapter = new ChuDeAdapter(this, dsChuDe,TrangChu.mListTheLoaiUngDung,TrangChu.mListUngDung);
         rcChuDe.setAdapter(categoryAdapter);
         mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich_ds);
         mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich_ds);

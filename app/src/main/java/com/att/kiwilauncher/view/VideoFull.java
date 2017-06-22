@@ -46,7 +46,6 @@ public class VideoFull extends AppCompatActivity implements View.OnTouchListener
         setContentView(R.layout.activity_video_full);
         listvideo=new ArrayList<>();
         mDatabaseHelper=new DatabaseHelper(this);
-        listvideo= mDatabaseHelper.getListVideoQuangCao();
         exoPlayer= (SimpleExoPlayerView) findViewById(R.id.video_Full);
 
         intent =getIntent();

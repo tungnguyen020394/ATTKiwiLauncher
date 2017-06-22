@@ -41,6 +41,8 @@ import com.att.kiwilauncher.adapter.ChuDeAdapter;
 import com.att.kiwilauncher.adapter.UngDungAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
+import com.att.kiwilauncher.model.QuangCao;
+import com.att.kiwilauncher.model.TheLoaiUngDung;
 import com.att.kiwilauncher.model.ThoiTiet;
 import com.att.kiwilauncher.util.CheckLink;
 import com.att.kiwilauncher.util.Define;
@@ -78,45 +80,50 @@ import java.util.Map;
 import static com.att.kiwilauncher.R.id.relay2;
 
 public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
-    public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
-    RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11,
+    private RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11,
             reLay21, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12;
-    ArrayList<View> listItem;
-    TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo, tvTimeStart, tvTimeEnd;
-    VideoView video;
-    ImageView image1, image2, image3, image4, image5, image6,
+    private TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo, tvTimeStart, tvTimeEnd;
+    private VideoView video;
+    private ImageView image1, image2, image3, image4, image5, image6,
             imageCaiDat, imageMinus, imagePlus, imgView, imgWeb;
-    ImageButton ibtNext, ibtPlay, ibtBack, ibtVolume;
+    private ImageButton ibtNext, ibtPlay, ibtBack, ibtVolume;
     private ProgressDialog dialog;
     private AlertDialog mNetworkConnectionNoticeDialog;
     private AlertDialog.Builder mNetworkConnectionNoticeDialogBuilder;
-    RecyclerView rcCategory;
+    private RecyclerView rcCategory;
     static RecyclerView rcApp;
     public static View.OnClickListener appClick;
+    // adapter
     public static UngDungAdapter listapp;
-
+    private ChuDeAdapter categoryAdapter;
+    private HashMap<String, List> mAllListMap;
+    //list
     static List<UngDung> apps;
-    List<ChuDe> cates;
+    private List<ChuDe> cates;
     public static List<List<UngDung>> listApps;
     public static List<UngDung> listAppBottom;
-    ArrayList<String> listvideo;
-    private RequestQueue requestQueue;
-    static PackageManager manager;
-
+    private List<QuangCao> mListQuangCao;
+    public static List<UngDung> mListUngDung;
+    public static List<TheLoaiUngDung> mListTheLoaiUngDung;
+    private ArrayList<String> listvideo;
+    private ArrayList<View> listItem;
     int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12;
     public static final int REQUEST_SETTINGS = 101;
     public static int demdsApp = 0;
     private long timePause = 0;
     int indexVideo = 0;
     private static final String TAG = "TrangChu";
-
-    DatabaseHelper mDatabaseHelper;
-    Volume volume;
-    CheckLink checkLink;
-    SimpleExoPlayerView exoPlayer;
-    SimpleExoPlayer player;
-    TrackSelector trackSelector;
-
+    private String mTextQC = "Hãy đến với các sản phẩm chất lượng nhất từ chúng tôi";
+    private DatabaseHelper mDatabaseHelper;
+    private ThoiTiet mThoiTiet;
+    private RequestQueue requestQueue;
+    static PackageManager manager;
+    private SharedPreferences mSharedPreferencesThoiTiet;
+    private Volume volume;
+    private CheckLink checkLink;
+    private SimpleExoPlayerView exoPlayer;
+    private SimpleExoPlayer player;
+    private TrackSelector trackSelector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,14 +140,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     }
 
     private void loadData() {
-        // Load Category
-        cates = new ArrayList<ChuDe>();
-        cates = mDatabaseHelper.getListChuDe();
-        //   Toast.makeText(this, cates.size() + "", Toast.LENGTH_LONG).show();
+
         rcCategory.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcCategory.setLayoutManager(layoutManager1);
-        final ChuDeAdapter categoryAdapter = new ChuDeAdapter(this, cates);
+        categoryAdapter = new ChuDeAdapter(this, cates, mListTheLoaiUngDung, mListUngDung);
         rcCategory.setAdapter(categoryAdapter);
 
         // Load App
@@ -150,10 +154,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         i.addCategory(Intent.CATEGORY_LAUNCHER);
         //   List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
         listApps = new ArrayList();
-        List<UngDung> checkedList = new ArrayList<>();
-        checkedList = mDatabaseHelper.getListUngDung(cates.get(0));
+        List<UngDung> checkedList = DuLieu.getListUngDungByTheLoaiId(cates.get(0).getIndexCate() + "", mListTheLoaiUngDung, mListUngDung);
         List<UngDung> tmpList = new ArrayList<>();
-        //   listApps.add(mDatabaseHelper.getListUngDung(cates.get(0)));
         for (int j = 1; j <= checkedList.size(); j++) {
             UngDung ungDung = new UngDung();
             ungDung.setNameApp(checkedList.get(j - 1).getNameApp());
@@ -166,7 +168,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 tmpList.clear();
             }
         }
-        //Toast.makeText(this, listApps.size() + "s" + listApps.get(0).size(), Toast.LENGTH_SHORT).show();
         listAppBottom.addAll(listApps.get(demdsApp));
         /*int soUngDung = 0;
         for (ResolveInfo ri : availableActivities) {
@@ -208,29 +209,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         listapp = new UngDungAdapter(this, listAppBottom);
         rcApp.setAdapter(listapp);
 
-        listvideo = mDatabaseHelper.getListVideoQuangCao();
-
-        // video
-//        if (!mDatabaseHelper.getLinkVideoQuangCao().equals("")) {
-//            video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//                @Override
-//                public void onCompletion(MediaPlayer mp) {
-//                    indexVideo++;
-////                    setVideoOrImager(listvideo.get(indexVideo));
-//                    setVideoOrImager(Define.URL_LINK_PLAY);
-//                }
-//            });
-//            //video.setVideoPath(listvideo.get(indexVideo));
-////            setVideoOrImager(listvideo.get(indexVideo));
-//            setVideoOrImager(Define.URL_LINK_BACK);
-//        }
-
         //audio
         volume.MuteAudio(this);
 
         dialog = new ProgressDialog(this);
         dialog.setTitle("Đang tải");
         dialog.setMessage("Vui lòng đợi ứng dụng tải dữ liệu");
+        dialog.show();
 
         String url2 = DuLieu.URL + "/first_request_store.php";
         StringRequest stringRequest2 = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {
@@ -238,7 +223,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             public void onResponse(String response) {
                 try {
                     JSONArray root = new JSONArray(response);
-                    dialog.show();
                     for (int i = 0; i < root.length(); i++) {
                         JSONObject capnhat = root.getJSONObject(i);
                         String isCapNhat = capnhat.getString("is_cap_nhat");
@@ -319,10 +303,26 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                mAllListMap.clear();
+                mAllListMap = mDatabaseHelper.getAllList();
+                mListQuangCao.clear();
+                mListQuangCao.addAll(mAllListMap.get("quangcao"));
+                mListUngDung.clear();
+                mListUngDung.addAll(mAllListMap.get("ungdung"));
+                mListTheLoaiUngDung.clear();
+                mListTheLoaiUngDung.addAll(mAllListMap.get("theloaiungdung"));
                 dialog.dismiss();
-                text.setText(mDatabaseHelper.getLinkTextQuangCao());
+
+                for (QuangCao quangCao : mListQuangCao) {
+                    if (quangCao.getLoaiQuangCao().equals("3")) {
+                        mTextQC = quangCao.getText();
+                        break;
+                    }
+                }
+                text.setText(mTextQC);
+
                 cates.clear();
-                cates.addAll(mDatabaseHelper.getListChuDe());
+                cates.addAll(mAllListMap.get("theloai"));
                 categoryAdapter.notifyDataSetChanged();
                 listAppBottom.clear();
                 listApps.clear();
@@ -343,24 +343,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     }
                 }
                 demdsApp = 0;
-                //    Toast.makeText(TrangChu.this, listApps.size() + "s"+listApps.get(0).size() , Toast.LENGTH_SHORT).show();
                 listAppBottom.addAll(listApps.get(demdsApp));
-                //listAppBottom.addAll(mDatabaseHelper.getListUngDung(cates.get(0)));
                 listapp.notifyDataSetChanged();
-//                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//                    @Override
-//                    public void onCompletion(MediaPlayer mp) {
-//                        indexVideo++;
-//                      //  video.setVideoPath(listvideo.get(indexVideo));
-//                        video.setVideoPath(DuLieu.splitLinkVideoWeb(mDatabaseHelper.getLinkVideoQuangCao())[0]);
-//                        video.start();
-//                    }
-//                });
-
-                //  video.start();
-
-                //   Toast.makeText(getApplicationContext(), mDatabaseHelper.getListVideoQuangCao().size() + "", Toast.LENGTH_LONG).show();
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -371,7 +355,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> values = new HashMap<>();
-                values.put("capnhatid", mDatabaseHelper.getIdCapNhat());
+               // values.put("capnhatid", mDatabaseHelper.getIdCapNhat());
+               values.put("capnhatid", (String) mAllListMap.get("capnhat").get(0));
                 return values;
             }
         };
@@ -384,12 +369,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
         createPlayer(Define.URL_LINK_PLAY);
         exoPlayer.setOnTouchListener(this);
-
-//        if (DuLieu.hasInternetConnection(TrangChu.this)) {
-//            video.start();
-//        } else {
-//            Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
-//        }
     }
 
     public void createPlayer(String link) {
@@ -428,20 +407,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         }
     }
 
-    private void addControls() {
+    private void initNetworkConnectDialog() {
         mNetworkConnectionNoticeDialogBuilder = new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
         mNetworkConnectionNoticeDialogBuilder.setTitle("Lỗi kết nối mạng");
         mNetworkConnectionNoticeDialogBuilder.setMessage("Vui lòng kiểm tra lại mạng kết nối ...");
         mNetworkConnectionNoticeDialogBuilder.setPositiveButton("Kiểm tra", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                /*Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.setClassName("com.android.phone", "com.android.phone.NetworkSetting");
-                startActivity(intent);*/
-                /*Intent intent=new Intent(Settings.ACTION_DATA_ROAMING_SETTINGS);
-                ComponentName cName = new ComponentName("com.android.phone","com.android.phone.Settings");
-                intent.setComponent(cName);
-                startActivity(intent);*/
                 Intent intent = new Intent(Settings.ACTION_SETTINGS);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
@@ -452,9 +424,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         if (!DuLieu.hasInternetConnection(this)) {
             mNetworkConnectionNoticeDialog.show();
         }
+    }
 
-        SharedPreferences sharedPreferences = getSharedPreferences("thoitiet", MODE_PRIVATE);
-        String idThoiTiet = sharedPreferences.getString("idthoitiet", "24");
+    private void addControls() {
+        initNetworkConnectDialog();
+        mSharedPreferencesThoiTiet = getSharedPreferences("thoitiet", MODE_PRIVATE);
+        String idThoiTiet = mSharedPreferencesThoiTiet.getString("idthoitiet", "24");
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper.checkDatabase(this);
 
@@ -468,7 +443,18 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         listItem = new ArrayList<>();
         listvideo = new ArrayList<>();
         listAppBottom = new ArrayList<>();
+        cates = new ArrayList<>();
+        mListUngDung = new ArrayList<>();
+        mListQuangCao = new ArrayList<>();
+        mListTheLoaiUngDung = new ArrayList<>();
+        mAllListMap = new HashMap<>();
+        mAllListMap = mDatabaseHelper.getAllList();
+        mListQuangCao = mAllListMap.get("quangcao");
+        cates = mAllListMap.get("theloai");
+        mListUngDung = mAllListMap.get("ungdung");
+        mListTheLoaiUngDung = mAllListMap.get("theloaiungdung");
 
+      //   Toast.makeText(this, (String) mAllListMap.get("capnhat").get(0) + "s", Toast.LENGTH_SHORT).show();
         // reLaytive layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1);
         reLay1.setPadding(mChieuDai, 0, mChieuDai, mChieuRong * 33);
@@ -555,7 +541,14 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         mTxtNhietDo = (TextView) findViewById(R.id.txt_nhietdo);
 
         text.setSelected(true);
-        text.setText(mDatabaseHelper.getLinkTextQuangCao());
+        for (QuangCao quangCao : mListQuangCao) {
+            if (quangCao.getLoaiQuangCao().equals("3")) {
+                mTextQC = quangCao.getText();
+                break;
+            }
+        }
+        text.setText(mTextQC);
+
         imageCaiDat = (ImageView) findViewById(R.id.img_caidat);
         imageCaiDat.setOnClickListener(this);
         Map<String, String> today = LunarCalendar.getTodayInfo();
@@ -564,15 +557,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         final String todayFormated = today.get("yearSolar") + "-" + today.get("monthSolar") + "-" + today.get("daySolar") + " "
                 + today.get("hour") + ":" + today.get("minute") + ":" + today.get("second");
 
-        ThoiTiet thoiTiet = mDatabaseHelper.getThongTinThoiTiet(idThoiTiet);
+        mThoiTiet = mDatabaseHelper.getThongTinThoiTiet(idThoiTiet);
+        mTxtTinh.setText(mSharedPreferencesThoiTiet.getString("tinh", "Hà nội"));
+        mTxtNhietDo.setText(mSharedPreferencesThoiTiet.getString("nhietdo", "25"));
 
-        SharedPreferences sharedPreferencesThoiTiet = getSharedPreferences("thoitiet", MODE_PRIVATE);
-        mTxtTinh.setText(sharedPreferencesThoiTiet.getString("tinh", "Hà nội"));
-        mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25"));
-
-        final SharedPreferences.Editor editor = sharedPreferencesThoiTiet.edit();
-        editor.putString("tinh", thoiTiet.getTen());
-        String url = "http://api.openweathermap.org/data/2.5/forecast?id=" + thoiTiet.getMaThoiTiet() + "&APPID=" + APIKEY + "&&units=metric";
+        final SharedPreferences.Editor editor = mSharedPreferencesThoiTiet.edit();
+        editor.putString("tinh", mThoiTiet.getTen());
+        String url = Define.URL_LLNK_WEATHER_API + mThoiTiet.getMaThoiTiet() + "&APPID=" + Define.APIKEY + "&&units=metric";
         requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -584,7 +575,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                     for (int i = 0; i < listThoiTiet.length(); i++) {
                         JSONObject thoiTiet = listThoiTiet.getJSONObject(i);
                         String time = thoiTiet.getString("dt_txt");
-                        // Toast.makeText(getApplicationContext(), todayFormated + "==" + time, Toast.LENGTH_SHORT).show();
 
                         if (DuLieu.compareDate(todayFormated, time)) {
                             if (i == 0) {
@@ -612,9 +602,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
             }
         });
         requestQueue.add(stringRequest);
-        mTxtTinh.setText(thoiTiet.getTen());
-
-
+        mTxtTinh.setText(mThoiTiet.getTen());
     }
 
     @Override

@@ -11,6 +11,9 @@ import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 
+import com.att.kiwilauncher.UngDung;
+import com.att.kiwilauncher.model.TheLoaiUngDung;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,6 +34,7 @@ public class DuLieu {
     public static String URL = "http://phone.websumo.vn";
     public static String URL_IMAGE = "http://phone.websumo.vn/images";
     public static String URL_FILE = "http://phone.websumo.vn/files";
+
 
     public static List<ApplicationInfo> getListInstalledApplication(Context context) {
         List<ApplicationInfo> applicationInfoList = new ArrayList<>();
@@ -218,18 +222,38 @@ public class DuLieu {
         String[] mangVideoWeb = linkVideoWeb.split(";");
         return mangVideoWeb;
     }
+
     public static String[] splitLinkImageWeb(String linkImageWeb) {
         // phần tử 1 là link video, phần tử 2 là link web
         String[] mangImageWeb = linkImageWeb.split(";");
         return mangImageWeb;
     }
-    public static boolean hasInternetConnection(Context context){
+
+    public static boolean hasInternetConnection(Context context) {
         ConnectivityManager cm =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
+    public static List<UngDung> getListUngDungByTheLoaiId(String theLoaiId, List<TheLoaiUngDung> theLoaiUngDungList, List<UngDung> ungDungList) {
+        List<UngDung> ungDungListByTheLoaiId = new ArrayList<>();
+        List<String> ungDungIdList = new ArrayList<>();
+        for (TheLoaiUngDung theLoaiUngDung : theLoaiUngDungList) {
+            if (theLoaiUngDung.getIdTheLoai().equals(theLoaiId)) {
+                ungDungIdList.add(theLoaiUngDung.getIdUngDung());
+            }
+        }
+        for (String ungDungId : ungDungIdList){
+            for (UngDung ungDung:ungDungList){
+                if (ungDung.getId().equals(ungDungId)){
+                    ungDungListByTheLoaiId.add(ungDung);
+                    break;
+                }
+            }
+        }
+            return ungDungListByTheLoaiId;
+    }
     /*public void hanldeDirectory(String dir) {
         File f = new File(this.destination + dir);
         if (!f.isDirectory()) {

@@ -14,6 +14,8 @@ import com.att.kiwilauncher.TrangChu;
 import com.att.kiwilauncher.UngDung;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
+import com.att.kiwilauncher.model.TheLoaiUngDung;
+import com.att.kiwilauncher.xuly.DuLieu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +30,14 @@ import static com.att.kiwilauncher.TrangChu.listApps;
 public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> {
     Context context;
     List<ChuDe> cates;
+    List<TheLoaiUngDung> mListTheLoaiUngDung;
+    List<UngDung> mListUngDung;
 
-    int index = -1;
-
-    public ChuDeAdapter(Context context, List<ChuDe> cates) {
+    public ChuDeAdapter(Context context, List<ChuDe> cates, List<TheLoaiUngDung> mListTheLoaiUngDung, List<UngDung> mListUngDung) {
         this.context = context;
-        this.cates    = cates;
+        this.cates = cates;
+        this.mListTheLoaiUngDung = mListTheLoaiUngDung;
+        this.mListUngDung = mListUngDung;
     }
 
     @Override
@@ -71,9 +75,9 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
         public ViewHolder(View itemView) {
             super(itemView);
             final DatabaseHelper mDadabaseHelper;
-            mDadabaseHelper=new DatabaseHelper(context);
+            mDadabaseHelper = new DatabaseHelper(context);
             imgApp = (ImageView) itemView.findViewById(R.id.image_category);
-            txtApp = (TextView)  itemView.findViewById(R.id.txt_catego);
+            txtApp = (TextView) itemView.findViewById(R.id.txt_catego);
             layoutCate = (RelativeLayout) itemView.findViewById(R.id.layout_category);
             layoutCate.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -82,10 +86,10 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
                     ChuDe cate = cates.get(getAdapterPosition());
                     cate.setCheckedCate(true);
                     notifyDataSetChanged();
-                    TrangChu.demdsApp=0;
+                    TrangChu.demdsApp = 0;
                     listApps.clear();
-                    List<UngDung> checkedList = new ArrayList<>();
-                    checkedList = mDadabaseHelper.getListUngDung(cate);
+                    //  checkedList = mDadabaseHelper.getListUngDung(cate);
+                    List<UngDung> checkedList = DuLieu.getListUngDungByTheLoaiId(cate.getIndexCate() + "", mListTheLoaiUngDung, mListUngDung);
                     List<UngDung> tmpList = new ArrayList<>();
                     //   listApps.add(mDatabaseHelper.getListUngDung(cates.get(0)));
                     for (int j = 1; j <= checkedList.size(); j++) {
@@ -102,9 +106,9 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
                     }
                     //Toast.makeText(this, listApps.size() + "s" + listApps.get(0).size(), Toast.LENGTH_SHORT).show();
                     TrangChu.listAppBottom.clear();
-                    if (listApps.size()>0){
+                    if (listApps.size() > 0) {
                         TrangChu.listAppBottom.addAll(listApps.get(TrangChu.demdsApp));
-                    }else{
+                    } else {
                         TrangChu.listAppBottom.clear();
                     }
                     TrangChu.listapp.notifyDataSetChanged();
@@ -114,7 +118,7 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
     }
 
     private void RemoveCheck() {
-        for (ChuDe cate : cates ) {
+        for (ChuDe cate : cates) {
             if (cate.isCheckedCate()) {
                 cate.setCheckedCate(false);
                 break;
