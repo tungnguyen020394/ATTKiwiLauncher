@@ -132,7 +132,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
         position = checkLink.CheckLinkURL(check);
         if (position == 1) {
-<<<<<<< HEAD
             if (didIndex == 5) {
                 listItem.get(didIndex).setBackgroundResource(R.drawable.none);
                 didIndex--;
@@ -145,6 +144,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 didIndex--;
                 ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
             }
+<<<<<<< Updated upstream
 =======
 //            if (didIndex == 5) {
 //                listItem.get(didIndex).setBackgroundResource(R.drawable.none);
@@ -153,6 +153,8 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 //            }
 >>>>>>> origin/master
 >>>>>>> fc745c098b298fab810481ba1ee422432615cc68
+=======
+>>>>>>> Stashed changes
             vh.imgView.setVisibility(View.VISIBLE);
             vh.video.setVisibility(View.GONE);
             vh.ibtPlayVideo.setVisibility(View.GONE);
