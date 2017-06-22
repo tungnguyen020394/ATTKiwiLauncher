@@ -32,19 +32,17 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     int timePause, didIndex = 0;
     int indexVideo = 0, position;
     MediaPlayer mp;
-    MediaController mc;
     Handler handler;
     ArrayList<String> listvideo;
     List<View> listItem;
     CheckLink checkLink;
-//    Volume volume;
     ViewHoder vh;
     LinearLayout layoutControl;
 
 
     int intVolum;
 
-    boolean playing = true, mute = true , canclick = true;
+    boolean playing = true, mute = false , canclick = true;
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -70,8 +68,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
         preferences = getSharedPreferences("volume", MODE_PRIVATE);
-        mute = intent.getBooleanExtra("mute", false);
-
 
         vh.ibtNextVideo.setOnClickListener(this);
         vh.ibtPlayVideo.setOnClickListener(this);
@@ -85,15 +81,8 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         timePause = intent.getIntExtra("timePause", 0);
         intVolum = preferences.getInt("volume",0);
 
-        if (mute == true) {
             vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
             audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
-
-        } else {
-            vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeoff);
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
-
-        }
 
         setVideoOrImager(listvideo.get(indexVideo));
 
@@ -133,28 +122,10 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         position = checkLink.CheckLinkURL(check);
         if (position == 1) {
             if (didIndex == 5) {
-                listItem.get(didIndex).setBackgroundResource(R.drawable.none);
-                didIndex--;
-                listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
-            }
-=======
-<<<<<<< HEAD
-            if (didIndex == 5) {
                 ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                 didIndex--;
                 ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
             }
-<<<<<<< Updated upstream
-=======
-//            if (didIndex == 5) {
-//                listItem.get(didIndex).setBackgroundResource(R.drawable.none);
-//                didIndex--;
-//                listItem.get(didIndex).setBackgroundResource(R.drawable.border_videopick);
-//            }
->>>>>>> origin/master
->>>>>>> fc745c098b298fab810481ba1ee422432615cc68
-=======
->>>>>>> Stashed changes
             vh.imgView.setVisibility(View.VISIBLE);
             vh.video.setVisibility(View.GONE);
             vh.ibtPlayVideo.setVisibility(View.GONE);
