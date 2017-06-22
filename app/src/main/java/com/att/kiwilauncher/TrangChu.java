@@ -65,9 +65,15 @@ import java.util.Map;
 public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
     int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position, bonusmain = 6;
+<<<<<<< HEAD
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,
             reLay2221,reLay121;
     RelativeLayout reLay21;
+=======
+    RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11, reLay22, reLay222, reLay211,
+            reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,reLay2221, reLay121,reLay21;
+
+>>>>>>> origin/master
     ArrayList<View> listItem;
     TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo;
     VideoView video;
@@ -168,16 +174,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         listapp = new UngDungAdapter(this, listAppBottom);
         rcApp.setAdapter(listapp);
 
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+//        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
 
         setVideoOrImager(listvideo.get(indexVideo));
 
-        //audio
-//        intVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-//        audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,AudioManager.ADJUST_MUTE,0);
-//        volume.MuteAudio(this);
 
-//        volume.MuteAudio(this);
 
         dialog = new ProgressDialog(this);
         dialog.setTitle("Đang tải");
@@ -333,15 +334,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     protected void onResume() {
         super.onResume();
 
-        if (mute == true) {
-            ibtVolumeOn.setImageResource(R.drawable.ic_volumeon);
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
-
-        } else {
             ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
             audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
-
-        }
 
         if (DuLieu.hasInternetConnection(TrangChu.this)) {
             setVideoOrImager(listvideo.get(indexVideo));
@@ -486,9 +480,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
         video = (VideoView) findViewById(R.id.videoView);
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-//        intVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-
-//        exoPlayer = (SimpleExoPlayerView) findViewById(R.id.videoView);
 
         ibtNext = (ImageButton) findViewById(R.id.imgNext);
         ibtPlay = (ImageButton) findViewById(R.id.imgPlay);
@@ -507,6 +498,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         tvTime = (TextView) findViewById(R.id.tvTime);
 
 //        volume = new Volume();
+//        ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
+//        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+
         checkLink = new CheckLink();
         sharedPreferences = getSharedPreferences("volume", MODE_PRIVATE);
         editorfull = sharedPreferences.edit();
