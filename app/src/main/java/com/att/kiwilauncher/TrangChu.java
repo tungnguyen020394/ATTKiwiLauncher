@@ -169,12 +169,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         listapp = new UngDungAdapter(this, listAppBottom);
         rcApp.setAdapter(listapp);
 
-//        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
-
-        setVideoOrImager(listvideo.get(indexVideo));
-
-
-
         dialog = new ProgressDialog(this);
         dialog.setTitle("Đang tải");
         dialog.setMessage("Vui lòng đợi ứng dụng tải dữ liệu");
@@ -330,11 +324,15 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         super.onResume();
 
             ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
-//            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
 
         if (DuLieu.hasInternetConnection(TrangChu.this)) {
             setVideoOrImager(listvideo.get(indexVideo));
         } else {
+
+            video.setVisibility(View.GONE);
+            imgView.setVisibility(View.VISIBLE);
+            imgView.setImageResource(R.drawable.img);
 
             Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
         }
@@ -1225,7 +1223,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
             video.setVideoPath(listvideo.get(indexVideo));
             video.start();
-
 
             video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
