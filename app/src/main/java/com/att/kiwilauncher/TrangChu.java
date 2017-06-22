@@ -1,5 +1,6 @@
 package com.att.kiwilauncher;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -15,7 +16,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -68,8 +68,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
     int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position, bonusmain = 6;
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11, reLay22, reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,
+<<<<<<< HEAD
             reLay2221, reLay121;
     LinearLayout reLay21;
+=======
+            reLay2221,reLay121;
+    RelativeLayout reLay21;
+>>>>>>> fc745c098b298fab810481ba1ee422432615cc68
     ArrayList<View> listItem;
     TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo;
     VideoView video;
@@ -415,10 +420,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113.setOnClickListener(this);
         reLay121 = (RelativeLayout) findViewById(R.id.relay121);
 
-        reLay21 = (LinearLayout) findViewById(R.id.relay21);
+        reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
-        reLay21.setPadding(0, 0, mChieuDai * 34, 0);
-        reLay22.setPadding(mChieuDai * 34, 0, 0, 0);
         reLay222 = (RelativeLayout) findViewById(R.id.relay222);
         reLay211 = (RelativeLayout) findViewById(R.id.relay211);
         reLay212 = (RelativeLayout) findViewById(R.id.relay212);
@@ -1203,6 +1206,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         position = checkLink.CheckLinkURL(check);
 
         if (position == 1) {
+            if (didIndex == main + bonusmain) {
+                ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
+                didIndex--;
+                ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
+            }
             imgView.setVisibility(View.VISIBLE);
             ibtPlay.setVisibility(View.GONE);
             video.setVisibility(View.GONE);
