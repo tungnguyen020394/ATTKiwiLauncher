@@ -65,21 +65,10 @@ import java.util.Map;
 public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
     int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position, bonusmain = 6;
-<<<<<<< HEAD
-
-    RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11, reLay22,
-            reLay222, reLay211, reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,
-            reLay2221,reLay121;
-    RelativeLayout reLay21;
 
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11, reLay22, reLay222, reLay211,
             reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,reLay2221, reLay121,reLay21;
 
-
-=======
-    RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11, reLay22, reLay222, reLay211,
-            reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12,reLay2221, reLay121,reLay21;
->>>>>>> a60c5b930649556324a0c036ea59951027a3f9bc
     ArrayList<View> listItem;
     TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo;
     VideoView video;
