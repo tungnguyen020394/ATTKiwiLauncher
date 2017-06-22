@@ -213,7 +213,7 @@
                 android:layout_width="@dimen/_232sdp"
                 android:layout_height="@dimen/_140sdp"
                 android:orientation="vertical"
-                android:paddingTop="@dimen/_10sdp"
+                android:paddingTop="@dimen/_3sdp"
                 android:paddingBottom="@dimen/_5sdp">
                     <RelativeLayout
                         android:id="@+id/relay211"
@@ -295,8 +295,8 @@
                         android:id="@+id/relay214"
                         android:layout_below="@+id/relay211"
                         android:layout_width="@dimen/_69sdp"
-                        android:layout_height="@dimen/_65sdp"
-                        android:paddingTop="@dimen/_5sdp">
+                        android:layout_height="@dimen/_70sdp"
+                        android:paddingTop="@dimen/_10sdp">
 
                         <ImageView
                             android:id="@+id/img_kara"
@@ -322,8 +322,8 @@
                         android:layout_below="@+id/relay212"
                         android:layout_toRightOf="@+id/relay214"
                         android:layout_width="@dimen/_93sdp"
-                        android:layout_height="@dimen/_65sdp"
-                        android:paddingTop="@dimen/_5sdp"
+                        android:layout_height="@dimen/_70sdp"
+                        android:paddingTop="@dimen/_10sdp"
                         android:paddingLeft="@dimen/_10sdp"
                         android:paddingRight="@dimen/_10sdp">
 
@@ -351,8 +351,8 @@
                         android:layout_toRightOf="@+id/relay215"
                         android:layout_below="@+id/relay213"
                         android:layout_width="@dimen/_70sdp"
-                        android:layout_height="@dimen/_65sdp"
-                        android:paddingTop="@dimen/_5sdp">
+                        android:layout_height="@dimen/_70sdp"
+                        android:paddingTop="@dimen/_10sdp">
 
                         <ImageView
                             android:id="@+id/img_store"
@@ -527,13 +527,15 @@
     <RelativeLayout
         android:id="@+id/relay3"
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_height="@dimen/_26sdp"
-        android:layout_above="@+id/relay4"
+        android:layout_below="@+id/relay2"
         android:layout_marginLeft="@dimen/_17sdp"
         android:layout_marginRight="@dimen/_17sdp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler1"
+            android:layout_centerVertical="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
@@ -546,8 +548,8 @@
     <RelativeLayout
         android:id="@+id/relay4"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_70sdp"
-        android:layout_alignParentBottom="true">
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/relay3">
 
         <ImageView
             android:id="@+id/img_minus"
@@ -557,7 +559,7 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/_68sdp"
+            android:layout_height="@dimen/_55sdp"
             android:layout_toLeftOf="@+id/img_plus"
             android:layout_toRightOf="@+id/img_minus"
             android:layout_centerVertical="true">
@@ -565,7 +567,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler2"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_65sdp"
+                android:layout_height="@dimen/_50sdp"
                 ></android.support.v7.widget.RecyclerView>
         </RelativeLayout>
 
