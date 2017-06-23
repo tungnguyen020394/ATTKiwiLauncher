@@ -10,16 +10,36 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e681cd9b-709a-4885-aaf5-398f3f23dfb8" name="Default" comment="">
+<<<<<<< HEAD
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_cate_ds.xml" />
+=======
+<<<<<<< HEAD
+=======
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/android_android_25.xml" afterPath="" />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
+>>>>>>> origin/master
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
+=======
+<<<<<<< HEAD
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/Define.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/Define.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java" />
+=======
+>>>>>>> origin/master
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/animated_vector_drawable_25_3_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/animated_vector_drawable_25_3_1.xml" />
@@ -44,7 +64,12 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/DanhSach.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/DanhSach.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java" />
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_danh_sach.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_danh_sach.xml" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
+>>>>>>> origin/master
     </list>
     <ignored path="ATTKiwiLauncher.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,6 +104,7 @@
       <file leaf-file-name="TrangChu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="157">
               <caret line="1118" column="48" selection-start-line="1118" selection-start-column="48" selection-end-line="1118" selection-end-column="48" />
               <folding>
@@ -88,12 +114,29 @@
                 <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#onClick#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#onActivityResult#0;class#TrangChu#0" expanded="false" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="157">
+              <caret line="332" column="28" selection-start-line="332" selection-start-column="28" selection-end-line="332" selection-end-column="28" />
+              <folding>
+                <element signature="method#addControls#0;class#TrangChu#0" expanded="false" />
+                <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
+>>>>>>> origin/master
                 <element signature="class#AppClick#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#addNavigationItem#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#changeListItemBackGround#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#launchApp#0;class#TrangChu#0" expanded="false" />
+<<<<<<< HEAD
                 <element signature="method#setVideoOrImager#0;class#TrangChu#0" expanded="false" />
               </folding>
+=======
+              </folding>
+=======
+            <state relative-caret-position="150">
+              <caret line="326" column="0" selection-start-line="326" selection-start-column="0" selection-end-line="326" selection-end-column="0" />
+              <folding />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
+>>>>>>> origin/master
             </state>
           </provider>
         </entry>
@@ -101,6 +144,7 @@
       <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="150">
               <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="207" selection-end-column="21" />
               <folding>
@@ -109,6 +153,129 @@
                 <element signature="e#25664#26485#0" expanded="false" />
                 <element signature="e#26491#27982#0" expanded="false" />
               </folding>
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="326">
+              <caret line="423" column="34" selection-start-line="423" selection-start-column="34" selection-end-line="423" selection-end-column="34" />
+              <folding>
+                <element signature="e#672#687#0" expanded="true" />
+                <element signature="e#830#845#0" expanded="true" />
+                <element signature="e#926#941#0" expanded="true" />
+                <element signature="e#1522#1536#0" expanded="true" />
+                <element signature="e#1569#1583#0" expanded="true" />
+                <element signature="e#1617#1631#0" expanded="true" />
+                <element signature="e#1663#1677#0" expanded="true" />
+                <element signature="e#1951#1965#0" expanded="true" />
+                <element signature="e#2003#2017#0" expanded="true" />
+                <element signature="e#2988#3002#0" expanded="true" />
+                <element signature="e#3202#3218#0" expanded="true" />
+                <element signature="e#3474#3490#0" expanded="true" />
+                <element signature="e#3638#3652#0" expanded="true" />
+                <element signature="e#3689#3703#0" expanded="true" />
+                <element signature="e#3739#3753#0" expanded="true" />
+                <element signature="e#3871#3886#0" expanded="true" />
+                <element signature="e#3929#3944#0" expanded="true" />
+                <element signature="e#3981#3995#0" expanded="true" />
+                <element signature="e#4384#4398#0" expanded="true" />
+                <element signature="e#4540#4554#0" expanded="true" />
+                <element signature="e#4907#4921#0" expanded="true" />
+                <element signature="e#5147#5161#0" expanded="true" />
+                <element signature="e#5303#5318#0" expanded="true" />
+                <element signature="e#5466#5480#0" expanded="true" />
+                <element signature="e#5517#5531#0" expanded="true" />
+                <element signature="e#5567#5581#0" expanded="true" />
+                <element signature="e#5703#5718#0" expanded="true" />
+                <element signature="e#5761#5776#0" expanded="true" />
+                <element signature="e#5870#5884#0" expanded="true" />
+                <element signature="e#6286#6300#0" expanded="true" />
+                <element signature="e#6477#6491#0" expanded="true" />
+                <element signature="e#6850#6864#0" expanded="true" />
+                <element signature="e#7043#7057#0" expanded="true" />
+                <element signature="e#7199#7214#0" expanded="true" />
+                <element signature="e#7361#7375#0" expanded="true" />
+                <element signature="e#7412#7426#0" expanded="true" />
+                <element signature="e#7462#7476#0" expanded="true" />
+                <element signature="e#7596#7611#0" expanded="true" />
+                <element signature="e#7654#7669#0" expanded="true" />
+                <element signature="e#7763#7777#0" expanded="true" />
+                <element signature="e#8173#8187#0" expanded="true" />
+                <element signature="e#8368#8382#0" expanded="true" />
+                <element signature="e#8780#8794#0" expanded="true" />
+                <element signature="e#8929#8943#0" expanded="true" />
+                <element signature="e#9153#9169#0" expanded="true" />
+                <element signature="e#9247#9262#0" expanded="true" />
+                <element signature="e#9298#9312#0" expanded="true" />
+                <element signature="e#9410#9426#0" expanded="true" />
+                <element signature="e#9461#9477#0" expanded="true" />
+                <element signature="e#9555#9569#0" expanded="true" />
+                <element signature="e#9601#9615#0" expanded="true" />
+                <element signature="e#9738#9753#0" expanded="true" />
+                <element signature="e#9796#9811#0" expanded="true" />
+                <element signature="e#10218#10232#0" expanded="true" />
+                <element signature="e#10693#10707#0" expanded="true" />
+                <element signature="e#10865#10880#0" expanded="true" />
+                <element signature="e#10923#10938#0" expanded="true" />
+                <element signature="e#11040#11055#0" expanded="true" />
+                <element signature="e#11097#11112#0" expanded="true" />
+                <element signature="e#11526#11540#0" expanded="true" />
+                <element signature="e#11996#12010#0" expanded="true" />
+                <element signature="e#12168#12183#0" expanded="true" />
+                <element signature="e#12226#12241#0" expanded="true" />
+                <element signature="e#12716#12730#0" expanded="true" />
+                <element signature="e#13186#13200#0" expanded="true" />
+                <element signature="e#13415#13430#0" expanded="true" />
+                <element signature="e#13473#13488#0" expanded="true" />
+                <element signature="e#13528#13543#0" expanded="true" />
+                <element signature="e#13957#13971#0" expanded="true" />
+                <element signature="e#14430#14444#0" expanded="true" />
+                <element signature="e#14720#14735#0" expanded="true" />
+                <element signature="e#14778#14793#0" expanded="true" />
+                <element signature="e#14833#14848#0" expanded="true" />
+                <element signature="e#14889#14904#0" expanded="true" />
+                <element signature="e#14946#14961#0" expanded="true" />
+                <element signature="e#15384#15398#0" expanded="true" />
+                <element signature="e#15860#15874#0" expanded="true" />
+                <element signature="e#16150#16165#0" expanded="true" />
+                <element signature="e#16208#16223#0" expanded="true" />
+                <element signature="e#16263#16278#0" expanded="true" />
+                <element signature="e#16695#16709#0" expanded="true" />
+                <element signature="e#17172#17186#0" expanded="true" />
+                <element signature="e#17410#17426#0" expanded="true" />
+                <element signature="e#17519#17534#0" expanded="true" />
+                <element signature="e#18048#18062#0" expanded="true" />
+                <element signature="e#18651#18666#0" expanded="true" />
+                <element signature="e#19182#19197#0" expanded="true" />
+                <element signature="e#19262#25183#0" expanded="false" />
+                <element signature="e#19456#19471#0" expanded="true" />
+                <element signature="e#20064#20078#0" expanded="true" />
+                <element signature="e#20507#20521#0" expanded="true" />
+                <element signature="e#20640#20654#0" expanded="true" />
+                <element signature="e#21115#21129#0" expanded="true" />
+                <element signature="e#21903#21917#0" expanded="true" />
+                <element signature="e#22523#22537#0" expanded="true" />
+                <element signature="e#23139#23153#0" expanded="true" />
+                <element signature="e#23685#23699#0" expanded="true" />
+                <element signature="e#24899#24913#0" expanded="true" />
+                <element signature="e#24977#24991#0" expanded="true" />
+                <element signature="e#25485#25500#0" expanded="true" />
+                <element signature="e#25531#25546#0" expanded="true" />
+                <element signature="e#25624#25639#0" expanded="true" />
+                <element signature="e#25675#25690#0" expanded="true" />
+                <element signature="e#26509#26524#0" expanded="true" />
+                <element signature="e#26556#26571#0" expanded="true" />
+                <element signature="e#26606#26621#0" expanded="true" />
+                <element signature="e#26817#26832#0" expanded="true" />
+                <element signature="e#27164#27179#0" expanded="true" />
+                <element signature="e#27406#27421#0" expanded="true" />
+                <element signature="e#27543#27558#0" expanded="true" />
+                <element signature="e#27593#27608#0" expanded="true" />
+              </folding>
+=======
+            <state relative-caret-position="6345">
+              <caret line="423" column="67" selection-start-line="423" selection-start-column="67" selection-end-line="423" selection-end-column="67" />
+              <folding />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
+>>>>>>> origin/master
             </state>
           </provider>
           <provider editor-type-id="android-designer2">
@@ -186,6 +353,7 @@
       <file leaf-file-name="DanhSach.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/DanhSach.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="187">
               <caret line="55" column="30" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
               <folding>
@@ -195,6 +363,16 @@
                 <element signature="class#AppClick#0;class#DanhSach#0" expanded="false" />
                 <element signature="method#onClick#0;class#DanhSach#0" expanded="false" />
               </folding>
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="225">
+              <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+=======
+            <state relative-caret-position="120">
+              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
+              <folding />
+>>>>>>> origin/master
             </state>
           </provider>
         </entry>
@@ -202,8 +380,33 @@
       <file leaf-file-name="VideoFull.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="360">
               <caret line="194" column="28" selection-start-line="194" selection-start-column="28" selection-end-line="194" selection-end-column="28" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="119">
+              <caret line="242" column="0" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
+              <folding>
+                <element signature="class#ViewHoder#0;class#VideoFull#0" expanded="false" />
+                <element signature="method#updateTime#0;class#VideoFull#0" expanded="false" />
+                <element signature="method#addListMap#0;class#VideoFull#0" expanded="false" />
+                <element signature="method#onKeyDown#0;class#VideoFull#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="659" column="0" selection-start-line="659" selection-start-column="0" selection-end-line="659" selection-end-column="0" />
+=======
+            <state relative-caret-position="225">
+              <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
+>>>>>>> origin/master
               <folding />
             </state>
           </provider>
@@ -2216,9 +2419,17 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_danh_sach.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_cate_ds.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/DanhSach.java" />
+=======
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/Define.java" />
+=======
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
+        <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java" />
+>>>>>>> origin/master
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java" />
       </list>
@@ -2253,6 +2464,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+=======
+      <pane id="PackagesPane" />
+>>>>>>> origin/master
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2271,6 +2486,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+<<<<<<< HEAD
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -2364,6 +2580,133 @@
           </PATH>
         </subPane>
       </pane>
+=======
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ATTKiwiLauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ATTKiwiLauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ATTKiwiLauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ATTKiwiLauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ATTKiwiLauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ATTKiwiLauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ATTKiwiLauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ATTKiwiLauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kiwilauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ATTKiwiLauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ATTKiwiLauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kiwilauncher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
+      <pane id="Scope" />
+>>>>>>> origin/master
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2373,8 +2716,16 @@
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
+    <property name="device.picker.selection" value="ZH8004N5TV" />
+    <property name="DEBUGGABLE_DEVICE" value="sony-d2403-ZH8004N5TV" />
+    <property name="DEBUGGABLE_PROCESS" value="com.att.kiwilauncher" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="DEBUGGER_ID" value="Auto" />
+=======
     <property name="device.picker.selection" value="Android_TV_1080p_API_25" />
     <property name="FullScreen" value="true" />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -2703,24 +3054,42 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281027" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32754344" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5025873" order="7" side_tool="true" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30645162" sideWeight="0.49741268" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+=======
+<<<<<<< HEAD
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66191155" sideWeight="0.49741268" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988358" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5272953" sideWeight="0.49741268" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
+>>>>>>> origin/master
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24967659" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952926" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> origin/master
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39942938" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2729,7 +3098,10 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+=======
+>>>>>>> origin/master
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2745,13 +3117,38 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+<<<<<<< HEAD
       <option name="time" value="1" />
+=======
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java</url>
+          <line>242</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java</url>
+          <line>1032</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java</url>
+          <line>336</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="13" />
+>>>>>>> origin/master
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="5250">
           <caret line="953" column="133" selection-start-line="953" selection-start-column="133" selection-end-line="953" selection-end-column="133" />
           <folding>
@@ -2761,10 +3158,19 @@
             <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onClick#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onActivityResult#0;class#TrangChu#0" expanded="false" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="2975">
+          <caret line="119" column="19" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="19" />
+          <folding>
+            <element signature="method#addControls#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
+>>>>>>> origin/master
             <element signature="class#AppClick#0;class#TrangChu#0" expanded="false" />
             <element signature="method#addNavigationItem#0;class#TrangChu#0" expanded="false" />
             <element signature="method#changeListItemBackGround#0;class#TrangChu#0" expanded="false" />
             <element signature="method#launchApp#0;class#TrangChu#0" expanded="false" />
+<<<<<<< HEAD
             <element signature="method#setVideoOrImager#0;class#TrangChu#0" expanded="false" />
           </folding>
         </state>
@@ -2795,7 +3201,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+=======
+          </folding>
+=======
+        <state relative-caret-position="3960">
+          <caret line="326" column="2" selection-start-line="326" selection-start-column="2" selection-end-line="326" selection-end-column="2" />
+>>>>>>> origin/master
           <folding />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
         </state>
       </provider>
     </entry>
@@ -2829,6 +3242,123 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#672#687#0" expanded="true" />
+            <element signature="e#830#845#0" expanded="true" />
+            <element signature="e#926#941#0" expanded="true" />
+            <element signature="e#1522#1536#0" expanded="true" />
+            <element signature="e#1569#1583#0" expanded="true" />
+            <element signature="e#1617#1631#0" expanded="true" />
+            <element signature="e#1663#1677#0" expanded="true" />
+            <element signature="e#1951#1965#0" expanded="true" />
+            <element signature="e#2003#2017#0" expanded="true" />
+            <element signature="e#2988#3002#0" expanded="true" />
+            <element signature="e#3202#3218#0" expanded="true" />
+            <element signature="e#3474#3490#0" expanded="true" />
+            <element signature="e#3638#3652#0" expanded="true" />
+            <element signature="e#3689#3703#0" expanded="true" />
+            <element signature="e#3739#3753#0" expanded="true" />
+            <element signature="e#3871#3886#0" expanded="true" />
+            <element signature="e#3929#3944#0" expanded="true" />
+            <element signature="e#3981#3995#0" expanded="true" />
+            <element signature="e#4384#4398#0" expanded="true" />
+            <element signature="e#4540#4554#0" expanded="true" />
+            <element signature="e#4907#4921#0" expanded="true" />
+            <element signature="e#5147#5161#0" expanded="true" />
+            <element signature="e#5303#5318#0" expanded="true" />
+            <element signature="e#5466#5480#0" expanded="true" />
+            <element signature="e#5517#5531#0" expanded="true" />
+            <element signature="e#5567#5581#0" expanded="true" />
+            <element signature="e#5703#5718#0" expanded="true" />
+            <element signature="e#5761#5776#0" expanded="true" />
+            <element signature="e#5870#5884#0" expanded="true" />
+            <element signature="e#6286#6300#0" expanded="true" />
+            <element signature="e#6477#6491#0" expanded="true" />
+            <element signature="e#6850#6864#0" expanded="true" />
+            <element signature="e#7043#7057#0" expanded="true" />
+            <element signature="e#7199#7214#0" expanded="true" />
+            <element signature="e#7361#7375#0" expanded="true" />
+            <element signature="e#7412#7426#0" expanded="true" />
+            <element signature="e#7462#7476#0" expanded="true" />
+            <element signature="e#7596#7611#0" expanded="true" />
+            <element signature="e#7654#7669#0" expanded="true" />
+            <element signature="e#7763#7777#0" expanded="true" />
+            <element signature="e#8173#8187#0" expanded="true" />
+            <element signature="e#8368#8382#0" expanded="true" />
+            <element signature="e#8780#8794#0" expanded="true" />
+            <element signature="e#8929#8943#0" expanded="true" />
+            <element signature="e#9153#9169#0" expanded="true" />
+            <element signature="e#9247#9262#0" expanded="true" />
+            <element signature="e#9298#9312#0" expanded="true" />
+            <element signature="e#9410#9426#0" expanded="true" />
+            <element signature="e#9461#9477#0" expanded="true" />
+            <element signature="e#9555#9569#0" expanded="true" />
+            <element signature="e#9601#9615#0" expanded="true" />
+            <element signature="e#9738#9753#0" expanded="true" />
+            <element signature="e#9796#9811#0" expanded="true" />
+            <element signature="e#10218#10232#0" expanded="true" />
+            <element signature="e#10693#10707#0" expanded="true" />
+            <element signature="e#10865#10880#0" expanded="true" />
+            <element signature="e#10923#10938#0" expanded="true" />
+            <element signature="e#11040#11055#0" expanded="true" />
+            <element signature="e#11097#11112#0" expanded="true" />
+            <element signature="e#11526#11540#0" expanded="true" />
+            <element signature="e#11996#12010#0" expanded="true" />
+            <element signature="e#12168#12183#0" expanded="true" />
+            <element signature="e#12226#12241#0" expanded="true" />
+            <element signature="e#12716#12730#0" expanded="true" />
+            <element signature="e#13186#13200#0" expanded="true" />
+            <element signature="e#13415#13430#0" expanded="true" />
+            <element signature="e#13473#13488#0" expanded="true" />
+            <element signature="e#13528#13543#0" expanded="true" />
+            <element signature="e#13957#13971#0" expanded="true" />
+            <element signature="e#14430#14444#0" expanded="true" />
+            <element signature="e#14720#14735#0" expanded="true" />
+            <element signature="e#14778#14793#0" expanded="true" />
+            <element signature="e#14833#14848#0" expanded="true" />
+            <element signature="e#14889#14904#0" expanded="true" />
+            <element signature="e#14946#14961#0" expanded="true" />
+            <element signature="e#15384#15398#0" expanded="true" />
+            <element signature="e#15860#15874#0" expanded="true" />
+            <element signature="e#16150#16165#0" expanded="true" />
+            <element signature="e#16208#16223#0" expanded="true" />
+            <element signature="e#16263#16278#0" expanded="true" />
+            <element signature="e#16695#16709#0" expanded="true" />
+            <element signature="e#17172#17186#0" expanded="true" />
+            <element signature="e#17410#17426#0" expanded="true" />
+            <element signature="e#17519#17534#0" expanded="true" />
+            <element signature="e#18048#18062#0" expanded="true" />
+            <element signature="e#18651#18666#0" expanded="true" />
+            <element signature="e#19182#19197#0" expanded="true" />
+            <element signature="e#19262#25183#0" expanded="false" />
+            <element signature="e#19456#19471#0" expanded="true" />
+            <element signature="e#20064#20078#0" expanded="true" />
+            <element signature="e#20507#20521#0" expanded="true" />
+            <element signature="e#20640#20654#0" expanded="true" />
+            <element signature="e#21115#21129#0" expanded="true" />
+            <element signature="e#21903#21917#0" expanded="true" />
+            <element signature="e#22523#22537#0" expanded="true" />
+            <element signature="e#23139#23153#0" expanded="true" />
+            <element signature="e#23685#23699#0" expanded="true" />
+            <element signature="e#24899#24913#0" expanded="true" />
+            <element signature="e#24977#24991#0" expanded="true" />
+            <element signature="e#25485#25500#0" expanded="true" />
+            <element signature="e#25531#25546#0" expanded="true" />
+            <element signature="e#25624#25639#0" expanded="true" />
+            <element signature="e#25675#25690#0" expanded="true" />
+            <element signature="e#26509#26524#0" expanded="true" />
+            <element signature="e#26556#26571#0" expanded="true" />
+            <element signature="e#26606#26621#0" expanded="true" />
+            <element signature="e#26817#26832#0" expanded="true" />
+            <element signature="e#27164#27179#0" expanded="true" />
+            <element signature="e#27406#27421#0" expanded="true" />
+            <element signature="e#27543#27558#0" expanded="true" />
+            <element signature="e#27593#27608#0" expanded="true" />
+          </folding>
+=======
         <state relative-caret-position="6345">
           <caret line="423" column="67" selection-start-line="423" selection-start-column="67" selection-end-line="423" selection-end-column="67" />
           <folding>
@@ -2853,6 +3383,7 @@
         <state relative-caret-position="120">
           <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
           <folding />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
         </state>
       </provider>
     </entry>
@@ -2915,6 +3446,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="4025">
+          <caret line="184" column="24" selection-start-line="184" selection-start-column="19" selection-end-line="184" selection-end-column="24" />
+          <folding>
+            <element signature="class#ViewHoder#0;class#VideoFull#0" expanded="false" />
+            <element signature="method#updateTime#0;class#VideoFull#0" expanded="false" />
+            <element signature="method#addListMap#0;class#VideoFull#0" expanded="false" />
+            <element signature="method#onKeyDown#0;class#VideoFull#0" expanded="false" />
+          </folding>
+=======
         <state relative-caret-position="225">
           <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
           <folding />
@@ -2959,17 +3500,32 @@
         <state relative-caret-position="75">
           <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
           <folding />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/Define.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_app.xml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="325">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+=======
         <state relative-caret-position="120">
           <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFullTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2400">
@@ -2982,6 +3538,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2975">
           <caret line="119" column="19" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="19" />
+<<<<<<< HEAD
           <folding>
             <element signature="method#loadData#0;class#TrangChu#0" expanded="false" />
             <element signature="class#26120:26254" expanded="false" />
@@ -2995,10 +3552,16 @@
             <element signature="method#launchApp#0;class#TrangChu#0" expanded="false" />
             <element signature="method#setVideoOrImager#0;class#TrangChu#0" expanded="false" />
           </folding>
+=======
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
+          <folding />
+>>>>>>> origin/master
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+<<<<<<< HEAD
+=======
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -3028,14 +3591,135 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java">
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4025">
-          <caret line="184" column="24" selection-start-line="184" selection-start-column="19" selection-end-line="184" selection-end-column="24" />
-          <folding />
+        <state relative-caret-position="326">
+          <caret line="423" column="34" selection-start-line="423" selection-start-column="34" selection-end-line="423" selection-end-column="34" />
+          <folding>
+            <element signature="e#672#687#0" expanded="true" />
+            <element signature="e#830#845#0" expanded="true" />
+            <element signature="e#926#941#0" expanded="true" />
+            <element signature="e#1522#1536#0" expanded="true" />
+            <element signature="e#1569#1583#0" expanded="true" />
+            <element signature="e#1617#1631#0" expanded="true" />
+            <element signature="e#1663#1677#0" expanded="true" />
+            <element signature="e#1951#1965#0" expanded="true" />
+            <element signature="e#2003#2017#0" expanded="true" />
+            <element signature="e#2988#3002#0" expanded="true" />
+            <element signature="e#3202#3218#0" expanded="true" />
+            <element signature="e#3474#3490#0" expanded="true" />
+            <element signature="e#3638#3652#0" expanded="true" />
+            <element signature="e#3689#3703#0" expanded="true" />
+            <element signature="e#3739#3753#0" expanded="true" />
+            <element signature="e#3871#3886#0" expanded="true" />
+            <element signature="e#3929#3944#0" expanded="true" />
+            <element signature="e#3981#3995#0" expanded="true" />
+            <element signature="e#4384#4398#0" expanded="true" />
+            <element signature="e#4540#4554#0" expanded="true" />
+            <element signature="e#4907#4921#0" expanded="true" />
+            <element signature="e#5147#5161#0" expanded="true" />
+            <element signature="e#5303#5318#0" expanded="true" />
+            <element signature="e#5466#5480#0" expanded="true" />
+            <element signature="e#5517#5531#0" expanded="true" />
+            <element signature="e#5567#5581#0" expanded="true" />
+            <element signature="e#5703#5718#0" expanded="true" />
+            <element signature="e#5761#5776#0" expanded="true" />
+            <element signature="e#5870#5884#0" expanded="true" />
+            <element signature="e#6286#6300#0" expanded="true" />
+            <element signature="e#6477#6491#0" expanded="true" />
+            <element signature="e#6850#6864#0" expanded="true" />
+            <element signature="e#7043#7057#0" expanded="true" />
+            <element signature="e#7199#7214#0" expanded="true" />
+            <element signature="e#7361#7375#0" expanded="true" />
+            <element signature="e#7412#7426#0" expanded="true" />
+            <element signature="e#7462#7476#0" expanded="true" />
+            <element signature="e#7596#7611#0" expanded="true" />
+            <element signature="e#7654#7669#0" expanded="true" />
+            <element signature="e#7763#7777#0" expanded="true" />
+            <element signature="e#8173#8187#0" expanded="true" />
+            <element signature="e#8368#8382#0" expanded="true" />
+            <element signature="e#8780#8794#0" expanded="true" />
+            <element signature="e#8929#8943#0" expanded="true" />
+            <element signature="e#9153#9169#0" expanded="true" />
+            <element signature="e#9247#9262#0" expanded="true" />
+            <element signature="e#9298#9312#0" expanded="true" />
+            <element signature="e#9410#9426#0" expanded="true" />
+            <element signature="e#9461#9477#0" expanded="true" />
+            <element signature="e#9555#9569#0" expanded="true" />
+            <element signature="e#9601#9615#0" expanded="true" />
+            <element signature="e#9738#9753#0" expanded="true" />
+            <element signature="e#9796#9811#0" expanded="true" />
+            <element signature="e#10218#10232#0" expanded="true" />
+            <element signature="e#10693#10707#0" expanded="true" />
+            <element signature="e#10865#10880#0" expanded="true" />
+            <element signature="e#10923#10938#0" expanded="true" />
+            <element signature="e#11040#11055#0" expanded="true" />
+            <element signature="e#11097#11112#0" expanded="true" />
+            <element signature="e#11526#11540#0" expanded="true" />
+            <element signature="e#11996#12010#0" expanded="true" />
+            <element signature="e#12168#12183#0" expanded="true" />
+            <element signature="e#12226#12241#0" expanded="true" />
+            <element signature="e#12716#12730#0" expanded="true" />
+            <element signature="e#13186#13200#0" expanded="true" />
+            <element signature="e#13415#13430#0" expanded="true" />
+            <element signature="e#13473#13488#0" expanded="true" />
+            <element signature="e#13528#13543#0" expanded="true" />
+            <element signature="e#13957#13971#0" expanded="true" />
+            <element signature="e#14430#14444#0" expanded="true" />
+            <element signature="e#14720#14735#0" expanded="true" />
+            <element signature="e#14778#14793#0" expanded="true" />
+            <element signature="e#14833#14848#0" expanded="true" />
+            <element signature="e#14889#14904#0" expanded="true" />
+            <element signature="e#14946#14961#0" expanded="true" />
+            <element signature="e#15384#15398#0" expanded="true" />
+            <element signature="e#15860#15874#0" expanded="true" />
+            <element signature="e#16150#16165#0" expanded="true" />
+            <element signature="e#16208#16223#0" expanded="true" />
+            <element signature="e#16263#16278#0" expanded="true" />
+            <element signature="e#16695#16709#0" expanded="true" />
+            <element signature="e#17172#17186#0" expanded="true" />
+            <element signature="e#17410#17426#0" expanded="true" />
+            <element signature="e#17519#17534#0" expanded="true" />
+            <element signature="e#18048#18062#0" expanded="true" />
+            <element signature="e#18651#18666#0" expanded="true" />
+            <element signature="e#19182#19197#0" expanded="true" />
+            <element signature="e#19262#25183#0" expanded="false" />
+            <element signature="e#19456#19471#0" expanded="true" />
+            <element signature="e#20064#20078#0" expanded="true" />
+            <element signature="e#20507#20521#0" expanded="true" />
+            <element signature="e#20640#20654#0" expanded="true" />
+            <element signature="e#21115#21129#0" expanded="true" />
+            <element signature="e#21903#21917#0" expanded="true" />
+            <element signature="e#22523#22537#0" expanded="true" />
+            <element signature="e#23139#23153#0" expanded="true" />
+            <element signature="e#23685#23699#0" expanded="true" />
+            <element signature="e#24899#24913#0" expanded="true" />
+            <element signature="e#24977#24991#0" expanded="true" />
+            <element signature="e#25485#25500#0" expanded="true" />
+            <element signature="e#25531#25546#0" expanded="true" />
+            <element signature="e#25624#25639#0" expanded="true" />
+            <element signature="e#25675#25690#0" expanded="true" />
+            <element signature="e#26509#26524#0" expanded="true" />
+            <element signature="e#26556#26571#0" expanded="true" />
+            <element signature="e#26606#26621#0" expanded="true" />
+            <element signature="e#26817#26832#0" expanded="true" />
+            <element signature="e#27164#27179#0" expanded="true" />
+            <element signature="e#27406#27421#0" expanded="true" />
+            <element signature="e#27543#27558#0" expanded="true" />
+            <element signature="e#27593#27608#0" expanded="true" />
+          </folding>
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/Define.java">
+<<<<<<< HEAD
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+=======
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
@@ -3047,10 +3731,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_cate_ds.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -3076,10 +3762,47 @@
             <element signature="e#25664#26485#0" expanded="false" />
             <element signature="e#26491#27982#0" expanded="false" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="68">
+          <caret line="659" column="0" selection-start-line="659" selection-start-column="0" selection-end-line="659" selection-end-column="0" />
+=======
+        <state relative-caret-position="6345">
+          <caret line="423" column="67" selection-start-line="423" selection-start-column="67" selection-end-line="423" selection-end-column="67" />
+>>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
+          <folding />
+>>>>>>> origin/master
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/view/VideoFull.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="242" column="0" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
+          <folding>
+            <element signature="class#ViewHoder#0;class#VideoFull#0" expanded="false" />
+            <element signature="method#updateTime#0;class#VideoFull#0" expanded="false" />
+            <element signature="method#addListMap#0;class#VideoFull#0" expanded="false" />
+            <element signature="method#onKeyDown#0;class#VideoFull#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="332" column="28" selection-start-line="332" selection-start-column="28" selection-end-line="332" selection-end-column="28" />
+          <folding>
+            <element signature="method#addControls#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
+            <element signature="class#AppClick#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#addNavigationItem#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#changeListItemBackGround#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#launchApp#0;class#TrangChu#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_danh_sach.xml">
