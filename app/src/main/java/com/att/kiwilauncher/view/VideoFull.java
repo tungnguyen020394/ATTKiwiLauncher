@@ -21,7 +21,6 @@ import android.widget.VideoView;
 
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.util.CheckLink;
-import com.att.kiwilauncher.util.Define;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -43,6 +42,10 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     private int currentApiVersion;
     int intVolum;
     boolean playing = true, mute = false , canclick = true;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 332f97ff194197f29312645dedec1dc6841dac84
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     AudioManager audioManager;
@@ -187,6 +190,9 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             handler.postDelayed(nextvideo, 5000);
 
         } else if (position == 2) {
+            playing = true;
+            vh.ibtPlayVideo.setImageResource(R.drawable.ic_pause);
+
             vh.imgView.setVisibility(View.GONE);
             vh.video.setVisibility(View.VISIBLE);
 
