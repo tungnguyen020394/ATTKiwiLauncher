@@ -38,7 +38,11 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     CheckLink checkLink;
     ViewHoder vh;
     LinearLayout layoutControl;
+<<<<<<< HEAD
     private int currentApiVersion;
+=======
+
+>>>>>>> origin/master
     int intVolum;
 
     boolean playing = true, mute = false , canclick = true;
@@ -136,11 +140,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         timePause = intent.getIntExtra("timePause", 0);
         intVolum = preferences.getInt("volume",0);
 
-            vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
-
-        setVideoOrImager(listvideo.get(indexVideo));
-
         layoutControl = (LinearLayout) findViewById(R.id.layout_control);
 
     }
@@ -176,11 +175,11 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
         position = checkLink.CheckLinkURL(check);
         if (position == 1) {
-            if (didIndex == 5) {
-                ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
-                didIndex--;
-                ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
-            }
+//            if (didIndex == 5) {
+//                ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
+//                didIndex--;
+//                ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
+//            }
             vh.imgView.setVisibility(View.VISIBLE);
             vh.video.setVisibility(View.GONE);
             vh.ibtPlayVideo.setVisibility(View.GONE);
@@ -221,7 +220,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             vh.video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-
                     if (indexVideo==listvideo.size()-1) indexVideo=0;
                     else indexVideo++;
 
@@ -233,8 +231,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             vh.imgView.setVisibility(View.GONE);
             vh.video.setVisibility(View.VISIBLE);
 
-//            MediaController mc = new MediaController(this);
-//            vh.video.setMediaController(mc);
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -244,6 +240,17 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 }
             });
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+
+        setVideoOrImager(listvideo.get(indexVideo));
+
     }
 
     private void updateTime(final TextView tv) {

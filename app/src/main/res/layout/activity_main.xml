@@ -416,15 +416,17 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
+                                android:layout_marginBottom="@dimen/_17sdp"
                                 />
 
                             <ImageView
                                 android:id="@+id/imgView"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:scaleType="fitXY"
                                 android:visibility="gone"
+                                android:layout_marginBottom="@dimen/_17sdp"
                                 />
 
                             <LinearLayout
@@ -432,7 +434,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_17sdp"
                                 android:layout_alignParentBottom="true"
-                                android:layout_below="@id/vVI"
                                 android:background="@drawable/ic_bgvideo"
                                 android:orientation="horizontal">
 
