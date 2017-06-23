@@ -519,7 +519,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                             thoiTiet = listThoiTiet.getJSONObject(currentPos);
                             String nhietDo = thoiTiet.getJSONObject("main").getString("temp");
                             String trangThai = thoiTiet.getJSONArray("weather").getJSONObject(0).getString("main");
-                            mTxtNhietDo.setText(Math.round(Double.parseDouble(nhietDo)) + "");
+                            mTxtNhietDo.setText(Math.round(Double.parseDouble(nhietDo)) + " °C");
                             editor.putString("nhietdo", Math.round(Double.parseDouble(nhietDo)) + "");
                             editor.commit();
                             break;
@@ -1147,6 +1147,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
             handler.postDelayed(nextvideo, 5000);
         } else if (position == 2) {
+            playing = true;
+            ibtPlay.setImageResource(R.drawable.ic_pause);
+
             imgView.setVisibility(View.GONE);
             video.setVisibility(View.VISIBLE);
             ibtPlay.setVisibility(View.VISIBLE);
