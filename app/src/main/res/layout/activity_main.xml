@@ -394,22 +394,12 @@
                 android:layout_toRightOf="@+id/relay21"
                 android:paddingLeft="@dimen/_21sdp">
 
-                <RelativeLayout
-                    android:id="@+id/relay222"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
                     <RelativeLayout
                         android:id="@+id/relay2221"
-                        android:layout_width="match_parent"
+                        android:layout_width="@dimen/_237sdp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/border_video"
                         android:padding="@dimen/_2sdp">
-
-                        <RelativeLayout
-                            android:id="@+id/vVI"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
 
                             <VideoView
                                 android:id="@+id/videoView"
@@ -531,8 +521,8 @@
                                     android:src="@drawable/ic_volumeoff"/>
 
                             </LinearLayout>
-                        </RelativeLayout>
-                    </RelativeLayout>
+
+
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>

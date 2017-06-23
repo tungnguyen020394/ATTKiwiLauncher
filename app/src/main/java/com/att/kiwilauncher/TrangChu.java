@@ -300,7 +300,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 //                });
 
                 //  video.start();
-                setVideoOrImager(listvideo.get(indexVideo));
+//                setVideoOrImager(listvideo.get(indexVideo));
                 //   Toast.makeText(getApplicationContext(), mDatabaseHelper.getListVideoQuangCao().size() + "", Toast.LENGTH_LONG).show();
 
             }
@@ -407,7 +407,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
-        reLay222 = (RelativeLayout) findViewById(R.id.relay222);
+        //reLay222 = (RelativeLayout) findViewById(R.id.relay222);
         reLay211 = (RelativeLayout) findViewById(R.id.relay211);
         reLay212 = (RelativeLayout) findViewById(R.id.relay212);
         reLay213 = (RelativeLayout) findViewById(R.id.relay213);
