@@ -61,7 +61,7 @@
                     android:singleLine="true"
                     android:text=" Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! "
                     android:textAllCaps="true"
-                    android:textSize="@dimen/_6sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:textStyle="bold"/>
             </RelativeLayout>
         </RelativeLayout>

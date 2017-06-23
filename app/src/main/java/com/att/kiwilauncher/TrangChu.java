@@ -20,7 +20,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -372,13 +371,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         String idThoiTiet = sharedPreferences.getString("idthoitiet", "24");
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper.checkDatabase(this);
-
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        chieuDai = displayMetrics.widthPixels;
-        chieuRong = displayMetrics.heightPixels;
-        mChieuDai = chieuDai / 70;
-        mChieuRong = chieuRong / 40;
 
         listItem = new ArrayList<>();
         listvideo = new ArrayList<>();
