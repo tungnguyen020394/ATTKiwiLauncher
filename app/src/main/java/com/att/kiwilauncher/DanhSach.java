@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.att.kiwilauncher.adapter.ChuDeAdapter;
+import com.att.kiwilauncher.adapter.ChuDeDsAdapter;
 import com.att.kiwilauncher.adapter.UngDungDsAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
@@ -31,7 +31,7 @@ import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
 
 public class DanhSach extends AppCompatActivity implements View.OnClickListener{
     RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112,reLay11;
-    int chieuDai, chieuRong, mChieuDai, mChieuRong, didIndex = 0, main = 5, indexChuDe;
+    int didIndex = 0, main = 5, indexChuDe;
     List<ChuDe> dsChuDe;
     static List<UngDung> dsUngDung;
     RecyclerView rcChuDe;
@@ -61,7 +61,6 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         reLay1 = (RelativeLayout) findViewById(R.id.relay1_ds);
         reLay2 = (RelativeLayout) findViewById(R.id.relay2_ds);
         reLay3 = (RelativeLayout) findViewById(R.id.relay3_ds);
-
         reLay13 = (RelativeLayout) findViewById(R.id.relay13_ds);
         reLay12 = (RelativeLayout) findViewById(R.id.relay12_ds);
         reLay11 = (RelativeLayout) findViewById(R.id.relay11_ds);
@@ -89,19 +88,17 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
     public void addLoadData() {
         // Load Category
         dsChuDe = new ArrayList<ChuDe>();
-        ChuDe cate1 = new ChuDe("Giải Trí", R.drawable.ic_giaitri, 0, true);
+        ChuDe cate1 = new ChuDe("Truyền Hình Tổng Hợp", R.drawable.ic_giaitri, 0, true);
         dsChuDe.add(cate1);
-        ChuDe cate2 = new ChuDe("Trò Chơi", R.drawable.ic_trochoi, 0, false);
+        ChuDe cate2 = new ChuDe("Miễn Phí", R.drawable.ic_trochoi, 0, false);
         dsChuDe.add(cate2);
-        ChuDe cate3 = new ChuDe("Giáo Dục & Sức Khoẻ", R.drawable.ic_suckhoe, 0, false);
+        ChuDe cate3 = new ChuDe("Trả Phí", R.drawable.ic_suckhoe, 0, false);
         dsChuDe.add(cate3);
-        ChuDe cate4 = new ChuDe("Tiện Ích", R.drawable.ic_tienich, 0, false);
-        dsChuDe.add(cate4);
 
         rcChuDe.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcChuDe.setLayoutManager(layoutManager1);
-        ChuDeAdapter categoryAdapter = new ChuDeAdapter(this, dsChuDe);
+        ChuDeDsAdapter categoryAdapter = new ChuDeDsAdapter(this, dsChuDe);
         rcChuDe.setAdapter(categoryAdapter);
         mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich_ds);
         mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich_ds);
@@ -127,7 +124,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         }
 
         rcUngDung.setHasFixedSize(true);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 7);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 8);
         rcUngDung.setLayoutManager(gridLayoutManager);
         UngDungDsAdapter ungDungAdapter = new UngDungDsAdapter(this, dsUngDung);
         rcUngDung.setAdapter(ungDungAdapter);
@@ -168,9 +165,9 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
                     didIndex = main + dsChuDe.size();
                     rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
                 } else if (didIndex > main - 1 + dsChuDe.size()
-                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() - 7) {
+                        && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size() - 8) {
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
-                    didIndex = didIndex + 7;
+                    didIndex = didIndex + 8;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
                 }
                 break;
@@ -180,14 +177,14 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
                 if (didIndex >= main && didIndex < main + dsChuDe.size()) {
                     didIndex = 0;
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
-                } else if ((didIndex >= main + dsChuDe.size()) && (didIndex < main + dsChuDe.size() + 7)) {
+                } else if ((didIndex >= main + dsChuDe.size()) && (didIndex < main + dsChuDe.size() + 8)) {
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
                     didIndex = indexChuDe;
                     rcChuDe.getChildAt(didIndex - main).callOnClick();
-                } else if (didIndex >= main + dsChuDe.size() + 7
+                } else if (didIndex >= main + dsChuDe.size() + 8
                         && didIndex <= main + dsChuDe.size() + dsUngDung.size()) {
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
-                    didIndex = didIndex - 7;
+                    didIndex = didIndex - 8;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
                 }
                 break;
@@ -289,4 +286,5 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         }
 
     }
+
 }

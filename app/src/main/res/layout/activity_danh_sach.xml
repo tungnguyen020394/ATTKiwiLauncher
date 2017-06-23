@@ -210,8 +210,9 @@
         android:id="@+id/relay2_ds"
         android:layout_below="@+id/relay1_ds"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_height="@dimen/_20sdp">
+        android:layout_marginTop="@dimen/_7sdp"
+        android:paddingTop="@dimen/_2sdp"
+        android:layout_height="@dimen/_25sdp">
         <ImageView
             android:id="@+id/bordercate_ds"
             android:layout_width="match_parent"
@@ -220,8 +221,9 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler1_ds"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true">
         </android.support.v7.widget.RecyclerView>
     </RelativeLayout>
 
