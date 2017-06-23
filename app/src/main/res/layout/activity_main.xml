@@ -4,9 +4,9 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bgnew"
+                android:background="@drawable/ic_bgmain"
                 android:orientation="vertical"
-                tools:context="com.att.kiwilauncher.TrangChu">ckground="@drawable/ic_bgmain">
+                tools:context="com.att.kiwilauncher.TrangChu">
 
     <RelativeLayout
         android:id="@+id/relay1"
@@ -128,8 +128,11 @@
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
                     android:layout_centerVertical="true"
-                    android:padding="@dimen/_1sdp"
-                    android:scaleType="centerCrop"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingLeft="@dimen/_1sdp"
+                    android:paddingRight="@dimen/_1sdp"
+                    android:paddingBottom="@dimen/_1sdp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_thoitiet"/>
 
                 <TextView
@@ -170,8 +173,11 @@
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
                     android:layout_centerVertical="true"
-                    android:padding="@dimen/_1sdp"
-                    android:scaleType="centerCrop"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingLeft="@dimen/_1sdp"
+                    android:paddingRight="@dimen/_1sdp"
+                    android:paddingBottom="@dimen/_1sdp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_caidat"/>
 
                 <TextView
