@@ -324,7 +324,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         super.onResume();
 
             ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+//            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
 
         if (DuLieu.hasInternetConnection(TrangChu.this)) {
             setVideoOrImager(listvideo.get(indexVideo));
@@ -951,17 +951,15 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.img_phim:
-                Intent i1 = new Intent(TrangChu.this, DanhSach.class);
-                startActivity(i1);
+                Toast.makeText(getApplicationContext(), "Tính năng sẽ được cập nhật trong thời gian tới", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.img_nhac:
-                Intent i2 = new Intent(TrangChu.this, DanhSach.class);
-                startActivity(i2);
+                Toast.makeText(getApplicationContext(), "Tính năng sẽ được cập nhật trong thời gian tới", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.img_kara:
-                Toast.makeText(getApplicationContext(), chieuDai + " -" + chieuRong, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Tính năng sẽ được cập nhật trong thời gian tới", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.img_youtube:
@@ -970,8 +968,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.img_store:
-                /*Intent i5 = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
-                startActivity(i5);*/
                 launchApp("com.store.kiwi.kiwistore");
                 break;
 
@@ -1060,7 +1056,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         listItem.add(image5);
         listItem.add(image6);
         listItem.add(reLay2221);
-
         listItem.add(imgWeb);
         listItem.add(ibtFull);
         listItem.add(ibtBack);

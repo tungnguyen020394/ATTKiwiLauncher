@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -57,27 +56,15 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
     public void addControls() {
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper.checkDatabase(this);
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        chieuDai = displayMetrics.widthPixels;
-        chieuRong = displayMetrics.heightPixels;
-        mChieuDai = chieuDai / 70;
-        mChieuRong = chieuRong / 40;
 
         // layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1_ds);
         reLay2 = (RelativeLayout) findViewById(R.id.relay2_ds);
         reLay3 = (RelativeLayout) findViewById(R.id.relay3_ds);
-        reLay1.setPadding(mChieuDai, 0, mChieuDai, mChieuRong * 34);
-        reLay2.setPadding(mChieuDai * 2, mChieuRong * 7, mChieuDai, mChieuRong * 29);
-        reLay3.setPadding(mChieuDai * 2, mChieuRong * 12, mChieuDai, mChieuRong);
 
         reLay13 = (RelativeLayout) findViewById(R.id.relay13_ds);
         reLay12 = (RelativeLayout) findViewById(R.id.relay12_ds);
         reLay11 = (RelativeLayout) findViewById(R.id.relay11_ds);
-        reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
-        reLay12.setPadding(mChieuDai * 10, mChieuRong, mChieuDai*35, mChieuRong);
-        reLay11.setPadding(mChieuDai*35,0,mChieuDai,0);
         reLay113 = (RelativeLayout) findViewById(R.id.relay113_ds);
         reLay111 = (RelativeLayout) findViewById(R.id.relay111_ds);
         reLay112 = (RelativeLayout) findViewById(R.id.relay112_ds);

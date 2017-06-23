@@ -6,15 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.att.kiwilauncher.DanhSach"
     android:background="@drawable/ic_bgmain">
+
     <RelativeLayout
         android:id="@+id/relay1_ds"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/_43sdp"
+        android:layout_alignParentTop="true">
 
         <RelativeLayout
             android:id="@+id/relay13_ds"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_width="@dimen/_86sdp"
+            android:layout_height="fill_parent"
+            android:paddingLeft="@dimen/_17sdp">
 
             <ImageView
                 android:id="@+id/img1_ds"
@@ -27,17 +30,27 @@
         <RelativeLayout
             android:id="@+id/relay12_ds"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@+id/relay11_ds"
+            android:layout_toRightOf="@+id/relay13_ds"
+            android:paddingBottom="@dimen/_8sdp"
+            android:paddingLeft="@dimen/_4sdp"
+            android:paddingRight="@dimen/_6sdp"
+            android:paddingTop="@dimen/_8sdp">
 
             <RelativeLayout
+                android:id="@+id/relay121_ds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_text">
+                android:background="@drawable/border_text"
+                android:paddingLeft="@dimen/_2sdp"
+                android:paddingRight="@dimen/_2sdp">
 
                 <TextView
                     android:id="@+id/text1_ds"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:layout_centerHorizontal="true"
                     android:ellipsize="marquee"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
@@ -45,159 +58,178 @@
                     android:marqueeRepeatLimit="marquee_forever"
                     android:scrollHorizontally="true"
                     android:singleLine="true"
-                    android:layout_centerHorizontal="true"
                     android:text=" Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! Chào mừng hè Kiwi giảm giá đặc biệt 50% cho toàn bộ các box ! "
                     android:textAllCaps="true"
-                    android:textSize="15dp"
+                    android:textSize="@dimen/_6sdp"
                     android:textStyle="bold"/>
             </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/relay11_ds"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/_240sdp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:orientation="horizontal">
 
             <RelativeLayout
                 android:id="@+id/relay111_ds"
-                android:layout_width="200dp"
+                android:layout_width="@dimen/_105sdp"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/relay112_ds"
-                android:padding="5dp">
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_6sdp"
+                android:paddingTop="@dimen/_9sdp">
 
                 <ImageView
                     android:id="@+id/img_lich_ds"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_lich"
-                    android:padding="5dp"/>
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:padding="@dimen/_1sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_lich"/>
 
                 <TextView
                     android:id="@+id/txt_duonglich_ds"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
                     android:layout_toRightOf="@id/img_lich_ds"
+                    android:padding="@dimen/_2sdp"
                     android:text="Thứ 7 , 10/6/2017    "
                     android:textAllCaps="true"
-                    android:singleLine="true"
-                    android:textSize="13dp" />
+                    android:textSize="@dimen/_7sdp"/>
 
                 <TextView
                     android:id="@+id/txt_amlich_ds"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txt_duonglich_ds"
-                    android:layout_marginRight="5dp"
                     android:layout_toRightOf="@id/img_lich_ds"
+                    android:paddingLeft="@dimen/_2sdp"
+                    android:gravity="center"
                     android:singleLine="true"
                     android:text="16/5 Đinh dậu "
                     android:textAllCaps="true"
-                    android:textSize="12dp" />
+                    android:textSize="@dimen/_6sdp"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay112_ds"
-                android:layout_width="120dp"
+                android:layout_width="@dimen/_60sdp"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/relay113_ds"
-                android:padding="5dp">
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_4sdp"
+                android:paddingTop="@dimen/_9sdp">
 
                 <ImageView
                     android:id="@+id/img_thoitiet_ds"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
                     android:layout_centerVertical="true"
-                    android:padding="5dp"
-                    android:scaleType="centerCrop"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingLeft="@dimen/_1sdp"
+                    android:paddingRight="@dimen/_1sdp"
+                    android:paddingBottom="@dimen/_1sdp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_thoitiet"/>
 
                 <TextView
                     android:id="@+id/txt_thanhpho_ds"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/img_thoitiet_ds"
+                    android:padding="@dimen/_2sdp"
                     android:singleLine="true"
                     android:text="Hà Nôi    "
                     android:textAllCaps="true"
-                    android:textSize="13dp" />
+                    android:textSize="@dimen/_7sdp"/>
 
                 <TextView
                     android:id="@+id/txt_nhietdo_ds"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_thanhpho_ds"
-                    android:layout_marginRight="5dp"
                     android:layout_toRightOf="@+id/img_thoitiet_ds"
+                    android:paddingLeft="@dimen/_2sdp"
                     android:singleLine="true"
                     android:text="28 độ       "
                     android:textAllCaps="true"
-                    android:textSize="12dp" />
+                    android:textSize="@dimen/_6sdp"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relay113_ds"
-                android:layout_width="145dp"
+                android:layout_width="@dimen/_75sdp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:padding="5dp">
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_4sdp"
+                android:paddingTop="@dimen/_9sdp">
 
                 <ImageView
                     android:id="@+id/img_caidat_ds"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
                     android:layout_centerVertical="true"
-                    android:padding="5dp"
-                    android:scaleType="centerCrop"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingLeft="@dimen/_1sdp"
+                    android:paddingRight="@dimen/_1sdp"
+                    android:paddingBottom="@dimen/_1sdp"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_caidat"/>
 
                 <TextView
                     android:id="@+id/txt_caidat_ds"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/img_caidat_ds"
-                    android:text="Cấu Hình      "
+                    android:padding="@dimen/_2sdp"
                     android:singleLine="true"
+                    android:text="Cấu Hình      "
                     android:textAllCaps="true"
-                    android:textSize="13dp" />
+                    android:textSize="@dimen/_7sdp"/>
 
                 <TextView
                     android:id="@+id/txt_kiwi_ds"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_caidat_ds"
-                    android:layout_marginRight="5dp"
                     android:layout_toRightOf="@+id/img_caidat_ds"
                     android:singleLine="true"
+                    android:paddingLeft="@dimen/_2sdp"
                     android:text="KiwiBox       "
                     android:textAllCaps="true"
-                    android:textSize="12dp" />
+                    android:textSize="@dimen/_6sdp"/>
             </RelativeLayout>
+
         </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/relay2_ds"
+        android:layout_below="@+id/relay1_ds"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_height="@dimen/_20sdp">
+        <ImageView
+            android:id="@+id/bordercate_ds"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bordercate_ds"/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler1_ds"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/relay3_ds"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relay2_ds">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler2_ds"
             android:layout_width="match_parent"

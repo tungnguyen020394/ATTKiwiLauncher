@@ -191,6 +191,9 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             handler.postDelayed(nextvideo, 5000);
 
         } else if (position == 2) {
+            playing = true;
+            vh.ibtPlayVideo.setImageResource(R.drawable.ic_pause);
+
             vh.imgView.setVisibility(View.GONE);
             vh.video.setVisibility(View.VISIBLE);
 
