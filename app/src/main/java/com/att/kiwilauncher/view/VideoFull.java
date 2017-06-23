@@ -38,11 +38,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     CheckLink checkLink;
     ViewHoder vh;
     LinearLayout layoutControl;
-<<<<<<< HEAD
     private int currentApiVersion;
-=======
-
->>>>>>> origin/master
     int intVolum;
 
     boolean playing = true, mute = false , canclick = true;
