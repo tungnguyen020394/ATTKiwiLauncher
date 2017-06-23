@@ -20,6 +20,7 @@ import android.widget.VideoView;
 
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.util.CheckLink;
+import com.att.kiwilauncher.util.Define;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -28,7 +29,8 @@ import java.util.List;
 public class VideoFull extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
 
     Intent intent;
-    int timePause, didIndex = 0;
+    int timePause=0;
+    int didIndex = 0;
     int indexVideo = 0, position;
     MediaPlayer mp;
     Handler handler;
@@ -37,10 +39,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     CheckLink checkLink;
     ViewHoder vh;
     LinearLayout layoutControl;
-
-    int intVolum;
-
-    boolean playing = true, mute = false , canclick = true;
+    boolean playing = true, mute = false, canclick = true;
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -61,11 +60,13 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 //        list = new ArrayList<>();
         checkLink = new CheckLink();
         intent = getIntent();
+        listvideo = intent.getStringArrayListExtra("list");
         handler = new Handler();
 //        volume = new Volume();
-        audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
+        audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         preferences = getSharedPreferences("volume", MODE_PRIVATE);
+        editor = preferences.edit();
 
         vh.ibtNextVideo.setOnClickListener(this);
         vh.ibtPlayVideo.setOnClickListener(this);
@@ -74,13 +75,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         vh.ibtVolumeOnVideo.setOnClickListener(this);
         vh.imgWebVideo.setOnClickListener(this);
 
-        indexVideo = intent.getIntExtra("index", 0);
-        listvideo = intent.getStringArrayListExtra("list");
-        timePause = intent.getIntExtra("timePause", 0);
-        intVolum = preferences.getInt("volume",0);
-
         layoutControl = (LinearLayout) findViewById(R.id.layout_control);
-
     }
 
     private class ViewHoder {
@@ -159,7 +154,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             vh.video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-                    if (indexVideo==listvideo.size()-1) indexVideo=0;
+                    if (indexVideo == listvideo.size() - 1) indexVideo = 0;
                     else indexVideo++;
 
                     setVideoOrImager(listvideo.get(indexVideo));
@@ -188,8 +183,11 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
 
-        setVideoOrImager(listvideo.get(indexVideo));
 
+        timePause = preferences.getInt("timePause", 0);
+        indexVideo = preferences.getInt("index", 0);
+
+        setVideoOrImager(listvideo.get(indexVideo));
     }
 
     private void updateTime(final TextView tv) {
@@ -222,19 +220,29 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             case R.id.imgWeb_video:
                 Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
+
+                editor.putInt("index", indexVideo);
+                editor.putInt("timePause", timePause);
+                editor.commit();
                 startActivity(intent);
                 break;
 
             case R.id.imgExitFull:
                 intent = new Intent();
-                intent.putExtra("index", indexVideo);
-                intent.putExtra("list", listvideo);
+
+//                intent.putExtra("list", listvideo);
 
                 // độ dài video đang chạy
                 int timepause = vh.video.getCurrentPosition();
-                intent.putExtra("timePause", timepause);
 
-                onBackPressed();
+                editor.putInt("index", indexVideo);
+                editor.putInt("timePause", timepause);
+                editor.commit();
+
+                intent.putExtra("index", indexVideo);
+                intent.putExtra("timePause", timepause);
+                setResult(RESULT_OK, intent);
+                finish();
                 break;
 
             case R.id.imgVolumeOn_video:
@@ -327,7 +335,8 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
                     }
-                    if (didIndex == 0 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
+                    if (didIndex == 0 && listItem.get(didIndex) instanceof ImageView)
+                        ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                 }
                 break;
 
@@ -336,7 +345,8 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                     }
-                    if (didIndex == 0 && listItem.get(didIndex) instanceof ImageView) ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
+                    if (didIndex == 0 && listItem.get(didIndex) instanceof ImageView)
+                        ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                     if (didIndex == 2 && position == 1) {
                         didIndex++;
                     }

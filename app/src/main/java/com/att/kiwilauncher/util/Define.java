@@ -6,6 +6,10 @@ package com.att.kiwilauncher.util;
 
 public class Define {
 
+    public static final int NUMBER_RESULT_FULL =50;
+    public static final int NUMBER_RESULT_WEB =40;
+
+
     public static final String URL_LINK_IMG02 ="http://1.bp.blogspot.com/-KwSC3miMEGY/VKs8xTyHQPI/AAAAAAAAASM/GYb7jPYZgaM/s1600/Cloud-Hosting-Service---banner.jpg";
     public static final String URL_LINK_IMG01 = "http://www.thietkelogo.pro.vn/upload/hinhchung/thietke/banner-quang-cao-xe-oto.jpg";
     public static final String URL_LINK_PLAY="http://118.70.81.139:1969/live/bongda/bongda.m3u8";
