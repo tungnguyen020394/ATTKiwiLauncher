@@ -323,11 +323,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     @Override
     protected void onResume() {
         super.onResume();
-
-<<<<<<< HEAD
-            ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
-//            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
-=======
 //        timePause = sharedPreferences.getInt("timePause", 0);
 //        indexVideo = sharedPreferences.getInt("index", 0);
 
@@ -336,7 +331,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
 
         ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
->>>>>>> origin/master
 
         if (DuLieu.hasInternetConnection(TrangChu.this)) {
             setVideoOrImager(listvideo.get(indexVideo));

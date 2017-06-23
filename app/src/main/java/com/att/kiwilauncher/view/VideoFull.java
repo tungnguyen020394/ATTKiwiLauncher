@@ -21,7 +21,6 @@ import android.widget.VideoView;
 
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.util.CheckLink;
-import com.att.kiwilauncher.util.Define;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -40,14 +39,9 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     CheckLink checkLink;
     ViewHoder vh;
     LinearLayout layoutControl;
-<<<<<<< HEAD
-    boolean playing = true, mute = false, canclick = true;
-=======
     private int currentApiVersion;
     int intVolum;
-
     boolean playing = true, mute = false , canclick = true;
->>>>>>> b3e0aa696a68ffca04a6fd06bf618cae7f46aad2
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
