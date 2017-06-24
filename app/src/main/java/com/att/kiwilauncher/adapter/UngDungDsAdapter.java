@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import com.bumptech.glide.Glide;
 
 import com.att.kiwilauncher.DanhSach;
 import com.att.kiwilauncher.R;
@@ -39,7 +40,8 @@ public class UngDungDsAdapter extends RecyclerView.Adapter<UngDungDsAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.imgApp.setImageDrawable(apps.get(position).getIconApp());
+        //holder.imgApp.setImageDrawable(apps.get(position).getIconApp());
+        Glide.with(context).load(apps.get(position).getIcon()).into(holder.imgApp);
     }
 
     @Override

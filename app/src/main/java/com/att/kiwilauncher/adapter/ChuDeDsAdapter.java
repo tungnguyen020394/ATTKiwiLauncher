@@ -9,9 +9,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.att.kiwilauncher.R;
+import com.att.kiwilauncher.UngDung;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,13 +23,17 @@ import java.util.List;
 public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHolder> {
     Context context;
     List<ChuDe> cates;
+    UngDungDsAdapter ungDungAdapter;
+    List<UngDung> dsUngDung;
     float mRatio = 0.5f;
 
     int index = -1;
 
-    public ChuDeDsAdapter(Context context, List<ChuDe> cates) {
+    public ChuDeDsAdapter(Context context, List<ChuDe> cates, UngDungDsAdapter ungDungAdapter, List<UngDung> dsUngDung) {
         this.context = context;
-        this.cates    = cates;
+        this.cates = cates;
+        this.ungDungAdapter = ungDungAdapter;
+        this.dsUngDung = dsUngDung;
     }
 
     @Override
@@ -60,17 +66,42 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
 
         public ViewHolder(View itemView) {
             super(itemView);
+            final int pos =getAdapterPosition();
             final DatabaseHelper mDadabaseHelper;
-            mDadabaseHelper=new DatabaseHelper(context);
+            mDadabaseHelper = new DatabaseHelper(context);
             txtApp = (TextView) itemView.findViewById(R.id.textcate_ds);
             layoutCateDs = (RelativeLayout) itemView.findViewById(R.id.layout_cate_ds);
             layoutCateDs.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     RemoveCheck();
-                    ChuDe cate = cates.get(getAdapterPosition());
+                    ChuDe cate = cates.get(getPosition());
                     cate.setCheckedCate(true);
                     notifyDataSetChanged();
+                    List<UngDung> listUngDungChan = new ArrayList<UngDung>();
+                    List<UngDung> listUngDungLe = new ArrayList<UngDung>();
+                    List<UngDung> listUngDungChung = mDadabaseHelper.getListUngDung(mDadabaseHelper.getListChuDe().get(4));
+                    for (int i = 0; i < listUngDungChung.size(); i++) {
+                        if (i % 2 == 0) {
+                            UngDung ungDung = new UngDung();
+                            ungDung = listUngDungChung.get(i);
+                            listUngDungChan.add(ungDung);
+                        } else {
+                            UngDung ungDung = new UngDung();
+                            ungDung = listUngDungChung.get(i);
+                            listUngDungLe.add(ungDung);
+                        }
+                    }
+                    dsUngDung.clear();
+                    if (cates.get(getPosition()).getDrawCate() == R.drawable.ic_giaitri) {
+                        dsUngDung.addAll(listUngDungChung);
+                    } else if (cates.get(getPosition()).getDrawCate() == R.drawable.ic_trochoi) {
+                        dsUngDung.addAll(listUngDungChan);
+                    } else if (cates.get(getPosition()).getDrawCate() == R.drawable.ic_suckhoe) {
+                        dsUngDung.addAll(listUngDungLe);
+                    }
+                    ungDungAdapter.notifyDataSetChanged();
+
                 }
             });
 //            imgApp = (ImageView) itemView.findViewById(R.id.image_category);
@@ -124,7 +155,7 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
     }
 
     private void RemoveCheck() {
-        for (ChuDe cate : cates ) {
+        for (ChuDe cate : cates) {
             if (cate.isCheckedCate()) {
                 cate.setCheckedCate(false);
                 break;
