@@ -16,13 +16,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.att.kiwilauncher.adapter.ChuDeDsAdapter;
 import com.att.kiwilauncher.adapter.UngDungDsAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.xuly.LunarCalendar;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,9 +31,10 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
     RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112,reLay11,reLay121;
     int didIndex = 0, main = 5, indexChuDe;
     List<ChuDe> dsChuDe;
-    static List<UngDung> dsUngDung;
+    public static List<UngDung> dsUngDung;
     RecyclerView rcChuDe;
     static RecyclerView rcUngDung;
+    public static UngDungDsAdapter ungDungAdapter;
     static PackageManager manager;
     ImageView imageKiwi,imageCaidat;
     ArrayList<View> listItem;
@@ -128,11 +127,15 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
             soUngDung++;
             if (soUngDung == 36) { break;}
         }*/
+<<<<<<< HEAD
        // Toast.makeText(this, ""+dsUngDung.size(), Toast.LENGTH_SHORT).show();
+=======
+
+>>>>>>> origin/master
         rcUngDung.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 8);
         rcUngDung.setLayoutManager(gridLayoutManager);
-        UngDungDsAdapter ungDungAdapter = new UngDungDsAdapter(this, dsUngDung);
+        ungDungAdapter = new UngDungDsAdapter(this, dsUngDung);
         rcUngDung.setAdapter(ungDungAdapter);
 
         ChuDeDsAdapter categoryAdapter = new ChuDeDsAdapter(this, dsChuDe,ungDungAdapter,dsUngDung);
@@ -165,7 +168,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
                 if (didIndex < main) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
                     if (didIndex == 1) {
-                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_text);
                     }
                     rcChuDe.getChildAt(0).callOnClick();
                     didIndex = main;
