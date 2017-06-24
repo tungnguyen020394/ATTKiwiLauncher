@@ -22,7 +22,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -61,7 +60,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
+public class TrangChu extends AppCompatActivity implements View.OnClickListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
     int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position, bonusmain = 6;
 
@@ -396,6 +395,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay113.setOnClickListener(this);
         reLay121 = (RelativeLayout) findViewById(R.id.relay121);
+        reLay121.setOnClickListener(this);
+        reLay111.setOnClickListener(this);
+        reLay112.setOnClickListener(this);
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
@@ -859,6 +861,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 } else {
                     rcApp.getChildAt(didIndex - main - 1 - cates.size() - bonusmain).callOnClick();
                 }
+
                 return true;
             default:
                 return super.onKeyUp(keyCode, event);
@@ -958,8 +961,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.img_youtube:
-                Intent i4 = manager.getLaunchIntentForPackage("com.google.android.apps.youtube.kids");
-                startActivity(i4);
+                try {
+                    Intent i4 = manager.getLaunchIntentForPackage("com.google.android.apps.youtube.kids");
+                    startActivity(i4);
+                } catch (Exception e) {
+                    launchApp("com.store.kiwi.kiwistore");
+                }
                 break;
 
             case R.id.img_store:
@@ -1000,6 +1007,18 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 if (listItem.get(didIndex) instanceof ImageView)
                     ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                 break;
+
+            case R.id.relay121:
+                Toast.makeText(getApplicationContext(),text.getText(),Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.relay111:
+                Toast.makeText(getApplicationContext(),mNgayDuongTxt.getText(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),mNgayAmTxt.getText(),Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.relay112:
+                break;
         }
     }
 
@@ -1026,11 +1045,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
         }
-    }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
     }
 
     public static class AppClick implements View.OnClickListener {

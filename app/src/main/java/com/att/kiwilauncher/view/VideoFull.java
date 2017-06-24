@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -26,7 +25,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VideoFull extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
+public class VideoFull extends AppCompatActivity implements View.OnClickListener {
 
     Intent intent;
     int timePause=0;
@@ -352,11 +351,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 break;
         }
 
-    }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
     }
 
     public void addListMap() {
