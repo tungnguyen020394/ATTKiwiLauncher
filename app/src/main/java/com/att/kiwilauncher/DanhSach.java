@@ -58,6 +58,10 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper.checkDatabase(this);
 
+        mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich_ds);
+        mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich_ds);
+        mTxtTinh = (TextView) findViewById(R.id.txt_thanhpho_ds);
+        mTxtNhietDo = (TextView) findViewById(R.id.txt_nhietdo_ds);
         // layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1_ds);
         reLay2 = (RelativeLayout) findViewById(R.id.relay2_ds);
@@ -105,10 +109,8 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         rcChuDe.setLayoutManager(layoutManager1);
         ChuDeDsAdapter categoryAdapter = new ChuDeDsAdapter(this, dsChuDe);
         rcChuDe.setAdapter(categoryAdapter);
-        mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich_ds);
-        mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich_ds);
-        mTxtTinh = (TextView) findViewById(R.id.txt_thanhpho_ds);
-        mTxtNhietDo = (TextView) findViewById(R.id.txt_nhietdo_ds);
+
+        text.setText(mDatabaseHelper.getLinkTextQuangCao());
 
         // Load App
         manager = getPackageManager();
@@ -118,7 +120,8 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
 
         int soUngDung = 0;
-        for (ResolveInfo ri : availableActivities) {
+        dsUngDung = mDatabaseHelper.getListUngDung(mDatabaseHelper.getListChuDe().get(4));
+        /*for (ResolveInfo ri : availableActivities) {
             UngDung app = new UngDung();
             app.labelApp = ri.loadLabel(manager);
             app.nameApp = ri.activityInfo.packageName;
@@ -126,8 +129,8 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
             dsUngDung.add(app);
             soUngDung++;
             if (soUngDung == 36) { break;}
-        }
-
+        }*/
+        Toast.makeText(this, ""+dsUngDung.size(), Toast.LENGTH_SHORT).show();
         rcUngDung.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 8);
         rcUngDung.setLayoutManager(gridLayoutManager);
