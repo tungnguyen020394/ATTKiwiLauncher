@@ -319,14 +319,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onResume() {
         super.onResume();
-//        timePause = sharedPreferences.getInt("timePause", 0);
-//        indexVideo = sharedPreferences.getInt("index", 0);
 
         ibtPlay.setImageResource(R.drawable.ic_pause);
         playing = true;
 
         ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
-//        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
 
         if (DuLieu.hasInternetConnection(TrangChu.this)) {
             setVideoOrImager(listvideo.get(indexVideo));
@@ -888,11 +886,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 timePause = video.getCurrentPosition();
                 intent.putExtra("timePause", timePause);
                 intent.putExtra("mute", mute);
+                intent.putExtra("index", indexVideo);
 
-                editorfull.putInt("volume", intVolume);
-                editorfull.putInt("index", indexVideo);
-                editorfull.putInt("timePause", timePause);
-                editorfull.commit();
+
+//                editorfull.putInt("volume", intVolume);
+//                editorfull.putInt("index", indexVideo);
+//                editorfull.putInt("timePause", timePause);
+//                editorfull.commit();
                 startActivityForResult(intent, Define.NUMBER_RESULT_FULL);
                 break;
 
@@ -1181,10 +1181,19 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             tvTimeEnd.setText(checkLink.stringForTime(duration));
             updateTime(tvTimeStart);
 
-            video.setVideoPath(listvideo.get(indexVideo));
-            video.start();
-            video.seekTo(timePause);
-            timePause = 0;
+            try {
+                video.setVideoPath(listvideo.get(indexVideo));
+
+                video.start();
+                video.seekTo(timePause);
+                timePause = 0;
+            } catch (Exception e) {
+
+                e.printStackTrace();
+                if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                else indexVideo++;
+                setVideoOrImager(listvideo.get(indexVideo));
+            }
 
             video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override

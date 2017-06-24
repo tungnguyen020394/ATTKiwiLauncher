@@ -28,7 +28,7 @@ import java.util.List;
 public class VideoFull extends AppCompatActivity implements View.OnClickListener {
 
     Intent intent;
-    int timePause=0;
+    int timePause = 0;
     int didIndex = 0;
     int indexVideo = 0, position;
     MediaPlayer mp;
@@ -40,7 +40,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     LinearLayout layoutControl;
     private int currentApiVersion;
     int intVolum;
-    boolean playing = true, mute = false , canclick = true;
+    boolean playing = true, mute = false, canclick = true;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     AudioManager audioManager;
@@ -68,8 +68,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
         // This work only for android 4.4+
-        if(currentApiVersion >= Build.VERSION_CODES.KITKAT)
-        {
+        if (currentApiVersion >= Build.VERSION_CODES.KITKAT) {
 
             getWindow().getDecorView().setSystemUiVisibility(flags);
 
@@ -78,14 +77,11 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             // show up and won't hide
             final View decorView = getWindow().getDecorView();
             decorView
-                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
-                    {
+                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
 
                         @Override
-                        public void onSystemUiVisibilityChange(int visibility)
-                        {
-                            if((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0)
-                            {
+                        public void onSystemUiVisibilityChange(int visibility) {
+                            if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
                                 decorView.setSystemUiVisibility(flags);
                             }
                         }
@@ -95,11 +91,9 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
     @SuppressLint("NewApi")
     @Override
-    public void onWindowFocusChanged(boolean hasFocus)
-    {
+    public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        if(currentApiVersion >= Build.VERSION_CODES.KITKAT && hasFocus)
-        {
+        if (currentApiVersion >= Build.VERSION_CODES.KITKAT && hasFocus) {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                             | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -165,11 +159,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
         position = checkLink.CheckLinkURL(check);
         if (position == 1) {
-//            if (didIndex == 5) {
-//                ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
-//                didIndex--;
-//                ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
-//            }
+
             vh.imgView.setVisibility(View.VISIBLE);
             vh.video.setVisibility(View.GONE);
             vh.ibtPlayVideo.setVisibility(View.GONE);
@@ -190,7 +180,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
             vh.imgView.setVisibility(View.GONE);
             vh.video.setVisibility(View.VISIBLE);
-
             vh.ibtPlayVideo.setVisibility(View.VISIBLE);
             vh.ibtVolumeOnVideo.setVisibility(View.VISIBLE);
             vh.tvTimeStartVideo.setVisibility(View.VISIBLE);
@@ -204,11 +193,20 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             vh.tvTimeEndVideo.setText(checkLink.stringForTime(duration));
             updateTime(vh.tvTimeStartVideo);
 
-            vh.video.setVideoPath(listvideo.get(indexVideo));
+            try {
+                vh.video.setVideoPath(listvideo.get(indexVideo));
 
-            vh.video.start();
-            vh.video.seekTo(timePause);
-            timePause = 0;
+                vh.video.start();
+                vh.video.seekTo(timePause);
+                timePause = 0;
+            } catch (Exception e) {
+
+                e.printStackTrace();
+                if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                else indexVideo++;
+                setVideoOrImager(listvideo.get(indexVideo));
+            }
+
 
             vh.video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
@@ -217,7 +215,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                     else indexVideo++;
 
                     setVideoOrImager(listvideo.get(indexVideo));
-                    vh.video.clearFocus();
                 }
             });
         } else if (position == 3) {
@@ -239,12 +236,12 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     protected void onResume() {
         super.onResume();
 
+
         vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
 
-
-        timePause = preferences.getInt("timePause", 0);
-        indexVideo = preferences.getInt("index", 0);
+        timePause = intent.getIntExtra("timePause", 0);
+        indexVideo = intent.getIntExtra("index", 0);
 
         setVideoOrImager(listvideo.get(indexVideo));
     }
@@ -280,23 +277,15 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
 
-                editor.putInt("index", indexVideo);
-                editor.putInt("timePause", timePause);
-                editor.commit();
+                intent.putExtra("index", indexVideo);
+                intent.putExtra("timePause", timePause);
                 startActivity(intent);
                 break;
 
             case R.id.imgExitFull:
                 intent = new Intent();
-
-//                intent.putExtra("list", listvideo);
-
                 // độ dài video đang chạy
                 int timepause = vh.video.getCurrentPosition();
-
-                editor.putInt("index", indexVideo);
-                editor.putInt("timePause", timepause);
-                editor.commit();
 
                 intent.putExtra("index", indexVideo);
                 intent.putExtra("timePause", timepause);
@@ -335,11 +324,9 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
             case R.id.imgNext_video:
                 handler.removeCallbacks(nextvideo);
-                if (indexVideo == (listvideo.size() - 1)) {
-                    indexVideo = 0;
-                } else indexVideo++;
+                if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                else indexVideo++;
                 setVideoOrImager(listvideo.get(indexVideo));
-
                 break;
             case R.id.imgBack_video:
                 handler.removeCallbacks(nextvideo);
