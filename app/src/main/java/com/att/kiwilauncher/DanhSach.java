@@ -29,9 +29,6 @@ import java.util.List;
 import java.util.Map;
 
 import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
-import static com.att.kiwilauncher.TrangChu.demdsApp;
-import static com.att.kiwilauncher.TrangChu.listApps;
-import static com.att.kiwilauncher.TrangChu.rcApp;
 
 public class DanhSach extends AppCompatActivity implements View.OnClickListener{
     RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112,reLay11,reLay121;
@@ -271,9 +268,9 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
-            int position = rcApp.getChildPosition(v);
-            Intent i = manager.getLaunchIntentForPackage(listApps.get(demdsApp).get(position).getNameApp().toString());
+            int position = rcUngDung.getChildPosition(v);
             try {
+                Intent i = manager.getLaunchIntentForPackage(dsUngDung.get(position).getNameApp().toString());
                 context.startActivity(i);
             } catch (Exception e) {
                 Intent intent = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
