@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.att.kiwilauncher.adapter.ChuDeDsAdapter;
 import com.att.kiwilauncher.adapter.UngDungDsAdapter;
@@ -30,7 +31,7 @@ import java.util.Map;
 import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
 
 public class DanhSach extends AppCompatActivity implements View.OnClickListener{
-    RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112,reLay11;
+    RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112,reLay11,reLay121;
     int didIndex = 0, main = 5, indexChuDe;
     List<ChuDe> dsChuDe;
     static List<UngDung> dsUngDung;
@@ -64,10 +65,13 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         reLay13 = (RelativeLayout) findViewById(R.id.relay13_ds);
         reLay12 = (RelativeLayout) findViewById(R.id.relay12_ds);
         reLay11 = (RelativeLayout) findViewById(R.id.relay11_ds);
+        reLay121 = (RelativeLayout) findViewById(R.id.relay121_ds);
         reLay113 = (RelativeLayout) findViewById(R.id.relay113_ds);
         reLay111 = (RelativeLayout) findViewById(R.id.relay111_ds);
         reLay112 = (RelativeLayout) findViewById(R.id.relay112_ds);
         reLay113.setOnClickListener(this);
+        reLay121.setOnClickListener(this);
+        reLay111.setOnClickListener(this);
 
         //end layout
         rcChuDe = (RecyclerView) findViewById(R.id.recycler1_ds);
@@ -81,6 +85,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
 
         text = (TextView) findViewById(R.id.text1_ds);
         text.setSelected(true);
+        text.setText(mDatabaseHelper.getLinkTextQuangCao());
         appClick = new AppClick(getApplicationContext());
 
     }
@@ -136,13 +141,13 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
 
         SharedPreferences sharedPreferencesThoiTiet = getSharedPreferences("thoitiet", MODE_PRIVATE);
         mTxtTinh.setText(sharedPreferencesThoiTiet.getString("tinh", "Hà nội"));
-        mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25"));
+        mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25") + " °C");
     }
 
     public void addMove() {
         listItem = new ArrayList<>();
         listItem.add(imageKiwi);
-        listItem.add(text);
+        listItem.add(reLay121);
         listItem.add(reLay111);
         listItem.add(reLay112);
         listItem.add(reLay113);
@@ -282,6 +287,15 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
 
             case R.id.img_caidat_ds:
                 DanhSach.this.startActivityForResult(new Intent(Settings.ACTION_SETTINGS), REQUEST_SETTINGS);
+                break;
+
+            case R.id.relay121_ds:
+                Toast.makeText(getApplicationContext(),text.getText(),Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.relay111_ds:
+                Toast.makeText(getApplicationContext(),mNgayDuongTxt.getText(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),mNgayAmTxt.getText(),Toast.LENGTH_SHORT).show();
                 break;
         }
 

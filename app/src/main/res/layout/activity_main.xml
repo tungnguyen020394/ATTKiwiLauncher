@@ -44,8 +44,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_text"
-                android:paddingLeft="@dimen/_2sdp"
-                android:paddingRight="@dimen/_2sdp">
+                android:paddingLeft="@dimen/_4sdp"
+                android:paddingRight="@dimen/_4sdp">
 
                 <TextView
                     android:id="@+id/text1"
