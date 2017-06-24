@@ -165,11 +165,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
         position = checkLink.CheckLinkURL(check);
         if (position == 1) {
-//            if (didIndex == 5) {
-//                ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
-//                didIndex--;
-//                ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
-//            }
+
             vh.imgView.setVisibility(View.VISIBLE);
             vh.video.setVisibility(View.GONE);
             vh.ibtPlayVideo.setVisibility(View.GONE);
@@ -190,7 +186,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
             vh.imgView.setVisibility(View.GONE);
             vh.video.setVisibility(View.VISIBLE);
-
             vh.ibtPlayVideo.setVisibility(View.VISIBLE);
             vh.ibtVolumeOnVideo.setVisibility(View.VISIBLE);
             vh.tvTimeStartVideo.setVisibility(View.VISIBLE);
@@ -217,7 +212,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                     else indexVideo++;
 
                     setVideoOrImager(listvideo.get(indexVideo));
-                    vh.video.clearFocus();
                 }
             });
         } else if (position == 3) {
@@ -239,12 +233,12 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     protected void onResume() {
         super.onResume();
 
+
         vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
 
-
-        timePause = preferences.getInt("timePause", 0);
-        indexVideo = preferences.getInt("index", 0);
+        timePause = intent.getIntExtra("timePause", 0);
+        indexVideo = intent.getIntExtra("index", 0);
 
         setVideoOrImager(listvideo.get(indexVideo));
     }
@@ -280,23 +274,15 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
 
-                editor.putInt("index", indexVideo);
-                editor.putInt("timePause", timePause);
-                editor.commit();
+                intent.putExtra("index", indexVideo);
+                intent.putExtra("timePause", timePause);
                 startActivity(intent);
                 break;
 
             case R.id.imgExitFull:
                 intent = new Intent();
-
-//                intent.putExtra("list", listvideo);
-
                 // độ dài video đang chạy
                 int timepause = vh.video.getCurrentPosition();
-
-                editor.putInt("index", indexVideo);
-                editor.putInt("timePause", timepause);
-                editor.commit();
 
                 intent.putExtra("index", indexVideo);
                 intent.putExtra("timePause", timepause);
@@ -335,11 +321,9 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
             case R.id.imgNext_video:
                 handler.removeCallbacks(nextvideo);
-                if (indexVideo == (listvideo.size() - 1)) {
-                    indexVideo = 0;
-                } else indexVideo++;
+                if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                else indexVideo++;
                 setVideoOrImager(listvideo.get(indexVideo));
-
                 break;
             case R.id.imgBack_video:
                 handler.removeCallbacks(nextvideo);
