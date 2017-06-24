@@ -397,10 +397,10 @@
 
                     <RelativeLayout
                         android:id="@+id/relay2221"
-                        android:layout_width="@dimen/_240sdp"
+                        android:layout_width="@dimen/_243sdp"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/_3sdp"
-                        android:paddingRight="@dimen/_3sdp"
+                        android:paddingLeft="@dimen/_6sdp"
+                        android:paddingRight="@dimen/_6sdp"
                         android:paddingTop="@dimen/_6sdp"
                         android:paddingBottom="@dimen/_4sdp"
                         android:background="@drawable/border_video">
