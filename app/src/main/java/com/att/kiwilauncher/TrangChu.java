@@ -1181,10 +1181,19 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             tvTimeEnd.setText(checkLink.stringForTime(duration));
             updateTime(tvTimeStart);
 
-            video.setVideoPath(listvideo.get(indexVideo));
-            video.start();
-            video.seekTo(timePause);
-            timePause = 0;
+            try {
+                video.setVideoPath(listvideo.get(indexVideo));
+
+                video.start();
+                video.seekTo(timePause);
+                timePause = 0;
+            } catch (Exception e) {
+
+                e.printStackTrace();
+                if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                else indexVideo++;
+                setVideoOrImager(listvideo.get(indexVideo));
+            }
 
             video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
