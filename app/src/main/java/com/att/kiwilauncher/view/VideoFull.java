@@ -382,9 +382,9 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                     }
-                    if (didIndex == 4 && position == 1) {
-                        didIndex--;
-                    }
+//                    if (didIndex == 4 && position == 1) {
+//                        didIndex--;
+//                    }
                     didIndex--;
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
@@ -401,9 +401,9 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                     }
                     if (didIndex == 0 && listItem.get(didIndex) instanceof ImageView)
                         ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
-                    if (didIndex == 2 && position == 1) {
-                        didIndex++;
-                    }
+//                    if (didIndex == 2 && position == 1) {
+//                        didIndex++;
+//                    }
                     didIndex++;
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
