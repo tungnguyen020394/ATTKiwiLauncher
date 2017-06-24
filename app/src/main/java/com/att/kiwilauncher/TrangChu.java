@@ -934,7 +934,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 if (indexVideo == listvideo.size() - 1) indexVideo = 0;
                 else indexVideo++;
                 setVideoOrImager(listvideo.get(indexVideo));
-
                 break;
 //
             case R.id.imgBack:
@@ -1176,30 +1175,40 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
             handler.postDelayed(nextvideo, 5000);
         } else if (position == 2) {
-            playing = true;
-            ibtPlay.setImageResource(R.drawable.ic_pause);
-
-            imgView.setVisibility(View.GONE);
-            video.setVisibility(View.VISIBLE);
-            ibtPlay.setVisibility(View.VISIBLE);
-            ibtVolumeOn.setVisibility(View.VISIBLE);
-            tvTimeStart.setVisibility(View.VISIBLE);
-            tvTime.setVisibility(View.VISIBLE);
-
-            // đọ dài của video
-            mp = MediaPlayer.create(this, Uri.parse(check));
-            long duration = mp.getDuration();
-            mp.release();
-
-            tvTimeEnd.setText(checkLink.stringForTime(duration));
-            updateTime(tvTimeStart);
 
             try {
+                playing = true;
+                ibtPlay.setImageResource(R.drawable.ic_pause);
+
+                imgView.setVisibility(View.GONE);
+                video.setVisibility(View.VISIBLE);
+                ibtPlay.setVisibility(View.VISIBLE);
+                ibtVolumeOn.setVisibility(View.VISIBLE);
+                tvTimeStart.setVisibility(View.VISIBLE);
+                tvTime.setVisibility(View.VISIBLE);
+
+                // đọ dài của video
+                mp = MediaPlayer.create(this, Uri.parse(check));
+                long duration = mp.getDuration();
+                mp.release();
+
+                tvTimeEnd.setText(checkLink.stringForTime(duration));
+                updateTime(tvTimeStart);
                 video.setVideoPath(listvideo.get(indexVideo));
 
                 video.start();
                 video.seekTo(timePause);
                 timePause = 0;
+                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                        else indexVideo++;
+
+                        setVideoOrImager(listvideo.get(indexVideo));
+                        video.clearFocus();
+                    }
+                });
             } catch (Exception e) {
 
                 e.printStackTrace();
@@ -1208,16 +1217,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 setVideoOrImager(listvideo.get(indexVideo));
             }
 
-            video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    if (indexVideo == listvideo.size() - 1) indexVideo = 0;
-                    else indexVideo++;
 
-                    setVideoOrImager(listvideo.get(indexVideo));
-                    video.clearFocus();
-                }
-            });
         } else if (position == 3) {
             imgView.setVisibility(View.GONE);
             video.setVisibility(View.VISIBLE);

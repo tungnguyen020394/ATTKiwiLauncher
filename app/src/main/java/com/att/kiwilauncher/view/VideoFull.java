@@ -276,6 +276,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             case R.id.imgWeb_video:
                 Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
                 intent = new Intent(Intent.ACTION_VIEW, uri);
+                timePause = vh.video.getCurrentPosition();
 
                 intent.putExtra("index", indexVideo);
                 intent.putExtra("timePause", timePause);
