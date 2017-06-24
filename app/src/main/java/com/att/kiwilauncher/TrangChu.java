@@ -22,7 +22,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -61,9 +60,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TrangChu extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
+public class TrangChu extends AppCompatActivity implements View.OnClickListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
-    int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position, bonusmain = 6;
+    int didIndex = 0, willIndex, indexChuDe = 0, main = 12, position, bonusmain = 6;
 
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11, reLay22, reLay222, reLay211,
             reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12, reLay2221, reLay121, reLay21;
@@ -95,8 +94,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
     LinearLayout linNear1;
     //    Volume volume;
     int intVolume = 15;
-
-    RelativeLayout.LayoutParams params;
     ImageView imgView, imgWeb;
     ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOn, ibtFull;
     TextView tvTimeStart, tvTimeEnd, tvTime;
@@ -396,6 +393,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay113.setOnClickListener(this);
         reLay121 = (RelativeLayout) findViewById(R.id.relay121);
+        reLay121.setOnClickListener(this);
+        reLay111.setOnClickListener(this);
+        reLay112.setOnClickListener(this);
 
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
@@ -855,10 +855,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 } else if (didIndex == main + 1 + cates.size() + listApps.get(demdsApp).size() + bonusmain) {
                     listItem.get(listItem.size() - 1).callOnClick();
                 } else if (didIndex == main + cates.size() + bonusmain) {
-                    listItem.get(main + cates.size() + bonusmain).callOnClick();
+                    imageMinus.callOnClick();
                 } else {
                     rcApp.getChildAt(didIndex - main - 1 - cates.size() - bonusmain).callOnClick();
                 }
+
                 return true;
             default:
                 return super.onKeyUp(keyCode, event);
@@ -958,8 +959,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.img_youtube:
-                Intent i4 = manager.getLaunchIntentForPackage("com.google.android.apps.youtube.kids");
-                startActivity(i4);
+                try {
+                    Intent i4 = manager.getLaunchIntentForPackage("com.google.android.apps.youtube.kids");
+                    startActivity(i4);
+                } catch (Exception e) {
+                    launchApp("com.store.kiwi.kiwistore");
+                }
                 break;
 
             case R.id.img_store:
@@ -1000,6 +1005,18 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 if (listItem.get(didIndex) instanceof ImageView)
                     ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                 break;
+
+            case R.id.relay121:
+                Toast.makeText(getApplicationContext(),text.getText(),Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.relay111:
+                Toast.makeText(getApplicationContext(),mNgayDuongTxt.getText(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),mNgayAmTxt.getText(),Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.relay112:
+                break;
         }
     }
 
@@ -1026,11 +1043,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener,
                 break;
 
         }
-    }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
     }
 
     public static class AppClick implements View.OnClickListener {

@@ -73,35 +73,7 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
                     notifyDataSetChanged();
                 }
             });
-//            imgApp = (ImageView) itemView.findViewById(R.id.image_category);
-//            txtApp = (TextView)  itemView.findViewById(R.id.txt_catego);
-//            layoutCate1 = (RelativeLayout) itemView.findViewById(R.id.layout_category1);
-//            layoutCate = (RelativeLayout) itemView.findViewById(R.id.layout_category);
-//            layoutCate.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    RemoveCheck();
-//                    ChuDe cate = cates.get(getAdapterPosition());
-//                    cate.setCheckedCate(true);
-//                    notifyDataSetChanged();
-//                    TrangChu.demdsApp=0;
-//                    listApps.clear();
-//                    List<UngDung> checkedList = new ArrayList<>();
-//                    checkedList = mDadabaseHelper.getListUngDung(cate);
-//                    List<UngDung> tmpList = new ArrayList<>();
-//                    //   listApps.add(mDatabaseHelper.getListUngDung(cates.get(0)));
-//                    for (int j = 1; j <= checkedList.size(); j++) {
-//                        UngDung ungDung = new UngDung();
-//                        ungDung.setNameApp(checkedList.get(j - 1).getNameApp());
-//                        ungDung.setIcon(checkedList.get(j - 1).getIcon());
-//                        ungDung.setId(checkedList.get(j - 1).getId());
-//                        tmpList.add(ungDung);
-//                        if (j % 7 == 0 || j == checkedList.size()) {
-//                            listApps.add(tmpList);
-//                            tmpList = new ArrayList<>();
-//                            tmpList.clear();
-//                        }
-//                    }
+
 //                    //Toast.makeText(this, listApps.size() + "s" + listApps.get(0).size(), Toast.LENGTH_SHORT).show();
 //                    TrangChu.listAppBottom.clear();
 //                    if (listApps.size()>0){

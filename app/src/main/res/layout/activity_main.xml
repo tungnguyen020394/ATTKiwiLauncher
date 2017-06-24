@@ -44,8 +44,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_text"
-                android:paddingLeft="@dimen/_2sdp"
-                android:paddingRight="@dimen/_2sdp">
+                android:paddingLeft="@dimen/_4sdp"
+                android:paddingRight="@dimen/_4sdp">
 
                 <TextView
                     android:id="@+id/text1"
@@ -397,16 +397,22 @@
 
                     <RelativeLayout
                         android:id="@+id/relay2221"
-                        android:layout_width="@dimen/_237sdp"
+                        android:layout_width="@dimen/_240sdp"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/_2sdp">
+                        android:paddingLeft="@dimen/_3sdp"
+                        android:paddingRight="@dimen/_3sdp"
+                        android:paddingTop="@dimen/_6sdp"
+                        android:paddingBottom="@dimen/_4sdp"
+                        android:background="@drawable/border_video">
 
+                        <RelativeLayout
+                            android:layout_width="@dimen/_235sdp"
+                            android:layout_height="match_parent">
                             <VideoView
                                 android:id="@+id/videoView"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:layout_marginBottom="@dimen/_17sdp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentTop="true"
                                 />
 
                             <ImageView
@@ -521,7 +527,7 @@
                                     android:src="@drawable/ic_volumeoff"/>
 
                             </LinearLayout>
-
+                        </RelativeLayout>
 
                 </RelativeLayout>
             </RelativeLayout>

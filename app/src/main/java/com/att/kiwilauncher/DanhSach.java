@@ -16,13 +16,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.att.kiwilauncher.adapter.ChuDeDsAdapter;
 import com.att.kiwilauncher.adapter.UngDungDsAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.xuly.LunarCalendar;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -30,12 +29,13 @@ import java.util.Map;
 import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
 
 public class DanhSach extends AppCompatActivity implements View.OnClickListener{
-    RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112,reLay11;
+    RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112,reLay11,reLay121;
     int didIndex = 0, main = 5, indexChuDe;
     List<ChuDe> dsChuDe;
-    static List<UngDung> dsUngDung;
+    public static List<UngDung> dsUngDung;
     RecyclerView rcChuDe;
     static RecyclerView rcUngDung;
+    public static UngDungDsAdapter ungDungAdapter;
     static PackageManager manager;
     ImageView imageKiwi,imageCaidat;
     ArrayList<View> listItem;
@@ -57,6 +57,10 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper.checkDatabase(this);
 
+        mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich_ds);
+        mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich_ds);
+        mTxtTinh = (TextView) findViewById(R.id.txt_thanhpho_ds);
+        mTxtNhietDo = (TextView) findViewById(R.id.txt_nhietdo_ds);
         // layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1_ds);
         reLay2 = (RelativeLayout) findViewById(R.id.relay2_ds);
@@ -64,10 +68,13 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         reLay13 = (RelativeLayout) findViewById(R.id.relay13_ds);
         reLay12 = (RelativeLayout) findViewById(R.id.relay12_ds);
         reLay11 = (RelativeLayout) findViewById(R.id.relay11_ds);
+        reLay121 = (RelativeLayout) findViewById(R.id.relay121_ds);
         reLay113 = (RelativeLayout) findViewById(R.id.relay113_ds);
         reLay111 = (RelativeLayout) findViewById(R.id.relay111_ds);
         reLay112 = (RelativeLayout) findViewById(R.id.relay112_ds);
         reLay113.setOnClickListener(this);
+        reLay121.setOnClickListener(this);
+        reLay111.setOnClickListener(this);
 
         //end layout
         rcChuDe = (RecyclerView) findViewById(R.id.recycler1_ds);
@@ -81,6 +88,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
 
         text = (TextView) findViewById(R.id.text1_ds);
         text.setSelected(true);
+        text.setText(mDatabaseHelper.getLinkTextQuangCao());
         appClick = new AppClick(getApplicationContext());
 
     }
@@ -100,10 +108,8 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         rcChuDe.setLayoutManager(layoutManager1);
         ChuDeDsAdapter categoryAdapter = new ChuDeDsAdapter(this, dsChuDe);
         rcChuDe.setAdapter(categoryAdapter);
-        mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich_ds);
-        mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich_ds);
-        mTxtTinh = (TextView) findViewById(R.id.txt_thanhpho_ds);
-        mTxtNhietDo = (TextView) findViewById(R.id.txt_nhietdo_ds);
+
+        text.setText(mDatabaseHelper.getLinkTextQuangCao());
 
         // Load App
         manager = getPackageManager();
@@ -113,7 +119,8 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
 
         int soUngDung = 0;
-        for (ResolveInfo ri : availableActivities) {
+        dsUngDung = mDatabaseHelper.getListUngDung(mDatabaseHelper.getListChuDe().get(4));
+        /*for (ResolveInfo ri : availableActivities) {
             UngDung app = new UngDung();
             app.labelApp = ri.loadLabel(manager);
             app.nameApp = ri.activityInfo.packageName;
@@ -121,12 +128,12 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
             dsUngDung.add(app);
             soUngDung++;
             if (soUngDung == 36) { break;}
-        }
+        }*/
 
         rcUngDung.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 8);
         rcUngDung.setLayoutManager(gridLayoutManager);
-        UngDungDsAdapter ungDungAdapter = new UngDungDsAdapter(this, dsUngDung);
+        ungDungAdapter = new UngDungDsAdapter(this, dsUngDung);
         rcUngDung.setAdapter(ungDungAdapter);
         Map<String, String> today = LunarCalendar.getTodayInfo();
         mNgayDuongTxt.setText("Thứ " + today.get("thu") + ", " + today.get("daySolar") + "/" + today.get("monthSolar") + "/" + today.get("yearSolar"));
@@ -136,13 +143,13 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
 
         SharedPreferences sharedPreferencesThoiTiet = getSharedPreferences("thoitiet", MODE_PRIVATE);
         mTxtTinh.setText(sharedPreferencesThoiTiet.getString("tinh", "Hà nội"));
-        mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25"));
+        mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25") + " °C");
     }
 
     public void addMove() {
         listItem = new ArrayList<>();
         listItem.add(imageKiwi);
-        listItem.add(text);
+        listItem.add(reLay121);
         listItem.add(reLay111);
         listItem.add(reLay112);
         listItem.add(reLay113);
@@ -156,7 +163,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
                 if (didIndex < main) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
                     if (didIndex == 1) {
-                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_text);
                     }
                     rcChuDe.getChildAt(0).callOnClick();
                     didIndex = main;
@@ -264,8 +271,13 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         @Override
         public void onClick(View v) {
             int position = rcUngDung.getChildPosition(v);
-            Intent i = manager.getLaunchIntentForPackage(dsUngDung.get(position).getNameApp().toString());
-            context.startActivity(i);
+            try {
+                Intent i = manager.getLaunchIntentForPackage(dsUngDung.get(position).getNameApp().toString());
+                context.startActivity(i);
+            } catch (Exception e) {
+                Intent intent = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
+                context.startActivity(intent);
+            }
         }
     }
 
@@ -282,6 +294,15 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
 
             case R.id.img_caidat_ds:
                 DanhSach.this.startActivityForResult(new Intent(Settings.ACTION_SETTINGS), REQUEST_SETTINGS);
+                break;
+
+            case R.id.relay121_ds:
+                Toast.makeText(getApplicationContext(),text.getText(),Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.relay111_ds:
+                Toast.makeText(getApplicationContext(),mNgayDuongTxt.getText(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),mNgayAmTxt.getText(),Toast.LENGTH_SHORT).show();
                 break;
         }
 
