@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
 
 public class DanhSach extends AppCompatActivity implements View.OnClickListener{
@@ -127,11 +128,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
             soUngDung++;
             if (soUngDung == 36) { break;}
         }*/
-<<<<<<< HEAD
-       // Toast.makeText(this, ""+dsUngDung.size(), Toast.LENGTH_SHORT).show();
-=======
 
->>>>>>> origin/master
         rcUngDung.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 8);
         rcUngDung.setLayoutManager(gridLayoutManager);
