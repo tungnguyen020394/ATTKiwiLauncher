@@ -62,7 +62,7 @@ import java.util.Map;
 
 public class TrangChu extends AppCompatActivity implements View.OnClickListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
-    int chieuDai, chieuRong, didIndex = 0, willIndex, indexChuDe = 0, mChieuDai, mChieuRong, main = 12, position, bonusmain = 6;
+    int didIndex = 0, willIndex, indexChuDe = 0, main = 12, position, bonusmain = 6;
 
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11, reLay22, reLay222, reLay211,
             reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12, reLay2221, reLay121, reLay21;
@@ -94,8 +94,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     LinearLayout linNear1;
     //    Volume volume;
     int intVolume = 15;
-
-    RelativeLayout.LayoutParams params;
     ImageView imgView, imgWeb;
     ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOn, ibtFull;
     TextView tvTimeStart, tvTimeEnd, tvTime;
@@ -857,7 +855,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 } else if (didIndex == main + 1 + cates.size() + listApps.get(demdsApp).size() + bonusmain) {
                     listItem.get(listItem.size() - 1).callOnClick();
                 } else if (didIndex == main + cates.size() + bonusmain) {
-                    listItem.get(main + cates.size() + bonusmain).callOnClick();
+                    imageMinus.callOnClick();
                 } else {
                     rcApp.getChildAt(didIndex - main - 1 - cates.size() - bonusmain).callOnClick();
                 }
