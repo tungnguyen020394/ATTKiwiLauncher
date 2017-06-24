@@ -979,8 +979,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 if (listApps.size() - 1 > demdsApp) {
                     imagePlus.setImageResource(R.drawable.ic_plus1);
                     demdsApp++;
-                    listapp = new UngDungAdapter(getApplicationContext(), listApps.get(demdsApp));
-                    rcApp.setAdapter(listapp);
+                    listAppBottom.clear();
+                    listAppBottom.addAll(listApps.get(demdsApp));
+                    listapp.notifyDataSetChanged();
+                    /*listapp = new UngDungAdapter(getApplicationContext(), listApps.get(demdsApp));
+                    rcApp.setAdapter(listapp);*/
                     didIndex = 12 + cates.size() + bonusmain;
                     imageMinus.setImageResource(R.drawable.ic_minus);
                 } else {
@@ -991,8 +994,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             case R.id.img_minus:
                 if (0 < demdsApp) {
                     demdsApp--;
-                    listapp = new UngDungAdapter(getApplicationContext(), listApps.get(demdsApp));
-                    rcApp.setAdapter(listapp);
+                    /*listapp = new UngDungAdapter(getApplicationContext(), listApps.get(demdsApp));
+                    rcApp.setAdapter(listapp);*/
+                    listAppBottom.clear();
+                    listAppBottom.addAll(listApps.get(demdsApp));
+                    listapp.notifyDataSetChanged();
+
                     didIndex = 12 + cates.size() + bonusmain;
                     imageMinus.setImageResource(R.drawable.ic_minus);
                 } else {
@@ -1007,12 +1014,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 break;
 
             case R.id.relay121:
-                Toast.makeText(getApplicationContext(),text.getText(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), text.getText(), Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.relay111:
-                Toast.makeText(getApplicationContext(),mNgayDuongTxt.getText(),Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),mNgayAmTxt.getText(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), mNgayDuongTxt.getText(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), mNgayAmTxt.getText(), Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.relay112:
@@ -1036,8 +1043,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     timePause = data.getIntExtra("timePause", 0);
                     indexVideo = data.getIntExtra("index", 0);
 //                    setVideoOrImager(listvideo.get(indexVideo));
-                }
-                else if (requestCode==Define.NUMBER_RESULT_WEB){
+                } else if (requestCode == Define.NUMBER_RESULT_WEB) {
                     setVideoOrImager(listvideo.get(indexVideo));
                 }
                 break;
