@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -106,8 +105,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         rcChuDe.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcChuDe.setLayoutManager(layoutManager1);
-        ChuDeDsAdapter categoryAdapter = new ChuDeDsAdapter(this, dsChuDe);
-        rcChuDe.setAdapter(categoryAdapter);
+
 
         text.setText(mDatabaseHelper.getLinkTextQuangCao());
 
@@ -116,10 +114,10 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         dsUngDung = new ArrayList<UngDung>();
         Intent i = new Intent(Intent.ACTION_MAIN, null);
         i.addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
+       // List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
 
         int soUngDung = 0;
-        dsUngDung = mDatabaseHelper.getListUngDung(mDatabaseHelper.getListChuDe().get(4));
+        dsUngDung.addAll(mDatabaseHelper.getListUngDung(mDatabaseHelper.getListChuDe().get(4)));
         /*for (ResolveInfo ri : availableActivities) {
             UngDung app = new UngDung();
             app.labelApp = ri.loadLabel(manager);
@@ -129,12 +127,19 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
             soUngDung++;
             if (soUngDung == 36) { break;}
         }*/
+<<<<<<< HEAD
+       // Toast.makeText(this, ""+dsUngDung.size(), Toast.LENGTH_SHORT).show();
+=======
 
+>>>>>>> origin/master
         rcUngDung.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 8);
         rcUngDung.setLayoutManager(gridLayoutManager);
         ungDungAdapter = new UngDungDsAdapter(this, dsUngDung);
         rcUngDung.setAdapter(ungDungAdapter);
+
+        ChuDeDsAdapter categoryAdapter = new ChuDeDsAdapter(this, dsChuDe,ungDungAdapter,dsUngDung);
+        rcChuDe.setAdapter(categoryAdapter);
         Map<String, String> today = LunarCalendar.getTodayInfo();
         mNgayDuongTxt.setText("Thứ " + today.get("thu") + ", " + today.get("daySolar") + "/" + today.get("monthSolar") + "/" + today.get("yearSolar"));
         mNgayAmTxt.setText(today.get("dayLunar") + "/" + today.get("monthLunar") + " " + today.get("can") + " " + today.get("chi"));

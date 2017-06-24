@@ -35,7 +35,7 @@
             android:name=".view.VideoFull"
             android:screenOrientation="landscape">
         </activity>
-        <activity android:name=".view.VideoFullTest">
+        <activity android:name=".test.VideoFullTest">
         </activity>
     </application>
 

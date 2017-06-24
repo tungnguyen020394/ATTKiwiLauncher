@@ -1,4 +1,4 @@
-package com.att.kiwilauncher.view;
+package com.att.kiwilauncher.test;
 
 import android.media.MediaPlayer;
 import android.net.Uri;
