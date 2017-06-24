@@ -981,7 +981,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     demdsApp++;
                     listapp = new UngDungAdapter(getApplicationContext(), listApps.get(demdsApp));
                     rcApp.setAdapter(listapp);
-                    didIndex = 12 + cates.size();
+                    didIndex = 12 + cates.size() + bonusmain;
                     imageMinus.setImageResource(R.drawable.ic_minus);
                 } else {
                     Toast.makeText(getApplicationContext(), "Bạn đã ở cuối danh sách ứng dụng", Toast.LENGTH_SHORT).show();
@@ -993,7 +993,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     demdsApp--;
                     listapp = new UngDungAdapter(getApplicationContext(), listApps.get(demdsApp));
                     rcApp.setAdapter(listapp);
-                    didIndex = 12 + cates.size();
+                    didIndex = 12 + cates.size() + bonusmain;
                     imageMinus.setImageResource(R.drawable.ic_minus);
                 } else {
                     Toast.makeText(getApplicationContext(), "Bạn đang ở danh sách các ứng dụng đầu tiên ", Toast.LENGTH_SHORT).show();
