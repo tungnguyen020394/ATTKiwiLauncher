@@ -139,7 +139,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
     private void loadData() {
         // Load Category
-        //   Toast.makeText(this, cates.size() + "", Toast.LENGTH_LONG).show();
         rcCategory.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcCategory.setLayoutManager(layoutManager1);
@@ -168,7 +167,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 tmpList.clear();
             }
         }
-        //Toast.makeText(this, listApps.size() + "s" + listApps.get(0).size(), Toast.LENGTH_SHORT).show();
         listAppBottom.addAll(listApps.get(demdsApp));
 
         rcApp.setHasFixedSize(true);
@@ -177,7 +175,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         listapp = new UngDungAdapter(this, listAppBottom);
         rcApp.setAdapter(listapp);
 
-        dialog = new ProgressDialog(this);
+        dialog = new ProgressDialog(this,ProgressDialog.THEME_HOLO_LIGHT);
         dialog.setTitle("Đang tải");
         dialog.setMessage("Vui lòng đợi ứng dụng tải dữ liệu");
         mRequestToServer = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
@@ -189,7 +187,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onResume() {
         super.onResume();
-
+        initNetworkConnectDialog();
         ibtPlay.setImageResource(R.drawable.ic_pause);
         playing = true;
 
@@ -211,7 +209,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void addControls() {
-        initNetworkConnectDialog();
         mSharedPreferencesThoiTiet = getSharedPreferences("thoitiet", MODE_PRIVATE);
         idThoiTiet = mSharedPreferencesThoiTiet.getString("idthoitiet", "24");
         mDatabaseHelper = new DatabaseHelper(this);
