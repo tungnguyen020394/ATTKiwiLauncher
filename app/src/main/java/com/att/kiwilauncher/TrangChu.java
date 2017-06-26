@@ -634,7 +634,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 dialog.dismiss();
                 text.setText(mDatabaseHelper.getLinkTextQuangCao());
 
-//                setVideoOrImager(listvideo.get(indexVideo));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -895,11 +894,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 intent.putExtra("mute", mute);
                 intent.putExtra("index", indexVideo);
 
-
-//                editorfull.putInt("volume", intVolume);
-//                editorfull.putInt("index", indexVideo);
-//                editorfull.putInt("timePause", timePause);
-//                editorfull.commit();
                 startActivityForResult(intent, Define.NUMBER_RESULT_FULL);
                 break;
 

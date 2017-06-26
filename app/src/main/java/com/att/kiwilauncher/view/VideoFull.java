@@ -159,7 +159,11 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
         position = checkLink.CheckLinkURL(check);
         if (position == 1) {
-
+            if (didIndex == 5) {
+                didIndex--;
+            } else if (didIndex == 3) {
+                didIndex++;
+            }
             vh.imgView.setVisibility(View.VISIBLE);
             vh.video.setVisibility(View.GONE);
             vh.ibtPlayVideo.setVisibility(View.GONE);
@@ -235,7 +239,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onResume() {
         super.onResume();
-
 
         vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
