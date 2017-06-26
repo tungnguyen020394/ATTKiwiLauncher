@@ -31,28 +31,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.att.kiwilauncher.adapter.ChuDeAdapter;
 import com.att.kiwilauncher.adapter.UngDungAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
+import com.att.kiwilauncher.model.QuangCao;
+import com.att.kiwilauncher.model.TheLoaiUngDung;
 import com.att.kiwilauncher.model.ThoiTiet;
 import com.att.kiwilauncher.util.CheckLink;
 import com.att.kiwilauncher.util.Define;
+import com.att.kiwilauncher.util.Volume;
 import com.att.kiwilauncher.view.VideoFull;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
+import com.att.kiwilauncher.xuly.RequestToServer;
 import com.bumptech.glide.Glide;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.trackselection.TrackSelector;
+import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -82,22 +81,23 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     public static List<List<UngDung>> listApps;
     public static List<UngDung> listAppBottom;
     ArrayList<String> listvideo;
-    private RequestQueue requestQueue;
-    static PackageManager manager;
     public static View.OnClickListener appClick;
     public static final int REQUEST_SETTINGS = 101;
     public static int demdsApp = 0;
     int indexVideo = 0;
     private static final String TAG = "TrangChu";
-    DatabaseHelper mDatabaseHelper;
     private ProgressDialog dialog;
+    private ChuDeAdapter categoryAdapter;
+    private HashMap<String, List> mAllListMap;
+    private List<QuangCao> mListQuangCao;
+    public static List<UngDung> mListUngDung;
+    public static List<TheLoaiUngDung> mListTheLoaiUngDung;
     LinearLayout linNear1;
     //    Volume volume;
     int intVolume = 15;
     ImageView imgView, imgWeb;
     ImageButton ibtNext, ibtPlay, ibtBack, ibtVolumeOn, ibtFull;
     TextView tvTimeStart, tvTimeEnd, tvTime;
-    CheckLink checkLink;
     MediaPlayer mp;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editorfull;
@@ -108,6 +108,19 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     Handler handler = new Handler();
     private int currentApiVersion;
     private int hidetabbar = 1;
+    private String mTextQC = "Hãy đến với các sản phẩm chất lượng nhất từ chúng tôi";
+    private String todayFormated = "";
+    private String idThoiTiet = "24";
+    private DatabaseHelper mDatabaseHelper;
+    private ThoiTiet mThoiTiet;
+    private RequestQueue requestQueue;
+    static PackageManager manager;
+    private SharedPreferences mSharedPreferencesThoiTiet;
+    private Volume volume;
+    private CheckLink checkLink;
+    private SimpleExoPlayerView exoPlayer;
+    private SimpleExoPlayer player;
+    private TrackSelector trackSelector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +144,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         rcCategory.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcCategory.setLayoutManager(layoutManager1);
-        final ChuDeAdapter categoryAdapter = new ChuDeAdapter(this, cates);
+        categoryAdapter = new ChuDeAdapter(this, cates, mListTheLoaiUngDung, mListUngDung);
         rcCategory.setAdapter(categoryAdapter);
 
         // Load App
@@ -141,8 +154,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         i.addCategory(Intent.CATEGORY_LAUNCHER);
         //   List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
         listApps = new ArrayList();
-        List<UngDung> checkedList = new ArrayList<>();
-        checkedList = mDatabaseHelper.getListUngDung(cates.get(0));
+        List<UngDung> checkedList = DuLieu.getListUngDungByTheLoaiId(cates.get(0).getIndexCate() + "", mListTheLoaiUngDung, mListUngDung);
         List<UngDung> tmpList = new ArrayList<>();
         //   listApps.add(mDatabaseHelper.getListUngDung(cates.get(0)));
         for (int j = 1; j <= checkedList.size(); j++) {
@@ -169,151 +181,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         dialog = new ProgressDialog(this);
         dialog.setTitle("Đang tải");
         dialog.setMessage("Vui lòng đợi ứng dụng tải dữ liệu");
-
-        String url2 = DuLieu.URL + "/first_request_store.php";
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray root = new JSONArray(response);
-                    dialog.show();
-                    for (int i = 0; i < root.length(); i++) {
-                        JSONObject capnhat = root.getJSONObject(i);
-                        String isCapNhat = capnhat.getString("is_cap_nhat");
-                        if (isCapNhat.equals("0")) {
-                            break;
-                        } else {
-                            String loaiCapNhat = capnhat.getString("loai");
-                            switch (loaiCapNhat) {
-                                case "quangcao":
-                                    JSONArray rootQC = capnhat.getJSONArray("value");
-                                    mDatabaseHelper.deleteQuangCao();
-                                    for (int j = 0; j < rootQC.length(); j++) {
-                                        JSONObject app = rootQC.getJSONObject(j);
-                                        mDatabaseHelper.insertQuangCao(app.getString("id"), app.getString("noidung"), app.getString("loaiquangcaoid"));
-                                    }
-                                    break;
-                                case "ungdung":
-                                    JSONArray rootApp = capnhat.getJSONArray("value");
-                                    mDatabaseHelper.deleteListApp();
-                                    for (int j = 0; j < rootApp.length(); j++) {
-                                        JSONObject app = rootApp.getJSONObject(j);
-                                        int install, update;
-                                        install = update = 0;
-                                        if (DuLieu.checkInstalledApplication(app.getString("ten"), TrangChu.this)) {
-                                            install = 1;
-                                            if (DuLieu.capNhatVersion(DuLieu.getPackageName(app.getString("ten"), TrangChu.this), app.getInt("version_code"), TrangChu.this)) {
-                                                update = 1;
-                                            } else {
-                                                update = 0;
-                                            }
-                                        }
-                                        mDatabaseHelper.insertApp(app.getString("id"), app.getString("ten")
-                                                , install, DuLieu.URL_IMAGE + "/" + app.getString("icon")
-                                                , app.getString("luotcai"), app.getString("version")
-                                                , app.getString("des"), DuLieu.URL_FILE + "/" + app.getString("linkcai")
-                                                , app.getString("rating"), app.getString("version_code"), update);
-                                    }
-                                    //  Toast.makeText(getApplicationContext(), mDatabaseHelper.testInsertApp() + " == max app", Toast.LENGTH_SHORT).show();
-                                    break;
-                                case "luotcai":
-                                    break;
-                                case "anhchitiet":
-                                    JSONArray rootAnhChiTiet = capnhat.getJSONArray("value");
-                                    mDatabaseHelper.deleteAnhChiTiet();
-                                    for (int j = 0; j < rootAnhChiTiet.length(); j++) {
-                                        JSONObject app = rootAnhChiTiet.getJSONObject(j);
-                                        mDatabaseHelper.insertAnhChiTiet(app.getString("id"), app.getString("ungdungid"), DuLieu.URL_IMAGE +
-                                                "/" + app.getString("ten"));
-                                    }
-                                    break;
-                                case "theloai_ungdung":
-                                    JSONArray rootTheLoaiUngDung = capnhat.getJSONArray("value");
-                                    mDatabaseHelper.deleteTheLoaiUngDung();
-                                    for (int j = 0; j < rootTheLoaiUngDung.length(); j++) {
-                                        JSONObject app = rootTheLoaiUngDung.getJSONObject(j);
-                                        mDatabaseHelper.insertTheLoaiUngDung(app.getString("id"), app.getString("theloaiid"), app.getString("ungdungid"));
-                                    }
-                                    break;
-                                case "theloai":
-                                    JSONArray rootTheLoai = capnhat.getJSONArray("value");
-                                    mDatabaseHelper.deleteTheLoai();
-                                    for (int j = 0; j < rootTheLoai.length(); j++) {
-                                        JSONObject app = rootTheLoai.getJSONObject(j);
-                                        mDatabaseHelper.insertTheLoai(app.getString("id"), app.getString("ten"), app.getString("soluong"), app.getString("icon"));
-                                    }
-                                    break;
-                                case "capnhat":
-                                    JSONArray rootCapNhat = capnhat.getJSONArray("value");
-                                    mDatabaseHelper.deleteCapNhat();
-                                    JSONObject app = rootCapNhat.getJSONObject(0);
-                                    mDatabaseHelper.insertCapNhat(app.getString("id"), app.getString("id"));
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                dialog.dismiss();
-                text.setText(mDatabaseHelper.getLinkTextQuangCao());
-                cates.clear();
-                cates.addAll(mDatabaseHelper.getListChuDe());
-                categoryAdapter.notifyDataSetChanged();
-                listAppBottom.clear();
-                listApps.clear();
-                List<UngDung> checkedList;
-                checkedList = mDatabaseHelper.getListUngDung(cates.get(0));
-                List<UngDung> tmpList = new ArrayList<>();
-                //   listApps.add(mDatabaseHelper.getListUngDung(cates.get(0)));
-                for (int j = 1; j <= checkedList.size(); j++) {
-                    UngDung ungDung = new UngDung();
-                    ungDung.setNameApp(checkedList.get(j - 1).getNameApp());
-                    ungDung.setIcon(checkedList.get(j - 1).getIcon());
-                    ungDung.setId(checkedList.get(j - 1).getId());
-                    tmpList.add(ungDung);
-                    if (j % 7 == 0 || j == checkedList.size()) {
-                        listApps.add(tmpList);
-                        tmpList = new ArrayList<>();
-                        tmpList.clear();
-                    }
-                }
-                demdsApp = 0;
-                //    Toast.makeText(TrangChu.this, listApps.size() + "s"+listApps.get(0).size() , Toast.LENGTH_SHORT).show();
-                listAppBottom.addAll(listApps.get(demdsApp));
-                //listAppBottom.addAll(mDatabaseHelper.getListUngDung(cates.get(0)));
-                listapp.notifyDataSetChanged();
-//                video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//                    @Override
-//                    public void onCompletion(MediaPlayer mp) {
-//                        indexVideo++;
-//                      //  video.setVideoPath(listvideo.get(indexVideo));
-//                        video.setVideoPath(DuLieu.splitLinkVideoWeb(mDatabaseHelper.getLinkVideoQuangCao())[0]);
-//                        video.start();
-//                    }
-//                });
-
-                //  video.start();
-//                setVideoOrImager(listvideo.get(indexVideo));
-                //   Toast.makeText(getApplicationContext(), mDatabaseHelper.getListVideoQuangCao().size() + "", Toast.LENGTH_LONG).show();
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> values = new HashMap<>();
-                values.put("capnhatid", mDatabaseHelper.getIdCapNhat());
-                return values;
-            }
-        };
+        StringRequest stringRequest2 = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
+                mListQuangCao, cates, categoryAdapter, text, TrangChu.this);
         requestQueue.add(stringRequest2);
+
     }
 
     @Override
@@ -340,34 +211,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-
     private void addControls() {
-        mNetworkConnectionNoticeDialogBuilder = new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
-        mNetworkConnectionNoticeDialogBuilder.setTitle("Lỗi kết nối mạng");
-        mNetworkConnectionNoticeDialogBuilder.setMessage("Vui lòng kiểm tra lại mạng kết nối ...");
-        mNetworkConnectionNoticeDialogBuilder.setPositiveButton("Kiểm tra", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                /*Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.setClassName("com.android.phone", "com.android.phone.NetworkSetting");
-                startActivity(intent);*/
-                /*Intent intent=new Intent(Settings.ACTION_DATA_ROAMING_SETTINGS);
-                ComponentName cName = new ComponentName("com.android.phone","com.android.phone.Settings");
-                intent.setComponent(cName);
-                startActivity(intent);*/
-                Intent intent = new Intent(Settings.ACTION_SETTINGS);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
-            }
-        });
-        mNetworkConnectionNoticeDialog = mNetworkConnectionNoticeDialogBuilder.create();
-        if (!DuLieu.hasInternetConnection(this)) {
-            mNetworkConnectionNoticeDialog.show();
-        }
-
-        sharedPreferences = getSharedPreferences("thoitiet", MODE_PRIVATE);
-        String idThoiTiet = sharedPreferences.getString("idthoitiet", "24");
+        initNetworkConnectDialog();
+        mSharedPreferencesThoiTiet = getSharedPreferences("thoitiet", MODE_PRIVATE);
+        idThoiTiet = mSharedPreferencesThoiTiet.getString("idthoitiet", "24");
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper.checkDatabase(this);
 
@@ -380,7 +227,16 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         listvideo.add(Define.URL_LINK_IMG02);
         listvideo.add(Define.URL_LINK_BACK);
 
-
+        cates = new ArrayList<>();
+        mListUngDung = new ArrayList<>();
+        mListQuangCao = new ArrayList<>();
+        mListTheLoaiUngDung = new ArrayList<>();
+        mAllListMap = new HashMap<>();
+        mAllListMap = mDatabaseHelper.getAllList();
+        mListQuangCao = mAllListMap.get("quangcao");
+        cates = mAllListMap.get("theloai");
+        mListUngDung = mAllListMap.get("ungdung");
+        mListTheLoaiUngDung = mAllListMap.get("theloaiungdung");
         // reLaytive layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1);
         reLay2 = (RelativeLayout) findViewById(R.id.relay2);
@@ -476,177 +332,58 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mTxtNhietDo = (TextView) findViewById(R.id.txt_nhietdo);
 
         text.setSelected(true);
-        text.setText(mDatabaseHelper.getLinkTextQuangCao());
+        for (QuangCao quangCao : mListQuangCao) {
+            if (quangCao.getLoaiQuangCao().equals("3")) {
+                mTextQC = quangCao.getText();
+                break;
+            }
+        }
+        text.setText(mTextQC);
         imageCaiDat = (ImageView) findViewById(R.id.img_caidat);
         imageCaiDat.setOnClickListener(this);
         Map<String, String> today = LunarCalendar.getTodayInfo();
         mNgayDuongTxt.setText("Thứ " + today.get("thu") + ", " + today.get("daySolar") + "/" + today.get("monthSolar") + "/" + today.get("yearSolar"));
         mNgayAmTxt.setText(today.get("dayLunar") + "/" + today.get("monthLunar") + " " + today.get("can") + " " + today.get("chi"));
-        final String todayFormated = today.get("yearSolar") + "-" + today.get("monthSolar") + "-" + today.get("daySolar") + " "
+        todayFormated = today.get("yearSolar") + "-" + today.get("monthSolar") + "-" + today.get("daySolar") + " "
                 + today.get("hour") + ":" + today.get("minute") + ":" + today.get("second");
 
-        ThoiTiet thoiTiet = mDatabaseHelper.getThongTinThoiTiet(idThoiTiet);
+        mThoiTiet = mDatabaseHelper.getThongTinThoiTiet(idThoiTiet);
+        mTxtTinh.setText(mSharedPreferencesThoiTiet.getString("tinh", "Hà nội"));
+        mTxtNhietDo.setText(mSharedPreferencesThoiTiet.getString("nhietdo", "25"));
 
-        SharedPreferences sharedPreferencesThoiTiet = getSharedPreferences("thoitiet", MODE_PRIVATE);
-        mTxtTinh.setText(sharedPreferencesThoiTiet.getString("tinh", "Hà nội"));
-        mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25"));
-
-        final SharedPreferences.Editor editor = sharedPreferencesThoiTiet.edit();
-        editor.putString("tinh", thoiTiet.getTen());
-        String url = "http://api.openweathermap.org/data/2.5/forecast?id=" + thoiTiet.getMaThoiTiet() + "&APPID=" + APIKEY + "&&units=metric";
+        SharedPreferences.Editor editor = mSharedPreferencesThoiTiet.edit();
+        editor.putString("tinh", mThoiTiet.getTen());
+        String url = "http://api.openweathermap.org/data/2.5/forecast?id=" + mThoiTiet.getMaThoiTiet() + "&APPID=" + APIKEY + "&&units=metric";
         requestQueue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject root = new JSONObject(response);
-                    JSONArray listThoiTiet = root.getJSONArray("list");
-                    int currentPos = 0;
-                    for (int i = 0; i < listThoiTiet.length(); i++) {
-                        JSONObject thoiTiet = listThoiTiet.getJSONObject(i);
-                        String time = thoiTiet.getString("dt_txt");
-                        // Toast.makeText(getApplicationContext(), todayFormated + "==" + time, Toast.LENGTH_SHORT).show();
+        StringRequest stringRequest = RequestToServer.createWeatherRequest(mThoiTiet, todayFormated, mTxtNhietDo, editor);
+        requestQueue.add(stringRequest);
+        mTxtTinh.setText(mThoiTiet.getTen());
+    }
 
-                        if (DuLieu.compareDate(todayFormated, time)) {
-                            if (i == 0) {
-                                currentPos = 0;
-                            } else {
-                                currentPos = i - 1;
-                            }
-                            thoiTiet = listThoiTiet.getJSONObject(currentPos);
-                            String nhietDo = thoiTiet.getJSONObject("main").getString("temp");
-                            String trangThai = thoiTiet.getJSONArray("weather").getJSONObject(0).getString("main");
-                            mTxtNhietDo.setText(Math.round(Double.parseDouble(nhietDo)) + " °C");
-                            editor.putString("nhietdo", Math.round(Double.parseDouble(nhietDo)) + "");
-                            editor.commit();
-                            break;
-                        }
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
+    private void initNetworkConnectDialog() {
+        mNetworkConnectionNoticeDialogBuilder = new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
+        mNetworkConnectionNoticeDialogBuilder.setTitle("Lỗi kết nối mạng");
+        mNetworkConnectionNoticeDialogBuilder.setMessage("Vui lòng kiểm tra lại mạng kết nối ...");
+        mNetworkConnectionNoticeDialogBuilder.setPositiveButton("Kiểm tra", new DialogInterface.OnClickListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-
+            public void onClick(DialogInterface dialog, int which) {
+                /*Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.setClassName("com.android.phone", "com.android.phone.NetworkSetting");
+                startActivity(intent);*/
+                /*Intent intent=new Intent(Settings.ACTION_DATA_ROAMING_SETTINGS);
+                ComponentName cName = new ComponentName("com.android.phone","com.android.phone.Settings");
+                intent.setComponent(cName);
+                startActivity(intent);*/
+                Intent intent = new Intent(Settings.ACTION_SETTINGS);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }
         });
-        requestQueue.add(stringRequest);
-        mTxtTinh.setText(thoiTiet.getTen());
-
-        dialog = new ProgressDialog(this);
-        dialog.setTitle("Đang tải");
-        dialog.setMessage("Vui lòng đợi ứng dụng tải dữ liệu");
-
-        String url2 = DuLieu.URL + "/first_request_store.php";
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray root = new JSONArray(response);
-                    dialog.show();
-                    for (int i = 0; i < root.length(); i++) {
-                        JSONObject capnhat = root.getJSONObject(i);
-                        String isCapNhat = capnhat.getString("is_cap_nhat");
-                        if (isCapNhat.equals("0")) {
-                            break;
-                        } else {
-                            String loaiCapNhat = capnhat.getString("loai");
-                            switch (loaiCapNhat) {
-                                case "quangcao":
-                                    JSONArray rootQC = capnhat.getJSONArray("value");
-                                    mDatabaseHelper.deleteQuangCao();
-                                    for (int j = 0; j < rootQC.length(); j++) {
-                                        JSONObject app = rootQC.getJSONObject(j);
-                                        mDatabaseHelper.insertQuangCao(app.getString("id"), app.getString("noidung"), app.getString("loaiquangcaoid"));
-                                    }
-                                    break;
-                                case "ungdung":
-                                    JSONArray rootApp = capnhat.getJSONArray("value");
-                                    mDatabaseHelper.deleteListApp();
-                                    for (int j = 0; j < rootApp.length(); j++) {
-                                        JSONObject app = rootApp.getJSONObject(j);
-                                        int install, update;
-                                        install = update = 0;
-                                        if (DuLieu.checkInstalledApplication(app.getString("ten"), TrangChu.this)) {
-                                            install = 1;
-                                            if (DuLieu.capNhatVersion(DuLieu.getPackageName(app.getString("ten"), TrangChu.this), app.getInt("version_code"), TrangChu.this)) {
-                                                update = 1;
-                                            } else {
-                                                update = 0;
-                                            }
-                                        }
-                                        mDatabaseHelper.insertApp(app.getString("id"), app.getString("ten")
-                                                , install, DuLieu.URL_IMAGE + "/" + app.getString("icon")
-                                                , app.getString("luotcai"), app.getString("version")
-                                                , app.getString("des"), DuLieu.URL_FILE + "/" + app.getString("linkcai")
-                                                , app.getString("rating"), app.getString("version_code"), update);
-                                    }
-
-
-                                    //  Toast.makeText(getApplicationContext(), mDatabaseHelper.testInsertApp() + " == max app", Toast.LENGTH_SHORT).show();
-                                    break;
-                                case "luotcai":
-                                    break;
-                                case "anhchitiet":
-                                    JSONArray rootAnhChiTiet = capnhat.getJSONArray("value");
-                                    mDatabaseHelper.deleteAnhChiTiet();
-                                    for (int j = 0; j < rootAnhChiTiet.length(); j++) {
-                                        JSONObject app = rootAnhChiTiet.getJSONObject(j);
-                                        mDatabaseHelper.insertAnhChiTiet(app.getString("id"), app.getString("ungdungid"), DuLieu.URL_IMAGE +
-                                                "/" + app.getString("ten"));
-                                    }
-                                    break;
-                                case "theloai_ungdung":
-                                    JSONArray rootTheLoaiUngDung = capnhat.getJSONArray("value");
-                                    mDatabaseHelper.deleteTheLoaiUngDung();
-                                    for (int j = 0; j < rootTheLoaiUngDung.length(); j++) {
-                                        JSONObject app = rootTheLoaiUngDung.getJSONObject(j);
-                                        mDatabaseHelper.insertTheLoaiUngDung(app.getString("id"), app.getString("theloaiid"), app.getString("ungdungid"));
-                                    }
-                                    break;
-                                case "theloai":
-                                    JSONArray rootTheLoai = capnhat.getJSONArray("value");
-                                    mDatabaseHelper.deleteTheLoai();
-                                    for (int j = 0; j < rootTheLoai.length(); j++) {
-                                        JSONObject app = rootTheLoai.getJSONObject(j);
-                                        mDatabaseHelper.insertTheLoai(app.getString("id"), app.getString("ten"), app.getString("soluong"), app.getString("icon"));
-                                    }
-                                    break;
-                                case "capnhat":
-                                    JSONArray rootCapNhat = capnhat.getJSONArray("value");
-                                    mDatabaseHelper.deleteCapNhat();
-                                    JSONObject app = rootCapNhat.getJSONObject(0);
-                                    mDatabaseHelper.insertCapNhat(app.getString("id"), app.getString("id"));
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                dialog.dismiss();
-                text.setText(mDatabaseHelper.getLinkTextQuangCao());
-
-//                setVideoOrImager(listvideo.get(indexVideo));
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> values = new HashMap<>();
-                values.put("capnhatid", mDatabaseHelper.getIdCapNhat());
-                return values;
-            }
-        };
-        requestQueue.add(stringRequest2);
+        mNetworkConnectionNoticeDialog = mNetworkConnectionNoticeDialogBuilder.create();
+        if (!DuLieu.hasInternetConnection(this)) {
+            mNetworkConnectionNoticeDialog.show();
+        }
     }
 
     @Override
@@ -1076,6 +813,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 context.startActivity(intent);
             }
         }
+
     }
 
     public void addNavigationItem() {
