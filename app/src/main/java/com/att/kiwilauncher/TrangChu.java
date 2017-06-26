@@ -60,9 +60,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static android.app.Activity.RESULT_OK;
-import static android.content.Context.MODE_PRIVATE;
-
 public class TrangChu extends AppCompatActivity implements View.OnClickListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
     int didIndex = 0, willIndex, indexChuDe = 0, main = 12, position, bonusmain = 6;
@@ -912,7 +909,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 } else {
                     ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
                     mute = true;
-                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                    try {
+                        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                    } catch (Exception e) {
+                    }
                 }
                 editorfull.commit();
                 break;

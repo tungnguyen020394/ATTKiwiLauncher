@@ -16,16 +16,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.att.kiwilauncher.adapter.ChuDeDsAdapter;
 import com.att.kiwilauncher.adapter.UngDungDsAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.xuly.LunarCalendar;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static android.content.Context.MODE_PRIVATE;
 import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
 
 public class DanhSach extends AppCompatActivity implements View.OnClickListener{
@@ -115,19 +116,9 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         dsUngDung = new ArrayList<UngDung>();
         Intent i = new Intent(Intent.ACTION_MAIN, null);
         i.addCategory(Intent.CATEGORY_LAUNCHER);
-       // List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
 
         int soUngDung = 0;
         dsUngDung.addAll(mDatabaseHelper.getListUngDung(mDatabaseHelper.getListChuDe().get(4)));
-        /*for (ResolveInfo ri : availableActivities) {
-            UngDung app = new UngDung();
-            app.labelApp = ri.loadLabel(manager);
-            app.nameApp = ri.activityInfo.packageName;
-            app.iconApp = ri.activityInfo.loadIcon(manager);
-            dsUngDung.add(app);
-            soUngDung++;
-            if (soUngDung == 36) { break;}
-        }*/
 
         rcUngDung.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 8);
