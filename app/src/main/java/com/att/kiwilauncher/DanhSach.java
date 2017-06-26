@@ -3,28 +3,32 @@ package com.att.kiwilauncher;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+<<<<<<< HEAD
 
 import com.att.kiwilauncher.adapter.ChuDeAdapter;
 import com.att.kiwilauncher.adapter.UngDungAdapter;
+=======
+import android.widget.Toast;
+import com.att.kiwilauncher.adapter.ChuDeDsAdapter;
+import com.att.kiwilauncher.adapter.UngDungDsAdapter;
+>>>>>>> master
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.xuly.LunarCalendar;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
 public class DanhSach extends AppCompatActivity {
     RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112;
     int chieuDai, chieuRong, mChieuDai, mChieuRong, didIndex = 0, main = 5, indexChuDe;
@@ -33,6 +37,21 @@ public class DanhSach extends AppCompatActivity {
     RecyclerView rcChuDe, rcUngDung;
     PackageManager manager;
     ImageView imageKiwi;
+=======
+import static android.content.Context.MODE_PRIVATE;
+import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
+
+public class DanhSach extends AppCompatActivity implements View.OnClickListener{
+    RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112,reLay11,reLay121;
+    int didIndex = 0, main = 5, indexChuDe;
+    List<ChuDe> dsChuDe;
+    public static List<UngDung> dsUngDung;
+    RecyclerView rcChuDe;
+    static RecyclerView rcUngDung;
+    public static UngDungDsAdapter ungDungAdapter;
+    static PackageManager manager;
+    ImageView imageKiwi,imageCaidat;
+>>>>>>> master
     ArrayList<View> listItem;
     TextView text;
     TextView mNgayDuongTxt, mNgayAmTxt, mTxtTinh, mTxtNhietDo;
@@ -50,28 +69,33 @@ public class DanhSach extends AppCompatActivity {
     public void addControls() {
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper.checkDatabase(this);
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        chieuDai = displayMetrics.widthPixels;
-        chieuRong = displayMetrics.heightPixels;
-        mChieuDai = chieuDai / 70;
-        mChieuRong = chieuRong / 40;
 
+        mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich_ds);
+        mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich_ds);
+        mTxtTinh = (TextView) findViewById(R.id.txt_thanhpho_ds);
+        mTxtNhietDo = (TextView) findViewById(R.id.txt_nhietdo_ds);
         // layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1_ds);
         reLay2 = (RelativeLayout) findViewById(R.id.relay2_ds);
         reLay3 = (RelativeLayout) findViewById(R.id.relay3_ds);
-        reLay1.setPadding(mChieuDai, 0, mChieuDai, mChieuRong * 34);
-        reLay2.setPadding(mChieuDai * 2, mChieuRong * 7, mChieuDai, mChieuRong * 29);
-        reLay3.setPadding(mChieuDai * 2, mChieuRong * 12, mChieuDai, mChieuRong);
-
         reLay13 = (RelativeLayout) findViewById(R.id.relay13_ds);
         reLay12 = (RelativeLayout) findViewById(R.id.relay12_ds);
+<<<<<<< HEAD
         reLay13.setPadding(mChieuDai, 0, mChieuDai * 60, 0);
         reLay12.setPadding(mChieuDai * 10, mChieuRong, mChieuDai, mChieuRong * 2);
         reLay113 = (RelativeLayout) findViewById(R.id.relay113_ds);
         reLay111 = (RelativeLayout) findViewById(R.id.relay111_ds);
         reLay112 = (RelativeLayout) findViewById(R.id.relay112_ds);
+=======
+        reLay11 = (RelativeLayout) findViewById(R.id.relay11_ds);
+        reLay121 = (RelativeLayout) findViewById(R.id.relay121_ds);
+        reLay113 = (RelativeLayout) findViewById(R.id.relay113_ds);
+        reLay111 = (RelativeLayout) findViewById(R.id.relay111_ds);
+        reLay112 = (RelativeLayout) findViewById(R.id.relay112_ds);
+        reLay113.setOnClickListener(this);
+        reLay121.setOnClickListener(this);
+        reLay111.setOnClickListener(this);
+>>>>>>> master
 
         //end layout
         rcChuDe = (RecyclerView) findViewById(R.id.recycler1_ds);
@@ -82,51 +106,80 @@ public class DanhSach extends AppCompatActivity {
 
         text = (TextView) findViewById(R.id.text1_ds);
         text.setSelected(true);
+<<<<<<< HEAD
+=======
+        text.setText(mDatabaseHelper.getLinkTextQuangCao());
+        appClick = new AppClick(getApplicationContext());
+>>>>>>> master
 
     }
 
     public void addLoadData() {
         // Load Category
         dsChuDe = new ArrayList<ChuDe>();
-        ChuDe cate1 = new ChuDe("Giải Trí", R.drawable.ic_giaitri, 0, true);
+        ChuDe cate1 = new ChuDe("Truyền Hình Tổng Hợp", R.drawable.ic_giaitri, 0, true);
         dsChuDe.add(cate1);
-        ChuDe cate2 = new ChuDe("Trò Chơi", R.drawable.ic_trochoi, 0, false);
+        ChuDe cate2 = new ChuDe("Miễn Phí", R.drawable.ic_trochoi, 0, false);
         dsChuDe.add(cate2);
-        ChuDe cate3 = new ChuDe("Giáo Dục & Sức Khoẻ", R.drawable.ic_suckhoe, 0, false);
+        ChuDe cate3 = new ChuDe("Trả Phí", R.drawable.ic_suckhoe, 0, false);
         dsChuDe.add(cate3);
-        ChuDe cate4 = new ChuDe("Tiện Ích", R.drawable.ic_tienich, 0, false);
-        dsChuDe.add(cate4);
 
         rcChuDe.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcChuDe.setLayoutManager(layoutManager1);
+<<<<<<< HEAD
         ChuDeAdapter categoryAdapter = new ChuDeAdapter(this, dsChuDe,TrangChu.mListTheLoaiUngDung,TrangChu.mListUngDung);
         rcChuDe.setAdapter(categoryAdapter);
         mNgayDuongTxt = (TextView) findViewById(R.id.txt_duonglich_ds);
         mNgayAmTxt = (TextView) findViewById(R.id.txt_amlich_ds);
         mTxtTinh = (TextView) findViewById(R.id.txt_thanhpho_ds);
         mTxtNhietDo = (TextView) findViewById(R.id.txt_nhietdo_ds);
+=======
+
+
+        text.setText(mDatabaseHelper.getLinkTextQuangCao());
+>>>>>>> master
 
         // Load App
         manager = getPackageManager();
         dsUngDung = new ArrayList<UngDung>();
         Intent i = new Intent(Intent.ACTION_MAIN, null);
         i.addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
+       // List<ResolveInfo> availableActivities = manager.queryIntentActivities(i, 0);
 
+<<<<<<< HEAD
         for (ResolveInfo ri : availableActivities) {
+=======
+        int soUngDung = 0;
+        dsUngDung.addAll(mDatabaseHelper.getListUngDung(mDatabaseHelper.getListChuDe().get(4)));
+        /*for (ResolveInfo ri : availableActivities) {
+>>>>>>> master
             UngDung app = new UngDung();
             app.labelApp = ri.loadLabel(manager);
             app.nameApp = ri.activityInfo.packageName;
             app.iconApp = ri.activityInfo.loadIcon(manager);
             dsUngDung.add(app);
+<<<<<<< HEAD
         }
 
         rcUngDung.setHasFixedSize(true);
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcUngDung.setLayoutManager(layoutManager2);
         UngDungAdapter ungDungAdapter = new UngDungAdapter(this, dsUngDung);
+=======
+            soUngDung++;
+            if (soUngDung == 36) { break;}
+        }*/
+
+        rcUngDung.setHasFixedSize(true);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 8);
+        rcUngDung.setLayoutManager(gridLayoutManager);
+        ungDungAdapter = new UngDungDsAdapter(this, dsUngDung);
+>>>>>>> master
         rcUngDung.setAdapter(ungDungAdapter);
+
+        ChuDeDsAdapter categoryAdapter = new ChuDeDsAdapter(this, dsChuDe,ungDungAdapter,dsUngDung);
+        rcChuDe.setAdapter(categoryAdapter);
         Map<String, String> today = LunarCalendar.getTodayInfo();
         mNgayDuongTxt.setText("Thứ " + today.get("thu") + ", " + today.get("daySolar") + "/" + today.get("monthSolar") + "/" + today.get("yearSolar"));
         mNgayAmTxt.setText(today.get("dayLunar") + "/" + today.get("monthLunar") + " " + today.get("can") + " " + today.get("chi"));
@@ -135,13 +188,13 @@ public class DanhSach extends AppCompatActivity {
 
         SharedPreferences sharedPreferencesThoiTiet = getSharedPreferences("thoitiet", MODE_PRIVATE);
         mTxtTinh.setText(sharedPreferencesThoiTiet.getString("tinh", "Hà nội"));
-        mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25"));
+        mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25") + " °C");
     }
 
     public void addMove() {
         listItem = new ArrayList<>();
         listItem.add(imageKiwi);
-        listItem.add(text);
+        listItem.add(reLay121);
         listItem.add(reLay111);
         listItem.add(reLay112);
         listItem.add(reLay113);
@@ -155,12 +208,26 @@ public class DanhSach extends AppCompatActivity {
                 text.setSelected(true);
                 if (didIndex < main) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
+<<<<<<< HEAD
+=======
+                    if (didIndex == 1) {
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_text);
+                    }
+>>>>>>> master
                     rcChuDe.getChildAt(0).callOnClick();
                     didIndex = main;
                 } else if ((didIndex >= main) && (didIndex < main + dsChuDe.size())) {
                     indexChuDe = didIndex;
                     didIndex = main + dsChuDe.size();
                     rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
+<<<<<<< HEAD
+=======
+                } else if (didIndex > main - 1 + dsChuDe.size()
+                        && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size() - 8) {
+                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
+                    didIndex = didIndex + 8;
+                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
+>>>>>>> master
                 }
                 break;
 
@@ -168,11 +235,24 @@ public class DanhSach extends AppCompatActivity {
                 text.setSelected(true);
                 if (didIndex >= main && didIndex < main + dsChuDe.size()) {
                     didIndex = 0;
+<<<<<<< HEAD
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
                 } else if ((didIndex >= main + dsChuDe.size()) && (didIndex < main + dsChuDe.size() + dsUngDung.size())) {
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
                     didIndex = indexChuDe;
                     rcChuDe.getChildAt(didIndex - main).callOnClick();
+=======
+                    listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
+                } else if ((didIndex >= main + dsChuDe.size()) && (didIndex < main + dsChuDe.size() + 8)) {
+                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
+                    didIndex = indexChuDe;
+                    rcChuDe.getChildAt(didIndex - main).callOnClick();
+                } else if (didIndex >= main + dsChuDe.size() + 8
+                        && didIndex <= main + dsChuDe.size() + dsUngDung.size()) {
+                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
+                    didIndex = didIndex - 8;
+                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
+>>>>>>> master
                 }
                 break;
 
@@ -225,4 +305,56 @@ public class DanhSach extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+<<<<<<< HEAD
+=======
+
+    public static class AppClick implements View.OnClickListener {
+
+        private final Context context;
+
+        public AppClick(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = rcUngDung.getChildPosition(v);
+            try {
+                Intent i = manager.getLaunchIntentForPackage(dsUngDung.get(position).getNameApp().toString());
+                context.startActivity(i);
+            } catch (Exception e) {
+                Intent intent = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
+                context.startActivity(intent);
+            }
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.relay113_ds:
+                imageCaidat.callOnClick();
+                break;
+
+            case R.id.img1_ds:
+                onBackPressed();
+                break;
+
+            case R.id.img_caidat_ds:
+                DanhSach.this.startActivityForResult(new Intent(Settings.ACTION_SETTINGS), REQUEST_SETTINGS);
+                break;
+
+            case R.id.relay121_ds:
+                Toast.makeText(getApplicationContext(),text.getText(),Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.relay111_ds:
+                Toast.makeText(getApplicationContext(),mNgayDuongTxt.getText(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),mNgayAmTxt.getText(),Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+    }
+
+>>>>>>> master
 }

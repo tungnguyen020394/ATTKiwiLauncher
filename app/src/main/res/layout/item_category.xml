@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="wrap_content"
+<<<<<<< HEAD
     android:layout_height="fill_parent"
     android:id="@+id/layout_category"
     android:padding="5dp">
+=======
+    android:layout_height="wrap_content"
+    android:id="@+id/layout_category1"
+    android:paddingLeft="@dimen/_3sdp"
+    android:paddingRight="@dimen/_3sdp"
+    android:paddingTop="@dimen/_3sdp"
+    android:paddingBottom="@dimen/_3sdp"
+    android:layout_marginRight="@dimen/_3sdp">
+    <RelativeLayout
+        android:id="@+id/layout_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+>>>>>>> master
     <ImageView
         android:id="@+id/image_category"
         android:layout_width="40dp"
         android:layout_height="fill_parent"
         android:padding="5dp"
         android:layout_centerVertical="true"
-        android:src="@drawable/play" />
+        android:src="@drawable/play"
+        android:layout_marginLeft="@dimen/_3sdp"/>
 
     <TextView
         android:id="@+id/txt_catego"

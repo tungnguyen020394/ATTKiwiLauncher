@@ -8,19 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.TrangChu;
 import com.att.kiwilauncher.UngDung;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
+<<<<<<< HEAD
 import com.att.kiwilauncher.model.TheLoaiUngDung;
 import com.att.kiwilauncher.xuly.DuLieu;
 
+=======
+>>>>>>> master
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.att.kiwilauncher.TrangChu.demdsApp;
 import static com.att.kiwilauncher.TrangChu.listApps;
 
 /**
