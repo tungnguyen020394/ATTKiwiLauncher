@@ -84,7 +84,7 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     RemoveCheck();
-                    ChuDe cate = cates.get(getAdapterPosition());
+                    ChuDe cate = cates.get(getPosition());
                     cate.setCheckedCate(true);
                     notifyDataSetChanged();
                     TrangChu.demdsApp = 0;
