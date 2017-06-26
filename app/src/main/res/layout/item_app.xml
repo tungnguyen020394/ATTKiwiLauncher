@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/relay_app"
-    android:padding="@dimen/_5sdp">
+                xmlns:tool="http://schemas.android.com/tools"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/relay_app"
+                android:padding="@dimen/_5sdp">
     <ImageView
         android:id="@+id/image_app"
         android:layout_width="@dimen/_48sdp"
         android:layout_height="@dimen/_48sdp"
         android:scaleType="fitXY"
-        android:src="@drawable/img_kara" />
+        tool:src="@drawable/img_kara" />
 </RelativeLayout>
