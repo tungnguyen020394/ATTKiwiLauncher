@@ -121,6 +121,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     private SimpleExoPlayerView exoPlayer;
     private SimpleExoPlayer player;
     private TrackSelector trackSelector;
+    private StringRequest mRequestToServer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,9 +180,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         dialog = new ProgressDialog(this);
         dialog.setTitle("Đang tải");
         dialog.setMessage("Vui lòng đợi ứng dụng tải dữ liệu");
-        StringRequest stringRequest2 = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
+        mRequestToServer = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
                 mListQuangCao, cates, categoryAdapter, text, TrangChu.this);
-        requestQueue.add(stringRequest2);
+        requestQueue.add(mRequestToServer);
 
     }
 
@@ -351,10 +352,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
         SharedPreferences.Editor editor = mSharedPreferencesThoiTiet.edit();
         editor.putString("tinh", mThoiTiet.getTen());
-        String url = "http://api.openweathermap.org/data/2.5/forecast?id=" + mThoiTiet.getMaThoiTiet() + "&APPID=" + APIKEY + "&&units=metric";
         requestQueue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = RequestToServer.createWeatherRequest(mThoiTiet, todayFormated, mTxtNhietDo, editor);
-        requestQueue.add(stringRequest);
+        mRequestToServer = RequestToServer.createWeatherRequest(mThoiTiet, todayFormated, mTxtNhietDo, editor);
+        requestQueue.add(mRequestToServer);
         mTxtTinh.setText(mThoiTiet.getTen());
     }
 
