@@ -138,8 +138,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
     private void loadData() {
         // Load Category
-        cates = new ArrayList<ChuDe>();
-        cates = mDatabaseHelper.getListChuDe();
         //   Toast.makeText(this, cates.size() + "", Toast.LENGTH_LONG).show();
         rcCategory.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
