@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.att.kiwilauncher.UngDung;
+import com.att.kiwilauncher.model.QuangCao;
 import com.att.kiwilauncher.model.TheLoaiUngDung;
 
 import java.io.BufferedOutputStream;
@@ -252,7 +253,16 @@ public class DuLieu {
         }
         return ungDungListByTheLoaiId;
     }
-
+    public static String getAdTextFromList(List<QuangCao> mListQuangCao){
+        String textAd="";
+        for (QuangCao quangCao : mListQuangCao) {
+            if (quangCao.getLoaiQuangCao().equals("3")) {
+                textAd = quangCao.getText();
+                break;
+            }
+        }
+        return textAd;
+    }
 
     /*public void hanldeDirectory(String dir) {
         File f = new File(this.destination + dir);

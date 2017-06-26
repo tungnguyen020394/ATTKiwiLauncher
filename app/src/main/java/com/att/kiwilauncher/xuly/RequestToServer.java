@@ -141,14 +141,9 @@ public class RequestToServer {
                 cates.clear();
                 cates.addAll(mAllListMap.get("theloai"));
                 dialog.dismiss();
-
-                for (QuangCao quangCao : mListQuangCao) {
-                    if (quangCao.getLoaiQuangCao().equals("3")) {
-                        text.setText(quangCao.getText());
-                        break;
-                    }
+                if (!DuLieu.getAdTextFromList(mListQuangCao).equals("")){
+                    text.setText(DuLieu.getAdTextFromList(mListQuangCao));
                 }
-
                 categoryAdapter.notifyDataSetChanged();
                 listAppBottom.clear();
                 listApps.clear();

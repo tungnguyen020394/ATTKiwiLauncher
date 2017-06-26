@@ -328,11 +328,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mTxtNhietDo = (TextView) findViewById(R.id.txt_nhietdo);
 
         text.setSelected(true);
-        for (QuangCao quangCao : mListQuangCao) {
-            if (quangCao.getLoaiQuangCao().equals("3")) {
-                mTextQC = quangCao.getText();
-                break;
-            }
+        if (!DuLieu.getAdTextFromList(mListQuangCao).equals("")){
+            mTextQC=DuLieu.getAdTextFromList(mListQuangCao);
         }
         text.setText(mTextQC);
         imageCaiDat = (ImageView) findViewById(R.id.img_caidat);
