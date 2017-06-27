@@ -603,7 +603,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()) {
             // video click
             case R.id.imgWeb:
-                Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
+               // Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
+                Uri uri = Uri.parse(mListVideoAd.get(indexVideo).getLinkWeb());
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 editorfull.putInt("index", indexVideo);
                 editorfull.putInt("timePause", timePause);
