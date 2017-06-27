@@ -458,7 +458,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="@dimen/_2sdp"
                                     android:background="@drawable/none"
-                                    android:src="@drawable/ic_fullvideo"/>
+                                    android:src="@drawable/ic_fullvideo" />
 
                                 <TextView
                                     android:layout_width="0dp"

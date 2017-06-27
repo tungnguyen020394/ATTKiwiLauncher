@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.att.kiwilauncher.R;
@@ -167,10 +168,10 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         }
       //  position = checkLink.CheckLinkURL(check);
         if (position == 1) {
-            if (didIndex == 5) {
-                didIndex--;
-            } else if (didIndex == 3) {
-                didIndex++;
+            if (didIndex > 0 && didIndex < 6) {
+                ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
+                didIndex = 1;
+                ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
             }
             vh.imgView.setVisibility(View.VISIBLE);
             vh.video.setVisibility(View.GONE);
@@ -178,6 +179,8 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             vh.ibtVolumeOnVideo.setVisibility(View.GONE);
             vh.tvTimeStartVideo.setVisibility(View.GONE);
             vh.tvTimeVideo.setVisibility(View.GONE);
+            vh.ibtNextVideo.setVisibility(View.GONE);
+            vh.ibtBackVideo.setVisibility(View.GONE);
 
             vh.tvTimeEndVideo.setText("   ");
             Glide.with(this)
@@ -195,6 +198,8 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             vh.ibtVolumeOnVideo.setVisibility(View.VISIBLE);
             vh.tvTimeStartVideo.setVisibility(View.VISIBLE);
             vh.tvTimeVideo.setVisibility(View.VISIBLE);
+            vh.ibtBackVideo.setVisibility(View.VISIBLE);
+            vh.ibtNextVideo.setVisibility(View.VISIBLE);
 
             // đọ dài của video
             mp = MediaPlayer.create(this, Uri.parse(quangCao.getLinkVideo()));
@@ -283,6 +288,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.imgWeb_video:
+<<<<<<< HEAD
               //  Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
 
                 Uri uri = Uri.parse(mListAdVideo.get(indexVideo).getLinkWeb());
@@ -292,6 +298,19 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 intent.putExtra("index", indexVideo);
                 intent.putExtra("timePause", timePause);
                 startActivity(intent);
+=======
+                try {
+                    Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
+                    intent = new Intent(Intent.ACTION_VIEW, uri);
+                    timePause = vh.video.getCurrentPosition();
+
+                    intent.putExtra("index", indexVideo);
+                    intent.putExtra("timePause", timePause);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(),"Ban khong co trinh duyet web",Toast.LENGTH_SHORT).show();
+                }
+>>>>>>> origin/master
                 break;
 
             case R.id.imgExitFull:
@@ -306,16 +325,19 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.imgVolumeOn_video:
-
                 if (mute == true) {
                     vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeon);
 //                    volume.UnMuteAudio(this,intVolum);
-                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
-
+                    try {
+                        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                    } catch (Exception e) {
+                    }
                     mute = false;
                 } else {
                     vh.ibtVolumeOnVideo.setImageResource(R.drawable.ic_volumeoff);
-                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                    try {
+                        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                    } catch (Exception e) {}
 
 //                    volume.MuteAudio(this);
                     mute = true;
@@ -381,9 +403,9 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                     }
-//                    if (didIndex == 4 && position == 1) {
-//                        didIndex--;
-//                    }
+                    if (position == 1 && didIndex == 0) {
+                        didIndex = 2;
+                    }
                     didIndex--;
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
@@ -400,13 +422,15 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                     }
                     if (didIndex == 0 && listItem.get(didIndex) instanceof ImageView)
                         ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
-//                    if (didIndex == 2 && position == 1) {
-//                        didIndex++;
-//                    }
+                    if (position == 1 && didIndex == 1) {
+                        didIndex = -1;
+                    }
                     didIndex++;
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorcatenew));
                     }
+                    if (didIndex == 0 && listItem.get(didIndex) instanceof ImageView)
+                        ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                 }
                 break;
 

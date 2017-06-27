@@ -44,10 +44,10 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         if (cates.get(position).isCheckedCate()) {
-            holder.txtApp.setTextSize(15);
+            holder.txtApp.setTextSize(holder.size1);
             holder.txtApp.setTextColor(context.getResources().getColor(R.color.colorWhite));
         } else {
-            holder.txtApp.setTextSize(10);
+            holder.txtApp.setTextSize(holder.size);
             holder.txtApp.setTextColor(context.getResources().getColor(R.color.colormiplus));
         }
         holder.txtApp.setText(cates.get(position).getNameCate());
@@ -62,6 +62,8 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtApp;
         RelativeLayout layoutCateDs;
+        int size;
+        int size1;
 
         public ViewHolder(View itemView) {
             super(itemView);
