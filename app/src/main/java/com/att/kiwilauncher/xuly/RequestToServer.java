@@ -213,7 +213,7 @@ public class RequestToServer {
                             thoiTiet = listThoiTiet.getJSONObject(currentPos);
                             String nhietDo = thoiTiet.getJSONObject("main").getString("temp");
                             String trangThai = thoiTiet.getJSONArray("weather").getJSONObject(0).getString("main");
-                            mTxtNhietDo.setText(Math.round(Double.parseDouble(nhietDo)) + "");
+                            mTxtNhietDo.setText(Math.round(Double.parseDouble(nhietDo)) + " ° C");
                             editor.putString("nhietdo", Math.round(Double.parseDouble(nhietDo)) + "");
                             editor.commit();
                             break;
