@@ -144,23 +144,27 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                 ChuDe cate = dsChuDe.get(position);
                 cate.setCheckedCate(true);
                 categoryAdapter.notifyDataSetChanged();
+                listUngDungChan.clear();
+                listUngDungLe.clear();
+                UngDung ungDung;
                 for (int i = 0; i < listUngDungChung.size(); i++) {
                     if (i % 2 == 0) {
-                        UngDung ungDung = new UngDung();
                         ungDung = listUngDungChung.get(i);
                         listUngDungChan.add(ungDung);
                     } else {
-                        UngDung ungDung = new UngDung();
                         ungDung = listUngDungChung.get(i);
                         listUngDungLe.add(ungDung);
                     }
                 }
                 dsUngDung.clear();
                 if (dsChuDe.get(position).getDrawCate() == R.drawable.ic_giaitri) {
+                    dsUngDung.clear();
                     dsUngDung.addAll(listUngDungChung);
                 } else if (dsChuDe.get(position).getDrawCate() == R.drawable.ic_trochoi) {
+                    dsUngDung.clear();
                     dsUngDung.addAll(listUngDungChan);
                 } else if (dsChuDe.get(position).getDrawCate() == R.drawable.ic_suckhoe) {
+                    dsUngDung.clear();
                     dsUngDung.addAll(listUngDungLe);
                 }
                 ungDungAdapter.notifyDataSetChanged();
