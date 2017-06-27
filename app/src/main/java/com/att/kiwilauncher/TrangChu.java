@@ -123,6 +123,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     private SimpleExoPlayer player;
     private TrackSelector trackSelector;
     private StringRequest mRequestToServer;
+    Runnable mRunableCheckInterNet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -212,6 +213,17 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mRequestToServer = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
                 mListQuangCao, cates, categoryAdapter, text, TrangChu.this, mIdCapNhat,mListVideoAd);
         requestQueue.add(mRequestToServer);
+        mRunableCheckInterNet=new Runnable() {
+            @Override
+            public void run() {
+                if(DuLieu.hasInternetConnection(TrangChu.this)&&mListVideoAd.size()>0){
+                    setVideoOrImager(mListVideoAd.get(indexVideo));
+                    handler.removeCallbacks(mRunableCheckInterNet);
+                }else{
+                    handler.postDelayed(mRunableCheckInterNet,10000);
+                }
+            }
+        };
     }
 
     @Override
@@ -232,6 +244,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             video.setVisibility(View.GONE);
             imgView.setVisibility(View.VISIBLE);
             imgView.setImageResource(R.drawable.img);
+
+            handler.post(mRunableCheckInterNet);
         }
     }
 
@@ -833,7 +847,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             listItem.add(rcCategory.getChildAt(soChuDe));
             soChuDe++;
         }
-
         listItem.add(imageMinus);
 
         int soUngDung = 0;
@@ -871,11 +884,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             ComponentName name = new ComponentName(activity.applicationInfo.packageName,
                     activity.name);
             Intent i = new Intent(Intent.ACTION_MAIN);
-
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
                     Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
             i.setComponent(name);
-
             startActivity(i);
         }
     }
@@ -995,7 +1006,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 }
             }
         };
-
         t.start();
     }
 
