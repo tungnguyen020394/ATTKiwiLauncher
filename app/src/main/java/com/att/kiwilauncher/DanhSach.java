@@ -22,6 +22,7 @@ import com.att.kiwilauncher.adapter.UngDungDsAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.xuly.LunarCalendar;
+import com.att.kiwilauncher.xuly.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +30,8 @@ import java.util.Map;
 
 import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
 
-public class DanhSach extends AppCompatActivity implements View.OnClickListener{
-    RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113,reLay111,reLay112,reLay11,reLay121;
+public class DanhSach extends AppCompatActivity implements View.OnClickListener {
+    RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113, reLay111, reLay112, reLay11, reLay121;
     int didIndex = 0, main = 5, indexChuDe;
     List<ChuDe> dsChuDe;
     public static List<UngDung> dsUngDung;
@@ -38,12 +39,14 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
     static RecyclerView rcUngDung;
     public static UngDungDsAdapter ungDungAdapter;
     static PackageManager manager;
-    ImageView imageKiwi,imageCaidat;
+    ImageView imageKiwi, imageCaidat;
     ArrayList<View> listItem;
     TextView text;
+    Intent mIntentGetData;
     TextView mNgayDuongTxt, mNgayAmTxt, mTxtTinh, mTxtNhietDo;
     DatabaseHelper mDatabaseHelper;
     public static View.OnClickListener appClick;
+    List<UngDung> listUngDungChan, listUngDungLe, listUngDungChung;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +106,10 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         dsChuDe.add(cate2);
         ChuDe cate3 = new ChuDe("Trả Phí", R.drawable.ic_suckhoe, 0, false);
         dsChuDe.add(cate3);
-
+        listUngDungChan = new ArrayList<UngDung>();
+        listUngDungLe = new ArrayList<UngDung>();
+        //listUngDungChung = (List<UngDung>) mIntentGetData.getSerializableExtra("listChuDe");
+        listUngDungChung = mDatabaseHelper.getListUngDung(mDatabaseHelper.getListChuDe().get(4));
         rcChuDe.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcChuDe.setLayoutManager(layoutManager1);
@@ -124,9 +130,43 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         rcUngDung.setLayoutManager(gridLayoutManager);
         ungDungAdapter = new UngDungDsAdapter(this, dsUngDung);
         rcUngDung.setAdapter(ungDungAdapter);
-
-        ChuDeDsAdapter categoryAdapter = new ChuDeDsAdapter(this, dsChuDe,ungDungAdapter,dsUngDung);
+        final ChuDeDsAdapter categoryAdapter = new ChuDeDsAdapter(this, dsChuDe, ungDungAdapter, dsUngDung);
         rcChuDe.setAdapter(categoryAdapter);
+        rcChuDe.addOnItemTouchListener(new RecyclerItemClickListener(DanhSach.this, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                for (ChuDe cate : dsChuDe) {
+                    if (cate.isCheckedCate()) {
+                        cate.setCheckedCate(false);
+                        break;
+                    }
+                }
+                ChuDe cate = dsChuDe.get(position);
+                cate.setCheckedCate(true);
+                categoryAdapter.notifyDataSetChanged();
+                for (int i = 0; i < listUngDungChung.size(); i++) {
+                    if (i % 2 == 0) {
+                        UngDung ungDung = new UngDung();
+                        ungDung = listUngDungChung.get(i);
+                        listUngDungChan.add(ungDung);
+                    } else {
+                        UngDung ungDung = new UngDung();
+                        ungDung = listUngDungChung.get(i);
+                        listUngDungLe.add(ungDung);
+                    }
+                }
+                dsUngDung.clear();
+                if (dsChuDe.get(position).getDrawCate() == R.drawable.ic_giaitri) {
+                    dsUngDung.addAll(listUngDungChung);
+                } else if (dsChuDe.get(position).getDrawCate() == R.drawable.ic_trochoi) {
+                    dsUngDung.addAll(listUngDungChan);
+                } else if (dsChuDe.get(position).getDrawCate() == R.drawable.ic_suckhoe) {
+                    dsUngDung.addAll(listUngDungLe);
+                }
+                ungDungAdapter.notifyDataSetChanged();
+
+            }
+        }));
         Map<String, String> today = LunarCalendar.getTodayInfo();
         mNgayDuongTxt.setText("Thứ " + today.get("thu") + ", " + today.get("daySolar") + "/" + today.get("monthSolar") + "/" + today.get("yearSolar"));
         mNgayAmTxt.setText(today.get("dayLunar") + "/" + today.get("monthLunar") + " " + today.get("can") + " " + today.get("chi"));
@@ -193,11 +233,13 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
                 if (didIndex > 0 && didIndex <= main) {
                     if (didIndex != main) {
                         listItem.get(didIndex).setBackgroundResource(R.drawable.none);
-                        if (didIndex == 1) listItem.get(didIndex).setBackgroundResource(R.drawable.border_text);
+                        if (didIndex == 1)
+                            listItem.get(didIndex).setBackgroundResource(R.drawable.border_text);
                     }
                     didIndex--;
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
-                    if (didIndex == 1) listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
+                    if (didIndex == 1)
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
                 } else if (didIndex > main && didIndex <= main + dsChuDe.size()) {
                     if (didIndex == main + dsChuDe.size()) {
                         rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.none);
@@ -215,10 +257,12 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
                 text.setSelected(true);
                 if (didIndex < main - 1) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
-                    if (didIndex == 1) listItem.get(didIndex).setBackgroundResource(R.drawable.border_text);
+                    if (didIndex == 1)
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_text);
                     didIndex++;
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
-                    if (didIndex == 1) listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
+                    if (didIndex == 1)
+                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
                 } else if ((didIndex >= main - 1) && (didIndex <= main - 1 + dsChuDe.size())) {
                     if (didIndex == main - 1) {
                         listItem.get(main - 1).setBackgroundResource(R.drawable.none);
@@ -289,12 +333,12 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
                 break;
 
             case R.id.relay121_ds:
-                Toast.makeText(getApplicationContext(),text.getText(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), text.getText(), Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.relay111_ds:
-                Toast.makeText(getApplicationContext(),mNgayDuongTxt.getText(),Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),mNgayAmTxt.getText(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), mNgayDuongTxt.getText(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), mNgayAmTxt.getText(), Toast.LENGTH_SHORT).show();
                 break;
         }
 

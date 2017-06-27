@@ -53,6 +53,7 @@ import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -182,7 +183,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         dialog.setTitle("Đang tải");
         dialog.setMessage("Vui lòng đợi ứng dụng tải dữ liệu");
         mRequestToServer = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
-                mListQuangCao, cates, categoryAdapter, text, TrangChu.this, mIdCapNhat);
+                mListQuangCao, cates, categoryAdapter, text, TrangChu.this, mIdCapNhat,mListVideoAd);
         requestQueue.add(mRequestToServer);
     }
 
@@ -198,7 +199,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         } catch (Exception e) {
 
         }
-        if (DuLieu.hasInternetConnection(TrangChu.this)) {
+        if (DuLieu.hasInternetConnection(TrangChu.this)&&mListVideoAd.size()>0) {
             setVideoOrImager(mListVideoAd.get(indexVideo));
         } else {
             video.setVisibility(View.GONE);
@@ -607,6 +608,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
 //                intent.putExtra("index", indexVideo);
                 intent.putExtra("list", listvideo);
+                intent.putExtra("video", (Serializable) mListVideoAd);
 
                 // độ dài video đang chạy
                 timePause = video.getCurrentPosition();
@@ -666,6 +668,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
             case R.id.img_tv:
                 Intent i = new Intent(TrangChu.this, DanhSach.class);
+                i.putExtra("listChuDe", (Serializable) mListUngDung);
                 startActivity(i);
                 break;
 

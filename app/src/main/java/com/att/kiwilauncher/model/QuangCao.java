@@ -1,10 +1,12 @@
 package com.att.kiwilauncher.model;
 
+import java.io.Serializable;
+
 /**
  * Created by admin on 6/21/2017.
  */
 
-public class QuangCao {
+public class QuangCao implements Serializable{
     //1-video web || 3-text || 4-image web
     String loaiQuangCao;
     String noiDung;

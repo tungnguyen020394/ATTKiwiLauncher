@@ -2,11 +2,13 @@ package com.att.kiwilauncher;
 
 import android.graphics.drawable.Drawable;
 
+import java.io.Serializable;
+
 /**
  * Created by mac on 5/23/17.
  */
 
-public class UngDung {
+public class UngDung implements Serializable {
     CharSequence labelApp;
     CharSequence nameApp;
     Drawable iconApp;
