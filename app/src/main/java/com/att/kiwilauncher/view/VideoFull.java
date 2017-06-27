@@ -16,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.att.kiwilauncher.R;
@@ -288,9 +287,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.imgWeb_video:
-<<<<<<< HEAD
               //  Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
-
                 Uri uri = Uri.parse(mListAdVideo.get(indexVideo).getLinkWeb());
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 timePause = vh.video.getCurrentPosition();
@@ -298,19 +295,6 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 intent.putExtra("index", indexVideo);
                 intent.putExtra("timePause", timePause);
                 startActivity(intent);
-=======
-                try {
-                    Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
-                    intent = new Intent(Intent.ACTION_VIEW, uri);
-                    timePause = vh.video.getCurrentPosition();
-
-                    intent.putExtra("index", indexVideo);
-                    intent.putExtra("timePause", timePause);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(),"Ban khong co trinh duyet web",Toast.LENGTH_SHORT).show();
-                }
->>>>>>> origin/master
                 break;
 
             case R.id.imgExitFull:

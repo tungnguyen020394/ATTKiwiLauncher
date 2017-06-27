@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.UngDung;
+import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 
 import java.util.List;
@@ -67,14 +68,11 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
 
         public ViewHolder(View itemView) {
             super(itemView);
-<<<<<<< HEAD
-            final int pos =getAdapterPosition();
+            final int pos = getAdapterPosition();
             final DatabaseHelper mDadabaseHelper;
             mDadabaseHelper = new DatabaseHelper(context);
             size = context.getResources().getDimensionPixelSize(R.dimen._5sdp);
             size1 = context.getResources().getDimensionPixelSize(R.dimen._7sdp);
-=======
->>>>>>> origin/master
             txtApp = (TextView) itemView.findViewById(R.id.textcate_ds);
             layoutCateDs = (RelativeLayout) itemView.findViewById(R.id.layout_cate_ds);
 
