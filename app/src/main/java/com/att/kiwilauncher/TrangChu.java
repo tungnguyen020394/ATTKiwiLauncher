@@ -80,7 +80,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     static List<ChuDe> cates;
     public static List<List<UngDung>> listApps;
     public static List<UngDung> listAppBottom;
-    ArrayList<String> listvideo;
+  //  ArrayList<String> listvideo;
     public static View.OnClickListener appClick;
     public static final int REQUEST_SETTINGS = 101;
     public static int demdsApp = 0;
@@ -123,6 +123,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     private SimpleExoPlayer player;
     private TrackSelector trackSelector;
     private StringRequest mRequestToServer;
+    Runnable mRunableCheckInterNet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -212,6 +213,17 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mRequestToServer = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
                 mListQuangCao, cates, categoryAdapter, text, TrangChu.this, mIdCapNhat,mListVideoAd);
         requestQueue.add(mRequestToServer);
+        mRunableCheckInterNet=new Runnable() {
+            @Override
+            public void run() {
+                if(DuLieu.hasInternetConnection(TrangChu.this)&&mListVideoAd.size()>0){
+                    setVideoOrImager(mListVideoAd.get(indexVideo));
+                    handler.removeCallbacks(mRunableCheckInterNet);
+                }else{
+                    handler.postDelayed(mRunableCheckInterNet,10000);
+                }
+            }
+        };
     }
 
     @Override
@@ -232,8 +244,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             video.setVisibility(View.GONE);
             imgView.setVisibility(View.VISIBLE);
             imgView.setImageResource(R.drawable.img);
+<<<<<<< HEAD
             Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
 
+=======
+
+            handler.post(mRunableCheckInterNet);
+>>>>>>> 00bd3bd73eacb442aa7b494ff31e3848696c4d19
         }
     }
 
@@ -244,7 +261,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mDatabaseHelper.checkDatabase(this);
 
         listItem = new ArrayList<>();
-        listvideo = new ArrayList<>();
+    //    listvideo = new ArrayList<>();
         mListVideoAd = new ArrayList<>();
         listAppBottom = new ArrayList<>();
 
@@ -603,7 +620,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             case R.id.imgFull:
                 intent = new Intent(getBaseContext(), VideoFull.class);
 //                intent.putExtra("index", indexVideo);
-                intent.putExtra("list", listvideo);
+           //     intent.putExtra("list", listvideo);
                 intent.putExtra("video", (Serializable) mListVideoAd);
 
                 // độ dài video đang chạy
@@ -835,7 +852,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             listItem.add(rcCategory.getChildAt(soChuDe));
             soChuDe++;
         }
-
         listItem.add(imageMinus);
 
         int soUngDung = 0;
@@ -873,11 +889,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             ComponentName name = new ComponentName(activity.applicationInfo.packageName,
                     activity.name);
             Intent i = new Intent(Intent.ACTION_MAIN);
-
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
                     Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
             i.setComponent(name);
-
             startActivity(i);
         }
     }
@@ -968,9 +982,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                    if (indexVideo == mListVideoAd.size() - 1) indexVideo = 0;
                     else indexVideo++;
-                    video.setVideoURI(Uri.parse(listvideo.get(indexVideo)));
+                    video.setVideoURI(Uri.parse(mListVideoAd.get(indexVideo).getLinkVideo()));
                     video.start();
                 }
             });
@@ -997,14 +1011,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 }
             }
         };
-
         t.start();
     }
 
     private Runnable nextvideo = new Runnable() {
         @Override
         public void run() {
-            if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+            if (indexVideo == mListVideoAd.size() - 1) indexVideo = 0;
             else indexVideo++;
             setVideoOrImager(mListVideoAd.get(indexVideo));
         }
