@@ -175,7 +175,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
 
         SharedPreferences sharedPreferencesThoiTiet = getSharedPreferences("thoitiet", MODE_PRIVATE);
         mTxtTinh.setText(sharedPreferencesThoiTiet.getString("tinh", "Hà nội"));
-        mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25") + " °C");
+        mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25") + " ° C");
     }
 
     public void addMove() {

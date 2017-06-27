@@ -13,6 +13,7 @@ import com.att.kiwilauncher.UngDung;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -75,25 +76,39 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
             size1 = context.getResources().getDimensionPixelSize(R.dimen._7sdp);
             txtApp = (TextView) itemView.findViewById(R.id.textcate_ds);
             layoutCateDs = (RelativeLayout) itemView.findViewById(R.id.layout_cate_ds);
+            //
 
-//                    //Toast.makeText(this, listApps.size() + "s" + listApps.get(0).size(), Toast.LENGTH_SHORT).show();
-//                    TrangChu.listAppBottom.clear();
-//                    if (listApps.size()>0){
-//                        TrangChu.listAppBottom.addAll(listApps.get(TrangChu.demdsApp));
-//                    }else{
-//                        TrangChu.listAppBottom.clear();
-//                    }
-//                    TrangChu.listapp.notifyDataSetChanged();
-//
-//                }
-//            });
-//
-//            layoutCate1.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    layoutCate.callOnClick();
-//                }
-//            });
+            layoutCateDs.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    RemoveCheck();
+                    ChuDe cate = cates.get(getPosition());
+                    cate.setCheckedCate(true);
+                    notifyDataSetChanged();
+                    List<UngDung> listUngDungChan = new ArrayList<UngDung>();
+                    List<UngDung> listUngDungLe = new ArrayList<UngDung>();
+                    List<UngDung> listUngDungChung = mDadabaseHelper.getListUngDung(mDadabaseHelper.getListChuDe().get(4));
+                    for (int i = 0; i < listUngDungChung.size(); i++) {
+                        UngDung ungDung = listUngDungChung.get(i);
+                        if (i % 2 == 0) {
+
+                            listUngDungChan.add(ungDung);
+                        } else {
+                            listUngDungLe.add(ungDung);
+                        }
+                    }
+                    dsUngDung.clear();
+                    if (cates.get(getPosition()).getDrawCate() == R.drawable.ic_giaitri) {
+                        dsUngDung.addAll(listUngDungChung);
+                    } else if (cates.get(getPosition()).getDrawCate() == R.drawable.ic_trochoi) {
+                        dsUngDung.addAll(listUngDungChan);
+                    } else if (cates.get(getPosition()).getDrawCate() == R.drawable.ic_suckhoe) {
+                        dsUngDung.addAll(listUngDungLe);
+                    }
+                    ungDungAdapter.notifyDataSetChanged();
+
+                }
+            });
         }
     }
 
@@ -106,4 +121,5 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
         }
     }
 }
+
 
