@@ -82,13 +82,11 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
                     List<UngDung> listUngDungLe = new ArrayList<UngDung>();
                     List<UngDung> listUngDungChung = mDadabaseHelper.getListUngDung(mDadabaseHelper.getListChuDe().get(4));
                     for (int i = 0; i < listUngDungChung.size(); i++) {
+                        UngDung ungDung = listUngDungChung.get(i);
                         if (i % 2 == 0) {
-                            UngDung ungDung = new UngDung();
-                            ungDung = listUngDungChung.get(i);
+
                             listUngDungChan.add(ungDung);
                         } else {
-                            UngDung ungDung = new UngDung();
-                            ungDung = listUngDungChung.get(i);
                             listUngDungLe.add(ungDung);
                         }
                     }
@@ -105,24 +103,7 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
                 }
             });
 
-//                    //Toast.makeText(this, listApps.size() + "s" + listApps.get(0).size(), Toast.LENGTH_SHORT).show();
-//                    TrangChu.listAppBottom.clear();
-//                    if (listApps.size()>0){
-//                        TrangChu.listAppBottom.addAll(listApps.get(TrangChu.demdsApp));
-//                    }else{
-//                        TrangChu.listAppBottom.clear();
-//                    }
-//                    TrangChu.listapp.notifyDataSetChanged();
-//
-//                }
-//            });
-//
-//            layoutCate1.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    layoutCate.callOnClick();
-//                }
-//            });
+
         }
     }
 

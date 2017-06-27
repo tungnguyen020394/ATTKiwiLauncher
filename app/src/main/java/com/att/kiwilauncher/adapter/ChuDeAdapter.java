@@ -74,8 +74,6 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            final DatabaseHelper mDadabaseHelper;
-            mDadabaseHelper = new DatabaseHelper(context);
             imgApp = (ImageView) itemView.findViewById(R.id.image_category);
             txtApp = (TextView) itemView.findViewById(R.id.txt_catego);
             layoutCate1 = (RelativeLayout) itemView.findViewById(R.id.layout_category1);
