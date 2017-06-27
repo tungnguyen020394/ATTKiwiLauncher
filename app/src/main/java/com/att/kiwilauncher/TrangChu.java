@@ -80,7 +80,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     static List<ChuDe> cates;
     public static List<List<UngDung>> listApps;
     public static List<UngDung> listAppBottom;
-  //  ArrayList<String> listvideo;
+    //  ArrayList<String> listvideo;
     public static View.OnClickListener appClick;
     public static final int REQUEST_SETTINGS = 101;
     public static int demdsApp = 0;
@@ -211,16 +211,16 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         dialog.setTitle("Đang tải");
         dialog.setMessage("Vui lòng đợi ứng dụng tải dữ liệu");
         mRequestToServer = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
-                mListQuangCao, cates, categoryAdapter, text, TrangChu.this, mIdCapNhat,mListVideoAd);
+                mListQuangCao, cates, categoryAdapter, text, TrangChu.this, mIdCapNhat, mListVideoAd);
         requestQueue.add(mRequestToServer);
-        mRunableCheckInterNet=new Runnable() {
+        mRunableCheckInterNet = new Runnable() {
             @Override
             public void run() {
-                if(DuLieu.hasInternetConnection(TrangChu.this)&&mListVideoAd.size()>0){
+                if (DuLieu.hasInternetConnection(TrangChu.this) && mListVideoAd.size() > 0) {
                     setVideoOrImager(mListVideoAd.get(indexVideo));
                     handler.removeCallbacks(mRunableCheckInterNet);
-                }else{
-                    handler.postDelayed(mRunableCheckInterNet,10000);
+                } else {
+                    handler.postDelayed(mRunableCheckInterNet, 10000);
                 }
             }
         };
@@ -238,13 +238,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         } catch (Exception e) {
 
         }
-        if (DuLieu.hasInternetConnection(TrangChu.this)&&mListVideoAd.size()>0) {
+        if (DuLieu.hasInternetConnection(TrangChu.this) && mListVideoAd.size() > 0) {
             setVideoOrImager(mListVideoAd.get(indexVideo));
         } else {
             video.setVisibility(View.GONE);
             imgView.setVisibility(View.VISIBLE);
             imgView.setImageResource(R.drawable.img);
-
             handler.post(mRunableCheckInterNet);
         }
     }
@@ -256,7 +255,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mDatabaseHelper.checkDatabase(this);
 
         listItem = new ArrayList<>();
-    //    listvideo = new ArrayList<>();
+        //    listvideo = new ArrayList<>();
         mListVideoAd = new ArrayList<>();
         listAppBottom = new ArrayList<>();
 
@@ -264,12 +263,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mListUngDung = new ArrayList<>();
         mListQuangCao = new ArrayList<>();
         mListTheLoaiUngDung = new ArrayList<>();
-        mAllListMap = new HashMap<>();
+        //  mAllListMap = new HashMap<>();
 
-        mListQuangCao = mAllListMap.get("quangcao");
+       /* mListQuangCao = mAllListMap.get("quangcao");
         cates = mAllListMap.get("theloai");
         mListUngDung = mAllListMap.get("ungdung");
-        mListTheLoaiUngDung = mAllListMap.get("theloaiungdung");
+        mListTheLoaiUngDung = mAllListMap.get("theloaiungdung");*/
 
         mListTheLoaiUngDung = mDatabaseHelper.getListTheLoaiUngDung();
         mListUngDung = mDatabaseHelper.getListUngDungV2();
@@ -615,7 +614,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             case R.id.imgFull:
                 intent = new Intent(getBaseContext(), VideoFull.class);
 //                intent.putExtra("index", indexVideo);
-           //     intent.putExtra("list", listvideo);
+                //     intent.putExtra("list", listvideo);
                 intent.putExtra("video", (Serializable) mListVideoAd);
 
                 // độ dài video đang chạy
@@ -768,7 +767,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     intent = new Intent(Intent.ACTION_VIEW, uri1);
                     startActivity(intent);
                 } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(),"Khong ton tai link",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Khong ton tai link", Toast.LENGTH_SHORT).show();
                     break;
                 }
                 break;
