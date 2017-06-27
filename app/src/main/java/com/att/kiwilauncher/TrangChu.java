@@ -88,6 +88,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     private ChuDeAdapter categoryAdapter;
     private HashMap<String, List> mAllListMap;
     private List<QuangCao> mListQuangCao;
+    private List<QuangCao> mListVideoAd;
     public static List<UngDung> mListUngDung;
     public static List<TheLoaiUngDung> mListTheLoaiUngDung;
     LinearLayout linNear1;
@@ -109,6 +110,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     private String mTextQC = "Hãy đến với các sản phẩm chất lượng nhất từ chúng tôi";
     private String todayFormated = "";
     private String idThoiTiet = "24";
+    private String mIdCapNhat = "0";
     private DatabaseHelper mDatabaseHelper;
     private ThoiTiet mThoiTiet;
     private RequestQueue requestQueue;
@@ -165,6 +167,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void loadData() {
+        mIdCapNhat = mDatabaseHelper.getIdCapNhat();
         // Load Category
         rcCategory.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -206,9 +209,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         dialog.setTitle("Đang tải");
         dialog.setMessage("Vui lòng đợi ứng dụng tải dữ liệu");
         mRequestToServer = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
-                mListQuangCao, cates, categoryAdapter, text, TrangChu.this);
+                mListQuangCao, cates, categoryAdapter, text, TrangChu.this, mIdCapNhat);
         requestQueue.add(mRequestToServer);
-
     }
 
     @Override
@@ -217,16 +219,14 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         initNetworkConnectDialog();
         ibtPlay.setImageResource(R.drawable.ic_pause);
         playing = true;
-
         try {
             ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
             audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
         } catch (Exception e) {
 
         }
-
         if (DuLieu.hasInternetConnection(TrangChu.this)) {
-            setVideoOrImager(listvideo.get(indexVideo));
+            setVideoOrImager(mListVideoAd.get(indexVideo));
         } else {
             video.setVisibility(View.GONE);
             imgView.setVisibility(View.VISIBLE);
@@ -243,26 +243,31 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
         listItem = new ArrayList<>();
         listvideo = new ArrayList<>();
+        mListVideoAd = new ArrayList<>();
         listAppBottom = new ArrayList<>();
         cates = new ArrayList<>();
         mListUngDung = new ArrayList<>();
         mListQuangCao = new ArrayList<>();
         mListTheLoaiUngDung = new ArrayList<>();
         mAllListMap = new HashMap<>();
-        mAllListMap = mDatabaseHelper.getAllList();
 
-        listvideo.add(Define.URL_LINK_IMG02);
-        listvideo.add(Define.URL_LINK_BACK);
         mListQuangCao = mAllListMap.get("quangcao");
         cates = mAllListMap.get("theloai");
         mListUngDung = mAllListMap.get("ungdung");
         mListTheLoaiUngDung = mAllListMap.get("theloaiungdung");
+        mListTheLoaiUngDung = mDatabaseHelper.getListTheLoaiUngDung();
+        mListUngDung = mDatabaseHelper.getListUngDungV2();
+        mListQuangCao = mDatabaseHelper.getListQuangCao();
+        cates = mDatabaseHelper.getListChuDe();
+
+        mListVideoAd.addAll(DuLieu.getAdVideoFromList(mListQuangCao));
+       /* listvideo.add(Define.URL_LINK_IMG02);
+        listvideo.add(Define.URL_LINK_BACK);*/
         // reLaytive layout
         reLay1 = (RelativeLayout) findViewById(R.id.relay1);
         reLay2 = (RelativeLayout) findViewById(R.id.relay2);
         reLay3 = (RelativeLayout) findViewById(R.id.relay3);
         reLay4 = (RelativeLayout) findViewById(R.id.relay4);
-
         reLay13 = (RelativeLayout) findViewById(R.id.relay13);
         reLay12 = (RelativeLayout) findViewById(R.id.relay12);
         reLay11 = (RelativeLayout) findViewById(R.id.relay11);
@@ -280,7 +285,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         reLay215 = (RelativeLayout) findViewById(R.id.relay215);
         reLay216 = (RelativeLayout) findViewById(R.id.relay216);
         reLay2221 = (RelativeLayout) findViewById(R.id.relay2221);
-
         //end Layout
 
         rcCategory = (RecyclerView) findViewById(R.id.recycler1);
@@ -636,16 +640,16 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
             case R.id.imgNext:
                 handler.removeCallbacks(nextvideo);
-                if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                if (indexVideo == mListVideoAd.size() - 1) indexVideo = 0;
                 else indexVideo++;
-                setVideoOrImager(listvideo.get(indexVideo));
+                setVideoOrImager(mListVideoAd.get(indexVideo));
                 break;
 
             case R.id.imgBack:
                 handler.removeCallbacks(nextvideo);
-                if (indexVideo == 0) indexVideo = (listvideo.size() - 1);
+                if (indexVideo == 0) indexVideo = (mListVideoAd.size() - 1);
                 else indexVideo--;
-                setVideoOrImager(listvideo.get(indexVideo));
+                setVideoOrImager(mListVideoAd.get(indexVideo));
                 break;
 
             // main click
@@ -769,7 +773,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     indexVideo = data.getIntExtra("index", 0);
 //                    setVideoOrImager(listvideo.get(indexVideo));
                 } else if (requestCode == Define.NUMBER_RESULT_WEB) {
-                    setVideoOrImager(listvideo.get(indexVideo));
+                    //  setVideoOrImager(listvideo.get(indexVideo));
+                    setVideoOrImager(mListVideoAd.get(indexVideo));
                 }
                 break;
 
@@ -830,7 +835,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         for (UngDung app : listApps.get(0)) {
             listItem.add(rcApp.getChildAt(soUngDung));
         }
-
         listItem.add(imagePlus);
     }
 
@@ -871,10 +875,14 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-    private void setVideoOrImager(String check) {
-
-        position = checkLink.CheckLinkURL(check);
-
+    private void setVideoOrImager(QuangCao quangCao) {
+        // position = checkLink.CheckLinkURL(check);
+        if (quangCao.getLoaiQuangCao().equals("1")) {
+            position = 2;
+        } else {
+            position = 1;
+        }
+        // image type
         if (position == 1) {
             if (didIndex > main && didIndex < main + bonusmain) {
                 ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
@@ -892,16 +900,15 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
             tvTimeEnd.setText("   ");
             Glide.with(this)
-                    .load(listvideo.get(indexVideo))
+                    .load(mListVideoAd.get(indexVideo).getLinkImage())
                     .into(imgView);
 
-            handler.postDelayed(nextvideo, 5000);
+            handler.postDelayed(nextvideo, Integer.parseInt(quangCao.getTime()));
         } else if (position == 2) {
-
+            //video type
             try {
                 playing = true;
                 ibtPlay.setImageResource(R.drawable.ic_pause);
-
                 imgView.setVisibility(View.GONE);
                 video.setVisibility(View.VISIBLE);
                 ibtPlay.setVisibility(View.VISIBLE);
@@ -912,13 +919,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 ibtBack.setVisibility(View.VISIBLE);
 
                 // đọ dài của video
-                mp = MediaPlayer.create(this, Uri.parse(check));
+                mp = MediaPlayer.create(this, Uri.parse(quangCao.getLinkVideo()));
                 long duration = mp.getDuration();
                 mp.release();
 
                 tvTimeEnd.setText(checkLink.stringForTime(duration));
                 updateTime(tvTimeStart);
-                video.setVideoPath(listvideo.get(indexVideo));
+                video.setVideoPath(mListVideoAd.get(indexVideo).getLinkVideo());
 
                 video.start();
                 video.seekTo(timePause);
@@ -926,21 +933,20 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
-                        if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                        if (indexVideo == mListVideoAd.size() - 1) indexVideo = 0;
                         else indexVideo++;
 
-                        setVideoOrImager(listvideo.get(indexVideo));
+                        setVideoOrImager(mListVideoAd.get(indexVideo));
                         video.clearFocus();
                     }
                 });
             } catch (Exception e) {
 
                 e.printStackTrace();
-                if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                if (indexVideo == mListVideoAd.size() - 1) indexVideo = 0;
                 else indexVideo++;
-                setVideoOrImager(listvideo.get(indexVideo));
+                setVideoOrImager(mListVideoAd.get(indexVideo));
             }
-
 
         } else if (position == 3) {
             imgView.setVisibility(View.GONE);
@@ -993,7 +999,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         public void run() {
             if (indexVideo == listvideo.size() - 1) indexVideo = 0;
             else indexVideo++;
-            setVideoOrImager(listvideo.get(indexVideo));
+            setVideoOrImager(mListVideoAd.get(indexVideo));
         }
     };
 

@@ -10,6 +10,8 @@ public class ChuDe {
     int drawCate;
     //id thể loại
     int indexCate;
+    //link icon
+    String iconLink;
     // chủ đề được chọn hay không ?
     boolean checkedCate;
 
@@ -18,9 +20,25 @@ public class ChuDe {
         this.drawCate = drawCate;
         this.indexCate = indexCate;
         this.checkedCate = checkedCate;
+
     }
 
-    public ChuDe() {
+    public ChuDe(String nameCate, int drawCate, int indexCate, String iconLink, boolean checkedCate) {
+        this.nameCate = nameCate;
+        this.drawCate = drawCate;
+        this.indexCate = indexCate;
+        this.iconLink = iconLink;
+        this.checkedCate = checkedCate;
+    }
+
+    public ChuDe() {}
+
+    public String getIconLink() {
+        return iconLink;
+    }
+
+    public void setIconLink(String iconLink) {
+        this.iconLink = iconLink;
     }
 
     public boolean isCheckedCate() {

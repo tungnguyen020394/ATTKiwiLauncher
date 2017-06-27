@@ -263,7 +263,15 @@ public class DuLieu {
         }
         return textAd;
     }
-
+    public static List<QuangCao> getAdVideoFromList(List<QuangCao> mListQuangCao){
+        List<QuangCao> listAD = new ArrayList<>();
+        for (QuangCao quangCao : mListQuangCao) {
+            if (quangCao.getLoaiQuangCao().equals("1")||quangCao.getLoaiQuangCao().equals("4")) {
+                listAD.add(quangCao);
+            }
+        }
+        return listAD;
+    }
     /*public void hanldeDirectory(String dir) {
         File f = new File(this.destination + dir);
         if (!f.isDirectory()) {

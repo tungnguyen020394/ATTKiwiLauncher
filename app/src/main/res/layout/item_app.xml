@@ -8,8 +8,8 @@
                 android:padding="@dimen/_5sdp">
     <ImageView
         android:id="@+id/image_app"
-        android:layout_width="@dimen/_48sdp"
-        android:layout_height="@dimen/_48sdp"
+        android:layout_width="@dimen/_46sdp"
+        android:layout_height="@dimen/_46sdp"
         android:scaleType="fitXY"
         tool:src="@drawable/img_kara" />
 </RelativeLayout>
