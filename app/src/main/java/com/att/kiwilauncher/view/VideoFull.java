@@ -20,6 +20,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.att.kiwilauncher.R;
+import com.att.kiwilauncher.model.QuangCao;
 import com.att.kiwilauncher.util.CheckLink;
 import com.bumptech.glide.Glide;
 
@@ -34,7 +35,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     int indexVideo = 0, position;
     MediaPlayer mp;
     Handler handler;
-    ArrayList<String> listvideo;
+    //ArrayList<String> listvideo;
     List<View> listItem;
     CheckLink checkLink;
     ViewHoder vh;
@@ -45,6 +46,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     AudioManager audioManager;
+    List<QuangCao> mListAdVideo;
 
     @Override
     @SuppressLint("NewApi")
@@ -107,11 +109,13 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
     private void initVideo() {
         vh = new ViewHoder();
-        listvideo = new ArrayList<>();
+        mListAdVideo=new ArrayList<>();
+       // listvideo = new ArrayList<>();
 //        list = new ArrayList<>();
         checkLink = new CheckLink();
         intent = getIntent();
-        listvideo = intent.getStringArrayListExtra("list");
+      //  listvideo = intent.getStringArrayListExtra("list");
+            mListAdVideo = (List<QuangCao>) intent.getSerializableExtra("video");
         handler = new Handler();
 //        volume = new Volume();
 
@@ -156,9 +160,13 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         }
     }
 
-    private void setVideoOrImager(String check) {
-
-        position = checkLink.CheckLinkURL(check);
+    private void setVideoOrImager(QuangCao quangCao) {
+        if (quangCao.getLoaiQuangCao().equals("1")) {
+            position = 2;
+        } else {
+            position = 1;
+        }
+      //  position = checkLink.CheckLinkURL(check);
         if (position == 1) {
             if (didIndex > 0 && didIndex < 6) {
                 ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
@@ -176,11 +184,10 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
             vh.tvTimeEndVideo.setText("   ");
             Glide.with(this)
-                    .load(listvideo.get(indexVideo))
+                    .load(mListAdVideo.get(indexVideo).getLinkImage())
                     .into(vh.imgView);
 
-            handler.postDelayed(nextvideo, 5000);
-
+            handler.postDelayed(nextvideo, Integer.parseInt(quangCao.getTime()));
         } else if (position == 2) {
             playing = true;
             vh.ibtPlayVideo.setImageResource(R.drawable.ic_pause);
@@ -195,7 +202,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             vh.ibtNextVideo.setVisibility(View.VISIBLE);
 
             // đọ dài của video
-            mp = MediaPlayer.create(this, Uri.parse(check));
+            mp = MediaPlayer.create(this, Uri.parse(quangCao.getLinkVideo()));
             int duration = mp.getDuration();
             mp.release();
 
@@ -203,27 +210,26 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             updateTime(vh.tvTimeStartVideo);
 
             try {
-                vh.video.setVideoPath(listvideo.get(indexVideo));
-
+                vh.video.setVideoPath(mListAdVideo.get(indexVideo).getLinkVideo());
                 vh.video.start();
                 vh.video.seekTo(timePause);
                 timePause = 0;
             } catch (Exception e) {
 
                 e.printStackTrace();
-                if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                if (indexVideo == mListAdVideo.size() - 1) indexVideo = 0;
                 else indexVideo++;
-                setVideoOrImager(listvideo.get(indexVideo));
+                setVideoOrImager(mListAdVideo.get(indexVideo));
             }
 
 
             vh.video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-                    if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                    if (indexVideo == mListAdVideo.size() - 1) indexVideo = 0;
                     else indexVideo++;
 
-                    setVideoOrImager(listvideo.get(indexVideo));
+                    setVideoOrImager(mListAdVideo.get(indexVideo));
                 }
             });
         } else if (position == 3) {
@@ -233,7 +239,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    vh.video.setVideoURI(Uri.parse(listvideo.get(indexVideo)));
+                    vh.video.setVideoURI(Uri.parse(mListAdVideo.get(indexVideo).getLinkVideo()));
                     vh.video.start();
 
                 }
@@ -251,7 +257,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
         timePause = intent.getIntExtra("timePause", 0);
         indexVideo = intent.getIntExtra("index", 0);
 
-        setVideoOrImager(listvideo.get(indexVideo));
+        setVideoOrImager(mListAdVideo.get(indexVideo));
     }
 
     private void updateTime(final TextView tv) {
@@ -282,6 +288,17 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.imgWeb_video:
+<<<<<<< HEAD
+              //  Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
+
+                Uri uri = Uri.parse(mListAdVideo.get(indexVideo).getLinkWeb());
+                intent = new Intent(Intent.ACTION_VIEW, uri);
+                timePause = vh.video.getCurrentPosition();
+
+                intent.putExtra("index", indexVideo);
+                intent.putExtra("timePause", timePause);
+                startActivity(intent);
+=======
                 try {
                     Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
                     intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -293,6 +310,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(),"Ban khong co trinh duyet web",Toast.LENGTH_SHORT).show();
                 }
+>>>>>>> origin/master
                 break;
 
             case R.id.imgExitFull:
@@ -340,17 +358,17 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
 
             case R.id.imgNext_video:
                 handler.removeCallbacks(nextvideo);
-                if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                if (indexVideo == mListAdVideo.size() - 1) indexVideo = 0;
                 else indexVideo++;
-                setVideoOrImager(listvideo.get(indexVideo));
+                setVideoOrImager(mListAdVideo.get(indexVideo));
                 break;
             case R.id.imgBack_video:
                 handler.removeCallbacks(nextvideo);
                 if (indexVideo == 0) {
-                    indexVideo = listvideo.size() - 1;
+                    indexVideo = mListAdVideo.size() - 1;
                 } else indexVideo--;
 
-                setVideoOrImager(listvideo.get(indexVideo));
+                setVideoOrImager(mListAdVideo.get(indexVideo));
                 break;
         }
 
@@ -428,9 +446,9 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
     private Runnable nextvideo = new Runnable() {
         @Override
         public void run() {
-            if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+            if (indexVideo == mListAdVideo.size() - 1) indexVideo = 0;
             else indexVideo++;
-            setVideoOrImager(listvideo.get(indexVideo));
+            setVideoOrImager(mListAdVideo.get(indexVideo));
         }
     };
 }

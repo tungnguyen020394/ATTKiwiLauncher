@@ -60,7 +60,7 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
             holder.imgApp.setColorFilter(context.getResources().getColor(R.color.colorcatenone));
         }
        // holder.imgApp.setImageResource(cates.get(position).getDrawCate());
-        Glide.with(context).load(cates.get(position).getIconLink()).into(holder.imgApp);
+        Glide.with(context).load(DuLieu.URL_IMAGE+"/"+cates.get(position).getIconLink()).into(holder.imgApp);
         holder.txtApp.setText(cates.get(position).getNameCate());
         holder.layoutCate.setOnClickListener(new View.OnClickListener() {
             @Override

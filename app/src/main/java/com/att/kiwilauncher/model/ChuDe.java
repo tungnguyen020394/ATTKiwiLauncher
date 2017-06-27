@@ -1,10 +1,12 @@
 package com.att.kiwilauncher.model;
 
+import java.io.Serializable;
+
 /**
  * Created by mac on 5/23/17.
  */
 
-public class ChuDe {
+public class ChuDe implements Serializable{
     String nameCate;
     // ảnh thể loại
     int drawCate;

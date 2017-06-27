@@ -2,8 +2,8 @@ package com.att.kiwilauncher.xuly;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.widget.TextView;
 import android.content.SharedPreferences;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -41,7 +41,7 @@ import static com.att.kiwilauncher.TrangChu.mListUngDung;
 public class RequestToServer {
     public static StringRequest createRequestAndUpdate(final ProgressDialog dialog, final DatabaseHelper mDatabaseHelper, final HashMap<String, List> mAllListMap,
                                                        final List<QuangCao> mListQuangCao, final List<ChuDe> cates, final ChuDeAdapter categoryAdapter,
-                                                       final TextView text, final Context context, final String idCapNhat) {
+                                                       final TextView text, final Context context, final String idCapNhat, final List<QuangCao> mListVideoAd) {
 
         dialog.show();
 
@@ -154,6 +154,9 @@ public class RequestToServer {
                 List<UngDung> checkedList;
                 checkedList = mDatabaseHelper.getListUngDung(cates.get(0));
                 List<UngDung> tmpList = new ArrayList<>();
+                mListVideoAd.clear();
+                mListVideoAd.addAll(DuLieu.getAdVideoFromList(mListQuangCao));
+               // Toast.makeText(context,mListVideoAd.size()+"s",Toast.LENGTH_SHORT).show();
                 for (int j = 1; j <= checkedList.size(); j++) {
                     UngDung ungDung = new UngDung();
                     ungDung.setNameApp(checkedList.get(j - 1).getNameApp());
