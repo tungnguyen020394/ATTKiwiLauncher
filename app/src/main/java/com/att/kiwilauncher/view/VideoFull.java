@@ -300,6 +300,7 @@ public class VideoFull extends AppCompatActivity implements View.OnClickListener
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(),"Ban khong co trinh duyet web",Toast.LENGTH_SHORT).show();
                 }
+
                 break;
 
             case R.id.imgExitFull:
