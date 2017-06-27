@@ -71,8 +71,8 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
             final int pos =getAdapterPosition();
             final DatabaseHelper mDadabaseHelper;
             mDadabaseHelper = new DatabaseHelper(context);
-            size = context.getResources().getDimensionPixelSize(R.dimen._3sdp);
-            size1 = context.getResources().getDimensionPixelSize(R.dimen._6sdp);
+            size = context.getResources().getDimensionPixelSize(R.dimen._5sdp);
+            size1 = context.getResources().getDimensionPixelSize(R.dimen._7sdp);
             txtApp = (TextView) itemView.findViewById(R.id.textcate_ds);
             layoutCateDs = (RelativeLayout) itemView.findViewById(R.id.layout_cate_ds);
             layoutCateDs.setOnClickListener(new View.OnClickListener() {

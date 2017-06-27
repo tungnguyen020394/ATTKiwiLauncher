@@ -899,7 +899,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             tvTime.setVisibility(View.GONE);
             ibtNext.setVisibility(View.GONE);
             ibtBack.setVisibility(View.GONE);
-            
+
             tvTimeEnd.setText("   ");
             Glide.with(this)
                     .load(mListVideoAd.get(indexVideo).getLinkImage())
