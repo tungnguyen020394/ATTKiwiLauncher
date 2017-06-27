@@ -41,7 +41,7 @@ import static com.att.kiwilauncher.TrangChu.mListUngDung;
 public class RequestToServer {
     public static StringRequest createRequestAndUpdate(final ProgressDialog dialog, final DatabaseHelper mDatabaseHelper, final HashMap<String, List> mAllListMap,
                                                        final List<QuangCao> mListQuangCao, final List<ChuDe> cates, final ChuDeAdapter categoryAdapter,
-                                                       final TextView text, final Context context) {
+                                                       final TextView text, final Context context, final String idCapNhat) {
 
         dialog.show();
 
@@ -130,16 +130,20 @@ public class RequestToServer {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                mAllListMap.clear();
-                mAllListMap.putAll(mDatabaseHelper.getAllList());
+                /*mAllListMap.clear();
+                mAllListMap.putAll(mDatabaseHelper.getAllList());*/
                 mListQuangCao.clear();
-                mListQuangCao.addAll(mAllListMap.get("quangcao"));
+              //  mListQuangCao.addAll(mAllListMap.get("quangcao"));
+                mListQuangCao.addAll(mDatabaseHelper.getListQuangCao());
                 mListUngDung.clear();
-                mListUngDung.addAll(mAllListMap.get("ungdung"));
+               // mListUngDung.addAll(mAllListMap.get("ungdung"));
+                mListUngDung.addAll(mDatabaseHelper.getListUngDungV2());
                 mListTheLoaiUngDung.clear();
-                mListTheLoaiUngDung.addAll(mAllListMap.get("theloaiungdung"));
+               // mListTheLoaiUngDung.addAll(mAllListMap.get("theloaiungdung"));
+                mListTheLoaiUngDung.addAll(mDatabaseHelper.getListTheLoaiUngDung());
                 cates.clear();
-                cates.addAll(mAllListMap.get("theloai"));
+               // cates.addAll(mAllListMap.get("theloai"));
+                cates.addAll(mDatabaseHelper.getListChuDe());
                 dialog.dismiss();
                 if (!DuLieu.getAdTextFromList(mListQuangCao).equals("")){
                     text.setText(DuLieu.getAdTextFromList(mListQuangCao));
@@ -175,7 +179,8 @@ public class RequestToServer {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> values = new HashMap<>();
-                values.put("capnhatid", (String) mAllListMap.get("capnhat").get(0));
+            //    values.put("capnhatid", (String) mAllListMap.get("capnhat").get(0));
+                values.put("capnhatid", idCapNhat);
                 return values;
             }
         };

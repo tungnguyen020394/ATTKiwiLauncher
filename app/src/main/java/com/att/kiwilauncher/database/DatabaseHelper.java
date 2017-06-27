@@ -220,6 +220,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return finalListMap;
     }
+
     // lấy danh sách tất cả các thể loại cửa ứng dụng
     public List<TheLoai> getListTheLoai() {
         TheLoai theLoai;
@@ -256,12 +257,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         openDatabase();
         Cursor cursor = mDatabase.rawQuery("SELECT id,ten,soluong,icon FROM theloai", null);
         if (cursor.moveToFirst()) {
-            if (cursor.getString(3).equals("ic_tatca")) {
+            if (cursor.getString(0).equals("1")) {
                 if (cursor.moveToNext()) {
                     chuDe = new ChuDe();
                     chuDe.setCheckedCate(true);
                     chuDe.setIndexCate(cursor.getInt(0));
-                    chuDe.setDrawCate(listIcon.get(cursor.getString(3)));
+                    //chuDe.setDrawCate(listIcon.get(cursor.getString(3)));
+                    chuDe.setIconLink(cursor.getString(3));
                     chuDe.setNameCate(cursor.getString(1));
                     chuDeList.add(chuDe);
                 }
@@ -269,7 +271,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 chuDe = new ChuDe();
                 chuDe.setCheckedCate(true);
                 chuDe.setIndexCate(cursor.getInt(0));
-                chuDe.setDrawCate(listIcon.get(cursor.getString(3)));
+                //chuDe.setDrawCate(listIcon.get(cursor.getString(3)));
+                chuDe.setIconLink(cursor.getString(3));
                 chuDe.setNameCate(cursor.getString(1));
                 chuDeList.add(chuDe);
             }
@@ -278,13 +281,122 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             chuDe = new ChuDe();
             chuDe.setCheckedCate(false);
             chuDe.setIndexCate(cursor.getInt(0));
-            chuDe.setDrawCate(listIcon.get(cursor.getString(3)));
+            //chuDe.setDrawCate(listIcon.get(cursor.getString(3)));
+            chuDe.setIconLink(cursor.getString(3));
             chuDe.setNameCate(cursor.getString(1));
             chuDeList.add(chuDe);
         }
         cursor.close();
         closeDatabase();
         return chuDeList;
+    }
+
+    // lấy danh sách tất cả các ứng dụng
+    public List<UngDung> getListUngDungV2() {
+        List<UngDung> listUngDung = new ArrayList<>();
+        openDatabase();
+        Cursor cursor;
+        cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.icon FROM ungdung", null);
+
+        if (cursor.moveToFirst()) {
+            UngDung ungDungNew = new UngDung();
+            ungDungNew.setId(cursor.getString(0));
+            ungDungNew.setNameApp(cursor.getString(1));
+            ungDungNew.setIcon(cursor.getString(2));
+            listUngDung.add(ungDungNew);
+        }
+        while (cursor.moveToNext()) {
+            UngDung ungDungNew = new UngDung();
+            ungDungNew.setId(cursor.getString(0));
+            ungDungNew.setNameApp(cursor.getString(1));
+            ungDungNew.setIcon(cursor.getString(2));
+            listUngDung.add(ungDungNew);
+        }
+        cursor.close();
+        closeDatabase();
+
+        return listUngDung;
+    }
+
+    // lấy danh sách bảng thể loại ứng dụng
+    public List<TheLoaiUngDung> getListTheLoaiUngDung() {
+        List<TheLoaiUngDung> theLoaiUngDungList = new ArrayList<>();
+        openDatabase();
+        Cursor cursor;
+        cursor = mDatabase.rawQuery("SELECT theloaiid,ungdungid FROM theloai_ungdung", null);
+        while (cursor.moveToNext()) {
+            TheLoaiUngDung theLoaiUngDung = new TheLoaiUngDung();
+            theLoaiUngDung.setIdTheLoai(cursor.getString(0));
+            theLoaiUngDung.setIdUngDung(cursor.getString(1));
+            theLoaiUngDungList.add(theLoaiUngDung);
+        }
+        cursor.close();
+        closeDatabase();
+        return theLoaiUngDungList;
+    }
+
+    // lấy danh sách bảng thể loại ứng dụng
+    public List<QuangCao> getListQuangCao() {
+        List<QuangCao> quangCaoList = new ArrayList<>();
+        openDatabase();
+        Cursor cursor;
+        cursor = mDatabase.rawQuery("SELECT noidung,loaiquangcao FROM quangcao", null);
+        while (cursor.moveToNext()) {
+            if (cursor.getString(1).equals("1")) {
+                QuangCao quangCao = new QuangCao();
+                quangCao.setNoiDung(cursor.getString(0));
+                quangCao.setLoaiQuangCao(cursor.getString(1));
+                quangCao.setLinkVideo(quangCao.getNoiDung().split(";")[0]);
+                quangCao.setLinkWeb(quangCao.getNoiDung().split(";")[1]);
+                quangCaoList.add(quangCao);
+            } else if (cursor.getString(1).equals("3")) {
+                QuangCao quangCao = new QuangCao();
+                quangCao.setNoiDung(cursor.getString(0));
+                quangCao.setLoaiQuangCao(cursor.getString(1));
+                quangCao.setText(cursor.getString(0));
+                quangCaoList.add(quangCao);
+            } else if (cursor.getString(1).equals("4")) {
+                QuangCao quangCao = new QuangCao();
+                quangCao.setNoiDung(cursor.getString(0));
+                quangCao.setLoaiQuangCao(cursor.getString(1));
+                quangCao.setLinkImage(quangCao.getNoiDung().split(";")[0]);
+                quangCao.setLinkWeb(quangCao.getNoiDung().split(";")[1]);
+                quangCao.setTime(quangCao.getNoiDung().split(";")[2]);
+                quangCaoList.add(quangCao);
+            }
+        }
+        cursor.close();
+        closeDatabase();
+        return quangCaoList;
+    }
+
+    //lấy ra thông tin về id địa chỉ thời tiết và tên của tỉnh
+    public ThoiTiet getThongTinThoiTiet(String id) {
+        ThoiTiet thoiTiet = new ThoiTiet();
+        openDatabase();
+        Cursor cursor;
+        cursor = mDatabase.rawQuery("SELECT * FROM thoitiet WHERE thoitiet.id = " + id, null);
+        if (cursor.moveToFirst()) {
+            thoiTiet.setTen(cursor.getString(1));
+            thoiTiet.setMaThoiTiet(cursor.getString(2));
+        }
+        cursor.close();
+        closeDatabase();
+        return thoiTiet;
+    }
+
+    //get Id CapNhat
+    public String getIdCapNhat() {
+        String value = "0";
+        openDatabase();
+        Cursor cursor;
+        cursor = mDatabase.rawQuery("SELECT value FROM capnhat ORDER BY id DESC LIMIT 1", null);
+        if (cursor.moveToFirst()) {
+            value = cursor.getString(0);
+        }
+        cursor.close();
+        closeDatabase();
+        return value;
     }
 
     // lấy danh sách tất cả các ứng dụng của thẻ loại xyz
@@ -375,23 +487,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         closeDatabase();
 
         return listUngDung;
-    }
-
-    //lấy ra thông tin về id địa chỉ thời tiết và tên của tỉnh
-    public ThoiTiet getThongTinThoiTiet(String id) {
-        ThoiTiet thoiTiet = new ThoiTiet();
-        openDatabase();
-        Cursor cursor;
-        cursor = mDatabase.rawQuery("SELECT * FROM thoitiet WHERE thoitiet.id = " + id, null);
-
-        if (cursor.moveToFirst()) {
-            thoiTiet.setTen(cursor.getString(1));
-            thoiTiet.setMaThoiTiet(cursor.getString(2));
-        }
-        cursor.close();
-        closeDatabase();
-
-        return thoiTiet;
     }
 
     // lấy danh sách tất cả các điện thoại của thương hiệu xyz
@@ -752,19 +847,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         openDatabase();
         mDatabase.delete("capnhat", "1", null);
         closeDatabase();
-    }
-
-    public String getIdCapNhat() {
-        String value = "0";
-        openDatabase();
-        Cursor cursor;
-        cursor = mDatabase.rawQuery("SELECT value FROM capnhat ORDER BY id DESC LIMIT 1", null);
-        if (cursor.moveToFirst()) {
-            value = cursor.getString(0);
-        }
-        cursor.close();
-        closeDatabase();
-        return value;
     }
 
     public String testCapNhat() {

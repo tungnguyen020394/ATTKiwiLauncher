@@ -108,7 +108,6 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener{
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcChuDe.setLayoutManager(layoutManager1);
 
-
         text.setText(mDatabaseHelper.getLinkTextQuangCao());
 
         // Load App
