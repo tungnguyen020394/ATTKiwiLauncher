@@ -233,6 +233,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             imgView.setVisibility(View.VISIBLE);
             imgView.setImageResource(R.drawable.img);
             Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
+
         }
     }
 
