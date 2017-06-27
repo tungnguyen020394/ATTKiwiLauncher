@@ -80,7 +80,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     static List<ChuDe> cates;
     public static List<List<UngDung>> listApps;
     public static List<UngDung> listAppBottom;
-    ArrayList<String> listvideo;
+  //  ArrayList<String> listvideo;
     public static View.OnClickListener appClick;
     public static final int REQUEST_SETTINGS = 101;
     public static int demdsApp = 0;
@@ -243,7 +243,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mDatabaseHelper.checkDatabase(this);
 
         listItem = new ArrayList<>();
-        listvideo = new ArrayList<>();
+    //    listvideo = new ArrayList<>();
         mListVideoAd = new ArrayList<>();
         listAppBottom = new ArrayList<>();
 
@@ -602,7 +602,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             case R.id.imgFull:
                 intent = new Intent(getBaseContext(), VideoFull.class);
 //                intent.putExtra("index", indexVideo);
-                intent.putExtra("list", listvideo);
+           //     intent.putExtra("list", listvideo);
                 intent.putExtra("video", (Serializable) mListVideoAd);
 
                 // độ dài video đang chạy
@@ -967,9 +967,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+                    if (indexVideo == mListVideoAd.size() - 1) indexVideo = 0;
                     else indexVideo++;
-                    video.setVideoURI(Uri.parse(listvideo.get(indexVideo)));
+                    video.setVideoURI(Uri.parse(mListVideoAd.get(indexVideo).getLinkVideo()));
                     video.start();
                 }
             });
@@ -1003,7 +1003,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     private Runnable nextvideo = new Runnable() {
         @Override
         public void run() {
-            if (indexVideo == listvideo.size() - 1) indexVideo = 0;
+            if (indexVideo == mListVideoAd.size() - 1) indexVideo = 0;
             else indexVideo++;
             setVideoOrImager(mListVideoAd.get(indexVideo));
         }
