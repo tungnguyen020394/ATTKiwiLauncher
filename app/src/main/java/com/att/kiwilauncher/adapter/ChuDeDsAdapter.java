@@ -13,7 +13,6 @@ import com.att.kiwilauncher.UngDung;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,15 +43,16 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         if (cates.get(position).isCheckedCate()) {
-            holder.txtApp.setTextSize(15);
+            holder.txtApp.setTextSize(holder.size1);
             holder.txtApp.setTextColor(context.getResources().getColor(R.color.colorWhite));
         } else {
-            holder.txtApp.setTextSize(10);
+            holder.txtApp.setTextSize(holder.size);
             holder.txtApp.setTextColor(context.getResources().getColor(R.color.colormiplus));
         }
         holder.txtApp.setText(cates.get(position).getNameCate());
+
     }
 
     @Override
@@ -63,14 +63,19 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtApp;
         RelativeLayout layoutCateDs;
+        int size;
+        int size1;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            final int pos =getAdapterPosition();
+            final int pos = getAdapterPosition();
             final DatabaseHelper mDadabaseHelper;
             mDadabaseHelper = new DatabaseHelper(context);
+            size = context.getResources().getDimensionPixelSize(R.dimen._5sdp);
+            size1 = context.getResources().getDimensionPixelSize(R.dimen._7sdp);
             txtApp = (TextView) itemView.findViewById(R.id.textcate_ds);
             layoutCateDs = (RelativeLayout) itemView.findViewById(R.id.layout_cate_ds);
+<<<<<<< HEAD
             layoutCateDs.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -102,6 +107,8 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
 
                 }
             });
+=======
+>>>>>>> 2f73ba6784c62388930732a1b54b29df58d97695
 
 
         }

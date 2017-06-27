@@ -2,8 +2,8 @@ package com.att.kiwilauncher.xuly;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.widget.TextView;
 import android.content.SharedPreferences;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -41,7 +41,7 @@ import static com.att.kiwilauncher.TrangChu.mListUngDung;
 public class RequestToServer {
     public static StringRequest createRequestAndUpdate(final ProgressDialog dialog, final DatabaseHelper mDatabaseHelper, final HashMap<String, List> mAllListMap,
                                                        final List<QuangCao> mListQuangCao, final List<ChuDe> cates, final ChuDeAdapter categoryAdapter,
-                                                       final TextView text, final Context context) {
+                                                       final TextView text, final Context context, final String idCapNhat, final List<QuangCao> mListVideoAd) {
 
         dialog.show();
 
@@ -130,16 +130,20 @@ public class RequestToServer {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                mAllListMap.clear();
-                mAllListMap.putAll(mDatabaseHelper.getAllList());
+                /*mAllListMap.clear();
+                mAllListMap.putAll(mDatabaseHelper.getAllList());*/
                 mListQuangCao.clear();
-                mListQuangCao.addAll(mAllListMap.get("quangcao"));
+              //  mListQuangCao.addAll(mAllListMap.get("quangcao"));
+                mListQuangCao.addAll(mDatabaseHelper.getListQuangCao());
                 mListUngDung.clear();
-                mListUngDung.addAll(mAllListMap.get("ungdung"));
+               // mListUngDung.addAll(mAllListMap.get("ungdung"));
+                mListUngDung.addAll(mDatabaseHelper.getListUngDungV2());
                 mListTheLoaiUngDung.clear();
-                mListTheLoaiUngDung.addAll(mAllListMap.get("theloaiungdung"));
+               // mListTheLoaiUngDung.addAll(mAllListMap.get("theloaiungdung"));
+                mListTheLoaiUngDung.addAll(mDatabaseHelper.getListTheLoaiUngDung());
                 cates.clear();
-                cates.addAll(mAllListMap.get("theloai"));
+               // cates.addAll(mAllListMap.get("theloai"));
+                cates.addAll(mDatabaseHelper.getListChuDe());
                 dialog.dismiss();
                 if (!DuLieu.getAdTextFromList(mListQuangCao).equals("")){
                     text.setText(DuLieu.getAdTextFromList(mListQuangCao));
@@ -150,6 +154,9 @@ public class RequestToServer {
                 List<UngDung> checkedList;
                 checkedList = mDatabaseHelper.getListUngDung(cates.get(0));
                 List<UngDung> tmpList = new ArrayList<>();
+                mListVideoAd.clear();
+                mListVideoAd.addAll(DuLieu.getAdVideoFromList(mListQuangCao));
+               // Toast.makeText(context,mListVideoAd.size()+"s",Toast.LENGTH_SHORT).show();
                 for (int j = 1; j <= checkedList.size(); j++) {
                     UngDung ungDung = new UngDung();
                     ungDung.setNameApp(checkedList.get(j - 1).getNameApp());
@@ -175,7 +182,8 @@ public class RequestToServer {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> values = new HashMap<>();
-                values.put("capnhatid", (String) mAllListMap.get("capnhat").get(0));
+            //    values.put("capnhatid", (String) mAllListMap.get("capnhat").get(0));
+                values.put("capnhatid", idCapNhat);
                 return values;
             }
         };
