@@ -245,30 +245,18 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         listvideo = new ArrayList<>();
         mListVideoAd = new ArrayList<>();
         listAppBottom = new ArrayList<>();
-<<<<<<< HEAD
-=======
 
-//        listvideo.add(Define.URL_LINK_PLAY);
-//        listvideo.add(Define.URL_LINK_IMG01);
->>>>>>> origin/master
         cates = new ArrayList<>();
         mListUngDung = new ArrayList<>();
         mListQuangCao = new ArrayList<>();
         mListTheLoaiUngDung = new ArrayList<>();
         mAllListMap = new HashMap<>();
-<<<<<<< HEAD
 
         mListQuangCao = mAllListMap.get("quangcao");
         cates = mAllListMap.get("theloai");
         mListUngDung = mAllListMap.get("ungdung");
         mListTheLoaiUngDung = mAllListMap.get("theloaiungdung");
-=======
-        /*mAllListMap = mDatabaseHelper.getAllList();
-        mListQuangCao = mAllListMap.get("quangcao");
-        cates = mAllListMap.get("theloai");
-        mListUngDung = mAllListMap.get("ungdung");
-        mListTheLoaiUngDung = mAllListMap.get("theloaiungdung");*/
->>>>>>> origin/master
+
         mListTheLoaiUngDung = mDatabaseHelper.getListTheLoaiUngDung();
         mListUngDung = mDatabaseHelper.getListUngDungV2();
         mListQuangCao = mDatabaseHelper.getListQuangCao();
@@ -289,10 +277,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         reLay112 = (RelativeLayout) findViewById(R.id.relay112);
         reLay113 = (RelativeLayout) findViewById(R.id.relay113);
         reLay121 = (RelativeLayout) findViewById(R.id.relay121);
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
         reLay21 = (RelativeLayout) findViewById(R.id.relay21);
         reLay22 = (RelativeLayout) findViewById(R.id.relay22);
         reLay211 = (RelativeLayout) findViewById(R.id.relay211);
@@ -302,15 +286,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         reLay215 = (RelativeLayout) findViewById(R.id.relay215);
         reLay216 = (RelativeLayout) findViewById(R.id.relay216);
         reLay2221 = (RelativeLayout) findViewById(R.id.relay2221);
-<<<<<<< HEAD
-=======
-        reLay2221.setOnClickListener(this);
-        reLay121.setOnClickListener(this);
-        reLay111.setOnClickListener(this);
-        reLay112.setOnClickListener(this);
-        reLay113.setOnClickListener(this);
-        linNear1 = (LinearLayout) findViewById(R.id.linear1);
->>>>>>> origin/master
+
         //end Layout
 
         rcCategory = (RecyclerView) findViewById(R.id.recycler1);
@@ -921,12 +897,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             ibtVolumeOn.setVisibility(View.GONE);
             tvTimeStart.setVisibility(View.GONE);
             tvTime.setVisibility(View.GONE);
-<<<<<<< HEAD
             ibtNext.setVisibility(View.GONE);
             ibtBack.setVisibility(View.GONE);
-
-=======
->>>>>>> origin/master
+            
             tvTimeEnd.setText("   ");
             Glide.with(this)
                     .load(mListVideoAd.get(indexVideo).getLinkImage())
