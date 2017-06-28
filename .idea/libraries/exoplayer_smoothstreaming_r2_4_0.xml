@@ -1,8 +1,13 @@
 <component name="libraryTable">
   <library name="exoplayer-smoothstreaming-r2.4.0">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/9ec62bab00c7c0b87c06422e91e7f42927b82166/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/9ec62bab00c7c0b87c06422e91e7f42927b82166/output/res" />
+<<<<<<< HEAD
+      <root url="jar://$USER_HOME$/.android/build-cache/7d2843ca6a3d0cb8bb73feed4a52f4fb0f2461e4/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/7d2843ca6a3d0cb8bb73feed4a52f4fb0f2461e4/output/res" />
+=======
+      <root url="file://$USER_HOME$/.android/build-cache/7148cc19130aa6711e501252f18daf860ac31516/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/7148cc19130aa6711e501252f18daf860ac31516/output/jars/classes.jar!/" />
+>>>>>>> c611aaf9e3757a8156d7ce4ab48e1f25db200422
     </CLASSES>
     <JAVADOC />
     <SOURCES>
