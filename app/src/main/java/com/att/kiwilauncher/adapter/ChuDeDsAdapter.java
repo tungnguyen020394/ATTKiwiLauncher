@@ -91,7 +91,6 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
                     for (int i = 0; i < listUngDungChung.size(); i++) {
                         UngDung ungDung = listUngDungChung.get(i);
                         if (i % 2 == 0) {
-
                             listUngDungChan.add(ungDung);
                         } else {
                             listUngDungLe.add(ungDung);

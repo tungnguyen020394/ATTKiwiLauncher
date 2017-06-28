@@ -236,9 +236,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
             audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         if (DuLieu.hasInternetConnection(TrangChu.this) && mListVideoAd.size() > 0) {
+
             setVideoOrImager(mListVideoAd.get(indexVideo));
         } else {
             video.setVisibility(View.GONE);
