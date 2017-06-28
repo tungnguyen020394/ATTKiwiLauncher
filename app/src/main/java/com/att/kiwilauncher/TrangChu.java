@@ -244,7 +244,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             video.setVisibility(View.GONE);
             imgView.setVisibility(View.VISIBLE);
             imgView.setImageResource(R.drawable.img);
-<<<<<<< HEAD
             Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -253,9 +252,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     onResume();
                 }
             },5000);
-=======
-            handler.post(mRunableCheckInterNet);
->>>>>>> origin/master
         }
     }
 
