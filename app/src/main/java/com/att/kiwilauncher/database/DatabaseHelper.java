@@ -254,6 +254,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<ChuDe> getListChuDe() {
         ChuDe chuDe;
         List<ChuDe> chuDeList = new ArrayList<>();
+        int id = 0;
         openDatabase();
         Cursor cursor = mDatabase.rawQuery("SELECT id,ten,soluong,icon FROM theloai", null);
         if (cursor.moveToFirst()) {
@@ -280,11 +281,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             chuDe = new ChuDe();
             chuDe.setCheckedCate(false);
-            chuDe.setIndexCate(cursor.getInt(0));
+            id = cursor.getInt(0);
+            chuDe.setIndexCate(id);
             //chuDe.setDrawCate(listIcon.get(cursor.getString(3)));
             chuDe.setIconLink(cursor.getString(3));
             chuDe.setNameCate(cursor.getString(1));
             chuDeList.add(chuDe);
+            // không lấy thể loại truyền hình, phim ,etc ...
+            if (id >= 6) {
+                cursor.moveToLast();
+            }
         }
         cursor.close();
         closeDatabase();

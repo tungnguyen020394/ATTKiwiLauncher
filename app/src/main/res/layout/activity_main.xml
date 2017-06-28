@@ -574,8 +574,7 @@
             android:layout_height="@dimen/_55sdp"
             android:layout_toLeftOf="@+id/img_plus"
             android:layout_toRightOf="@+id/img_minus"
-            android:layout_marginLeft="@dimen/_2sdp"
-            android:layout_marginRight="@dimen/_2sdp">
+            android:gravity="center">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler2"

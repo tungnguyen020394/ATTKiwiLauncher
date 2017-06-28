@@ -25,6 +25,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,7 @@ import com.att.kiwilauncher.model.TheLoaiUngDung;
 import com.att.kiwilauncher.model.ThoiTiet;
 import com.att.kiwilauncher.util.CheckLink;
 import com.att.kiwilauncher.util.Define;
+import com.att.kiwilauncher.util.Volume;
 import com.att.kiwilauncher.view.VideoFull;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
@@ -90,6 +92,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     private List<QuangCao> mListVideoAd;
     public static List<UngDung> mListUngDung;
     public static List<TheLoaiUngDung> mListTheLoaiUngDung;
+    LinearLayout linNear1;
     //    Volume volume;
     int intVolume = 15;
     ImageView imgView, imgWeb;
@@ -114,7 +117,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     private RequestQueue requestQueue;
     static PackageManager manager;
     private SharedPreferences mSharedPreferencesThoiTiet;
-
+    private Volume volume;
     private CheckLink checkLink;
     private SimpleExoPlayerView exoPlayer;
     private SimpleExoPlayer player;
@@ -161,14 +164,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         // Loadmore App click
         imageMinus.setOnClickListener(this);
         imagePlus.setOnClickListener(this);
-        imageCaiDat.setOnClickListener(this);
 
 
     }
 
     private void loadData() {
         mIdCapNhat = mDatabaseHelper.getIdCapNhat();
-
         // Load Category
         rcCategory.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -212,10 +213,17 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mRequestToServer = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
                 mListQuangCao, cates, categoryAdapter, text, TrangChu.this, mIdCapNhat, mListVideoAd);
         requestQueue.add(mRequestToServer);
-
-        setVideoOrImager(mListVideoAd.get(indexVideo));
-
-
+        mRunableCheckInterNet = new Runnable() {
+            @Override
+            public void run() {
+                if (DuLieu.hasInternetConnection(TrangChu.this) && mListVideoAd.size() > 0) {
+                    setVideoOrImager(mListVideoAd.get(indexVideo));
+                    handler.removeCallbacks(mRunableCheckInterNet);
+                } else {
+                    handler.postDelayed(mRunableCheckInterNet, 10000);
+                }
+            }
+        };
     }
 
     @Override
@@ -228,22 +236,15 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
             audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
-        if (DuLieu.hasInternetConnection(TrangChu.this) ) {
-            //loadData();
+        if (DuLieu.hasInternetConnection(TrangChu.this) && mListVideoAd.size() > 0) {
+            setVideoOrImager(mListVideoAd.get(indexVideo));
         } else {
             video.setVisibility(View.GONE);
             imgView.setVisibility(View.VISIBLE);
             imgView.setImageResource(R.drawable.img);
-            Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    onResume();
-                }
-            },5000);
+            handler.post(mRunableCheckInterNet);
         }
     }
 
@@ -347,6 +348,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         }
         text.setText(mTextQC);
         imageCaiDat = (ImageView) findViewById(R.id.img_caidat);
+        imageCaiDat.setOnClickListener(this);
         Map<String, String> today = LunarCalendar.getTodayInfo();
         mNgayDuongTxt.setText("Thứ " + today.get("thu") + ", " + today.get("daySolar") + "/" + today.get("monthSolar") + "/" + today.get("yearSolar"));
         mNgayAmTxt.setText(today.get("dayLunar") + "/" + today.get("monthLunar") + " " + today.get("can") + " " + today.get("chi"));
