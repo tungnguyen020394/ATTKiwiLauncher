@@ -365,7 +365,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 QuangCao quangCao = new QuangCao();
                 quangCao.setNoiDung(cursor.getString(0));
                 quangCao.setLoaiQuangCao(cursor.getString(1));
-                quangCao.setLinkImage(quangCao.getNoiDung().split(";")[0]);
+                quangCao.setLinkImage(DuLieu.URL_IMAGE+"/"+quangCao.getNoiDung().split(";")[0]);
                 quangCao.setLinkWeb(quangCao.getNoiDung().split(";")[1]);
                 quangCao.setTime(quangCao.getNoiDung().split(";")[2]);
                 quangCaoList.add(quangCao);

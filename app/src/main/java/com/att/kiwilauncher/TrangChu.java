@@ -603,7 +603,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()) {
             // video click
             case R.id.imgWeb:
-               // Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
+                // Uri uri = Uri.parse("http://www.bongdaso.com/news.aspx");
                 Uri uri = Uri.parse(mListVideoAd.get(indexVideo).getLinkWeb());
                 intent = new Intent(Intent.ACTION_VIEW, uri);
                 editorfull.putInt("index", indexVideo);
@@ -695,7 +695,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
             case R.id.img_youtube:
                 try {
-                    Intent i4 = manager.getLaunchIntentForPackage("com.google.android.apps.youtube.kids");
+                    /*Intent i4 = manager.getLaunchIntentForPackage("com.google.android.apps.youtube.kids");
+                    startActivity(i4);*/
+                    Intent i4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCfkjXDdMNlo879ba7QOAxAQ"));
                     startActivity(i4);
                 } catch (Exception e) {
                     launchApp("com.store.kiwi.kiwistore");
