@@ -25,7 +25,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -91,7 +90,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     private List<QuangCao> mListVideoAd;
     public static List<UngDung> mListUngDung;
     public static List<TheLoaiUngDung> mListTheLoaiUngDung;
-    LinearLayout linNear1;
     //    Volume volume;
     int intVolume = 15;
     ImageView imgView, imgWeb;
@@ -163,6 +161,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         // Loadmore App click
         imageMinus.setOnClickListener(this);
         imagePlus.setOnClickListener(this);
+        imageCaiDat.setOnClickListener(this);
 
 
     }
@@ -236,7 +235,18 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             video.setVisibility(View.GONE);
             imgView.setVisibility(View.VISIBLE);
             imgView.setImageResource(R.drawable.img);
+<<<<<<< HEAD
 
+=======
+            Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    onResume();
+                }
+            },5000);
+>>>>>>> 813992fd990d485eb91bdf0e601278810ff31700
         }
     }
 
@@ -340,7 +350,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         }
         text.setText(mTextQC);
         imageCaiDat = (ImageView) findViewById(R.id.img_caidat);
-        imageCaiDat.setOnClickListener(this);
         Map<String, String> today = LunarCalendar.getTodayInfo();
         mNgayDuongTxt.setText("Thứ " + today.get("thu") + ", " + today.get("daySolar") + "/" + today.get("monthSolar") + "/" + today.get("yearSolar"));
         mNgayAmTxt.setText(today.get("dayLunar") + "/" + today.get("monthLunar") + " " + today.get("can") + " " + today.get("chi"));

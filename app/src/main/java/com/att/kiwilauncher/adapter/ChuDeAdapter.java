@@ -63,7 +63,7 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
             holder.imgApp.setColorFilter(context.getResources().getColor(R.color.colorcatenone));
         }
        // holder.imgApp.setImageBitmap(ImageEdit.decodeBase64(s));
-        holder.imgApp.setImageBitmap(ImageEdit.decodeBase64(cates.get(position).getIconLink()));
+        // holder.imgApp.setImageBitmap(ImageEdit.decodeBase64(cates.get(position).getIconLink()));
       //  Toast.makeText(context,cates.get(position).getIconLink()+"xxx"+cates.get(position).getIconLink().length()+" size",Toast.LENGTH_SHORT).show();
         //  Glide.with(context).load(DuLieu.URL_IMAGE+"/"+cates.get(position).getIconLink()).into(holder.imgApp);
         holder.txtApp.setText(cates.get(position).getNameCate());
