@@ -10,10 +10,8 @@ import android.widget.TextView;
 
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.UngDung;
-import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -69,16 +67,16 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
 
         public ViewHolder(View itemView) {
             super(itemView);
-            final int pos = getAdapterPosition();
-            final DatabaseHelper mDadabaseHelper;
-            mDadabaseHelper = new DatabaseHelper(context);
+         //   final int pos = getAdapterPosition();
+         /*   final DatabaseHelper mDadabaseHelper;
+            mDadabaseHelper = new DatabaseHelper(context);*/
             size = context.getResources().getDimensionPixelSize(R.dimen._5sdp);
             size1 = context.getResources().getDimensionPixelSize(R.dimen._7sdp);
             txtApp = (TextView) itemView.findViewById(R.id.textcate_ds);
             layoutCateDs = (RelativeLayout) itemView.findViewById(R.id.layout_cate_ds);
             //
 
-            layoutCateDs.setOnClickListener(new View.OnClickListener() {
+           /* layoutCateDs.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     RemoveCheck();
@@ -107,7 +105,7 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
                     ungDungAdapter.notifyDataSetChanged();
 
                 }
-            });
+            });*/
         }
     }
 
