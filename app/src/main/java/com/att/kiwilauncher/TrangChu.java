@@ -43,7 +43,6 @@ import com.att.kiwilauncher.model.TheLoaiUngDung;
 import com.att.kiwilauncher.model.ThoiTiet;
 import com.att.kiwilauncher.util.CheckLink;
 import com.att.kiwilauncher.util.Define;
-import com.att.kiwilauncher.util.Volume;
 import com.att.kiwilauncher.view.VideoFull;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
@@ -117,7 +116,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     private RequestQueue requestQueue;
     static PackageManager manager;
     private SharedPreferences mSharedPreferencesThoiTiet;
-    private Volume volume;
+
     private CheckLink checkLink;
     private SimpleExoPlayerView exoPlayer;
     private SimpleExoPlayer player;
