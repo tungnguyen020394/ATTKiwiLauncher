@@ -130,7 +130,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addControls();
-        loadData();
+//        loadData();
         addNavigationItem();
         addClicks();
     }
@@ -213,17 +213,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mRequestToServer = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
                 mListQuangCao, cates, categoryAdapter, text, TrangChu.this, mIdCapNhat, mListVideoAd);
         requestQueue.add(mRequestToServer);
-        mRunableCheckInterNet = new Runnable() {
-            @Override
-            public void run() {
-                if (DuLieu.hasInternetConnection(TrangChu.this) && mListVideoAd.size() > 0) {
-                    setVideoOrImager(mListVideoAd.get(indexVideo));
-                    handler.removeCallbacks(mRunableCheckInterNet);
-                } else {
-                    handler.postDelayed(mRunableCheckInterNet, 10000);
-                }
-            }
-        };
+
+        setVideoOrImager(mListVideoAd.get(indexVideo));
+
+
     }
 
     @Override
@@ -238,14 +231,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (DuLieu.hasInternetConnection(TrangChu.this) && mListVideoAd.size() > 0) {
-
-            setVideoOrImager(mListVideoAd.get(indexVideo));
+        if (DuLieu.hasInternetConnection(TrangChu.this) ) {
+            loadData();
         } else {
             video.setVisibility(View.GONE);
             imgView.setVisibility(View.VISIBLE);
             imgView.setImageResource(R.drawable.img);
-            handler.post(mRunableCheckInterNet);
+
         }
     }
 
