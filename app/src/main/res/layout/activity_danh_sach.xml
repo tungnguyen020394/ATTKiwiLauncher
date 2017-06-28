@@ -228,12 +228,13 @@
     <RelativeLayout
         android:id="@+id/relay3_ds"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/_55sdp"
         android:layout_below="@+id/relay2_ds">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler2_ds"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler2_ds"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_110sdp"
+                ></android.support.v7.widget.RecyclerView>
 
 
     </RelativeLayout>

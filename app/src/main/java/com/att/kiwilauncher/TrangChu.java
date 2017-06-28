@@ -127,7 +127,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addControls();
-//        loadData();
+        loadData();
         addNavigationItem();
         addClicks();
     }
@@ -168,6 +168,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
     private void loadData() {
         mIdCapNhat = mDatabaseHelper.getIdCapNhat();
+
         // Load Category
         rcCategory.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -230,14 +231,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             e.printStackTrace();
         }
         if (DuLieu.hasInternetConnection(TrangChu.this) ) {
-            loadData();
+            //loadData();
         } else {
             video.setVisibility(View.GONE);
             imgView.setVisibility(View.VISIBLE);
             imgView.setImageResource(R.drawable.img);
-<<<<<<< HEAD
-
-=======
             Toast.makeText(getApplicationContext(), "Mất kết nối mạng...", Toast.LENGTH_LONG).show();
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -246,7 +244,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     onResume();
                 }
             },5000);
->>>>>>> 813992fd990d485eb91bdf0e601278810ff31700
         }
     }
 
