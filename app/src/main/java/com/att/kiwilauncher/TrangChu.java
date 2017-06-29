@@ -787,18 +787,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         switch (resultCode) {
             case RESULT_OK:
                 if (requestCode == Define.NUMBER_RESULT_FULL) {
-//                    timePause = sharedPreferences.getInt("timePause", 0);
-//                    indexVideo = sharedPreferences.getInt("index", 0);
-
                     timePause = data.getIntExtra("timePause", 0);
                     indexVideo = data.getIntExtra("index", 0);
-//                    setVideoOrImager(listvideo.get(indexVideo));
-                } else if (requestCode == Define.NUMBER_RESULT_WEB) {
-                    //  setVideoOrImager(listvideo.get(indexVideo));
-                    setVideoOrImager(mListVideoAd.get(indexVideo));
                 }
                 break;
-
         }
     }
 
@@ -953,7 +945,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     public void onCompletion(MediaPlayer mp) {
                         if (indexVideo == mListVideoAd.size() - 1) indexVideo = 0;
                         else indexVideo++;
-
                         setVideoOrImager(mListVideoAd.get(indexVideo));
                         video.clearFocus();
                     }
@@ -974,8 +965,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             tvTimeStart.setVisibility(View.VISIBLE);
             tvTime.setVisibility(View.VISIBLE);
 
-//            MediaController mc = new MediaController(this);
-//            video.setMediaController(mc);
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
