@@ -6,10 +6,16 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/relay_app"
                 android:padding="@dimen/_5sdp">
-    <ImageView
-        android:id="@+id/image_app"
+    <RelativeLayout
         android:layout_width="@dimen/_46sdp"
         android:layout_height="@dimen/_46sdp"
-        android:scaleType="fitXY"
-        tool:src="@drawable/img_kara" />
+        android:padding="@dimen/_5sdp">
+        <com.att.kiwilauncher.view.RoundRectCornerImageView
+            android:id="@+id/image_app"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            tool:src="@drawable/img_kara"
+            />
+    </RelativeLayout>
 </RelativeLayout>

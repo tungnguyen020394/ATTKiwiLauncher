@@ -17,12 +17,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.att.kiwilauncher.adapter.ChuDeAdapter;
 import com.att.kiwilauncher.adapter.ChuDeDsAdapter;
 import com.att.kiwilauncher.adapter.UngDungDsAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.xuly.LunarCalendar;
-import com.att.kiwilauncher.xuly.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +33,10 @@ import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
 public class DanhSach extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113, reLay111, reLay112, reLay11, reLay121;
     int didIndex = 0, main = 5, indexChuDe;
-    List<ChuDe> dsChuDe;
+    static List<ChuDe> dsChuDe;
     public static List<UngDung> dsUngDung;
-    RecyclerView rcChuDe;
-    static RecyclerView rcUngDung;
+    static RecyclerView rcChuDe,rcChuDe1;
+    static RecyclerView rcUngDung,rcUngDung1;
     public static UngDungDsAdapter ungDungAdapter;
     static PackageManager manager;
     ImageView imageKiwi, imageCaidat;
@@ -45,8 +45,13 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     Intent mIntentGetData;
     TextView mNgayDuongTxt, mNgayAmTxt, mTxtTinh, mTxtNhietDo;
     DatabaseHelper mDatabaseHelper;
-    public static View.OnClickListener appClick;
-    List<UngDung> listUngDungChan, listUngDungLe, listUngDungChung;
+    public static View.OnClickListener appClick,chuDeClick;
+    static List<UngDung> listUngDungChan;
+    static List<UngDung> listUngDungLe;
+    static List<UngDung> listUngDungChung;
+    static ChuDeDsAdapter categoryAdapter;
+    static ChuDeAdapter categoryAdapter1;
+    TrangChu trangChu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +99,10 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         text.setSelected(true);
         text.setText(mDatabaseHelper.getLinkTextQuangCao());
         appClick = new AppClick(getApplicationContext());
+        chuDeClick = new ChuDeClick(getApplicationContext());
 
+        rcChuDe1 = (RecyclerView) findViewById(R.id.recycler4_ds);
+        rcUngDung1 = (RecyclerView) findViewById(R.id.recycler5_ds);
     }
 
     public void addLoadData() {
@@ -130,47 +138,9 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         rcUngDung.setLayoutManager(gridLayoutManager);
         ungDungAdapter = new UngDungDsAdapter(this, dsUngDung);
         rcUngDung.setAdapter(ungDungAdapter);
-        final ChuDeDsAdapter categoryAdapter = new ChuDeDsAdapter(this, dsChuDe, ungDungAdapter, dsUngDung);
+        categoryAdapter = new ChuDeDsAdapter(this, dsChuDe, ungDungAdapter, dsUngDung);
         rcChuDe.setAdapter(categoryAdapter);
-        rcChuDe.addOnItemTouchListener(new RecyclerItemClickListener(DanhSach.this, new RecyclerItemClickListener.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                for (ChuDe cate : dsChuDe) {
-                    if (cate.isCheckedCate()) {
-                        cate.setCheckedCate(false);
-                        break;
-                    }
-                }
-                ChuDe cate = dsChuDe.get(position);
-                cate.setCheckedCate(true);
-                categoryAdapter.notifyDataSetChanged();
-                listUngDungChan.clear();
-                listUngDungLe.clear();
-                UngDung ungDung;
-                for (int i = 0; i < listUngDungChung.size(); i++) {
-                    if (i % 2 == 0) {
-                        ungDung = listUngDungChung.get(i);
-                        listUngDungChan.add(ungDung);
-                    } else {
-                        ungDung = listUngDungChung.get(i);
-                        listUngDungLe.add(ungDung);
-                    }
-                }
-                dsUngDung.clear();
-                if (dsChuDe.get(position).getDrawCate() == R.drawable.ic_giaitri) {
-                    dsUngDung.clear();
-                    dsUngDung.addAll(listUngDungChung);
-                } else if (dsChuDe.get(position).getDrawCate() == R.drawable.ic_trochoi) {
-                    dsUngDung.clear();
-                    dsUngDung.addAll(listUngDungChan);
-                } else if (dsChuDe.get(position).getDrawCate() == R.drawable.ic_suckhoe) {
-                    dsUngDung.clear();
-                    dsUngDung.addAll(listUngDungLe);
-                }
-                ungDungAdapter.notifyDataSetChanged();
 
-            }
-        }));
         Map<String, String> today = LunarCalendar.getTodayInfo();
         mNgayDuongTxt.setText("Thứ " + today.get("thu") + ", " + today.get("daySolar") + "/" + today.get("monthSolar") + "/" + today.get("yearSolar"));
         mNgayAmTxt.setText(today.get("dayLunar") + "/" + today.get("monthLunar") + " " + today.get("can") + " " + today.get("chi"));
@@ -180,6 +150,15 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         SharedPreferences sharedPreferencesThoiTiet = getSharedPreferences("thoitiet", MODE_PRIVATE);
         mTxtTinh.setText(sharedPreferencesThoiTiet.getString("tinh", "Hà nội"));
         mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25") + " ° C");
+
+        // relay 4 + relay 5
+        rcChuDe1.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        rcChuDe1.setLayoutManager(linearLayoutManager);
+        categoryAdapter1 = new ChuDeAdapter(this,trangChu.getCates(),trangChu.getmListTheLoaiUngDung(),trangChu.getmListUngDung());
+        rcChuDe1.setAdapter(categoryAdapter1);
+
+
     }
 
     public void addMove() {
@@ -318,6 +297,53 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                 Intent intent = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
                 context.startActivity(intent);
             }
+        }
+    }
+
+    public static class ChuDeClick implements View.OnClickListener {
+        private final Context context;
+
+        public ChuDeClick(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = rcChuDe.getChildPosition(v);
+            for (ChuDe cate : dsChuDe) {
+                if (cate.isCheckedCate()) {
+                    cate.setCheckedCate(false);
+                    break;
+                }
+            }
+            ChuDe cate = dsChuDe.get(position);
+            cate.setCheckedCate(true);
+            categoryAdapter.notifyDataSetChanged();
+            listUngDungChan.clear();
+            listUngDungLe.clear();
+            UngDung ungDung;
+            for (int i = 0; i < listUngDungChung.size(); i++) {
+                if (i % 2 == 0) {
+                    ungDung = listUngDungChung.get(i);
+                    listUngDungChan.add(ungDung);
+                } else {
+                    ungDung = listUngDungChung.get(i);
+                    listUngDungLe.add(ungDung);
+                }
+            }
+            dsUngDung.clear();
+            if (dsChuDe.get(position).getDrawCate() == R.drawable.ic_giaitri) {
+                dsUngDung.clear();
+                dsUngDung.addAll(listUngDungChung);
+            } else if (dsChuDe.get(position).getDrawCate() == R.drawable.ic_trochoi) {
+                dsUngDung.clear();
+                dsUngDung.addAll(listUngDungChan);
+            } else if (dsChuDe.get(position).getDrawCate() == R.drawable.ic_suckhoe) {
+                dsUngDung.clear();
+                dsUngDung.addAll(listUngDungLe);
+            }
+            ungDungAdapter.notifyDataSetChanged();
+
         }
     }
 

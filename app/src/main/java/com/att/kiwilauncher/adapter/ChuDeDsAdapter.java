@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.att.kiwilauncher.DanhSach;
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.UngDung;
 import com.att.kiwilauncher.model.ChuDe;
@@ -38,6 +39,7 @@ public class ChuDeDsAdapter extends RecyclerView.Adapter<ChuDeDsAdapter.ViewHold
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         final View itemView = layoutInflater.inflate(R.layout.item_cate_ds, parent, false);
+        itemView.setOnClickListener(DanhSach.chuDeClick);
         return new ViewHolder(itemView);
     }
 

@@ -1017,5 +1017,43 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         }
     };
 
+    public ChuDeAdapter getCategoryAdapter() {
+        return categoryAdapter;
+    }
 
+    public void setCategoryAdapter(ChuDeAdapter categoryAdapter) {
+        this.categoryAdapter = categoryAdapter;
+    }
+
+    public static List<ChuDe> getCates() {
+        return cates;
+    }
+
+    public static void setCates(List<ChuDe> cates) {
+        TrangChu.cates = cates;
+    }
+
+    public static List<UngDung> getmListUngDung() {
+        return mListUngDung;
+    }
+
+    public static void setmListUngDung(List<UngDung> mListUngDung) {
+        TrangChu.mListUngDung = mListUngDung;
+    }
+
+    public static List<TheLoaiUngDung> getmListTheLoaiUngDung() {
+        return mListTheLoaiUngDung;
+    }
+
+    public static void setmListTheLoaiUngDung(List<TheLoaiUngDung> mListTheLoaiUngDung) {
+        TrangChu.mListTheLoaiUngDung = mListTheLoaiUngDung;
+    }
+
+    public static List<UngDung> getListAppBottom() {
+        return listAppBottom;
+    }
+
+    public static void setListAppBottom(List<UngDung> listAppBottom) {
+        TrangChu.listAppBottom = listAppBottom;
+    }
 }
