@@ -12,7 +12,8 @@
         android:textColor="@color/colorWhite"
         android:gravity="center"
         android:layout_marginLeft="@dimen/_4sdp"
-        android:layout_marginRight="@dimen/_4sdp"/>
+        android:layout_marginRight="@dimen/_4sdp"
+        android:textAllCaps="true"/>
     <ImageView
         android:id="@+id/imgcate_ds"
         android:layout_width="wrap_content"

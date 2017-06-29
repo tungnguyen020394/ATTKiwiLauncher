@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.att.kiwilauncher.adapter.ChuDeAdapter;
 import com.att.kiwilauncher.adapter.ChuDeDsAdapter;
+import com.att.kiwilauncher.adapter.UngDungAdapter;
 import com.att.kiwilauncher.adapter.UngDungDsAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
@@ -32,14 +33,14 @@ import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
 
 public class DanhSach extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113, reLay111, reLay112, reLay11, reLay121;
-    int didIndex = 0, main = 5, indexChuDe;
+    int didIndex = 0, main = 5, indexChuDe,demDsApp = 0;
     static List<ChuDe> dsChuDe;
     public static List<UngDung> dsUngDung;
     static RecyclerView rcChuDe,rcChuDe1;
     static RecyclerView rcUngDung,rcUngDung1;
     public static UngDungDsAdapter ungDungAdapter;
     static PackageManager manager;
-    ImageView imageKiwi, imageCaidat;
+    ImageView imageKiwi, imageCaidat,imageMinusDs,imagePlusDs;
     ArrayList<View> listItem;
     TextView text;
     Intent mIntentGetData;
@@ -51,7 +52,9 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     static List<UngDung> listUngDungChung;
     static ChuDeDsAdapter categoryAdapter;
     static ChuDeAdapter categoryAdapter1;
+    List<ChuDe> cates1;
     TrangChu trangChu;
+    List<List<UngDung>> listAppsDs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +106,8 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
 
         rcChuDe1 = (RecyclerView) findViewById(R.id.recycler4_ds);
         rcUngDung1 = (RecyclerView) findViewById(R.id.recycler5_ds);
+        imageMinusDs = (ImageView) findViewById(R.id.img_minus_ds);
+        imagePlusDs  = (ImageView) findViewById(R.id.img_plus_ds);
     }
 
     public void addLoadData() {
@@ -152,13 +157,21 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25") + " ° C");
 
         // relay 4 + relay 5
+        cates1 = trangChu.getCates();
         rcChuDe1.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         rcChuDe1.setLayoutManager(linearLayoutManager);
-        categoryAdapter1 = new ChuDeAdapter(this,trangChu.getCates(),trangChu.getmListTheLoaiUngDung(),trangChu.getmListUngDung());
+        categoryAdapter1 = new ChuDeAdapter(this,cates1,trangChu.getmListTheLoaiUngDung(),trangChu.getmListUngDung());
         rcChuDe1.setAdapter(categoryAdapter1);
 
+        rcUngDung1.setHasFixedSize(true);
+        GridLayoutManager gridLayoutManager1 = new GridLayoutManager(this,7);
+        rcUngDung1.setLayoutManager(gridLayoutManager1);
+        UngDungAdapter listapp = new UngDungAdapter(this,trangChu.getListAppBottom());
+        rcUngDung1.setAdapter(listapp);
 
+        listAppsDs = new ArrayList<>();
+        listAppsDs = trangChu.listApps;
     }
 
     public void addMove() {
@@ -187,10 +200,19 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     didIndex = main + dsChuDe.size();
                     rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
                 } else if (didIndex > main - 1 + dsChuDe.size()
-                        && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size() - 8) {
+                        && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size() - 8
+                        && dsUngDung.size() > 8) {
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
                     didIndex = didIndex + 8;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
+                } else if ( didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size()) {
+                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
+                    didIndex = main + dsChuDe.size() + dsUngDung.size();
+                    rcChuDe1.getChildAt(0).callOnClick();
+                } else if (didIndex > main - 1 + dsChuDe.size() + dsUngDung.size()
+                        && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
+                    didIndex = main + dsChuDe.size() + dsUngDung.size() + cates1.size() + 1;
+                    rcUngDung1.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
                 }
                 break;
 
@@ -199,7 +221,15 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                 if (didIndex >= main && didIndex < main + dsChuDe.size()) {
                     didIndex = 0;
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
-                } else if ((didIndex >= main + dsChuDe.size()) && (didIndex < main + dsChuDe.size() + 8)) {
+                } else if ((didIndex >= main + dsChuDe.size())
+                        && (didIndex < main + dsChuDe.size() + dsUngDung.size())
+                        && dsUngDung.size() < 8) {
+                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
+                    didIndex = indexChuDe;
+                    rcChuDe.getChildAt(didIndex - main).callOnClick();
+                } else if ((didIndex >= main + dsChuDe.size())
+                        && (didIndex < main + dsChuDe.size() + 8)
+                        && dsUngDung.size() > 8) {
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
                     didIndex = indexChuDe;
                     rcChuDe.getChildAt(didIndex - main).callOnClick();
@@ -208,6 +238,15 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
                     didIndex = didIndex - 8;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
+                } else if (didIndex > main - 1 + dsChuDe.size() + dsUngDung.size()
+                        && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
+                    rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
+                    didIndex = main + dsChuDe.size();
+                } else if (didIndex > main + dsChuDe.size() + dsUngDung.size() + cates1.size()
+                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demDsApp).size()) {
+                    rcUngDung1.getChildAt(didIndex - main - 1 - dsChuDe.size() - dsUngDung.size() - cates1.size()).setBackgroundResource(R.drawable.none);
+                    didIndex = main - 1 + dsChuDe.size() + dsUngDung.size();
+                    rcChuDe1.getChildAt(0).callOnClick();
                 }
                 break;
 
@@ -229,10 +268,32 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     }
                     didIndex--;
                     rcChuDe.getChildAt(didIndex - main).callOnClick();
-                } else if (didIndex > main + dsChuDe.size() && didIndex < main + dsChuDe.size() + dsUngDung.size()) {
-                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
+                } else if (didIndex > main + dsChuDe.size() && didIndex <= main + dsChuDe.size() + dsUngDung.size()) {
+                    if ( didIndex != main + dsChuDe.size() + dsUngDung.size()) {
+                        rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
+                    }
                     didIndex--;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
+                } else if (didIndex > main + dsChuDe.size() + dsUngDung.size()
+                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
+                    if (didIndex == main + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
+                        imageMinusDs.setImageResource(R.drawable.ic_minus1);
+                    }
+                    didIndex--;
+                    rcChuDe1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size()).callOnClick();
+                } else if (didIndex > main + dsChuDe.size() + dsUngDung.size() + cates1.size()
+                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demDsApp).size()) {
+                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.none);
+                    didIndex--;
+                    if (didIndex != main + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
+                        rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.border_pick);
+                    } else {
+                        imageMinusDs.setImageResource(R.drawable.ic_minus);
+                    }
+                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demDsApp).size() + 1) {
+                    imagePlusDs.setImageResource(R.drawable.ic_plus1);
+                    didIndex--;
+                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.border_pick);
                 }
                 break;
 
@@ -259,6 +320,29 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
                     didIndex++;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
+                } else if (didIndex >= main - 1 + dsChuDe.size() + dsUngDung.size()
+                        && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
+                    if (didIndex == main - 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
+                       didIndex = main - 1 + dsChuDe.size() + dsUngDung.size();
+                    }
+                    if (didIndex == main - 1 + dsChuDe.size() + dsUngDung.size()) {
+                        rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
+                    }
+                    didIndex++;
+                    rcChuDe1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size()).callOnClick();
+                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
+                    imageMinusDs.setImageResource(R.drawable.ic_minus1);
+                    didIndex++;
+                    rcUngDung1.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
+                } else if (didIndex >= main + 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()
+                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demDsApp).size()) {
+                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.none);
+                    didIndex++;
+                    if ( didIndex != main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demDsApp).size() + 1) {
+                        rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.border_pick);
+                    } else {
+                        imagePlusDs.setImageResource(R.drawable.ic_plus);
+                    }
                 }
                 break;
 

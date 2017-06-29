@@ -266,7 +266,7 @@
         android:layout_below="@+id/relay4_ds">
 
         <ImageView
-            android:id="@+id/img_minus"
+            android:id="@+id/img_minus_ds"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_55sdp"
             android:paddingTop="@dimen/_10sdp"
@@ -277,8 +277,8 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="@dimen/_55sdp"
-            android:layout_toLeftOf="@+id/img_plus"
-            android:layout_toRightOf="@+id/img_minus"
+            android:layout_toLeftOf="@+id/img_plus_ds"
+            android:layout_toRightOf="@+id/img_minus_ds"
             android:gravity="center">
 
             <android.support.v7.widget.RecyclerView
@@ -289,7 +289,7 @@
         </RelativeLayout>
 
         <ImageView
-            android:id="@+id/img_plus"
+            android:id="@+id/img_plus_ds"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_55sdp"
             android:layout_alignParentRight="true"
