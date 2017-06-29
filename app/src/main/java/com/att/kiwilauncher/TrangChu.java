@@ -123,7 +123,17 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     private SimpleExoPlayer player;
     private TrackSelector trackSelector;
     private StringRequest mRequestToServer;
-    Runnable mRunableCheckInterNet;
+    private Runnable mRunableCheckInterNet = new Runnable() {
+        @Override
+        public void run() {
+            if (DuLieu.hasInternetConnection(TrangChu.this) && mListVideoAd.size() > 0) {
+                setVideoOrImager(mListVideoAd.get(indexVideo));
+                handler.removeCallbacks(mRunableCheckInterNet);
+            } else {
+                handler.postDelayed(mRunableCheckInterNet, 10000);
+            }
+        }
+    };;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,8 +174,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         // Loadmore App click
         imageMinus.setOnClickListener(this);
         imagePlus.setOnClickListener(this);
-
-
     }
 
     private void loadData() {
@@ -213,17 +221,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         mRequestToServer = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
                 mListQuangCao, cates, categoryAdapter, text, TrangChu.this, mIdCapNhat, mListVideoAd);
         requestQueue.add(mRequestToServer);
-        mRunableCheckInterNet = new Runnable() {
-            @Override
-            public void run() {
-                if (DuLieu.hasInternetConnection(TrangChu.this) && mListVideoAd.size() > 0) {
-                    setVideoOrImager(mListVideoAd.get(indexVideo));
-                    handler.removeCallbacks(mRunableCheckInterNet);
-                } else {
-                    handler.postDelayed(mRunableCheckInterNet, 10000);
-                }
-            }
-        };
+
     }
 
     @Override
