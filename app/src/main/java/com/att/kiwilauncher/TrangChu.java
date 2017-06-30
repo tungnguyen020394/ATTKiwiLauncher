@@ -415,7 +415,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                         didIndex = main - 4;
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
                     }
-                } else if ((didIndex >= main + 1 + cates.size() + bonusmain) && (didIndex < main + bonusmain + 1 + cates.size() + listApps.get(demdsApp).size())) {
+                } else if ((didIndex >= main + 1 + cates.size() + bonusmain)
+                        && (didIndex < main + bonusmain + 1 + cates.size() + listApps.get(demdsApp).size())) {
                     rcApp.getChildAt(didIndex - main - 1 - cates.size() - bonusmain).setBackgroundResource(R.drawable.none);
                     didIndex = indexChuDe + main + bonusmain;
                 } else if (didIndex == main + bonusmain + 1 + cates.size() + listApps.get(demdsApp).size()) {
