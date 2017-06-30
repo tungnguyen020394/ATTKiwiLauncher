@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.att.kiwilauncher.adapter.ChuDeAdapter;
 import com.att.kiwilauncher.adapter.ChuDeDsAdapter;
-import com.att.kiwilauncher.adapter.UngDungAdapter;
 import com.att.kiwilauncher.adapter.UngDungDsAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
@@ -30,10 +29,17 @@ import java.util.List;
 import java.util.Map;
 
 import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
+import static com.att.kiwilauncher.TrangChu.demdsApp;
+import static com.att.kiwilauncher.TrangChu.listAppBottom;
+import static com.att.kiwilauncher.TrangChu.listApps;
+import static com.att.kiwilauncher.TrangChu.listapp;
 
 public class DanhSach extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113, reLay111, reLay112, reLay11, reLay121;
-    int didIndex = 0, main = 5, indexChuDe,demDsApp = 0;
+    int didIndex = 0;
+    int main = 5;
+    int indexChuDe;
+    static int demDsApp = 0;
     static List<ChuDe> dsChuDe;
     public static List<UngDung> dsUngDung;
     static RecyclerView rcChuDe,rcChuDe1;
@@ -54,7 +60,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     static ChuDeAdapter categoryAdapter1;
     List<ChuDe> cates1;
     TrangChu trangChu;
-    List<List<UngDung>> listAppsDs;
+    static List<List<UngDung>> listAppsDs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +72,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void addControls() {
+        trangChu.demdsApp = 0;
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper.checkDatabase(this);
 
@@ -108,12 +115,16 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         rcUngDung1 = (RecyclerView) findViewById(R.id.recycler5_ds);
         imageMinusDs = (ImageView) findViewById(R.id.img_minus_ds);
         imagePlusDs  = (ImageView) findViewById(R.id.img_plus_ds);
+        imageMinusDs.setOnClickListener(this);
+        imagePlusDs.setOnClickListener(this);
     }
 
     public void addLoadData() {
+        Intent i = getIntent();
+        String tenChuDe = i.getStringExtra("tenChuDe");
         // Load Category
         dsChuDe = new ArrayList<ChuDe>();
-        ChuDe cate1 = new ChuDe("Truyền Hình Tổng Hợp", R.drawable.ic_giaitri, 0, true);
+        ChuDe cate1 = new ChuDe(tenChuDe, R.drawable.ic_giaitri, 0, true);
         dsChuDe.add(cate1);
         ChuDe cate2 = new ChuDe("Miễn Phí", R.drawable.ic_trochoi, 0, false);
         dsChuDe.add(cate2);
@@ -132,7 +143,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         // Load App
         manager = getPackageManager();
         dsUngDung = new ArrayList<UngDung>();
-        Intent i = new Intent(Intent.ACTION_MAIN, null);
+        Intent getIntent = new Intent(Intent.ACTION_MAIN, null);
         i.addCategory(Intent.CATEGORY_LAUNCHER);
 
         int soUngDung = 0;
@@ -167,11 +178,11 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         rcUngDung1.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager1 = new GridLayoutManager(this,7);
         rcUngDung1.setLayoutManager(gridLayoutManager1);
-        UngDungAdapter listapp = new UngDungAdapter(this,trangChu.getListAppBottom());
+        UngDungDsAdapter listapp = new UngDungDsAdapter(this,trangChu.getListAppBottom());
         rcUngDung1.setAdapter(listapp);
 
         listAppsDs = new ArrayList<>();
-        listAppsDs = trangChu.listApps;
+        listAppsDs = listApps;
     }
 
     public void addMove() {
@@ -243,7 +254,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
                     didIndex = main + dsChuDe.size();
                 } else if (didIndex > main + dsChuDe.size() + dsUngDung.size() + cates1.size()
-                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demDsApp).size()) {
+                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size()) {
                     rcUngDung1.getChildAt(didIndex - main - 1 - dsChuDe.size() - dsUngDung.size() - cates1.size()).setBackgroundResource(R.drawable.none);
                     didIndex = main - 1 + dsChuDe.size() + dsUngDung.size();
                     rcChuDe1.getChildAt(0).callOnClick();
@@ -282,7 +293,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     didIndex--;
                     rcChuDe1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size()).callOnClick();
                 } else if (didIndex > main + dsChuDe.size() + dsUngDung.size() + cates1.size()
-                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demDsApp).size()) {
+                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size()) {
                     rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.none);
                     didIndex--;
                     if (didIndex != main + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
@@ -290,7 +301,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     } else {
                         imageMinusDs.setImageResource(R.drawable.ic_minus);
                     }
-                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demDsApp).size() + 1) {
+                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size() + 1) {
                     imagePlusDs.setImageResource(R.drawable.ic_plus1);
                     didIndex--;
                     rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.border_pick);
@@ -335,10 +346,10 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     didIndex++;
                     rcUngDung1.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
                 } else if (didIndex >= main + 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()
-                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demDsApp).size()) {
+                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size()) {
                     rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.none);
                     didIndex++;
-                    if ( didIndex != main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demDsApp).size() + 1) {
+                    if ( didIndex != main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size() + 1) {
                         rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.border_pick);
                     } else {
                         imagePlusDs.setImageResource(R.drawable.ic_plus);
@@ -349,11 +360,18 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
             case KeyEvent.KEYCODE_DPAD_CENTER:
             case KeyEvent.KEYCODE_ENTER:
             case KeyEvent.KEYCODE_NUMPAD_ENTER:
-                if (didIndex < main - 1) {
+                if (didIndex <= main - 1) {
                     listItem.get(didIndex).callOnClick();
                 } else if (didIndex > main - 1 + dsChuDe.size()
                         && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size()) {
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).callOnClick();
+                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
+                    imageMinusDs.callOnClick();
+                } else if (didIndex >= main + 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()
+                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size()) {
+                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).callOnClick();
+                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size() + 1) {
+                    imagePlusDs.callOnClick();
                 }
                 break;
 
@@ -373,13 +391,24 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
 
         @Override
         public void onClick(View v) {
-            int position = rcUngDung.getChildPosition(v);
-            try {
-                Intent i = manager.getLaunchIntentForPackage(dsUngDung.get(position).getNameApp().toString());
-                context.startActivity(i);
-            } catch (Exception e) {
-                Intent intent = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
-                context.startActivity(intent);
+            if (rcUngDung.callOnClick()) {
+                int position = rcUngDung.getChildPosition(v);
+                try {
+                    Intent i = manager.getLaunchIntentForPackage(dsUngDung.get(position).getNameApp().toString());
+                    context.startActivity(i);
+                } catch (Exception e) {
+                    Intent intent = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
+                    context.startActivity(intent);
+                }
+            } else {
+                int position = rcUngDung1.getChildPosition(v);
+                try {
+                    Intent i = manager.getLaunchIntentForPackage(listAppsDs.get(demDsApp).get(position).getNameApp().toString());
+                    context.startActivity(i);
+                } catch (Exception e) {
+                    Intent intent = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
+                    context.startActivity(intent);
+                }
             }
         }
     }
@@ -434,10 +463,6 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.relay113_ds:
-                imageCaidat.callOnClick();
-                break;
-
             case R.id.img1_ds:
                 onBackPressed();
                 break;
@@ -453,6 +478,31 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
             case R.id.relay111_ds:
                 Toast.makeText(getApplicationContext(), mNgayDuongTxt.getText(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getApplicationContext(), mNgayAmTxt.getText(), Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.img_minus_ds:
+                if (0 < demdsApp) {
+                    demDsApp--;
+                    demdsApp--;
+                    /*listapp = new UngDungAdapter(getApplicationContext(), listApps.get(demdsApp));
+                    rcApp.setAdapter(listapp);*/
+                    listAppBottom.clear();
+                    listAppBottom.addAll(listAppsDs.get(demdsApp));
+                    listapp.notifyDataSetChanged();
+
+                    didIndex = main + dsChuDe.size() + dsUngDung.size() + cates1.size();
+                    imageMinusDs.setImageResource(R.drawable.ic_minus);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Bạn đang ở danh sách các ứng dụng đầu tiên ", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case R.id.img_plus_ds:
+                Toast.makeText(getApplicationContext(), "Bạn đã ở cuối danh sách ứng dụng", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.relay113_ds:
+                DanhSach.this.startActivityForResult(new Intent(Settings.ACTION_SETTINGS), REQUEST_SETTINGS);
                 break;
         }
 

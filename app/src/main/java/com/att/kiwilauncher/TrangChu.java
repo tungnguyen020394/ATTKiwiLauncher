@@ -675,20 +675,26 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
             case R.id.img_tv:
                 Intent i = new Intent(TrangChu.this, DanhSach.class);
-                i.putExtra("listChuDe", (Serializable) mListUngDung);
+                i.putExtra("tenChuDe","Truyền Hình Tổng Hợp");
                 startActivity(i);
                 break;
 
             case R.id.img_phim:
-                Toast.makeText(getApplicationContext(), "Tính năng sẽ được cập nhật trong thời gian tới", Toast.LENGTH_SHORT).show();
+                Intent i1 = new Intent(TrangChu.this, DanhSach.class);
+                i1.putExtra("tenChuDe","Phim Tổng Hợp");
+                startActivity(i1);
                 break;
 
             case R.id.img_nhac:
-                Toast.makeText(getApplicationContext(), "Tính năng sẽ được cập nhật trong thời gian tới", Toast.LENGTH_SHORT).show();
+                Intent i2 = new Intent(TrangChu.this, DanhSach.class);
+                i2.putExtra("tenChuDe","Nhạc Tổng Hợp");
+                startActivity(i2);
                 break;
 
             case R.id.img_kara:
-                Toast.makeText(getApplicationContext(), "Tính năng sẽ được cập nhật trong thời gian tới", Toast.LENGTH_SHORT).show();
+                Intent i3 = new Intent(TrangChu.this, DanhSach.class);
+                i3.putExtra("tenChuDe","Karaoke Tổng Hợp");
+                startActivity(i3);
                 break;
 
             case R.id.img_youtube:

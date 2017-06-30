@@ -10,7 +10,7 @@
         android:layout_width="@dimen/_46sdp"
         android:layout_height="@dimen/_46sdp"
         android:padding="@dimen/_5sdp">
-        <com.att.kiwilauncher.view.RoundRectCornerImageView
+        <ImageView
             android:id="@+id/image_app"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
