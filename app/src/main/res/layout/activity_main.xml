@@ -234,7 +234,7 @@
                         android:layout_above="@+id/text_tv"
                         android:scaleType="fitXY"
                         android:src="@drawable/img_tv"
-                        android:padding="@dimen/_4sdp"/>
+                        android:padding="@dimen/_7sdp"/>
 
                     <TextView
                         android:id="@+id/text_tv"
@@ -262,7 +262,7 @@
                         android:layout_above="@+id/text_phim"
                         android:scaleType="fitXY"
                         android:src="@drawable/img_phim"
-                        android:padding="@dimen/_4sdp"/>
+                        android:padding="@dimen/_7sdp"/>
 
                     <TextView
                         android:id="@+id/text_phim"
@@ -288,7 +288,7 @@
                         android:layout_above="@+id/text_nhac"
                         android:scaleType="fitXY"
                         android:src="@drawable/img_nhac"
-                        android:padding="@dimen/_4sdp"/>
+                        android:padding="@dimen/_7sdp"/>
 
                     <TextView
                         android:id="@+id/text_nhac"
@@ -315,7 +315,7 @@
                         android:layout_above="@+id/text_kara"
                         android:scaleType="fitXY"
                         android:src="@drawable/img_kara"
-                        android:padding="@dimen/_4sdp"/>
+                        android:padding="@dimen/_7sdp"/>
 
                     <TextView
                         android:id="@+id/text_kara"
@@ -345,7 +345,7 @@
                         android:layout_above="@+id/text_youtube"
                         android:scaleType="fitXY"
                         android:src="@drawable/img_youtube"
-                        android:padding="@dimen/_4sdp"/>
+                        android:padding="@dimen/_7sdp"/>
 
                     <TextView
                         android:id="@+id/text_youtube"
@@ -373,7 +373,7 @@
                         android:layout_above="@+id/text_store"
                         android:scaleType="fitXY"
                         android:src="@drawable/img_store"
-                        android:padding="@dimen/_4sdp"/>
+                        android:padding="@dimen/_7sdp"/>
 
                     <TextView
                         android:id="@+id/text_store"

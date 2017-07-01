@@ -702,7 +702,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 try {
                     /*Intent i4 = manager.getLaunchIntentForPackage("com.google.android.apps.youtube.kids");
                     startActivity(i4);*/
-                    Intent i4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCfkjXDdMNlo879ba7QOAxAQ"));
+                    Intent i4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UC-r6Lfqt2jD-iVqlmrzN4vg"));
                     startActivity(i4);
                 } catch (Exception e) {
                     launchApp("com.store.kiwi.kiwistore");
