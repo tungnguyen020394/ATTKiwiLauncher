@@ -247,16 +247,22 @@
         android:layout_marginLeft="@dimen/_17sdp"
         android:layout_marginRight="@dimen/_17sdp">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler4_ds"
-            android:layout_centerVertical="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/relay3"></RelativeLayout>
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/bordercate_ds"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Ứng Dụng Đã Cài"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:gravity="center"
+                android:textSize="@dimen/_12sdp"/>
+        </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout

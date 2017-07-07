@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +18,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.att.kiwilauncher.adapter.ChuDeAdapter;
 import com.att.kiwilauncher.adapter.ChuDeDsAdapter;
 import com.att.kiwilauncher.adapter.UngDungDsAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
@@ -30,9 +30,7 @@ import java.util.Map;
 
 import static com.att.kiwilauncher.TrangChu.REQUEST_SETTINGS;
 import static com.att.kiwilauncher.TrangChu.demdsApp;
-import static com.att.kiwilauncher.TrangChu.listAppBottom;
 import static com.att.kiwilauncher.TrangChu.listApps;
-import static com.att.kiwilauncher.TrangChu.listapp;
 
 public class DanhSach extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113, reLay111, reLay112, reLay11, reLay121;
@@ -41,11 +39,13 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     int indexChuDe;
     static int demDsApp = 0;
     static List<ChuDe> dsChuDe;
-    public static List<UngDung> dsUngDung;
-    static RecyclerView rcChuDe,rcChuDe1;
+    private static List<List<UngDung>> listUngDungDaCai;
+    public static List<UngDung> dsUngDung,ungDungDaCai;
+    static RecyclerView rcChuDe;
     static RecyclerView rcUngDung,rcUngDung1;
-    public static UngDungDsAdapter ungDungAdapter;
-    static PackageManager manager;
+    public static UngDungDsAdapter ungDungAdapter , listappDacai;
+    private static PackageManager manager;
+    private PackageManager manager1;
     ImageView imageKiwi, imageCaidat,imageMinusDs,imagePlusDs;
     ArrayList<View> listItem;
     TextView text;
@@ -57,8 +57,6 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     static List<UngDung> listUngDungLe;
     static List<UngDung> listUngDungChung;
     static ChuDeDsAdapter categoryAdapter;
-    static ChuDeAdapter categoryAdapter1;
-    List<ChuDe> cates1;
     TrangChu trangChu;
     static List<List<UngDung>> listAppsDs;
 
@@ -72,7 +70,6 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void addControls() {
-        trangChu.demdsApp = 0;
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper.checkDatabase(this);
 
@@ -111,7 +108,6 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         appClick = new AppClick(getApplicationContext());
         chuDeClick = new ChuDeClick(getApplicationContext());
 
-        rcChuDe1 = (RecyclerView) findViewById(R.id.recycler4_ds);
         rcUngDung1 = (RecyclerView) findViewById(R.id.recycler5_ds);
         imageMinusDs = (ImageView) findViewById(R.id.img_minus_ds);
         imagePlusDs  = (ImageView) findViewById(R.id.img_plus_ds);
@@ -120,6 +116,34 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void addLoadData() {
+        demDsApp = 0;
+        int dem = 0;
+        manager1 = getPackageManager();
+        ungDungDaCai = new ArrayList<UngDung>();
+        listUngDungDaCai = new ArrayList<List<UngDung>>();
+        Intent i1 = new Intent(Intent.ACTION_MAIN, null);
+        i1.addCategory(Intent.CATEGORY_LAUNCHER);
+
+        List<ResolveInfo> availableActivities = manager1.queryIntentActivities(i1, 0);
+        for(ResolveInfo ri : availableActivities){
+            UngDung app = new UngDung();
+            app.labelApp = ri.loadLabel(manager1);
+            app.nameApp = ri.activityInfo.packageName;
+            app.iconApp = ri.activityInfo.loadIcon(manager1);
+            app.icon = null;
+            ungDungDaCai.add(app);
+            dem++;
+            if (dem == 7) {
+                listUngDungDaCai.add(ungDungDaCai);
+                dem = 0;
+                ungDungDaCai = new ArrayList<UngDung>();
+            }
+        }
+
+        if (ungDungDaCai.size() != 0) {
+            listUngDungDaCai.add(ungDungDaCai);
+        }
+
         Intent i = getIntent();
         String tenChuDe = i.getStringExtra("tenChuDe");
         // Load Category
@@ -167,19 +191,12 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         mTxtTinh.setText(sharedPreferencesThoiTiet.getString("tinh", "Hà nội"));
         mTxtNhietDo.setText(sharedPreferencesThoiTiet.getString("nhietdo", "25") + " ° C");
 
-        // relay 4 + relay 5
-        cates1 = trangChu.getCates();
-        rcChuDe1.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        rcChuDe1.setLayoutManager(linearLayoutManager);
-        categoryAdapter1 = new ChuDeAdapter(this,cates1,trangChu.getmListTheLoaiUngDung(),trangChu.getmListUngDung());
-        rcChuDe1.setAdapter(categoryAdapter1);
-
+        // relay 5
         rcUngDung1.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager1 = new GridLayoutManager(this,7);
         rcUngDung1.setLayoutManager(gridLayoutManager1);
-        UngDungDsAdapter listapp = new UngDungDsAdapter(this,trangChu.getListAppBottom());
-        rcUngDung1.setAdapter(listapp);
+        listappDacai = new UngDungDsAdapter(this,listUngDungDaCai.get(demDsApp));
+        rcUngDung1.setAdapter(listappDacai);
 
         listAppsDs = new ArrayList<>();
         listAppsDs = listApps;
@@ -216,14 +233,12 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
                     didIndex = didIndex + 8;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
-                } else if ( didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size()) {
-                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
-                    didIndex = main + dsChuDe.size() + dsUngDung.size();
-                    rcChuDe1.getChildAt(0).callOnClick();
-                } else if (didIndex > main - 1 + dsChuDe.size() + dsUngDung.size()
-                        && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
-                    didIndex = main + dsChuDe.size() + dsUngDung.size() + cates1.size() + 1;
-                    rcUngDung1.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
+                } else {
+                    try {
+                        rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
+                        didIndex = main + dsChuDe.size() + dsUngDung.size() + 1;
+                        rcUngDung1.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
+                    } catch (Exception e) {}
                 }
                 break;
 
@@ -245,19 +260,23 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     didIndex = indexChuDe;
                     rcChuDe.getChildAt(didIndex - main).callOnClick();
                 } else if (didIndex >= main + dsChuDe.size() + 8
-                        && didIndex <= main + dsChuDe.size() + dsUngDung.size()) {
-                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
-                    didIndex = didIndex - 8;
+                        && didIndex <= main + dsChuDe.size() + dsUngDung.size()
+                        && dsUngDung.size() > 8) {
+                        rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
+                        didIndex = didIndex - 8;
+                        rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
+                } else if (didIndex > main + dsChuDe.size() + dsUngDung.size() - 1
+                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + listUngDungDaCai.get(demDsApp).size() + 1) {
+                    if (didIndex == main + dsChuDe.size() + dsUngDung.size()
+                            || didIndex == main + dsUngDung.size() + dsChuDe.size() + listUngDungDaCai.get(demDsApp).size() + 1) {
+                        imageMinusDs.setImageResource(R.drawable.ic_minus1);
+                        imagePlusDs.setImageResource(R.drawable.ic_plus1);
+                    } else {
+                        rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).setBackgroundResource(R.drawable.none);
+                    }
+                    didIndex = main + dsChuDe.size() + dsUngDung.size() - 1;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex > main - 1 + dsChuDe.size() + dsUngDung.size()
-                        && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
-                    rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
-                    didIndex = main + dsChuDe.size();
-                } else if (didIndex > main + dsChuDe.size() + dsUngDung.size() + cates1.size()
-                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size()) {
-                    rcUngDung1.getChildAt(didIndex - main - 1 - dsChuDe.size() - dsUngDung.size() - cates1.size()).setBackgroundResource(R.drawable.none);
-                    didIndex = main - 1 + dsChuDe.size() + dsUngDung.size();
-                    rcChuDe1.getChildAt(0).callOnClick();
+
                 }
                 break;
 
@@ -279,32 +298,30 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     }
                     didIndex--;
                     rcChuDe.getChildAt(didIndex - main).callOnClick();
-                } else if (didIndex > main + dsChuDe.size() && didIndex <= main + dsChuDe.size() + dsUngDung.size()) {
+                } else if (didIndex > main + dsChuDe.size()
+                        && didIndex < main + dsChuDe.size() + dsUngDung.size()) {
                     if ( didIndex != main + dsChuDe.size() + dsUngDung.size()) {
                         rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
                     }
                     didIndex--;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex > main + dsChuDe.size() + dsUngDung.size()
-                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
-                    if (didIndex == main + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
-                        imageMinusDs.setImageResource(R.drawable.ic_minus1);
-                    }
+                }  else if (didIndex == main + 1 + dsChuDe.size() + dsUngDung.size()) {
+                    rcUngDung1.getChildAt(0).setBackgroundResource(R.drawable.none);
                     didIndex--;
-                    rcChuDe1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size()).callOnClick();
-                } else if (didIndex > main + dsChuDe.size() + dsUngDung.size() + cates1.size()
-                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size()) {
-                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.none);
+                    imageMinusDs.setImageResource(R.drawable.ic_minus);
+                } else if (didIndex > main + dsChuDe.size() + dsUngDung.size() + 1
+                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + listUngDungDaCai.get(demdsApp).size()) {
+                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).setBackgroundResource(R.drawable.none);
                     didIndex--;
-                    if (didIndex != main + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
-                        rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.border_pick);
-                    } else {
-                        imageMinusDs.setImageResource(R.drawable.ic_minus);
-                    }
-                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size() + 1) {
+                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).setBackgroundResource(R.drawable.border_pick);
+                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size()) {
+                    imageMinusDs.setImageResource(R.drawable.ic_minus1);
+                    didIndex--;
+                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
+                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + listUngDungDaCai.get(demDsApp).size() + 1) {
+                    didIndex--;
+                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).setBackgroundResource(R.drawable.border_pick);
                     imagePlusDs.setImageResource(R.drawable.ic_plus1);
-                    didIndex--;
-                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.border_pick);
                 }
                 break;
 
@@ -327,33 +344,28 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     }
                     didIndex++;
                     rcChuDe.getChildAt(didIndex - main).callOnClick();
-                } else if ((didIndex > main - 1 + dsChuDe.size()) && (didIndex < main - 1 + dsChuDe.size() + dsUngDung.size())) {
+                } else if ((didIndex > main - 1 + dsChuDe.size())
+                        && (didIndex < main - 1 + dsChuDe.size() + dsUngDung.size())) {
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
                     didIndex++;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex >= main - 1 + dsChuDe.size() + dsUngDung.size()
-                        && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
-                    if (didIndex == main - 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
-                       didIndex = main - 1 + dsChuDe.size() + dsUngDung.size();
-                    }
-                    if (didIndex == main - 1 + dsChuDe.size() + dsUngDung.size()) {
-                        rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
-                    }
+                } else if (didIndex == main - 1 + dsChuDe.size() + dsUngDung.size()) {
+                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
+                    rcUngDung1.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
+                    didIndex = main + dsChuDe.size() + dsUngDung.size() + 1;
+                } else if (didIndex >= main + dsChuDe.size() + dsUngDung.size() + 1
+                        && didIndex < main + dsChuDe.size() + dsUngDung.size() + listUngDungDaCai.get(demDsApp).size()) {
+                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).setBackgroundResource(R.drawable.none);
                     didIndex++;
-                    rcChuDe1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size()).callOnClick();
-                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
+                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).setBackgroundResource(R.drawable.border_pick);
+                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + listUngDungDaCai.get(demDsApp).size()) {
+                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).setBackgroundResource(R.drawable.none);
+                    didIndex++;
+                    imagePlusDs.setImageResource(R.drawable.ic_plus);
+                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size()) {
                     imageMinusDs.setImageResource(R.drawable.ic_minus1);
                     didIndex++;
                     rcUngDung1.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex >= main + 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()
-                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size()) {
-                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.none);
-                    didIndex++;
-                    if ( didIndex != main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size() + 1) {
-                        rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).setBackgroundResource(R.drawable.border_pick);
-                    } else {
-                        imagePlusDs.setImageResource(R.drawable.ic_plus);
-                    }
                 }
                 break;
 
@@ -365,13 +377,13 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                 } else if (didIndex > main - 1 + dsChuDe.size()
                         && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size()) {
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).callOnClick();
-                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + cates1.size()) {
+                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size()) {
                     imageMinusDs.callOnClick();
-                } else if (didIndex >= main + 1 + dsChuDe.size() + dsUngDung.size() + cates1.size()
-                        && didIndex <= main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size()) {
-                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - cates1.size() - 1).callOnClick();
-                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + cates1.size() + listAppsDs.get(demdsApp).size() + 1) {
+                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + listUngDungDaCai.get(demDsApp).size() + 1) {
                     imagePlusDs.callOnClick();
+                } else if (didIndex > main + dsChuDe.size() + dsUngDung.size()
+                        && didIndex < main + dsChuDe.size() + dsUngDung.size() + listUngDungDaCai.get(demDsApp).size() + 1) {
+                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).callOnClick();
                 }
                 break;
 
@@ -397,16 +409,16 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     Intent i = manager.getLaunchIntentForPackage(dsUngDung.get(position).getNameApp().toString());
                     context.startActivity(i);
                 } catch (Exception e) {
-                    Intent intent = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
+                    Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
                     context.startActivity(intent);
                 }
             } else {
                 int position = rcUngDung1.getChildPosition(v);
                 try {
-                    Intent i = manager.getLaunchIntentForPackage(listAppsDs.get(demDsApp).get(position).getNameApp().toString());
+                    Intent i = manager.getLaunchIntentForPackage(listUngDungDaCai.get(demDsApp).get(position).getNameApp().toString());
                     context.startActivity(i);
                 } catch (Exception e) {
-                    Intent intent = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
+                    Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
                     context.startActivity(intent);
                 }
             }
@@ -481,16 +493,11 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                 break;
 
             case R.id.img_minus_ds:
-                if (0 < demdsApp) {
+                if (0 < demDsApp) {
                     demDsApp--;
-                    demdsApp--;
-                    /*listapp = new UngDungAdapter(getApplicationContext(), listApps.get(demdsApp));
-                    rcApp.setAdapter(listapp);*/
-                    listAppBottom.clear();
-                    listAppBottom.addAll(listAppsDs.get(demdsApp));
-                    listapp.notifyDataSetChanged();
-
-                    didIndex = main + dsChuDe.size() + dsUngDung.size() + cates1.size();
+                    listappDacai = new UngDungDsAdapter(this,listUngDungDaCai.get(demDsApp));
+                    rcUngDung1.setAdapter(listappDacai);
+                    didIndex = main + dsChuDe.size() + dsUngDung.size();
                     imageMinusDs.setImageResource(R.drawable.ic_minus);
                 } else {
                     Toast.makeText(getApplicationContext(), "Bạn đang ở danh sách các ứng dụng đầu tiên ", Toast.LENGTH_SHORT).show();
@@ -498,7 +505,16 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                 break;
 
             case R.id.img_plus_ds:
-                Toast.makeText(getApplicationContext(), "Bạn đã ở cuối danh sách ứng dụng", Toast.LENGTH_SHORT).show();
+                if (demDsApp < listUngDungDaCai.size() - 1) {
+                    imagePlusDs.setImageResource(R.drawable.ic_plus1);
+                    demDsApp++;
+                    listappDacai = new UngDungDsAdapter(this,listUngDungDaCai.get(demDsApp));
+                    rcUngDung1.setAdapter(listappDacai);
+                    didIndex = main + dsChuDe.size() + dsUngDung.size();
+                    imageMinusDs.setImageResource(R.drawable.ic_minus);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Bạn đã ở cuối danh sách ứng dụng", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             case R.id.relay113_ds:

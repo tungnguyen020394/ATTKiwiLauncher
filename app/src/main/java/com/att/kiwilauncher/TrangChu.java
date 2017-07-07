@@ -705,12 +705,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     Intent i4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UC-r6Lfqt2jD-iVqlmrzN4vg"));
                     startActivity(i4);
                 } catch (Exception e) {
-                    launchApp("com.store.kiwi.kiwistore");
+                    launchApp("com.example.tienh.kiwistore10");
                 }
                 break;
 
             case R.id.img_store:
-                launchApp("com.store.kiwi.kiwistore");
+                launchApp("com.example.tienh.kiwistore10");
                 break;
 
             case R.id.relay113:
@@ -812,11 +812,19 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         public void onClick(View v) {
             int position = rcApp.getChildPosition(v);
            // Toast.makeText(context,TrangChu.listAppBottom.get(position).getId(),Toast.LENGTH_SHORT).show();
-            Intent i = manager.getLaunchIntentForPackage(listApps.get(demdsApp).get(position).getNameApp().toString());
+            Intent i = new Intent();
+            if (position == 0) {
+                i = manager.getLaunchIntentForPackage("vn.vtv.vtvgo");
+            } else if (position == 1) {
+                i = manager.getLaunchIntentForPackage("tic.tac.toe.games.tictactoe.puzzle.free");
+            } else {
+                    i = manager.getLaunchIntentForPackage(listApps.get(demdsApp).get(position).getNameApp().toString());
+            }
+
             try {
                 context.startActivity(i);
             } catch (Exception e) {
-                Intent intent = manager.getLaunchIntentForPackage("com.store.kiwi.kiwistore");
+                Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
                 intent.putExtra("idApp",listAppBottom.get(position).getId());
                 context.startActivity(intent);
             }
