@@ -134,6 +134,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             }
         }
     };
+    public static int requestNum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -218,9 +219,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         dialog = new ProgressDialog(this, ProgressDialog.THEME_HOLO_LIGHT);
         dialog.setTitle("Đang tải");
         dialog.setMessage("Vui lòng đợi ứng dụng tải dữ liệu");
-        mRequestToServer = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
+        /*mRequestToServer = RequestToServer.createRequestAndUpdate(dialog, mDatabaseHelper, mAllListMap,
                 mListQuangCao, cates, categoryAdapter, text, TrangChu.this, mIdCapNhat, mListVideoAd);
-        requestQueue.add(mRequestToServer);
+        requestQueue.add(mRequestToServer);*/
 
     }
 
@@ -237,7 +238,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
         }
         if (DuLieu.hasInternetConnection(TrangChu.this) && mListVideoAd.size() > 0) {
-            setVideoOrImager(mListVideoAd.get(indexVideo));
+          //  setVideoOrImager(mListVideoAd.get(indexVideo));
         } else {
             video.setVisibility(View.GONE);
             imgView.setVisibility(View.VISIBLE);
@@ -676,25 +677,25 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
             case R.id.img_tv:
                 Intent i = new Intent(TrangChu.this, DanhSach.class);
-                i.putExtra("tenChuDe","Truyền Hình Tổng Hợp");
+                i.putExtra("tenChuDe", "Truyền Hình Tổng Hợp");
                 startActivity(i);
                 break;
 
             case R.id.img_phim:
                 Intent i1 = new Intent(TrangChu.this, DanhSach.class);
-                i1.putExtra("tenChuDe","Phim Tổng Hợp");
+                i1.putExtra("tenChuDe", "Phim Tổng Hợp");
                 startActivity(i1);
                 break;
 
             case R.id.img_nhac:
                 Intent i2 = new Intent(TrangChu.this, DanhSach.class);
-                i2.putExtra("tenChuDe","Nhạc Tổng Hợp");
+                i2.putExtra("tenChuDe", "Nhạc Tổng Hợp");
                 startActivity(i2);
                 break;
 
             case R.id.img_kara:
                 Intent i3 = new Intent(TrangChu.this, DanhSach.class);
-                i3.putExtra("tenChuDe","Karaoke Tổng Hợp");
+                i3.putExtra("tenChuDe", "Karaoke Tổng Hợp");
                 startActivity(i3);
                 break;
 
@@ -811,21 +812,21 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         @Override
         public void onClick(View v) {
             int position = rcApp.getChildPosition(v);
-           // Toast.makeText(context,TrangChu.listAppBottom.get(position).getId(),Toast.LENGTH_SHORT).show();
+            // Toast.makeText(context,TrangChu.listAppBottom.get(position).getId(),Toast.LENGTH_SHORT).show();
             Intent i = new Intent();
             if (position == 0) {
                 i = manager.getLaunchIntentForPackage("vn.vtv.vtvgo");
             } else if (position == 1) {
                 i = manager.getLaunchIntentForPackage("tic.tac.toe.games.tictactoe.puzzle.free");
             } else {
-                    i = manager.getLaunchIntentForPackage(listApps.get(demdsApp).get(position).getNameApp().toString());
+                i = manager.getLaunchIntentForPackage(listApps.get(demdsApp).get(position).getNameApp().toString());
             }
 
             try {
                 context.startActivity(i);
             } catch (Exception e) {
                 Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
-                intent.putExtra("idApp",listAppBottom.get(position).getId());
+                intent.putExtra("idApp", listAppBottom.get(position).getId());
                 context.startActivity(intent);
             }
         }

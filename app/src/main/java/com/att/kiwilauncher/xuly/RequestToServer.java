@@ -1,6 +1,5 @@
 package com.att.kiwilauncher.xuly;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,14 +16,15 @@ import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
+import com.att.kiwilauncher.TrangChu;
 import com.att.kiwilauncher.UngDung;
 import com.att.kiwilauncher.adapter.ChuDeAdapter;
 import com.att.kiwilauncher.adapter.UngDungAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
 import com.att.kiwilauncher.model.QuangCao;
-import com.att.kiwilauncher.model.TheLoai;
 import com.att.kiwilauncher.model.ThoiTiet;
+import com.att.kiwilauncher.util.DateCompare;
 import com.att.kiwilauncher.util.Define;
 
 import org.json.JSONArray;
@@ -43,6 +43,7 @@ import static com.att.kiwilauncher.TrangChu.listApps;
 import static com.att.kiwilauncher.TrangChu.listapp;
 import static com.att.kiwilauncher.TrangChu.mListTheLoaiUngDung;
 import static com.att.kiwilauncher.TrangChu.mListUngDung;
+import static com.att.kiwilauncher.xuly.DuLieu.checkInstalledApplication;
 
 /**
  * Created by admin on 6/22/2017.
@@ -54,25 +55,27 @@ public class RequestToServer {
     JSONArray root;
     SQLiteDatabase mDatabase;
     UpdateDataFromServer updateDataFromServer;
-    AlertDialog dialog;
-    ArrayList<TheLoai> theLoais;
-    ArrayList<UngDung> ungDungs;
     UngDungAdapter ungDungAdapter;
+    ProgressDialog dialog;
+    List<QuangCao> mListQuangCao;
+    List<ChuDe> cates;
+    ChuDeAdapter categoryAdapter;
+    TextView text;
+    List<QuangCao> mListVideoAd;
 
-    public RequestToServer(DatabaseHelper mDatabaseHelper, Context context,  ProgressDialog dialog,
-                            List<QuangCao> mListQuangCao,  List<ChuDe> cates,  ChuDeAdapter categoryAdapter,
-                            TextView text,  String idCapNhat,  List<QuangCao> mListVideoAd) {
+    public RequestToServer(DatabaseHelper mDatabaseHelper, Context context, ProgressDialog dialog,
+                           List<QuangCao> mListQuangCao, List<ChuDe> cates, ChuDeAdapter categoryAdapter,
+                           TextView text, List<QuangCao> mListVideoAd) {
         this.databaseHelper = mDatabaseHelper;
         this.context = context;
         this.mDatabase = databaseHelper.getmDatabase();
         this.updateDataFromServer = new UpdateDataFromServer(mDatabase, context);
-        this.theLoais = theLoais;
-        this.ungDungs = ungDungs;
         this.dialog = dialog;
-        this.ungDung_theLoais = ungDung_theLoais;
-        this.imagerViewApps = imagerViewApps;
-        this.theLoaiAdapter = theLoaiAdapter;
-        this.ungDungAdapter = ungDungAdapter;
+        this.mListQuangCao = mListQuangCao;
+        this.cates = cates;
+        this.categoryAdapter = categoryAdapter;
+        this.text = text;
+        this.mListVideoAd = mListVideoAd;
     }
 
     public StringRequest UpdateTheLoaiRequest() {
@@ -92,8 +95,8 @@ public class RequestToServer {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                theLoais.clear();
-                theLoais.addAll(databaseHelper.getAllTheLoai());
+                /*theLoais.clear();
+                theLoais.addAll(databaseHelper.getAllTheLoai());*/
                 //   Toast.makeText(context, theLoais.size() + "tl s2", Toast.LENGTH_SHORT).show();
                 uploadData();
             }
@@ -102,7 +105,7 @@ public class RequestToServer {
             public void onErrorResponse(VolleyError error) {
                 Log.e("ERROR", error.toString());
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 return super.getParams();
@@ -142,8 +145,8 @@ public class RequestToServer {
                 } catch (JSONException e1) {
                     e1.printStackTrace();
                 }
-                ungDungs.clear();
-                ungDungs.addAll(databaseHelper.getAllUngDung());
+               /* ungDungs.clear();
+                ungDungs.addAll(databaseHelper.getAllUngDung());*/
                 //   Toast.makeText(context, ungDungs.size() + "ud s2", Toast.LENGTH_SHORT).show();
                 uploadData();
             }
@@ -201,8 +204,8 @@ public class RequestToServer {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                ungDung_theLoais.clear();
-                ungDung_theLoais.addAll(databaseHelper.getAllTheLoaiUngDung());
+          /*      ungDung_theLoais.clear();
+                ungDung_theLoais.addAll(databaseHelper.getAllTheLoaiUngDung());*/
                 //    Toast.makeText(context, ungDung_theLoais.size() + "udtl s2", Toast.LENGTH_SHORT).show();
                 uploadData();
             }
@@ -231,8 +234,8 @@ public class RequestToServer {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                imagerViewApps.clear();
-                imagerViewApps.addAll(databaseHelper.getAllImagerViewApp());
+   /*             imagerViewApps.clear();
+                imagerViewApps.addAll(databaseHelper.getAllImagerViewApp());*/
                 //    Toast.makeText(context, imagerViewApps.size() + "anh s2", Toast.LENGTH_SHORT).show();
                 uploadData();
             }
@@ -302,49 +305,49 @@ public class RequestToServer {
     }
 
     private void uploadData() {
-        if (MainActivity.requestNum < 4) {
-            MainActivity.requestNum++;
+        if (TrangChu.requestNum < 4) {
+            TrangChu.requestNum++;
 
         } else {
-            MainActivity.requestNum = 0;
+            TrangChu.requestNum = 0;
             dialog.dismiss();
-            theLoaiAdapter.notifyDataSetChanged();
-            ungDungAdapter.notifyDataSetChanged();
+          /*  theLoaiAdapter.notifyDataSetChanged();
+            ungDungAdapter.notifyDataSetChanged();*/
         }
     }
 
-   /* public StringRequest UpdateDataRequest(final Context context,
-                                           final String mIdCapNhat, final AlertDialog dialog,
-                                           final ArrayList<TheLoai> theLoais, final ArrayList<UngDung> ungDungs,
-                                           final ArrayList<UngDung_TheLoai> ungDung_theLoais,
-                                           final ArrayList<ImagerViewApp> imagerViewApps, final TheLoaiAdapter theLoaiAdapter,
-                                           final UngDungAdapter ungDungAdapter) {
-        StringRequest request = new StringRequest(Request.Method.POST, Define.URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    databaseHelper.checkDatabase(context);
-                    JSONArray root = new JSONArray(response);
-                    databaseHelper.openDatabase();
-                    SQLiteDatabase mDatabase = databaseHelper.getmDatabase();
-                    UpdateDataFromServer updateDataFromServer = new UpdateDataFromServer(mDatabase, context);
-                    for (int i = 0; i < root.length(); i++) {
-                        JSONObject capnhat = root.getJSONObject(i);
-                        String isCapNhat = capnhat.getString("is_cap_nhat");
-                        if (isCapNhat.equals("0")) {
-                            break;
-                        } else {
-                            update = true;
-                            String loaiCapNhat = capnhat.getString("loai");
-                            switch (loaiCapNhat) {
-                                case "quangcao":
-                                    JSONArray rootQC = capnhat.getJSONArray("value");
-                                    updateDataFromServer.deleteQuangCao();
-                                    for (int j = 0; j < rootQC.length(); j++) {
-                                        JSONObject app = rootQC.getJSONObject(j);
-                                        updateDataFromServer.insertQuangCao(app.getString("id"), app.getString("noidung"), app.getString("loaiquangcaoid"));
-                                    }
-                                   *//* Glide.with(MainActivity.this).load(DuLieu.URL_IMAGE + "/" + mDatabaseHelper.getLinkAnhQuangCao()).asBitmap().into(new SimpleTarget<Bitmap>() {
+    /* public StringRequest UpdateDataRequest(final Context context,
+                                            final String mIdCapNhat, final AlertDialog dialog,
+                                            final ArrayList<TheLoai> theLoais, final ArrayList<UngDung> ungDungs,
+                                            final ArrayList<UngDung_TheLoai> ungDung_theLoais,
+                                            final ArrayList<ImagerViewApp> imagerViewApps, final TheLoaiAdapter theLoaiAdapter,
+                                            final UngDungAdapter ungDungAdapter) {
+         StringRequest request = new StringRequest(Request.Method.POST, Define.URL, new Response.Listener<String>() {
+             @Override
+             public void onResponse(String response) {
+                 try {
+                     databaseHelper.checkDatabase(context);
+                     JSONArray root = new JSONArray(response);
+                     databaseHelper.openDatabase();
+                     SQLiteDatabase mDatabase = databaseHelper.getmDatabase();
+                     UpdateDataFromServer updateDataFromServer = new UpdateDataFromServer(mDatabase, context);
+                     for (int i = 0; i < root.length(); i++) {
+                         JSONObject capnhat = root.getJSONObject(i);
+                         String isCapNhat = capnhat.getString("is_cap_nhat");
+                         if (isCapNhat.equals("0")) {
+                             break;
+                         } else {
+                             update = true;
+                             String loaiCapNhat = capnhat.getString("loai");
+                             switch (loaiCapNhat) {
+                                 case "quangcao":
+                                     JSONArray rootQC = capnhat.getJSONArray("value");
+                                     updateDataFromServer.deleteQuangCao();
+                                     for (int j = 0; j < rootQC.length(); j++) {
+                                         JSONObject app = rootQC.getJSONObject(j);
+                                         updateDataFromServer.insertQuangCao(app.getString("id"), app.getString("noidung"), app.getString("loaiquangcaoid"));
+                                     }
+                                    *//* Glide.with(MainActivity.this).load(DuLieu.URL_IMAGE + "/" + mDatabaseHelper.getLinkAnhQuangCao()).asBitmap().into(new SimpleTarget<Bitmap>() {
                                         @Override
                                         public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                                             Drawable ad = new BitmapDrawable(resource);
@@ -480,158 +483,158 @@ public class RequestToServer {
         };
         return request;
     }*/
-   public static StringRequest createRequestAndUpdate(final ProgressDialog dialog, final DatabaseHelper mDatabaseHelper, final HashMap<String, List> mAllListMap,
-                                                      final List<QuangCao> mListQuangCao, final List<ChuDe> cates, final ChuDeAdapter categoryAdapter,
-                                                      final TextView text, final Context context, final String idCapNhat, final List<QuangCao> mListVideoAd) {
+    public static StringRequest createRequestAndUpdate(final ProgressDialog dialog, final DatabaseHelper mDatabaseHelper, final HashMap<String, List> mAllListMap,
+                                                       final List<QuangCao> mListQuangCao, final List<ChuDe> cates, final ChuDeAdapter categoryAdapter,
+                                                       final TextView text, final Context context, final String idCapNhat, final List<QuangCao> mListVideoAd) {
 
-       dialog.show();
+        dialog.show();
 
-       StringRequest request = new StringRequest(Request.Method.POST, DuLieu.URL_REQUEST, new Response.Listener<String>() {
-           @Override
-           public void onResponse(String response) {
-               try {
-                   JSONArray root = new JSONArray(response);
-                   for (int i = 0; i < root.length(); i++) {
-                       JSONObject capnhat = root.getJSONObject(i);
-                       String isCapNhat = capnhat.getString("is_cap_nhat");
-                       if (isCapNhat.equals("0")) {
-                           break;
-                       } else {
-                           String loaiCapNhat = capnhat.getString("loai");
-                           switch (loaiCapNhat) {
-                               case "quangcao":
-                                   JSONArray rootQC = capnhat.getJSONArray("value");
-                                   mDatabaseHelper.deleteQuangCao();
-                                   for (int j = 0; j < rootQC.length(); j++) {
-                                       JSONObject app = rootQC.getJSONObject(j);
-                                       mDatabaseHelper.insertQuangCao(app.getString("id"), app.getString("noidung"), app.getString("loaiquangcaoid"));
-                                   }
-                                   break;
-                               case "ungdung":
-                                   JSONArray rootApp = capnhat.getJSONArray("value");
-                                   mDatabaseHelper.deleteListApp();
-                                   for (int j = 0; j < rootApp.length(); j++) {
-                                       JSONObject app = rootApp.getJSONObject(j);
-                                       int install, update;
-                                       install = update = 0;
-                                       if (DuLieu.checkInstalledApplication(app.getString("ten"), context)) {
-                                           install = 1;
-                                           if (DuLieu.capNhatVersion(DuLieu.getPackageName(app.getString("ten"), context), app.getInt("version_code"), context)) {
-                                               update = 1;
-                                           } else {
-                                               update = 0;
-                                           }
-                                       }
-                                       mDatabaseHelper.insertApp(app.getString("id"), app.getString("ten")
-                                               , install, DuLieu.URL_IMAGE + "/" + app.getString("icon")
-                                               , app.getString("luotcai"), app.getString("version")
-                                               , app.getString("des"), DuLieu.URL_FILE + "/" + app.getString("linkcai")
-                                               , app.getString("rating"), app.getString("version_code"), update);
-                                   }
-                                   //  Toast.makeText(getApplicationContext(), mDatabaseHelper.testInsertApp() + " == max app", Toast.LENGTH_SHORT).show();
-                                   break;
-                               case "luotcai":
-                                   break;
-                               case "anhchitiet":
-                                   JSONArray rootAnhChiTiet = capnhat.getJSONArray("value");
-                                   mDatabaseHelper.deleteAnhChiTiet();
-                                   for (int j = 0; j < rootAnhChiTiet.length(); j++) {
-                                       JSONObject app = rootAnhChiTiet.getJSONObject(j);
-                                       mDatabaseHelper.insertAnhChiTiet(app.getString("id"), app.getString("ungdungid"), DuLieu.URL_IMAGE +
-                                               "/" + app.getString("ten"));
-                                   }
-                                   break;
-                               case "theloai_ungdung":
-                                   JSONArray rootTheLoaiUngDung = capnhat.getJSONArray("value");
-                                   mDatabaseHelper.deleteTheLoaiUngDung();
-                                   for (int j = 0; j < rootTheLoaiUngDung.length(); j++) {
-                                       JSONObject app = rootTheLoaiUngDung.getJSONObject(j);
-                                       mDatabaseHelper.insertTheLoaiUngDung(app.getString("id"), app.getString("theloaiid"), app.getString("ungdungid"));
-                                   }
-                                   break;
-                               case "theloai":
-                                   JSONArray rootTheLoai = capnhat.getJSONArray("value");
-                                   mDatabaseHelper.deleteTheLoai();
-                                   for (int j = 0; j < rootTheLoai.length(); j++) {
-                                       JSONObject app = rootTheLoai.getJSONObject(j);
-                                       mDatabaseHelper.insertTheLoai(app.getString("id"), app.getString("ten"), app.getString("soluong"), app.getString("icon"));
-                                   }
-                                   break;
-                               case "capnhat":
-                                   JSONArray rootCapNhat = capnhat.getJSONArray("value");
-                                   mDatabaseHelper.deleteCapNhat();
-                                   JSONObject app = rootCapNhat.getJSONObject(0);
-                                   mDatabaseHelper.insertCapNhat(app.getString("id"), app.getString("id"));
-                                   break;
-                               default:
-                                   break;
-                           }
-                       }
-                   }
-               } catch (JSONException e) {
-                   e.printStackTrace();
-               }
+        StringRequest request = new StringRequest(Request.Method.POST, DuLieu.URL_REQUEST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray root = new JSONArray(response);
+                    for (int i = 0; i < root.length(); i++) {
+                        JSONObject capnhat = root.getJSONObject(i);
+                        String isCapNhat = capnhat.getString("is_cap_nhat");
+                        if (isCapNhat.equals("0")) {
+                            break;
+                        } else {
+                            String loaiCapNhat = capnhat.getString("loai");
+                            switch (loaiCapNhat) {
+                                case "quangcao":
+                                    JSONArray rootQC = capnhat.getJSONArray("value");
+                                    mDatabaseHelper.deleteQuangCao();
+                                    for (int j = 0; j < rootQC.length(); j++) {
+                                        JSONObject app = rootQC.getJSONObject(j);
+                                        mDatabaseHelper.insertQuangCao(app.getString("id"), app.getString("noidung"), app.getString("loaiquangcaoid"));
+                                    }
+                                    break;
+                                case "ungdung":
+                                    JSONArray rootApp = capnhat.getJSONArray("value");
+                                    mDatabaseHelper.deleteListApp();
+                                    for (int j = 0; j < rootApp.length(); j++) {
+                                        JSONObject app = rootApp.getJSONObject(j);
+                                        int install, update;
+                                        install = update = 0;
+                                        if (checkInstalledApplication(app.getString("ten"), context)) {
+                                            install = 1;
+                                            if (DuLieu.capNhatVersion(DuLieu.getPackageName(app.getString("ten"), context), app.getInt("version_code"), context)) {
+                                                update = 1;
+                                            } else {
+                                                update = 0;
+                                            }
+                                        }
+                                        mDatabaseHelper.insertApp(app.getString("id"), app.getString("ten")
+                                                , install, DuLieu.URL_IMAGE + "/" + app.getString("icon")
+                                                , app.getString("luotcai"), app.getString("version")
+                                                , app.getString("des"), DuLieu.URL_FILE + "/" + app.getString("linkcai")
+                                                , app.getString("rating"), app.getString("version_code"), update);
+                                    }
+                                    //  Toast.makeText(getApplicationContext(), mDatabaseHelper.testInsertApp() + " == max app", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case "luotcai":
+                                    break;
+                                case "anhchitiet":
+                                    JSONArray rootAnhChiTiet = capnhat.getJSONArray("value");
+                                    mDatabaseHelper.deleteAnhChiTiet();
+                                    for (int j = 0; j < rootAnhChiTiet.length(); j++) {
+                                        JSONObject app = rootAnhChiTiet.getJSONObject(j);
+                                        mDatabaseHelper.insertAnhChiTiet(app.getString("id"), app.getString("ungdungid"), DuLieu.URL_IMAGE +
+                                                "/" + app.getString("ten"));
+                                    }
+                                    break;
+                                case "theloai_ungdung":
+                                    JSONArray rootTheLoaiUngDung = capnhat.getJSONArray("value");
+                                    mDatabaseHelper.deleteTheLoaiUngDung();
+                                    for (int j = 0; j < rootTheLoaiUngDung.length(); j++) {
+                                        JSONObject app = rootTheLoaiUngDung.getJSONObject(j);
+                                        mDatabaseHelper.insertTheLoaiUngDung(app.getString("id"), app.getString("theloaiid"), app.getString("ungdungid"));
+                                    }
+                                    break;
+                                case "theloai":
+                                    JSONArray rootTheLoai = capnhat.getJSONArray("value");
+                                    mDatabaseHelper.deleteTheLoai();
+                                    for (int j = 0; j < rootTheLoai.length(); j++) {
+                                        JSONObject app = rootTheLoai.getJSONObject(j);
+                                        mDatabaseHelper.insertTheLoai(app.getString("id"), app.getString("ten"), app.getString("soluong"), app.getString("icon"));
+                                    }
+                                    break;
+                                case "capnhat":
+                                    JSONArray rootCapNhat = capnhat.getJSONArray("value");
+                                    mDatabaseHelper.deleteCapNhat();
+                                    JSONObject app = rootCapNhat.getJSONObject(0);
+                                    mDatabaseHelper.insertCapNhat(app.getString("id"), app.getString("id"));
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 /*mAllListMap.clear();
                 mAllListMap.putAll(mDatabaseHelper.getAllList());*/
-               mListQuangCao.clear();
-               //  mListQuangCao.addAll(mAllListMap.get("quangcao"));
-               mListQuangCao.addAll(mDatabaseHelper.getListQuangCao());
-               mListUngDung.clear();
-               // mListUngDung.addAll(mAllListMap.get("ungdung"));
-               mListUngDung.addAll(mDatabaseHelper.getListUngDungV2());
-               mListTheLoaiUngDung.clear();
-               // mListTheLoaiUngDung.addAll(mAllListMap.get("theloaiungdung"));
-               mListTheLoaiUngDung.addAll(mDatabaseHelper.getListTheLoaiUngDung());
-               cates.clear();
-               // cates.addAll(mAllListMap.get("theloai"));
-               cates.addAll(mDatabaseHelper.getListChuDe());
-               dialog.dismiss();
-               if (!DuLieu.getAdTextFromList(mListQuangCao).equals("")){
-                   text.setText(DuLieu.getAdTextFromList(mListQuangCao));
-               }
-               categoryAdapter.notifyDataSetChanged();
-               listAppBottom.clear();
-               listApps.clear();
-               List<UngDung> checkedList;
-               checkedList = mDatabaseHelper.getListUngDung(cates.get(0));
-               List<UngDung> tmpList = new ArrayList<>();
-               mListVideoAd.clear();
-               mListVideoAd.addAll(DuLieu.getAdVideoFromList(mListQuangCao));
-               // Toast.makeText(context,mListVideoAd.size()+"s",Toast.LENGTH_SHORT).show();
-               for (int j = 1; j <= checkedList.size(); j++) {
-                   UngDung ungDung = new UngDung();
-                   ungDung.setNameApp(checkedList.get(j - 1).getNameApp());
-                   ungDung.setIcon(checkedList.get(j - 1).getIcon());
-                   ungDung.setId(checkedList.get(j - 1).getId());
-                   tmpList.add(ungDung);
-                   if (j % 7 == 0 || j == checkedList.size()) {
-                       listApps.add(tmpList);
-                       tmpList = new ArrayList<>();
-                       tmpList.clear();
-                   }
-               }
-               demdsApp = 0;
-               listAppBottom.addAll(listApps.get(demdsApp));
-               listapp.notifyDataSetChanged();
-           }
-       }, new Response.ErrorListener() {
-           @Override
-           public void onErrorResponse(VolleyError error) {
+                mListQuangCao.clear();
+                //  mListQuangCao.addAll(mAllListMap.get("quangcao"));
+                mListQuangCao.addAll(mDatabaseHelper.getListQuangCao());
+                mListUngDung.clear();
+                // mListUngDung.addAll(mAllListMap.get("ungdung"));
+                mListUngDung.addAll(mDatabaseHelper.getListUngDungV2());
+                mListTheLoaiUngDung.clear();
+                // mListTheLoaiUngDung.addAll(mAllListMap.get("theloaiungdung"));
+                mListTheLoaiUngDung.addAll(mDatabaseHelper.getListTheLoaiUngDung());
+                cates.clear();
+                // cates.addAll(mAllListMap.get("theloai"));
+                cates.addAll(mDatabaseHelper.getListChuDe());
+                dialog.dismiss();
+                if (!DuLieu.getAdTextFromList(mListQuangCao).equals("")) {
+                    text.setText(DuLieu.getAdTextFromList(mListQuangCao));
+                }
+                categoryAdapter.notifyDataSetChanged();
+                listAppBottom.clear();
+                listApps.clear();
+                List<UngDung> checkedList;
+                checkedList = mDatabaseHelper.getListUngDung(cates.get(0));
+                List<UngDung> tmpList = new ArrayList<>();
+                mListVideoAd.clear();
+                mListVideoAd.addAll(DuLieu.getAdVideoFromList(mListQuangCao));
+                // Toast.makeText(context,mListVideoAd.size()+"s",Toast.LENGTH_SHORT).show();
+                for (int j = 1; j <= checkedList.size(); j++) {
+                    UngDung ungDung = new UngDung();
+                    ungDung.setNameApp(checkedList.get(j - 1).getNameApp());
+                    ungDung.setIcon(checkedList.get(j - 1).getIcon());
+                    ungDung.setId(checkedList.get(j - 1).getId());
+                    tmpList.add(ungDung);
+                    if (j % 7 == 0 || j == checkedList.size()) {
+                        listApps.add(tmpList);
+                        tmpList = new ArrayList<>();
+                        tmpList.clear();
+                    }
+                }
+                demdsApp = 0;
+                listAppBottom.addAll(listApps.get(demdsApp));
+                listapp.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
-           }
-       }) {
-           @Override
-           protected Map<String, String> getParams() throws AuthFailureError {
-               Map<String, String> values = new HashMap<>();
-               //    values.put("capnhatid", (String) mAllListMap.get("capnhat").get(0));
-               values.put("capnhatid", idCapNhat);
-               return values;
-           }
-       };
-       return request;
-   }
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> values = new HashMap<>();
+                //    values.put("capnhatid", (String) mAllListMap.get("capnhat").get(0));
+                values.put("capnhatid", idCapNhat);
+                return values;
+            }
+        };
+        return request;
+    }
 
-    public static StringRequest createWeatherRequest(ThoiTiet mThoiTiet, final String todayFormated, final TextView mTxtNhietDo, final SharedPreferences.Editor editor){
+    public static StringRequest createWeatherRequest(ThoiTiet mThoiTiet, final String todayFormated, final TextView mTxtNhietDo, final SharedPreferences.Editor editor) {
         String url = Define.URL_LLNK_WEATHER_API + mThoiTiet.getMaThoiTiet() + "&APPID=" + Define.APIKEY + "&&units=metric";
 
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
