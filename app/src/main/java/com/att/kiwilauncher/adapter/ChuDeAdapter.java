@@ -86,6 +86,7 @@ public class ChuDeAdapter extends RecyclerView.Adapter<ChuDeAdapter.ViewHolder> 
                     ungDung.setNameApp(checkedList.get(j - 1).getNameApp());
                     ungDung.setIcon(checkedList.get(j - 1).getIcon());
                     ungDung.setId(checkedList.get(j - 1).getId());
+                    ungDung.setPackageName(checkedList.get(j-1).getPackageName());
                     tmpList.add(ungDung);
                     if (j % 7 == 0 || j == checkedList.size()) {
                         listApps.add(tmpList);

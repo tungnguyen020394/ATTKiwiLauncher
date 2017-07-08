@@ -817,16 +817,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             int position = rcApp.getChildPosition(v);
             /*Intent i = manager.getLaunchIntentForPackage(listAppBottom.get(position).getPackageName());
             i.putExtra("id",listAppBottom.get(position).getId());*/
-            if (AppInstallHelper.checkInstalledApplication(listAppBottom.get(position).getPackageName(),context)){
-                AppInfoHelper.launchApp(listAppBottom.get(position).getPackageName(),context);
-            }
-            Toast.makeText(context,listAppBottom.get(position).getIcon()+"="
-                    +listAppBottom.get(position).getPackageName(),Toast.LENGTH_LONG).show();
-            /*else{
+            if (AppInstallHelper.checkInstalledApplication(listAppBottom.get(position).getPackageName(), context)) {
+                AppInfoHelper.launchApp(listAppBottom.get(position).getPackageName(), context);
+            } else {
                 Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
                 intent.putExtra("idApp", listAppBottom.get(position).getId());
                 context.startActivity(intent);
-            }*/
+            }
 
           /*  if (position == 0) {
                 i = manager.getLaunchIntentForPackage("vn.vtv.vtvgo");

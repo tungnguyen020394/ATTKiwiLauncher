@@ -15,17 +15,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c34e4a0-9428-4311-baf7-67bb97f239cb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInstallHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInfoHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInfoHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/adapter/ChuDeAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/adapter/ChuDeAdapter.java" />
     </list>
     <ignored path="ATTKiwiLauncher.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,104 +58,32 @@
       <file leaf-file-name="TrangChu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="820" column="54" selection-start-line="820" selection-start-column="54" selection-end-line="820" selection-end-column="54" />
+            <state relative-caret-position="164">
+              <caret line="813" column="0" selection-start-line="813" selection-start-column="0" selection-end-line="813" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#initNetworkConnectDialog#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
-                <marker date="1499500920525" expanded="false" signature="5984:6939" ph="{...}" />
-                <marker date="1499500920525" expanded="false" signature="40248:41173" ph="{...}" />
-                <marker date="1499500920525" expanded="false" signature="41230:41810" ph="{...}" />
-                <marker date="1499500920525" expanded="false" signature="41858:42686" ph="{...}" />
-                <marker date="1499500920525" expanded="false" signature="42741:46524" ph="{...}" />
-                <marker date="1499500920525" expanded="false" signature="46573:47270" ph="{...}" />
-                <marker date="1499500920525" expanded="false" signature="47592:47603" ph=" { " />
-                <marker date="1499500920525" expanded="false" signature="47626:47632" ph=" }" />
-                <marker date="1499500920525" expanded="false" signature="47699:47754" ph="{...}" />
-                <marker date="1499500920525" expanded="false" signature="47796:47807" ph=" { " />
-                <marker date="1499500920525" expanded="false" signature="47820:47826" ph=" }" />
-                <marker date="1499500920525" expanded="false" signature="47878:47889" ph=" { " />
-                <marker date="1499500920525" expanded="false" signature="47912:47918" ph=" }" />
-                <marker date="1499500920525" expanded="false" signature="47969:47980" ph=" { " />
-                <marker date="1499500920525" expanded="false" signature="48000:48006" ph=" }" />
-                <marker date="1499500920525" expanded="false" signature="48193:48204" ph=" { " />
-                <marker date="1499500920525" expanded="false" signature="48231:48237" ph=" }" />
-                <marker date="1499500920525" expanded="false" signature="48446:48457" ph=" { " />
-                <marker date="1499500920525" expanded="false" signature="48478:48484" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppInfoHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInfoHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DuLieu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/DuLieu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-281">
-              <caret line="275" column="38" selection-start-line="275" selection-start-column="38" selection-end-line="275" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestToServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/RequestToServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2108">
-              <caret line="60" column="21" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="447" column="59" selection-start-line="447" selection-start-column="59" selection-end-line="447" selection-end-column="59" />
-              <folding>
-                <element signature="method#onCreate#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#onUpgrade#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#openDatabase#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#closeDatabase#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#checkDatabase#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getAllList#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getListTheLoai#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getListQuangCao#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getThongTinThoiTiet#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getIdCapNhat#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#insertQuangCao#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getLinkTextQuangCao#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#deleteQuangCao#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#deleteListApp#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#insertTheLoaiUngDung#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#deleteTheLoaiUngDung#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#insertTheLoai#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#deleteTheLoai#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#insertAnhChiTiet#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#deleteAnhChiTiet#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#insertCapNhat#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#deleteCapNhat#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getListUngDungNew#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getListAnhChiTietUngDung#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getMaxCapNhatId#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getMaxQuangCaoId#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getLinkVideoQuangCao#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getListVideoQuangCao#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getListLinkWebQuangCao#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getLissAppName#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#updateApp#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#testTheLoaiUngDung#0;class#DatabaseHelper#0" expanded="false" />
+                <marker date="1499501438086" expanded="false" signature="5984:6939" ph="{...}" />
+                <marker date="1499501438086" expanded="false" signature="40066:40991" ph="{...}" />
+                <marker date="1499501438086" expanded="false" signature="41048:41628" ph="{...}" />
+                <marker date="1499501438086" expanded="false" signature="41676:42504" ph="{...}" />
+                <marker date="1499501438086" expanded="false" signature="42559:46342" ph="{...}" />
+                <marker date="1499501438086" expanded="false" signature="46391:47088" ph="{...}" />
+                <marker date="1499501438086" expanded="false" signature="47410:47421" ph=" { " />
+                <marker date="1499501438086" expanded="false" signature="47444:47450" ph=" }" />
+                <marker date="1499501438086" expanded="false" signature="47517:47572" ph="{...}" />
+                <marker date="1499501438086" expanded="false" signature="47614:47625" ph=" { " />
+                <marker date="1499501438086" expanded="false" signature="47638:47644" ph=" }" />
+                <marker date="1499501438086" expanded="false" signature="47696:47707" ph=" { " />
+                <marker date="1499501438086" expanded="false" signature="47730:47736" ph=" }" />
+                <marker date="1499501438086" expanded="false" signature="47787:47798" ph=" { " />
+                <marker date="1499501438086" expanded="false" signature="47818:47824" ph=" }" />
+                <marker date="1499501438086" expanded="false" signature="48011:48022" ph=" { " />
+                <marker date="1499501438086" expanded="false" signature="48049:48055" ph=" }" />
+                <marker date="1499501438086" expanded="false" signature="48264:48275" ph=" { " />
+                <marker date="1499501438086" expanded="false" signature="48296:48302" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -2151,6 +2077,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInstallHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInfoHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/adapter/ChuDeAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
       </list>
     </option>
@@ -2345,6 +2272,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ATTKiwiLauncher" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kiwilauncher" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adapter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2776,13 +2725,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_video_full_test.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/CheckLink.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -2795,28 +2737,29 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
             <element signature="method#initNetworkConnectDialog#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
-            <marker date="1499500920525" expanded="false" signature="5984:6939" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="40248:41173" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="41230:41810" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="41858:42686" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="42741:46524" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="46573:47270" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="47592:47603" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="47626:47632" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="47699:47754" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="47796:47807" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="47820:47826" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="47878:47889" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="47912:47918" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="47969:47980" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="48000:48006" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="48193:48204" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="48231:48237" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="48446:48457" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="48478:48484" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="5984:6939" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="40066:40991" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="41048:41628" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="41676:42504" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="42559:46342" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="46391:47088" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="47410:47421" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47444:47450" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="47517:47572" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="47614:47625" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47638:47644" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="47696:47707" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47730:47736" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="47787:47798" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47818:47824" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="48011:48022" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="48049:48055" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="48264:48275" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="48296:48302" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -2861,28 +2804,29 @@
         <state relative-caret-position="7825">
           <caret line="955" column="34" selection-start-line="955" selection-start-column="34" selection-end-line="955" selection-end-column="34" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
             <element signature="method#initNetworkConnectDialog#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
-            <marker date="1499500920525" expanded="false" signature="5984:6939" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="40248:41173" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="41230:41810" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="41858:42686" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="42741:46524" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="46573:47270" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="47592:47603" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="47626:47632" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="47699:47754" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="47796:47807" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="47820:47826" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="47878:47889" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="47912:47918" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="47969:47980" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="48000:48006" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="48193:48204" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="48231:48237" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="48446:48457" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="48478:48484" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="5984:6939" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="40066:40991" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="41048:41628" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="41676:42504" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="42559:46342" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="46391:47088" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="47410:47421" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47444:47450" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="47517:47572" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="47614:47625" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47638:47644" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="47696:47707" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47730:47736" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="47787:47798" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47818:47824" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="48011:48022" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="48049:48055" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="48264:48275" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="48296:48302" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -2927,28 +2871,29 @@
         <state relative-caret-position="8075">
           <caret line="965" column="47" selection-start-line="965" selection-start-column="47" selection-end-line="965" selection-end-column="47" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
             <element signature="method#initNetworkConnectDialog#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
-            <marker date="1499500920525" expanded="false" signature="5984:6939" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="40248:41173" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="41230:41810" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="41858:42686" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="42741:46524" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="46573:47270" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="47592:47603" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="47626:47632" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="47699:47754" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="47796:47807" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="47820:47826" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="47878:47889" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="47912:47918" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="47969:47980" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="48000:48006" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="48193:48204" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="48231:48237" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="48446:48457" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="48478:48484" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="5984:6939" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="40066:40991" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="41048:41628" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="41676:42504" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="42559:46342" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="46391:47088" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="47410:47421" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47444:47450" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="47517:47572" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="47614:47625" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47638:47644" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="47696:47707" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47730:47736" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="47787:47798" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47818:47824" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="48011:48022" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="48049:48055" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="48264:48275" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="48296:48302" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -3272,33 +3217,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/adapter/ChuDeAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-788">
+          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="820" column="54" selection-start-line="820" selection-start-column="54" selection-end-line="820" selection-end-column="54" />
+        <state relative-caret-position="164">
+          <caret line="813" column="0" selection-start-line="813" selection-start-column="0" selection-end-line="813" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
             <element signature="method#initNetworkConnectDialog#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
-            <marker date="1499500920525" expanded="false" signature="5984:6939" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="40248:41173" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="41230:41810" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="41858:42686" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="42741:46524" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="46573:47270" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="47592:47603" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="47626:47632" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="47699:47754" ph="{...}" />
-            <marker date="1499500920525" expanded="false" signature="47796:47807" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="47820:47826" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="47878:47889" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="47912:47918" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="47969:47980" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="48000:48006" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="48193:48204" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="48231:48237" ph=" }" />
-            <marker date="1499500920525" expanded="false" signature="48446:48457" ph=" { " />
-            <marker date="1499500920525" expanded="false" signature="48478:48484" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="5984:6939" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="40066:40991" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="41048:41628" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="41676:42504" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="42559:46342" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="46391:47088" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="47410:47421" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47444:47450" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="47517:47572" ph="{...}" />
+            <marker date="1499501438086" expanded="false" signature="47614:47625" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47638:47644" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="47696:47707" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47730:47736" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="47787:47798" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="47818:47824" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="48011:48022" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="48049:48055" ph=" }" />
+            <marker date="1499501438086" expanded="false" signature="48264:48275" ph=" { " />
+            <marker date="1499501438086" expanded="false" signature="48296:48302" ph=" }" />
           </folding>
         </state>
       </provider>
