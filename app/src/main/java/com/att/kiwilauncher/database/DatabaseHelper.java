@@ -311,8 +311,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ungDungNew.setNameApp(cursor.getString(1));
             ungDungNew.setIcon(cursor.getString(2));
             ungDungNew.setPackageName(cursor.getString(3));
-            Log.d("db",cursor.getString(0)+"="+cursor.getString(1)+"="+cursor.getString(2)+"="+cursor.getString(3));
-            Toast.makeText(mContext,cursor.getString(0)+"="+cursor.getString(1)+"="+cursor.getString(2)+"="+cursor.getString(3),Toast.LENGTH_SHORT).show();
+            Log.e("db",cursor.getString(0)+"="+cursor.getString(1)+"="+cursor.getString(2)+"="+cursor.getString(3));
             listUngDung.add(ungDungNew);
         }
         while (cursor.moveToNext()) {
@@ -321,6 +320,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ungDungNew.setNameApp(cursor.getString(1));
             ungDungNew.setIcon(cursor.getString(2));
             ungDungNew.setPackageName(cursor.getString(3));
+            Log.e("db",cursor.getString(0)+"="+cursor.getString(1)+"="+cursor.getString(2)+"="+cursor.getString(3));
             listUngDung.add(ungDungNew);
         }
         cursor.close();

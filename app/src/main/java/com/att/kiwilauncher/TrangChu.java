@@ -812,7 +812,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         @Override
         public void onClick(View v) {
             int position = rcApp.getChildPosition(v);
-             Toast.makeText(context,TrangChu.listAppBottom.get(position).getNameApp()+"="+TrangChu.listAppBottom.get(position).getPackageName(),Toast.LENGTH_SHORT).show();
+            Log.e("a",apps.get(0).getPackageName()+"="+apps.get(0).getIcon());
+           // Toast.makeText(context,TrangChu.listAppBottom.get(position).getNameApp()+"="+TrangChu.listAppBottom.get(position).getPackageName(),Toast.LENGTH_SHORT).show();
+           // Toast.makeText(context,TrangChu.listAppBottom.get(position).getNameApp()+"="+TrangChu.listAppBottom.get(position).getPackageName(),Toast.LENGTH_SHORT).show();
             Intent i = new Intent();
             i = manager.getLaunchIntentForPackage(listAppBottom.get(position).getPackageName());
           /*  if (position == 0) {
