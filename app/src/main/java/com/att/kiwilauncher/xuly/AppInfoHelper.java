@@ -48,7 +48,7 @@ public class AppInfoHelper {
         return packageName;
     }
 
-    public void launchApp(String packageName, Context context) {
+    public static void launchApp(String packageName, Context context) {
         Intent intent = new Intent();
         intent.setPackage(packageName);
 

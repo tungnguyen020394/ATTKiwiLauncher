@@ -15,6 +15,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c34e4a0-9428-4311-baf7-67bb97f239cb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInstallHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
@@ -24,7 +25,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInfoHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInfoHelper.java" />
     </list>
     <ignored path="ATTKiwiLauncher.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,35 +60,52 @@
       <file leaf-file-name="TrangChu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="1022" column="27" selection-start-line="1022" selection-start-column="27" selection-end-line="1022" selection-end-column="27" />
+            <state relative-caret-position="296">
+              <caret line="820" column="54" selection-start-line="820" selection-start-column="54" selection-end-line="820" selection-end-column="54" />
               <folding>
-                <element signature="method#addClicks#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#initNetworkConnectDialog#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
-                <element signature="method#addNavigationItem#0;class#TrangChu#0" expanded="false" />
-                <element signature="method#changeListItemBackGround#0;class#TrangChu#0" expanded="false" />
-                <element signature="method#launchApp#0;class#TrangChu#0" expanded="false" />
-                <element signature="method#setVideoOrImager#0;class#TrangChu#0" expanded="false" />
-                <element signature="method#updateTime#0;class#TrangChu#0" expanded="false" />
-                <element signature="method#setCategoryAdapter#0;class#TrangChu#0" expanded="false" />
+                <marker date="1499500920525" expanded="false" signature="5984:6939" ph="{...}" />
+                <marker date="1499500920525" expanded="false" signature="40248:41173" ph="{...}" />
+                <marker date="1499500920525" expanded="false" signature="41230:41810" ph="{...}" />
+                <marker date="1499500920525" expanded="false" signature="41858:42686" ph="{...}" />
+                <marker date="1499500920525" expanded="false" signature="42741:46524" ph="{...}" />
+                <marker date="1499500920525" expanded="false" signature="46573:47270" ph="{...}" />
+                <marker date="1499500920525" expanded="false" signature="47592:47603" ph=" { " />
+                <marker date="1499500920525" expanded="false" signature="47626:47632" ph=" }" />
+                <marker date="1499500920525" expanded="false" signature="47699:47754" ph="{...}" />
+                <marker date="1499500920525" expanded="false" signature="47796:47807" ph=" { " />
+                <marker date="1499500920525" expanded="false" signature="47820:47826" ph=" }" />
+                <marker date="1499500920525" expanded="false" signature="47878:47889" ph=" { " />
+                <marker date="1499500920525" expanded="false" signature="47912:47918" ph=" }" />
+                <marker date="1499500920525" expanded="false" signature="47969:47980" ph=" { " />
+                <marker date="1499500920525" expanded="false" signature="48000:48006" ph=" }" />
+                <marker date="1499500920525" expanded="false" signature="48193:48204" ph=" { " />
+                <marker date="1499500920525" expanded="false" signature="48231:48237" ph=" }" />
+                <marker date="1499500920525" expanded="false" signature="48446:48457" ph=" { " />
+                <marker date="1499500920525" expanded="false" signature="48478:48484" ph=" }" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UngDung.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/UngDung.java">
+      <file leaf-file-name="AppInfoHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInfoHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-              <folding>
-                <element signature="e#970#971#0" expanded="true" />
-                <element signature="e#1004#1005#0" expanded="true" />
-                <element signature="e#1058#1059#0" expanded="true" />
-                <element signature="e#1104#1105#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="153">
+              <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DuLieu.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/DuLieu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-281">
+              <caret line="275" column="38" selection-start-line="275" selection-start-column="38" selection-end-line="275" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2126,12 +2144,13 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_danh_sach.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/DanhSach.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/Define.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInfoHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/UpdateDataFromServer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/DateCompare.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/UngDung.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/RequestToServer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInstallHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInfoHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
       </list>
     </option>
@@ -2359,8 +2378,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.att.kiwilauncher.util" />
       <recent name="com.att.kiwilauncher.xuly" />
+      <recent name="com.att.kiwilauncher.util" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\admin\Desktop\ATTKiwiLauncher\app\src\main\assets" />
@@ -2701,7 +2720,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2693662" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.082746476" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287841" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2741,7 +2760,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java</url>
-          <line>390</line>
+          <line>392</line>
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
@@ -2757,20 +2776,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/Define.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="85" selection-start-line="17" selection-start-column="85" selection-end-line="17" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/test/VideoFullTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_video_full_test.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -2790,16 +2795,28 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="method#addClicks#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
             <element signature="method#initNetworkConnectDialog#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#addNavigationItem#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#changeListItemBackGround#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#launchApp#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#setVideoOrImager#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#updateTime#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#setCategoryAdapter#0;class#TrangChu#0" expanded="false" />
+            <marker date="1499500920525" expanded="false" signature="5984:6939" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="40248:41173" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="41230:41810" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="41858:42686" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="42741:46524" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="46573:47270" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="47592:47603" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="47626:47632" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="47699:47754" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="47796:47807" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="47820:47826" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="47878:47889" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="47912:47918" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="47969:47980" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="48000:48006" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="48193:48204" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="48231:48237" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="48446:48457" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="48478:48484" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -2844,16 +2861,28 @@
         <state relative-caret-position="7825">
           <caret line="955" column="34" selection-start-line="955" selection-start-column="34" selection-end-line="955" selection-end-column="34" />
           <folding>
-            <element signature="method#addClicks#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
             <element signature="method#initNetworkConnectDialog#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#addNavigationItem#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#changeListItemBackGround#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#launchApp#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#setVideoOrImager#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#updateTime#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#setCategoryAdapter#0;class#TrangChu#0" expanded="false" />
+            <marker date="1499500920525" expanded="false" signature="5984:6939" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="40248:41173" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="41230:41810" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="41858:42686" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="42741:46524" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="46573:47270" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="47592:47603" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="47626:47632" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="47699:47754" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="47796:47807" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="47820:47826" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="47878:47889" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="47912:47918" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="47969:47980" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="48000:48006" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="48193:48204" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="48231:48237" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="48446:48457" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="48478:48484" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -2898,16 +2927,28 @@
         <state relative-caret-position="8075">
           <caret line="965" column="47" selection-start-line="965" selection-start-column="47" selection-end-line="965" selection-end-column="47" />
           <folding>
-            <element signature="method#addClicks#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
             <element signature="method#initNetworkConnectDialog#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#addNavigationItem#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#changeListItemBackGround#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#launchApp#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#setVideoOrImager#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#updateTime#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#setCategoryAdapter#0;class#TrangChu#0" expanded="false" />
+            <marker date="1499500920525" expanded="false" signature="5984:6939" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="40248:41173" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="41230:41810" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="41858:42686" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="42741:46524" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="46573:47270" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="47592:47603" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="47626:47632" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="47699:47754" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="47796:47807" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="47820:47826" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="47878:47889" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="47912:47918" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="47969:47980" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="48000:48006" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="48193:48204" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="48231:48237" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="48446:48457" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="48478:48484" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -3097,14 +3138,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInfoHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/UpdateDataFromServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -3215,21 +3248,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/DuLieu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-281">
+          <caret line="275" column="38" selection-start-line="275" selection-start-column="38" selection-end-line="275" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInstallHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/AppInfoHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="1022" column="27" selection-start-line="1022" selection-start-column="27" selection-end-line="1022" selection-end-column="27" />
+        <state relative-caret-position="296">
+          <caret line="820" column="54" selection-start-line="820" selection-start-column="54" selection-end-line="820" selection-end-column="54" />
           <folding>
-            <element signature="method#addClicks#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
             <element signature="method#initNetworkConnectDialog#0;class#TrangChu#0" expanded="false" />
             <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#addNavigationItem#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#changeListItemBackGround#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#launchApp#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#setVideoOrImager#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#updateTime#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#setCategoryAdapter#0;class#TrangChu#0" expanded="false" />
+            <marker date="1499500920525" expanded="false" signature="5984:6939" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="40248:41173" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="41230:41810" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="41858:42686" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="42741:46524" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="46573:47270" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="47592:47603" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="47626:47632" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="47699:47754" ph="{...}" />
+            <marker date="1499500920525" expanded="false" signature="47796:47807" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="47820:47826" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="47878:47889" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="47912:47918" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="47969:47980" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="48000:48006" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="48193:48204" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="48231:48237" ph=" }" />
+            <marker date="1499500920525" expanded="false" signature="48446:48457" ph=" { " />
+            <marker date="1499500920525" expanded="false" signature="48478:48484" ph=" }" />
           </folding>
         </state>
       </provider>

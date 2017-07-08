@@ -45,6 +45,8 @@ import com.att.kiwilauncher.util.CheckLink;
 import com.att.kiwilauncher.util.Define;
 import com.att.kiwilauncher.util.Volume;
 import com.att.kiwilauncher.view.VideoFull;
+import com.att.kiwilauncher.xuly.AppInfoHelper;
+import com.att.kiwilauncher.xuly.AppInstallHelper;
 import com.att.kiwilauncher.xuly.DuLieu;
 import com.att.kiwilauncher.xuly.LunarCalendar;
 import com.att.kiwilauncher.xuly.RequestToServer;
@@ -813,8 +815,19 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         @Override
         public void onClick(View v) {
             int position = rcApp.getChildPosition(v);
-            Intent i = manager.getLaunchIntentForPackage(listAppBottom.get(position).getPackageName());
-            i.putExtra("id",listAppBottom.get(position).getId());
+            /*Intent i = manager.getLaunchIntentForPackage(listAppBottom.get(position).getPackageName());
+            i.putExtra("id",listAppBottom.get(position).getId());*/
+            if (AppInstallHelper.checkInstalledApplication(listAppBottom.get(position).getPackageName(),context)){
+                AppInfoHelper.launchApp(listAppBottom.get(position).getPackageName(),context);
+            }
+            Toast.makeText(context,listAppBottom.get(position).getIcon()+"="
+                    +listAppBottom.get(position).getPackageName(),Toast.LENGTH_LONG).show();
+            /*else{
+                Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
+                intent.putExtra("idApp", listAppBottom.get(position).getId());
+                context.startActivity(intent);
+            }*/
+
           /*  if (position == 0) {
                 i = manager.getLaunchIntentForPackage("vn.vtv.vtvgo");
             } else if (position == 1) {
@@ -822,14 +835,14 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             } else {
                 i = manager.getLaunchIntentForPackage(listApps.get(demdsApp).get(position).getNameApp().toString());
             }*/
-
+/*
             try {
                 context.startActivity(i);
             } catch (Exception e) {
                 Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
                 intent.putExtra("idApp", listAppBottom.get(position).getId());
                 context.startActivity(intent);
-            }
+            }*/
         }
 
     }
