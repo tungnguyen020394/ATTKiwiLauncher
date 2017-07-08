@@ -9,6 +9,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.att.kiwilauncher.R;
@@ -53,13 +54,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, 1);
         this.mContext = context;
-        listIcon.put("ic_tatca", R.drawable.ic_tatca);
+       /* listIcon.put("ic_tatca", R.drawable.ic_tatca);
         listIcon.put("ic_giaitri", R.drawable.ic_giaitri);
         listIcon.put("ic_giaoduc", R.drawable.ic_giaoduc);
         listIcon.put("ic_trochoi", R.drawable.ic_trochoi);
         listIcon.put("ic_suckhoe", R.drawable.ic_suckhoe);
         listIcon.put("ic_tienich", R.drawable.ic_tienich);
-        listIcon.put("ic_truyenhinh", R.mipmap.ic_truyenhinh);
+        listIcon.put("ic_truyenhinh", R.mipmap.ic_truyenhinh);*/
     }
 
     @Override
@@ -302,13 +303,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         List<UngDung> listUngDung = new ArrayList<>();
         openDatabase();
         Cursor cursor;
-        cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.icon FROM ungdung", null);
+        cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.icon,ungdung.packageName FROM ungdung", null);
 
         if (cursor.moveToFirst()) {
             UngDung ungDungNew = new UngDung();
             ungDungNew.setId(cursor.getString(0));
             ungDungNew.setNameApp(cursor.getString(1));
             ungDungNew.setIcon(cursor.getString(2));
+            ungDungNew.setPackageName(cursor.getString(3));
+            Log.d("db",cursor.getString(0)+"="+cursor.getString(1)+"="+cursor.getString(2)+"="+cursor.getString(3));
+            Toast.makeText(mContext,cursor.getString(0)+"="+cursor.getString(1)+"="+cursor.getString(2)+"="+cursor.getString(3),Toast.LENGTH_SHORT).show();
             listUngDung.add(ungDungNew);
         }
         while (cursor.moveToNext()) {
@@ -316,11 +320,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ungDungNew.setId(cursor.getString(0));
             ungDungNew.setNameApp(cursor.getString(1));
             ungDungNew.setIcon(cursor.getString(2));
+            ungDungNew.setPackageName(cursor.getString(3));
             listUngDung.add(ungDungNew);
         }
         cursor.close();
         closeDatabase();
-
         return listUngDung;
     }
 
@@ -405,6 +409,153 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return value;
     }
 
+    public void insertQuangCao(String id, String noiDung, String loaiQuangCaoId) {
+        ContentValues values = new ContentValues();
+        values.put("id", Integer.parseInt(id));
+        values.put("noidung", noiDung);
+        values.put("loaiquangcao", Integer.parseInt(loaiQuangCaoId));
+        openDatabase();
+        mDatabase.insert("quangcao", null, values);
+        closeDatabase();
+    }
+
+    public String getLinkTextQuangCao() {
+        String nd = "";
+        openDatabase();
+        Cursor cursor;
+        cursor = mDatabase.rawQuery("SELECT noidung FROM quangcao WHERE loaiquangcao = 3 ORDER BY id DESC", null);
+        if (cursor.moveToFirst()) {
+            nd = cursor.getString(0);
+        }
+        cursor.close();
+        closeDatabase();
+        return nd;
+    }
+    // lấy danh sách tất cả các ứng dụng của thẻ loại xyz
+    public List<UngDung> getListUngDung(ChuDe chuDe) {
+        List<UngDung> listUngDung = new ArrayList<>();
+        String maTheLoai = chuDe.getIndexCate() + "";
+        openDatabase();
+        Cursor cursor;
+        cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.icon FROM ungdung JOIN theloai_ungdung ON ungdung.id=theloai_ungdung.ungdungid WHERE theloai_ungdung.theloaiid=" + maTheLoai, null);
+
+        if (cursor.moveToFirst()) {
+            UngDung ungDungNew = new UngDung();
+            ungDungNew.setId(cursor.getString(0));
+            ungDungNew.setNameApp(cursor.getString(1));
+            ungDungNew.setIcon(cursor.getString(2));
+            listUngDung.add(ungDungNew);
+        }
+        while (cursor.moveToNext()) {
+            UngDung ungDungNew = new UngDung();
+            ungDungNew.setId(cursor.getString(0));
+            ungDungNew.setNameApp(cursor.getString(1));
+            ungDungNew.setIcon(cursor.getString(2));
+            listUngDung.add(ungDungNew);
+        }
+        cursor.close();
+        closeDatabase();
+
+        return listUngDung;
+    }
+    public void deleteQuangCao() {
+        openDatabase();
+        mDatabase.delete("quangcao", "1", null);
+        closeDatabase();
+    }
+
+    public void deleteListApp() {
+        openDatabase();
+        mDatabase.delete("ungdung", "1", null);
+        closeDatabase();
+    }
+    public void insertApp(String id, String ten, int installed, String icon, String luotcai, String versions, String des,
+                          String linkcai, String rating, String versionCode, int update,String packageName) {
+        ContentValues values = new ContentValues();
+        values.put("id", Integer.parseInt(id));
+        values.put("ten", ten);
+        values.put("installed", installed);
+        values.put("icon", icon);
+        values.put("luotcai", luotcai);
+        values.put("version", versions);
+        values.put("des", des);
+        values.put("linkcai", linkcai);
+        values.put("rating", rating);
+        values.put("version_code", versionCode);
+        values.put("capnhat", update);
+        values.put("packageName", packageName);
+        openDatabase();
+        //mDatabase.delete("ungdung", "1", null);
+        mDatabase.insert("ungdung", null, values);
+        closeDatabase();
+    }
+    public void insertTheLoaiUngDung(String id, String theloaiid, String ungdungid) {
+        ContentValues values = new ContentValues();
+        values.put("id", Integer.parseInt(id));
+        values.put("theloaiid", theloaiid);
+        values.put("ungdungid", ungdungid);
+        openDatabase();
+        //mDatabase.delete("ungdung", "1", null);
+        mDatabase.insert("theloai_ungdung", null, values);
+        closeDatabase();
+    }
+
+    public void deleteTheLoaiUngDung() {
+        openDatabase();
+        mDatabase.delete("theloai_ungdung", "1", null);
+        closeDatabase();
+    }
+
+    public void insertTheLoai(String id, String ten, String soLuong, String icon) {
+        ContentValues values = new ContentValues();
+        values.put("id", Integer.parseInt(id));
+        values.put("ten", ten);
+        values.put("soLuong", Integer.parseInt(soLuong));
+        values.put("icon", icon);
+        openDatabase();
+        //mDatabase.delete("ungdung", "1", null);
+        mDatabase.insert("theloai", null, values);
+        closeDatabase();
+    }
+
+    public void deleteTheLoai() {
+        openDatabase();
+        mDatabase.delete("theloai", "1", null);
+        closeDatabase();
+    }
+
+    public void insertAnhChiTiet(String id, String ungdungid, String ten) {
+        ContentValues values = new ContentValues();
+        values.put("id", Integer.parseInt(id));
+        values.put("ungdungid", ungdungid);
+        values.put("ten", ten);
+        openDatabase();
+        //mDatabase.delete("ungdung", "1", null);
+        mDatabase.insert("anhchitiet", null, values);
+        closeDatabase();
+    }
+
+    public void deleteAnhChiTiet() {
+        openDatabase();
+        mDatabase.delete("anhchitiet", "1", null);
+        closeDatabase();
+    }
+
+    public void insertCapNhat(String id, String value) {
+        ContentValues values = new ContentValues();
+        values.put("id", Integer.parseInt(id));
+        values.put("value", value);
+        openDatabase();
+        mDatabase.insert("capnhat", null, values);
+        closeDatabase();
+    }
+
+    public void deleteCapNhat() {
+        openDatabase();
+        mDatabase.delete("capnhat", "1", null);
+        closeDatabase();
+    }
+
     // lấy danh sách tất cả các ứng dụng của thẻ loại xyz
     public List<UngDungNew> getListUngDungNew(TheLoai theLoai) {
         List<UngDungNew> listUngDungNew = new ArrayList<>();
@@ -465,34 +616,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         closeDatabase();
 
         return listUngDungNew;
-    }
-
-    // lấy danh sách tất cả các ứng dụng của thẻ loại xyz
-    public List<UngDung> getListUngDung(ChuDe chuDe) {
-        List<UngDung> listUngDung = new ArrayList<>();
-        String maTheLoai = chuDe.getIndexCate() + "";
-        openDatabase();
-        Cursor cursor;
-        cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.icon FROM ungdung JOIN theloai_ungdung ON ungdung.id=theloai_ungdung.ungdungid WHERE theloai_ungdung.theloaiid=" + maTheLoai, null);
-
-        if (cursor.moveToFirst()) {
-            UngDung ungDungNew = new UngDung();
-            ungDungNew.setId(cursor.getString(0));
-            ungDungNew.setNameApp(cursor.getString(1));
-            ungDungNew.setIcon(cursor.getString(2));
-            listUngDung.add(ungDungNew);
-        }
-        while (cursor.moveToNext()) {
-            UngDung ungDungNew = new UngDung();
-            ungDungNew.setId(cursor.getString(0));
-            ungDungNew.setNameApp(cursor.getString(1));
-            ungDungNew.setIcon(cursor.getString(2));
-            listUngDung.add(ungDungNew);
-        }
-        cursor.close();
-        closeDatabase();
-
-        return listUngDung;
     }
 
     // lấy danh sách tất cả các điện thoại của thương hiệu xyz
@@ -568,28 +691,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return nd;
     }
 
-    public void insertQuangCao(String id, String noiDung, String loaiQuangCaoId) {
-        ContentValues values = new ContentValues();
-        values.put("id", Integer.parseInt(id));
-        values.put("noidung", noiDung);
-        values.put("loaiquangcao", Integer.parseInt(loaiQuangCaoId));
-        openDatabase();
-        mDatabase.insert("quangcao", null, values);
-        closeDatabase();
-    }
 
-    public String getLinkTextQuangCao() {
-        String nd = "";
-        openDatabase();
-        Cursor cursor;
-        cursor = mDatabase.rawQuery("SELECT noidung FROM quangcao WHERE loaiquangcao = 3 ORDER BY id DESC", null);
-        if (cursor.moveToFirst()) {
-            nd = cursor.getString(0);
-        }
-        cursor.close();
-        closeDatabase();
-        return nd;
-    }
 
     public String getLinkVideoQuangCao() {
         String nd = "";
@@ -648,11 +750,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return listLinkWeb;
     }
 
-    public void deleteQuangCao() {
-        openDatabase();
-        mDatabase.delete("quangcao", "1", null);
-        closeDatabase();
-    }
+
 
     public List<UngDungNew> getLissAppName() {
         List<UngDungNew> ungDungNewList = new ArrayList<>();
@@ -684,25 +782,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return ungDungNewList;
     }
 
-    public void insertApp(String id, String ten, int installed, String icon, String luotcai, String versions, String des,
-                          String linkcai, String rating, String versionCode, int update) {
-        ContentValues values = new ContentValues();
-        values.put("id", Integer.parseInt(id));
-        values.put("ten", ten);
-        values.put("installed", installed);
-        values.put("icon", icon);
-        values.put("luotcai", luotcai);
-        values.put("version", versions);
-        values.put("des", des);
-        values.put("linkcai", linkcai);
-        values.put("rating", rating);
-        values.put("version_code", versionCode);
-        values.put("capnhat", update);
-        openDatabase();
-        //mDatabase.delete("ungdung", "1", null);
-        mDatabase.insert("ungdung", null, values);
-        closeDatabase();
-    }
 
     public void updateApp(int installed, String id) {
         ContentValues values = new ContentValues();
@@ -712,11 +791,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         closeDatabase();
     }
 
-    public void deleteListApp() {
-        openDatabase();
-        mDatabase.delete("ungdung", "1", null);
-        closeDatabase();
-    }
 
     // UPDATE "main"."ungdung" SET "installed" = ?1 WHERE  "id" = 3
     public String testInsertApp() {
@@ -738,23 +812,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id + "," + ten + in + "count" + count;
     }
 
-    public void insertTheLoaiUngDung(String id, String theloaiid, String ungdungid) {
-        ContentValues values = new ContentValues();
-        values.put("id", Integer.parseInt(id));
-        values.put("theloaiid", theloaiid);
-        values.put("ungdungid", ungdungid);
-        openDatabase();
-        //mDatabase.delete("ungdung", "1", null);
-        mDatabase.insert("theloai_ungdung", null, values);
-        closeDatabase();
-    }
-
-    public void deleteTheLoaiUngDung() {
-        openDatabase();
-        mDatabase.delete("theloai_ungdung", "1", null);
-        closeDatabase();
-    }
-
     public String testTheLoaiUngDung() {
         String id = "0";
         int count = 0;
@@ -770,23 +827,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id + "," + "count" + count;
     }
 
-    public void insertTheLoai(String id, String ten, String soLuong, String icon) {
-        ContentValues values = new ContentValues();
-        values.put("id", Integer.parseInt(id));
-        values.put("ten", ten);
-        values.put("soLuong", Integer.parseInt(soLuong));
-        values.put("icon", icon);
-        openDatabase();
-        //mDatabase.delete("ungdung", "1", null);
-        mDatabase.insert("theloai", null, values);
-        closeDatabase();
-    }
-
-    public void deleteTheLoai() {
-        openDatabase();
-        mDatabase.delete("theloai", "1", null);
-        closeDatabase();
-    }
 
     public String testTheLoai() {
         String id = "0";
@@ -803,22 +843,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id + "," + "count" + count;
     }
 
-    public void insertAnhChiTiet(String id, String ungdungid, String ten) {
-        ContentValues values = new ContentValues();
-        values.put("id", Integer.parseInt(id));
-        values.put("ungdungid", ungdungid);
-        values.put("ten", ten);
-        openDatabase();
-        //mDatabase.delete("ungdung", "1", null);
-        mDatabase.insert("anhchitiet", null, values);
-        closeDatabase();
-    }
-
-    public void deleteAnhChiTiet() {
-        openDatabase();
-        mDatabase.delete("anhchitiet", "1", null);
-        closeDatabase();
-    }
 
     public String testAnhChiTiet() {
         String id = "0";
@@ -838,21 +862,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         closeDatabase();
         return id + "," + ten + "," + ungdungid + "," + "count" + count;
-    }
-
-    public void insertCapNhat(String id, String value) {
-        ContentValues values = new ContentValues();
-        values.put("id", Integer.parseInt(id));
-        values.put("value", value);
-        openDatabase();
-        mDatabase.insert("capnhat", null, values);
-        closeDatabase();
-    }
-
-    public void deleteCapNhat() {
-        openDatabase();
-        mDatabase.delete("capnhat", "1", null);
-        closeDatabase();
     }
 
     public String testCapNhat() {

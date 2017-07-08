@@ -529,7 +529,7 @@ public class RequestToServer {
                                                 , install, DuLieu.URL_IMAGE + "/" + app.getString("icon")
                                                 , app.getString("luotcai"), app.getString("version")
                                                 , app.getString("des"), DuLieu.URL_FILE + "/" + app.getString("linkcai")
-                                                , app.getString("rating"), app.getString("version_code"), update);
+                                                , app.getString("rating"), app.getString("version_code"), update, app.getString("packageName"));
                                     }
                                     //  Toast.makeText(getApplicationContext(), mDatabaseHelper.testInsertApp() + " == max app", Toast.LENGTH_SHORT).show();
                                     break;
