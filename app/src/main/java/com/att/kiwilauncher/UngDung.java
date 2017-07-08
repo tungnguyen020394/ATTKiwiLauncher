@@ -14,6 +14,7 @@ public class UngDung implements Serializable {
     Drawable iconApp;
     String icon;
     String id;
+    String packageName;
 
     public UngDung() {
     }
@@ -24,6 +25,23 @@ public class UngDung implements Serializable {
         this.iconApp = iconApp;
         this.icon = icon;
         this.id = id;
+    }
+
+    public UngDung(CharSequence labelApp, CharSequence nameApp, Drawable iconApp, String icon, String id, String packageName) {
+        this.labelApp = labelApp;
+        this.nameApp = nameApp;
+        this.iconApp = iconApp;
+        this.icon = icon;
+        this.id = id;
+        this.packageName = packageName;
+    }
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
     }
 
     public String getId() {
