@@ -15,7 +15,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c34e4a0-9428-4311-baf7-67bb97f239cb" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java" />
     </list>
     <ignored path="ATTKiwiLauncher.iws" />
@@ -48,11 +56,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TrangChu.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TrangChu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="198" column="40" selection-start-line="198" selection-start-column="29" selection-end-line="198" selection-end-column="40" />
+            <state relative-caret-position="64">
+              <caret line="1022" column="27" selection-start-line="1022" selection-start-column="27" selection-end-line="1022" selection-end-column="27" />
               <folding>
                 <element signature="method#addClicks#0;class#TrangChu#0" expanded="false" />
                 <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
@@ -94,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseHelper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DatabaseHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
+            <state relative-caret-position="364">
+              <caret line="447" column="59" selection-start-line="447" selection-start-column="59" selection-end-line="447" selection-end-column="59" />
               <folding>
                 <element signature="method#onCreate#0;class#DatabaseHelper#0" expanded="false" />
                 <element signature="method#onUpgrade#0;class#DatabaseHelper#0" expanded="false" />
@@ -112,7 +120,6 @@
                 <element signature="method#getIdCapNhat#0;class#DatabaseHelper#0" expanded="false" />
                 <element signature="method#insertQuangCao#0;class#DatabaseHelper#0" expanded="false" />
                 <element signature="method#getLinkTextQuangCao#0;class#DatabaseHelper#0" expanded="false" />
-                <element signature="method#getListUngDung#0;class#DatabaseHelper#0" expanded="false" />
                 <element signature="method#deleteQuangCao#0;class#DatabaseHelper#0" expanded="false" />
                 <element signature="method#deleteListApp#0;class#DatabaseHelper#0" expanded="false" />
                 <element signature="method#insertTheLoaiUngDung#0;class#DatabaseHelper#0" expanded="false" />
@@ -2124,8 +2131,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/util/DateCompare.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/UngDung.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/xuly/RequestToServer.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java" />
       </list>
     </option>
   </component>
@@ -2694,7 +2701,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15140845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2693662" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287841" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2734,13 +2741,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java</url>
-          <line>389</line>
+          <line>390</line>
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java</url>
-          <line>688</line>
+          <line>690</line>
           <properties class="com.att.kiwilauncher.database.DatabaseHelper" method="getLinkVideoQuangCao" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
@@ -3167,29 +3174,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="198" column="40" selection-start-line="198" selection-start-column="29" selection-end-line="198" selection-end-column="40" />
-          <folding>
-            <element signature="method#addClicks#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#initNetworkConnectDialog#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#addNavigationItem#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#changeListItemBackGround#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#launchApp#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#setVideoOrImager#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#updateTime#0;class#TrangChu#0" expanded="false" />
-            <element signature="method#setCategoryAdapter#0;class#TrangChu#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/database/DatabaseHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
+        <state relative-caret-position="364">
+          <caret line="447" column="59" selection-start-line="447" selection-start-column="59" selection-end-line="447" selection-end-column="59" />
           <folding>
             <element signature="method#onCreate#0;class#DatabaseHelper#0" expanded="false" />
             <element signature="method#onUpgrade#0;class#DatabaseHelper#0" expanded="false" />
@@ -3203,7 +3191,6 @@
             <element signature="method#getIdCapNhat#0;class#DatabaseHelper#0" expanded="false" />
             <element signature="method#insertQuangCao#0;class#DatabaseHelper#0" expanded="false" />
             <element signature="method#getLinkTextQuangCao#0;class#DatabaseHelper#0" expanded="false" />
-            <element signature="method#getListUngDung#0;class#DatabaseHelper#0" expanded="false" />
             <element signature="method#deleteQuangCao#0;class#DatabaseHelper#0" expanded="false" />
             <element signature="method#deleteListApp#0;class#DatabaseHelper#0" expanded="false" />
             <element signature="method#insertTheLoaiUngDung#0;class#DatabaseHelper#0" expanded="false" />
@@ -3224,6 +3211,25 @@
             <element signature="method#getLissAppName#0;class#DatabaseHelper#0" expanded="false" />
             <element signature="method#updateApp#0;class#DatabaseHelper#0" expanded="false" />
             <element signature="method#testTheLoaiUngDung#0;class#DatabaseHelper#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/att/kiwilauncher/TrangChu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="1022" column="27" selection-start-line="1022" selection-start-column="27" selection-end-line="1022" selection-end-column="27" />
+          <folding>
+            <element signature="method#addClicks#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#onResume#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#initNetworkConnectDialog#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#onKeyDown#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#addNavigationItem#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#changeListItemBackGround#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#launchApp#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#setVideoOrImager#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#updateTime#0;class#TrangChu#0" expanded="false" />
+            <element signature="method#setCategoryAdapter#0;class#TrangChu#0" expanded="false" />
           </folding>
         </state>
       </provider>

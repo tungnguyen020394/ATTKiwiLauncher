@@ -430,13 +430,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String maTheLoai = chuDe.getIndexCate() + "";
         openDatabase();
         Cursor cursor;
-        cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.icon FROM ungdung JOIN theloai_ungdung ON ungdung.id=theloai_ungdung.ungdungid WHERE theloai_ungdung.theloaiid=" + maTheLoai, null);
+        cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.icon,ungdung.packageName FROM ungdung JOIN theloai_ungdung ON ungdung.id=theloai_ungdung.ungdungid WHERE theloai_ungdung.theloaiid=" + maTheLoai, null);
 
         if (cursor.moveToFirst()) {
             UngDung ungDungNew = new UngDung();
             ungDungNew.setId(cursor.getString(0));
             ungDungNew.setNameApp(cursor.getString(1));
             ungDungNew.setIcon(cursor.getString(2));
+            ungDungNew.setPackageName(cursor.getString(3));
             listUngDung.add(ungDungNew);
         }
         while (cursor.moveToNext()) {
@@ -444,6 +445,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ungDungNew.setId(cursor.getString(0));
             ungDungNew.setNameApp(cursor.getString(1));
             ungDungNew.setIcon(cursor.getString(2));
+            ungDungNew.setPackageName(cursor.getString(3));
             listUngDung.add(ungDungNew);
         }
         cursor.close();

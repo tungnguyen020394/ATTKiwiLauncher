@@ -201,6 +201,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             ungDung.setNameApp(checkedList.get(j - 1).getNameApp());
             ungDung.setIcon(checkedList.get(j - 1).getIcon());
             ungDung.setId(checkedList.get(j - 1).getId());
+            ungDung.setPackageName(checkedList.get(j - 1).getPackageName());
             tmpList.add(ungDung);
             if (j % 7 == 0 || j == checkedList.size()) {
                 listApps.add(tmpList);
@@ -238,7 +239,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
 
         }
         if (DuLieu.hasInternetConnection(TrangChu.this) && mListVideoAd.size() > 0) {
-          //  setVideoOrImager(mListVideoAd.get(indexVideo));
+            //  setVideoOrImager(mListVideoAd.get(indexVideo));
         } else {
             video.setVisibility(View.GONE);
             imgView.setVisibility(View.VISIBLE);
@@ -812,11 +813,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         @Override
         public void onClick(View v) {
             int position = rcApp.getChildPosition(v);
-            Log.e("a",apps.get(0).getPackageName()+"="+apps.get(0).getIcon());
-           // Toast.makeText(context,TrangChu.listAppBottom.get(position).getNameApp()+"="+TrangChu.listAppBottom.get(position).getPackageName(),Toast.LENGTH_SHORT).show();
-           // Toast.makeText(context,TrangChu.listAppBottom.get(position).getNameApp()+"="+TrangChu.listAppBottom.get(position).getPackageName(),Toast.LENGTH_SHORT).show();
-            Intent i = new Intent();
-            i = manager.getLaunchIntentForPackage(listAppBottom.get(position).getPackageName());
+            Intent i = manager.getLaunchIntentForPackage(listAppBottom.get(position).getPackageName());
+            i.putExtra("id",listAppBottom.get(position).getId());
           /*  if (position == 0) {
                 i = manager.getLaunchIntentForPackage("vn.vtv.vtvgo");
             } else if (position == 1) {
@@ -825,13 +823,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 i = manager.getLaunchIntentForPackage(listApps.get(demdsApp).get(position).getNameApp().toString());
             }*/
 
-           /* try {
+            try {
                 context.startActivity(i);
             } catch (Exception e) {
                 Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
                 intent.putExtra("idApp", listAppBottom.get(position).getId());
                 context.startActivity(intent);
-            }*/
+            }
         }
 
     }
