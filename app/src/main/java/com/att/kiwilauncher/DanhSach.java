@@ -46,7 +46,8 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     public static UngDungDsAdapter ungDungAdapter , listappDacai;
     private static PackageManager manager;
     private PackageManager manager1;
-    ImageView imageKiwi, imageCaidat,imageMinusDs,imagePlusDs;
+    ImageView imageCaidat,imageMinusDs,imagePlusDs;
+    RelativeLayout imageKiwi;
     ArrayList<View> listItem;
     TextView text;
     Intent mIntentGetData;
@@ -96,7 +97,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         rcChuDe = (RecyclerView) findViewById(R.id.recycler1_ds);
         rcUngDung = (RecyclerView) findViewById(R.id.recycler2_ds);
 
-        imageKiwi = (ImageView) findViewById(R.id.img1_ds);
+        imageKiwi = (RelativeLayout) findViewById(R.id.relay13_ds);
         imageKiwi.setBackgroundResource(R.drawable.border_pick);
         imageCaidat = (ImageView) findViewById(R.id.img_caidat_ds);
         imageCaidat.setOnClickListener(this);
@@ -309,6 +310,10 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     rcUngDung1.getChildAt(0).setBackgroundResource(R.drawable.none);
                     didIndex--;
                     imageMinusDs.setImageResource(R.drawable.ic_minus);
+                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + listUngDungDaCai.get(demDsApp).size() + 1) {
+                    didIndex--;
+                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).setBackgroundResource(R.drawable.border_pick);
+                    imagePlusDs.setImageResource(R.drawable.ic_plus1);
                 } else if (didIndex > main + dsChuDe.size() + dsUngDung.size() + 1
                         && didIndex <= main + dsChuDe.size() + dsUngDung.size() + listUngDungDaCai.get(demdsApp).size()) {
                     rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).setBackgroundResource(R.drawable.none);
@@ -318,10 +323,6 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     imageMinusDs.setImageResource(R.drawable.ic_minus1);
                     didIndex--;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex == main + dsChuDe.size() + dsUngDung.size() + listUngDungDaCai.get(demDsApp).size() + 1) {
-                    didIndex--;
-                    rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).setBackgroundResource(R.drawable.border_pick);
-                    imagePlusDs.setImageResource(R.drawable.ic_plus1);
                 }
                 break;
 
@@ -497,8 +498,6 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     demDsApp--;
                     listappDacai = new UngDungDsAdapter(this,listUngDungDaCai.get(demDsApp));
                     rcUngDung1.setAdapter(listappDacai);
-                    didIndex = main + dsChuDe.size() + dsUngDung.size();
-                    imageMinusDs.setImageResource(R.drawable.ic_minus);
                 } else {
                     Toast.makeText(getApplicationContext(), "Bạn đang ở danh sách các ứng dụng đầu tiên ", Toast.LENGTH_SHORT).show();
                 }
@@ -506,12 +505,10 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
 
             case R.id.img_plus_ds:
                 if (demDsApp < listUngDungDaCai.size() - 1) {
-                    imagePlusDs.setImageResource(R.drawable.ic_plus1);
                     demDsApp++;
                     listappDacai = new UngDungDsAdapter(this,listUngDungDaCai.get(demDsApp));
                     rcUngDung1.setAdapter(listappDacai);
-                    didIndex = main + dsChuDe.size() + dsUngDung.size();
-                    imageMinusDs.setImageResource(R.drawable.ic_minus);
+                    didIndex = main + dsUngDung.size() + dsChuDe.size() + listUngDungDaCai.get(demDsApp).size() + 1;
                 } else {
                     Toast.makeText(getApplicationContext(), "Bạn đã ở cuối danh sách ứng dụng", Toast.LENGTH_SHORT).show();
                 }

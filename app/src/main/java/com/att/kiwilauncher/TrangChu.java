@@ -720,15 +720,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             // load more App
             case R.id.img_plus:
                 if (listApps.size() - 1 > demdsApp) {
-                    imagePlus.setImageResource(R.drawable.ic_plus1);
                     demdsApp++;
                     listAppBottom.clear();
                     listAppBottom.addAll(listApps.get(demdsApp));
                     listapp.notifyDataSetChanged();
                     /*listapp = new UngDungAdapter(getApplicationContext(), listApps.get(demdsApp));
                     rcApp.setAdapter(listapp);*/
-                    didIndex = 12 + cates.size() + bonusmain;
-                    imageMinus.setImageResource(R.drawable.ic_minus);
                 } else {
                     Toast.makeText(getApplicationContext(), "Bạn đã ở cuối danh sách ứng dụng", Toast.LENGTH_SHORT).show();
                 }
@@ -742,9 +739,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     listAppBottom.clear();
                     listAppBottom.addAll(listApps.get(demdsApp));
                     listapp.notifyDataSetChanged();
-
-                    didIndex = 12 + cates.size() + bonusmain;
-                    imageMinus.setImageResource(R.drawable.ic_minus);
                 } else {
                     Toast.makeText(getApplicationContext(), "Bạn đang ở danh sách các ứng dụng đầu tiên ", Toast.LENGTH_SHORT).show();
                 }

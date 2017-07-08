@@ -17,14 +17,17 @@
             android:id="@+id/relay13_ds"
             android:layout_width="@dimen/_86sdp"
             android:layout_height="fill_parent"
-            android:paddingLeft="@dimen/_17sdp">
+            android:layout_marginLeft="@dimen/_17sdp"
+            android:padding="@dimen/_2sdp">
 
             <ImageView
                 android:id="@+id/img1_ds"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_kiwi"/>
+                android:src="@drawable/ic_kiwi"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingBottom="@dimen/_4sdp"/>
         </RelativeLayout>
 
         <RelativeLayout
