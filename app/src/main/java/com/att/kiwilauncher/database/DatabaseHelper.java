@@ -54,13 +54,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, 1);
         this.mContext = context;
-       /* listIcon.put("ic_tatca", R.drawable.ic_tatca);
-        listIcon.put("ic_giaitri", R.drawable.ic_giaitri);
-        listIcon.put("ic_giaoduc", R.drawable.ic_giaoduc);
-        listIcon.put("ic_trochoi", R.drawable.ic_trochoi);
-        listIcon.put("ic_suckhoe", R.drawable.ic_suckhoe);
-        listIcon.put("ic_tienich", R.drawable.ic_tienich);
-        listIcon.put("ic_truyenhinh", R.mipmap.ic_truyenhinh);*/
     }
 
     @Override
