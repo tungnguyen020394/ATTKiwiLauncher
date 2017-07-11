@@ -552,6 +552,41 @@
             android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
         <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_3sdp">
+            <RelativeLayout
+                android:id="@+id/layout_tatca"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true">
+                <ImageView
+                    android:id="@+id/img_tatca"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_2sdp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_tatca"
+                    android:layout_marginLeft="@dimen/_3sdp" />
+
+                <TextView
+                    android:id="@+id/txt_tatca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:paddingLeft="@dimen/_3sdp"
+                    android:paddingRight="@dimen/_3sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:layout_toRightOf="@+id/img_tatca"
+                    android:text="Tất cả"
+                    android:textAllCaps="true"
+                    android:gravity="center"
+                    android:textColor="@color/colorcatenone"
+                    android:layout_marginRight="@dimen/_3sdp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/relay3"></RelativeLayout>

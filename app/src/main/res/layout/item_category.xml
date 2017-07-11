@@ -3,10 +3,7 @@
     android:orientation="horizontal" android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/layout_category1"
-    android:paddingLeft="@dimen/_3sdp"
-    android:paddingRight="@dimen/_3sdp"
-    android:paddingTop="@dimen/_3sdp"
-    android:paddingBottom="@dimen/_3sdp"
+    android:padding="@dimen/_3sdp"
     android:layout_marginRight="@dimen/_3sdp">
     <RelativeLayout
         android:id="@+id/layout_category"

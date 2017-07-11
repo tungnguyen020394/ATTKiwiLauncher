@@ -66,13 +66,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
     int didIndex = 0, willIndex, indexChuDe = 0, main = 12, position, bonusmain = 6, indexVideo = 0;
     RelativeLayout reLay1, reLay2, reLay3, reLay4, reLay111, reLay112, reLay113, reLay11, reLay22, reLay211,
-            reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12, reLay2221, reLay121, reLay21;
+            reLay212, reLay213, reLay214, reLay215, reLay216, reLay13, reLay12, reLay2221, reLay121, reLay21,relayTatCa;
     String linkQuangCao;
     ArrayList<View> listItem;
-    TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo;
+    TextView text, mNgayAmTxt, mNgayDuongTxt, mTxtTinh, mTxtNhietDo,txtTatCa;
     VideoView video;
     ImageView image1, image2, image3, image4, image5, image6,
-            imageCaiDat, imageMinus, imagePlus;
+            imageCaiDat, imageMinus, imagePlus,imageTatCa;
     private AlertDialog mNetworkConnectionNoticeDialog;
     private AlertDialog.Builder mNetworkConnectionNoticeDialogBuilder;
     RecyclerView rcCategory;
@@ -85,7 +85,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     //  ArrayList<String> listvideo;
     public static View.OnClickListener appClick;
     public static final int REQUEST_SETTINGS = 101;
-    public static int demdsApp = 0;
+    public static int demdsApp = 0,pick;
     private static final String TAG = "TrangChu";
     private ProgressDialog dialog;
     private ChuDeAdapter categoryAdapter;
@@ -157,6 +157,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         reLay111.setOnClickListener(this);
         reLay112.setOnClickListener(this);
         reLay2221.setOnClickListener(this);
+        relayTatCa.setOnClickListener(this);
 
         // Video Click
         ibtNext.setOnClickListener(this);
@@ -301,6 +302,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         reLay215 = (RelativeLayout) findViewById(R.id.relay215);
         reLay216 = (RelativeLayout) findViewById(R.id.relay216);
         reLay2221 = (RelativeLayout) findViewById(R.id.relay2221);
+        relayTatCa = (RelativeLayout) findViewById(R.id.layout_tatca);
 
         //end Layout
 
@@ -320,6 +322,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         tvTime = (TextView) findViewById(R.id.tvTime);
         imgWeb = (ImageView) findViewById(R.id.imgWeb);
         imgView = (ImageView) findViewById(R.id.imgView);
+        imageTatCa = (ImageView) findViewById(R.id.img_tatca);
+        imageTatCa.setColorFilter(getResources().getColor(R.color.colorcatenone));
+        txtTatCa = (TextView) findViewById(R.id.txt_tatca);
 
         checkLink = new CheckLink();
         sharedPreferences = getSharedPreferences("volume", MODE_PRIVATE);
@@ -419,15 +424,15 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                         didIndex = main - 4;
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
                     }
-                } else if ((didIndex >= main + 1 + cates.size() + bonusmain)
-                        && (didIndex < main + bonusmain + 1 + cates.size() + listApps.get(demdsApp).size())) {
-                    rcApp.getChildAt(didIndex - main - 1 - cates.size() - bonusmain).setBackgroundResource(R.drawable.none);
+                } else if ((didIndex >= main + 2 + cates.size() + bonusmain)
+                        && (didIndex < main + bonusmain + 2 + cates.size() + listApps.get(demdsApp).size())) {
+                    rcApp.getChildAt(didIndex - main - 2 - cates.size() - bonusmain).setBackgroundResource(R.drawable.none);
                     didIndex = indexChuDe + main + bonusmain;
-                } else if (didIndex == main + bonusmain + 1 + cates.size() + listApps.get(demdsApp).size()) {
+                } else if (didIndex == main + bonusmain + 2 + cates.size() + listApps.get(demdsApp).size()) {
                     imagePlus.setImageResource(R.drawable.ic_plus1);
                     didIndex = indexChuDe + main + bonusmain;
                     rcCategory.getChildAt(indexChuDe).callOnClick();
-                } else if (didIndex == main + cates.size() + bonusmain) {
+                } else if (didIndex == main + cates.size() + bonusmain + 1) {
                     imageMinus.setImageResource(R.drawable.ic_minus1);
                     didIndex = indexChuDe + main + bonusmain;
                 }
@@ -456,7 +461,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     rcCategory.getChildAt(indexChuDe).callOnClick();
                 } else if ((didIndex >= main + bonusmain) && (didIndex < main + bonusmain + cates.size())) {
                     indexChuDe = didIndex - main - bonusmain;
-                    didIndex = main + 1 + cates.size() + bonusmain;
+                    didIndex = main + 2 + cates.size() + bonusmain;
                     rcApp.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
                 }
                 return true;
@@ -495,30 +500,38 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                             ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_website);
                         didIndex = 7;
                     }
-                } else if ((didIndex >= main + 1 + bonusmain) && (didIndex < (main + 1 + cates.size() + bonusmain))) {
-                    if (didIndex == (main + cates.size() + bonusmain)) {
-                        imageMinus.setImageResource(R.drawable.ic_minus1);
-                    }
+                } else if ((didIndex >= main + 1 + bonusmain) && (didIndex < (main + cates.size() + bonusmain))) {
                     didIndex--;
+                    rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
+                    indexChuDe = didIndex - main - bonusmain;
+                } else if (didIndex == main + cates.size() + bonusmain) {
+                    relayTatCa.setBackgroundColor(getResources().getColor(R.color.none));
+                    imageTatCa.setColorFilter(getResources().getColor(R.color.colorcatenone));
+                    txtTatCa.setTextColor(getResources().getColor(R.color.colorcatenone));
+                    didIndex--;
+                    rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
+                } else if (didIndex == (main + cates.size() + bonusmain + 1)) {
+                    imageMinus.setImageResource(R.drawable.ic_minus1);
+                    didIndex = didIndex - 2;
                     rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
                     indexChuDe = didIndex - main - bonusmain;
                 } else if (didIndex == main + bonusmain) {
                     indexChuDe = 0;
                     didIndex = 10;
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex == main + 1 + cates.size() + bonusmain) {
+                } else if (didIndex == main + 2 + cates.size() + bonusmain) {
                     imageMinus.setImageResource(R.drawable.ic_minus);
                     rcApp.getChildAt(0).setBackgroundResource(R.drawable.none);
                     didIndex--;
-                } else if ((didIndex >= (main + 2 + cates.size() + bonusmain)) && (didIndex < (main + bonusmain + 1 + cates.size() + listApps.get(demdsApp).size()))) {
-                    rcApp.getChildAt(didIndex - main - 1 - cates.size() - bonusmain).setBackgroundResource(R.drawable.none);
+                } else if ((didIndex >= (main + 3 + cates.size() + bonusmain)) && (didIndex < (main + bonusmain + 2 + cates.size() + listApps.get(demdsApp).size()))) {
+                    rcApp.getChildAt(didIndex - main - 2 - cates.size() - bonusmain).setBackgroundResource(R.drawable.none);
                     imagePlus.setImageResource(R.drawable.ic_plus1);
                     didIndex--;
-                    rcApp.getChildAt(didIndex - main - 1 - cates.size() - bonusmain).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex == main + cates.size() + listApps.get(demdsApp).size() + 1 + bonusmain) {
+                    rcApp.getChildAt(didIndex - main - 2 - cates.size() - bonusmain).setBackgroundResource(R.drawable.border_pick);
+                } else if (didIndex == main + cates.size() + listApps.get(demdsApp).size() + 2 + bonusmain) {
                     imagePlus.setImageResource(R.drawable.ic_plus1);
                     didIndex--;
-                    rcApp.getChildAt(didIndex - main - 1 - cates.size() - bonusmain).setBackgroundResource(R.drawable.border_pick);
+                    rcApp.getChildAt(didIndex - main - 2 - cates.size() - bonusmain).setBackgroundResource(R.drawable.border_pick);
                 }
                 return true;
 
@@ -556,26 +569,37 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                         didIndex = 8;
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
                     }
-                } else if (didIndex <= (main - 1 + cates.size() + bonusmain)) {
-                    if (didIndex == main - 1 + cates.size() + bonusmain) {
-                        didIndex = main - 1 + bonusmain;
-                    }
+                } else if (didIndex < (main - 1 + cates.size() + bonusmain)) {
                     listItem.get(main - 1).setBackgroundResource(R.drawable.border_video);
                     didIndex++;
                     rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
                     indexChuDe = didIndex - main - bonusmain;
+                } else if (didIndex == main - 1 + cates.size() + bonusmain) {
+                    pick = 1;
+                    rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
+                    didIndex++;
+                    relayTatCa.setBackgroundResource(R.drawable.bordercate);
+                    imageTatCa.setColorFilter(getResources().getColor(R.color.colorcatenew));
+                    txtTatCa.setTextColor(getResources().getColor(R.color.colorcatenew));
                 } else if (didIndex == main + cates.size() + bonusmain) {
+                    relayTatCa.setBackgroundColor(getResources().getColor(R.color.none));
+                    imageTatCa.setColorFilter(getResources().getColor(R.color.colorcatenone));
+                    txtTatCa.setTextColor(getResources().getColor(R.color.colorcatenone));
+                    didIndex = main + bonusmain;
+                    indexChuDe = 0;
+                    rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
+                } else if (didIndex == main + cates.size() + bonusmain + 1) {
                     imageMinus.setImageResource(R.drawable.ic_minus1);
                     didIndex++;
                     rcApp.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex < (main + cates.size() + listApps.get(demdsApp).size() + bonusmain)) {
-                    if (didIndex != main + cates.size() + bonusmain) {
-                        rcApp.getChildAt(didIndex - main - cates.size() - 1 - bonusmain).setBackgroundResource(R.drawable.none);
+                } else if (didIndex < (main + cates.size() + listApps.get(demdsApp).size() + bonusmain + 1)) {
+                    if (didIndex != main + cates.size() + bonusmain + 1) {
+                        rcApp.getChildAt(didIndex - main - cates.size() - 2 - bonusmain).setBackgroundResource(R.drawable.none);
                     }
                     didIndex++;
-                    rcApp.getChildAt(didIndex - main - 1 - cates.size() - bonusmain).setBackgroundResource(R.drawable.border_pick);
-                } else if (didIndex == main + cates.size() + listApps.get(demdsApp).size() + bonusmain) {
-                    rcApp.getChildAt(didIndex - main - cates.size() - 1 - bonusmain).setBackgroundResource(R.drawable.none);
+                    rcApp.getChildAt(didIndex - main - 2 - cates.size() - bonusmain).setBackgroundResource(R.drawable.border_pick);
+                } else if (didIndex == main + cates.size() + listApps.get(demdsApp).size() + bonusmain + 1) {
+                    rcApp.getChildAt(didIndex - main - cates.size() - 2 - bonusmain).setBackgroundResource(R.drawable.none);
                     didIndex++;
                     imagePlus.setImageResource(R.drawable.ic_plus);
                 }
@@ -588,12 +612,14 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     listItem.get(didIndex).callOnClick();
                 } else if (didIndex < (main + cates.size() + bonusmain)) {
                     rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
-                } else if (didIndex == main + 1 + cates.size() + listApps.get(demdsApp).size() + bonusmain) {
+                } else if (didIndex == main + 2 + cates.size() + listApps.get(demdsApp).size() + bonusmain) {
                     listItem.get(listItem.size() - 1).callOnClick();
-                } else if (didIndex == main + cates.size() + bonusmain) {
+                } else if (didIndex == main + cates.size() + bonusmain + 1) {
                     imageMinus.callOnClick();
+                } else if (didIndex == main + cates.size() + bonusmain) {
+                    relayTatCa.callOnClick();
                 } else {
-                    rcApp.getChildAt(didIndex - main - 1 - cates.size() - bonusmain).callOnClick();
+                    rcApp.getChildAt(didIndex - main - 2 - cates.size() - bonusmain).callOnClick();
                 }
                 return true;
             default:
@@ -776,6 +802,10 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     Toast.makeText(getApplicationContext(), "Khong ton tai link", Toast.LENGTH_SHORT).show();
                     break;
                 }
+                break;
+
+            case R.id.layout_tatca:
+                launchApp("com.example.tienh.kiwistore10");
                 break;
         }
     }
@@ -1030,44 +1060,4 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             setVideoOrImager(mListVideoAd.get(indexVideo));
         }
     };
-
-    public ChuDeAdapter getCategoryAdapter() {
-        return categoryAdapter;
-    }
-
-    public void setCategoryAdapter(ChuDeAdapter categoryAdapter) {
-        this.categoryAdapter = categoryAdapter;
-    }
-
-    public static List<ChuDe> getCates() {
-        return cates;
-    }
-
-    public static void setCates(List<ChuDe> cates) {
-        TrangChu.cates = cates;
-    }
-
-    public static List<UngDung> getmListUngDung() {
-        return mListUngDung;
-    }
-
-    public static void setmListUngDung(List<UngDung> mListUngDung) {
-        TrangChu.mListUngDung = mListUngDung;
-    }
-
-    public static List<TheLoaiUngDung> getmListTheLoaiUngDung() {
-        return mListTheLoaiUngDung;
-    }
-
-    public static void setmListTheLoaiUngDung(List<TheLoaiUngDung> mListTheLoaiUngDung) {
-        TrangChu.mListTheLoaiUngDung = mListTheLoaiUngDung;
-    }
-
-    public static List<UngDung> getListAppBottom() {
-        return listAppBottom;
-    }
-
-    public static void setListAppBottom(List<UngDung> listAppBottom) {
-        TrangChu.listAppBottom = listAppBottom;
-    }
 }

@@ -476,7 +476,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.img1_ds:
+            case R.id.relay13_ds:
                 onBackPressed();
                 break;
 
