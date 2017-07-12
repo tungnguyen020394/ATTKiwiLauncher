@@ -847,7 +847,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 AppInfoHelper.launchApp(listAppBottom.get(position).getPackageName(), context);
             } else {
                 Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
-                intent.putExtra("idApp", listAppBottom.get(position).getId());
+                //intent.putExtra("idApp", listAppBottom.get(position).getId());
                 context.startActivity(intent);
             }
 
