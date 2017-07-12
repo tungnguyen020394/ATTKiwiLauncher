@@ -235,6 +235,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         super.onResume();
         initNetworkConnectDialog();
         ibtPlay.setImageResource(R.drawable.ic_pause);
+        ibtNext.callOnClick();
         playing = true;
         try {
             ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
