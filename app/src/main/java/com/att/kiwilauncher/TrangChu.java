@@ -62,8 +62,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static android.app.Activity.RESULT_OK;
-
 public class TrangChu extends AppCompatActivity implements View.OnClickListener {
     public final static String APIKEY = "1fd660e2a27afad8b71405f654997a62";
     int didIndex = 0, willIndex, indexChuDe = 0, main = 12, position, bonusmain = 6, indexVideo = 0;
