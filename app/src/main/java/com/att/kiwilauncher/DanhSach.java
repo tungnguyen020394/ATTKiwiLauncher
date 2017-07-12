@@ -415,14 +415,16 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
             int parentID = ((View) v.getParent()).getId();
             if (parentID == rcUngDung.getId()) {
                 int position = rcUngDung.getChildPosition(v);
+             //   Toast.makeText(context,"t1",Toast.LENGTH_SHORT).show();
                 if (AppInstallHelper.checkInstalledApplication(dsUngDung.get(position).getPackageName(), context)) {
                     AppInfoHelper.launchApp(dsUngDung.get(position).getPackageName(), context);
                 } else {
                     Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
-                    //intent.putExtra("idApp", dsUngDung.get(position).getId());
+                    intent.putExtra("idApp", dsUngDung.get(position).getId());
                     context.startActivity(intent);
                 }
             } else {
+              //  Toast.makeText(context,"t2",Toast.LENGTH_SHORT).show();
                 int position = rcUngDung1.getChildPosition(v);
                 if (AppInstallHelper.checkInstalledApplication(listUngDungDaCai.get(demDsApp).get(position).getPackageName(), context)) {
                     AppInfoHelper.launchApp(listUngDungDaCai.get(demDsApp).get(position).getPackageName(), context);
