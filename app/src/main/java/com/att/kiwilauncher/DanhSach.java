@@ -60,7 +60,6 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     static List<UngDung> listUngDungLe;
     static List<UngDung> listUngDungChung;
     static ChuDeDsAdapter categoryAdapter;
-    static boolean rcUngDungPick;
     TrangChu trangChu;
     static List<List<UngDung>> listAppsDs;
     int idTheLoai;
@@ -181,7 +180,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         dsUngDung.addAll(mDatabaseHelper.getListUngDungById(idTheLoai));
 
         rcUngDung.setHasFixedSize(true);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 8);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 9);
         rcUngDung.setLayoutManager(gridLayoutManager);
         ungDungAdapter = new UngDungDsAdapter(this, dsUngDung);
         rcUngDung.setAdapter(ungDungAdapter);
@@ -384,7 +383,6 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     listItem.get(didIndex).callOnClick();
                 } else if (didIndex > main - 1 + dsChuDe.size()
                         && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size()) {
-                    rcUngDungPick = true;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).callOnClick();
                     didIndex = 0;
                 } else if (didIndex == main + dsChuDe.size() + dsUngDung.size()) {
@@ -393,7 +391,6 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     imagePlusDs.callOnClick();
                 } else if (didIndex > main + dsChuDe.size() + dsUngDung.size()
                         && didIndex < main + dsChuDe.size() + dsUngDung.size() + listUngDungDaCai.get(demDsApp).size() + 1) {
-                    rcUngDungPick = false;
                     rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).callOnClick();
                     didIndex = 0;
                 }
@@ -415,7 +412,8 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
 
         @Override
         public void onClick(View v) {
-            if (rcUngDungPick == true) {
+            int parentID = ((View) v.getParent()).getId();
+            if (parentID == rcUngDung.getId()) {
                 int position = rcUngDung.getChildPosition(v);
                 if (AppInstallHelper.checkInstalledApplication(dsUngDung.get(position).getPackageName(), context)) {
                     AppInfoHelper.launchApp(dsUngDung.get(position).getPackageName(), context);
