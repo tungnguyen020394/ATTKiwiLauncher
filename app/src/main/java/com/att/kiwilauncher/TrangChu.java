@@ -709,30 +709,35 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
             case R.id.img_tv:
                 Intent i = new Intent(TrangChu.this, DanhSach.class);
                 i.putExtra("tenChuDe", "Truyền Hình Tổng Hợp");
+                i.putExtra("idTheLoai", 7);
                 startActivity(i);
                 break;
 
             case R.id.img_phim:
                 Intent i1 = new Intent(TrangChu.this, DanhSach.class);
                 i1.putExtra("tenChuDe", "Phim Tổng Hợp");
+                i1.putExtra("idTheLoai", 8);
                 startActivity(i1);
                 break;
 
             case R.id.img_nhac:
                 Intent i2 = new Intent(TrangChu.this, DanhSach.class);
                 i2.putExtra("tenChuDe", "Nhạc Tổng Hợp");
+                i2.putExtra("idTheLoai", 9);
                 startActivity(i2);
                 break;
 
             case R.id.img_kara:
                 Intent i3 = new Intent(TrangChu.this, DanhSach.class);
                 i3.putExtra("tenChuDe", "Karaoke Tổng Hợp");
+                i3.putExtra("idTheLoai", 10);
                 startActivity(i3);
                 break;
 
             case R.id.img_youtube:
                 Intent i4 = new Intent(TrangChu.this, DanhSach.class);
                 i4.putExtra("tenChuDe", "Youtube");
+                i4.putExtra("idTheLoai", 11);
                 startActivity(i4);
                 break;
 

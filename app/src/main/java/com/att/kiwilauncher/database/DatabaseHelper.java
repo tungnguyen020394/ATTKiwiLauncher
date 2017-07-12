@@ -313,7 +313,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ungDungNew.setNameApp(cursor.getString(1));
             ungDungNew.setIcon(cursor.getString(2));
             ungDungNew.setPackageName(cursor.getString(3));
-            Log.e("db",cursor.getString(0)+"="+cursor.getString(1)+"="+cursor.getString(2)+"="+cursor.getString(3));
+ //           Log.e("db",cursor.getString(0)+"="+cursor.getString(1)+"="+cursor.getString(2)+"="+cursor.getString(3));
             listUngDung.add(ungDungNew);
         }
         cursor.close();
@@ -431,6 +431,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         openDatabase();
         Cursor cursor;
         cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.icon,ungdung.packageName FROM ungdung JOIN theloai_ungdung ON ungdung.id=theloai_ungdung.ungdungid WHERE theloai_ungdung.theloaiid=" + maTheLoai, null);
+
+        if (cursor.moveToFirst()) {
+            UngDung ungDungNew = new UngDung();
+            ungDungNew.setId(cursor.getString(0));
+            ungDungNew.setNameApp(cursor.getString(1));
+            ungDungNew.setIcon(cursor.getString(2));
+            ungDungNew.setPackageName(cursor.getString(3));
+            listUngDung.add(ungDungNew);
+        }
+        while (cursor.moveToNext()) {
+            UngDung ungDungNew = new UngDung();
+            ungDungNew.setId(cursor.getString(0));
+            ungDungNew.setNameApp(cursor.getString(1));
+            ungDungNew.setIcon(cursor.getString(2));
+            ungDungNew.setPackageName(cursor.getString(3));
+            listUngDung.add(ungDungNew);
+        }
+        cursor.close();
+        closeDatabase();
+
+        return listUngDung;
+    }
+
+    // lấy danh sách tất cả các ứng dụng của thẻ loại xyz
+    public List<UngDung> getListUngDungById(int idChuDe) {
+        List<UngDung> listUngDung = new ArrayList<>();
+        openDatabase();
+        Cursor cursor;
+        cursor = mDatabase.rawQuery("SELECT ungdung.id,ungdung.ten,ungdung.icon,ungdung.packageName FROM ungdung JOIN theloai_ungdung ON ungdung.id=theloai_ungdung.ungdungid WHERE theloai_ungdung.theloaiid=" + idChuDe, null);
 
         if (cursor.moveToFirst()) {
             UngDung ungDungNew = new UngDung();

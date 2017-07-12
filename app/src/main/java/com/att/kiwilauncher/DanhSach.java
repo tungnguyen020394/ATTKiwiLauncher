@@ -40,26 +40,27 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
     static int demDsApp = 0;
     static List<ChuDe> dsChuDe;
     private static List<List<UngDung>> listUngDungDaCai;
-    public static List<UngDung> dsUngDung,ungDungDaCai;
+    public static List<UngDung> dsUngDung, ungDungDaCai;
     static RecyclerView rcChuDe;
-    static RecyclerView rcUngDung,rcUngDung1;
-    public static UngDungDsAdapter ungDungAdapter , listappDacai;
+    static RecyclerView rcUngDung, rcUngDung1;
+    public static UngDungDsAdapter ungDungAdapter, listappDacai;
     private static PackageManager manager;
     private PackageManager manager1;
-    ImageView imageCaidat,imageMinusDs,imagePlusDs;
+    ImageView imageCaidat, imageMinusDs, imagePlusDs;
     RelativeLayout imageKiwi;
     ArrayList<View> listItem;
     TextView text;
     Intent mIntentGetData;
     TextView mNgayDuongTxt, mNgayAmTxt, mTxtTinh, mTxtNhietDo;
     DatabaseHelper mDatabaseHelper;
-    public static View.OnClickListener appClick,chuDeClick;
+    public static View.OnClickListener appClick, chuDeClick;
     static List<UngDung> listUngDungChan;
     static List<UngDung> listUngDungLe;
     static List<UngDung> listUngDungChung;
     static ChuDeDsAdapter categoryAdapter;
     TrangChu trangChu;
     static List<List<UngDung>> listAppsDs;
+    int idTheLoai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +112,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
 
         rcUngDung1 = (RecyclerView) findViewById(R.id.recycler5_ds);
         imageMinusDs = (ImageView) findViewById(R.id.img_minus_ds);
-        imagePlusDs  = (ImageView) findViewById(R.id.img_plus_ds);
+        imagePlusDs = (ImageView) findViewById(R.id.img_plus_ds);
         imageMinusDs.setOnClickListener(this);
         imagePlusDs.setOnClickListener(this);
     }
@@ -126,7 +127,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         i1.addCategory(Intent.CATEGORY_LAUNCHER);
 
         List<ResolveInfo> availableActivities = manager1.queryIntentActivities(i1, 0);
-        for(ResolveInfo ri : availableActivities){
+        for (ResolveInfo ri : availableActivities) {
             UngDung app = new UngDung();
             app.labelApp = ri.loadLabel(manager1);
             app.nameApp = ri.activityInfo.packageName;
@@ -147,6 +148,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
 
         Intent i = getIntent();
         String tenChuDe = i.getStringExtra("tenChuDe");
+        idTheLoai = i.getIntExtra("idTheLoai", 3);
         // Load Category
         dsChuDe = new ArrayList<ChuDe>();
         ChuDe cate1 = new ChuDe(tenChuDe, R.drawable.ic_giaitri, 0, true);
@@ -158,7 +160,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         listUngDungChan = new ArrayList<UngDung>();
         listUngDungLe = new ArrayList<UngDung>();
         //listUngDungChung = (List<UngDung>) mIntentGetData.getSerializableExtra("listChuDe");
-        listUngDungChung = mDatabaseHelper.getListUngDung(mDatabaseHelper.getListChuDe().get(4));
+        listUngDungChung = mDatabaseHelper.getListUngDungById(idTheLoai);
         rcChuDe.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rcChuDe.setLayoutManager(layoutManager1);
@@ -172,7 +174,8 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         i.addCategory(Intent.CATEGORY_LAUNCHER);
 
         int soUngDung = 0;
-        dsUngDung.addAll(mDatabaseHelper.getListUngDung(mDatabaseHelper.getListChuDe().get(4)));
+       // dsUngDung.addAll(mDatabaseHelper.getListUngDung(mDatabaseHelper.getListChuDe().get(4)));
+        dsUngDung.addAll(mDatabaseHelper.getListUngDungById(idTheLoai));
 
         rcUngDung.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 8);
@@ -194,9 +197,9 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
 
         // relay 5
         rcUngDung1.setHasFixedSize(true);
-        GridLayoutManager gridLayoutManager1 = new GridLayoutManager(this,7);
+        GridLayoutManager gridLayoutManager1 = new GridLayoutManager(this, 7);
         rcUngDung1.setLayoutManager(gridLayoutManager1);
-        listappDacai = new UngDungDsAdapter(this,listUngDungDaCai.get(demDsApp));
+        listappDacai = new UngDungDsAdapter(this, listUngDungDaCai.get(demDsApp));
         rcUngDung1.setAdapter(listappDacai);
 
         listAppsDs = new ArrayList<>();
@@ -239,7 +242,8 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                         rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
                         didIndex = main + dsChuDe.size() + dsUngDung.size() + 1;
                         rcUngDung1.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
-                    } catch (Exception e) {}
+                    } catch (Exception e) {
+                    }
                 }
                 break;
 
@@ -263,9 +267,9 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                 } else if (didIndex >= main + dsChuDe.size() + 8
                         && didIndex <= main + dsChuDe.size() + dsUngDung.size()
                         && dsUngDung.size() > 8) {
-                        rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
-                        didIndex = didIndex - 8;
-                        rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
+                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
+                    didIndex = didIndex - 8;
+                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
                 } else if (didIndex > main + dsChuDe.size() + dsUngDung.size() - 1
                         && didIndex <= main + dsChuDe.size() + dsUngDung.size() + listUngDungDaCai.get(demDsApp).size() + 1) {
                     if (didIndex == main + dsChuDe.size() + dsUngDung.size()
@@ -301,12 +305,12 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                     rcChuDe.getChildAt(didIndex - main).callOnClick();
                 } else if (didIndex > main + dsChuDe.size()
                         && didIndex < main + dsChuDe.size() + dsUngDung.size()) {
-                    if ( didIndex != main + dsChuDe.size() + dsUngDung.size()) {
+                    if (didIndex != main + dsChuDe.size() + dsUngDung.size()) {
                         rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.none);
                     }
                     didIndex--;
                     rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
-                }  else if (didIndex == main + 1 + dsChuDe.size() + dsUngDung.size()) {
+                } else if (didIndex == main + 1 + dsChuDe.size() + dsUngDung.size()) {
                     rcUngDung1.getChildAt(0).setBackgroundResource(R.drawable.none);
                     didIndex--;
                     imageMinusDs.setImageResource(R.drawable.ic_minus);
@@ -496,7 +500,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
             case R.id.img_minus_ds:
                 if (0 < demDsApp) {
                     demDsApp--;
-                    listappDacai = new UngDungDsAdapter(this,listUngDungDaCai.get(demDsApp));
+                    listappDacai = new UngDungDsAdapter(this, listUngDungDaCai.get(demDsApp));
                     rcUngDung1.setAdapter(listappDacai);
                 } else {
                     Toast.makeText(getApplicationContext(), "Bạn đang ở danh sách các ứng dụng đầu tiên ", Toast.LENGTH_SHORT).show();
@@ -506,7 +510,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
             case R.id.img_plus_ds:
                 if (demDsApp < listUngDungDaCai.size() - 1) {
                     demDsApp++;
-                    listappDacai = new UngDungDsAdapter(this,listUngDungDaCai.get(demDsApp));
+                    listappDacai = new UngDungDsAdapter(this, listUngDungDaCai.get(demDsApp));
                     rcUngDung1.setAdapter(listappDacai);
                     didIndex = main + dsUngDung.size() + dsChuDe.size() + listUngDungDaCai.get(demDsApp).size() + 1;
                 } else {
