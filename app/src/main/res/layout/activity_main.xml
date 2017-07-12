@@ -247,7 +247,8 @@
                         android:gravity="center"
                         android:text="Truyền Hình"
                         android:textAllCaps="true"
-                        android:textSize="@dimen/_7sdp"/>
+                        android:textSize="@dimen/_7sdp"
+                        android:textColor="@color/colorWhite"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -275,7 +276,8 @@
                         android:gravity="center"
                         android:text="Phim"
                         android:textAllCaps="true"
-                        android:textSize="@dimen/_7sdp"/>
+                        android:textSize="@dimen/_7sdp"
+                        android:textColor="@color/colorWhite"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -301,7 +303,8 @@
                         android:gravity="center"
                         android:text="Nhạc"
                         android:textAllCaps="true"
-                        android:textSize="@dimen/_7sdp"/>
+                        android:textSize="@dimen/_7sdp"
+                        android:textColor="@color/colorWhite"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -328,7 +331,8 @@
                         android:gravity="center"
                         android:text="Karaoke"
                         android:textAllCaps="true"
-                        android:textSize="@dimen/_7sdp"/>
+                        android:textSize="@dimen/_7sdp"
+                        android:textColor="@color/colorWhite"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -358,7 +362,8 @@
                         android:gravity="center"
                         android:text="Youtube"
                         android:textAllCaps="true"
-                        android:textSize="@dimen/_7sdp"/>
+                        android:textSize="@dimen/_7sdp"
+                        android:textColor="@color/colorWhite"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -386,7 +391,8 @@
                         android:gravity="center"
                         android:text="KIwi Store"
                         android:textAllCaps="true"
-                        android:textSize="@dimen/_7sdp"/>
+                        android:textSize="@dimen/_7sdp"
+                        android:textColor="@color/colorWhite"/>
                 </RelativeLayout>
             </RelativeLayout>
 

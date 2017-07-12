@@ -146,6 +146,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         loadData();
         addNavigationItem();
         addClicks();
+        ibtNext.callOnClick();
     }
 
     private void addClicks() {
@@ -459,7 +460,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     }
                     didIndex = indexChuDe + main + bonusmain;
                     rcCategory.getChildAt(indexChuDe).callOnClick();
-                } else if ((didIndex >= main + bonusmain) && (didIndex < main + bonusmain + cates.size())) {
+                } else if ((didIndex >= main + bonusmain) && (didIndex < main + bonusmain + cates.size())
+                        && listApps.get(demdsApp).size() != 0) {
                     indexChuDe = didIndex - main - bonusmain;
                     didIndex = main + 2 + cates.size() + bonusmain;
                     rcApp.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
@@ -729,14 +731,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 break;
 
             case R.id.img_youtube:
-                try {
-                    /*Intent i4 = manager.getLaunchIntentForPackage("com.google.android.apps.youtube.kids");
-                    startActivity(i4);*/
-                    Intent i4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UC-r6Lfqt2jD-iVqlmrzN4vg"));
-                    startActivity(i4);
-                } catch (Exception e) {
-                    launchApp("com.example.tienh.kiwistore10");
-                }
+                Intent i4 = new Intent(TrangChu.this, DanhSach.class);
+                i4.putExtra("tenChuDe", "Youtube");
+                startActivity(i4);
                 break;
 
             case R.id.img_store:
