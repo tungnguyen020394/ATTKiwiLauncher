@@ -462,7 +462,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     didIndex = indexChuDe + main + bonusmain;
                     rcCategory.getChildAt(indexChuDe).callOnClick();
                 } else if ((didIndex >= main + bonusmain) && (didIndex < main + bonusmain + cates.size())
-                        && listApps.get(demdsApp).size() != 0) {
+                        && listAppBottom.size() != 0) {
                     indexChuDe = didIndex - main - bonusmain;
                     didIndex = main + 2 + cates.size() + bonusmain;
                     rcApp.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
@@ -621,7 +621,8 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     imageMinus.callOnClick();
                 } else if (didIndex == main + cates.size() + bonusmain) {
                     relayTatCa.callOnClick();
-                } else {
+                } else if (didIndex >= main + 2 + cates.size() + bonusmain
+                        && didIndex <= main + cates.size() + listApps.get(demdsApp).size() + bonusmain + 1){
                     rcApp.getChildAt(didIndex - main - 2 - cates.size() - bonusmain).callOnClick();
                 }
                 return true;
@@ -757,8 +758,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     listAppBottom.clear();
                     listAppBottom.addAll(listApps.get(demdsApp));
                     listapp.notifyDataSetChanged();
-                    /*listapp = new UngDungAdapter(getApplicationContext(), listApps.get(demdsApp));
-                    rcApp.setAdapter(listapp);*/
+                    didIndex = main + cates.size() + listApps.get(demdsApp).size() + bonusmain + 2;
                 } else {
                     Toast.makeText(getApplicationContext(), "Bạn đã ở cuối danh sách ứng dụng", Toast.LENGTH_SHORT).show();
                 }

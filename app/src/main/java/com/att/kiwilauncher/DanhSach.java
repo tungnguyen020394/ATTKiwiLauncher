@@ -232,7 +232,9 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                 } else if ((didIndex >= main) && (didIndex < main + dsChuDe.size())) {
                     indexChuDe = didIndex;
                     didIndex = main + dsChuDe.size();
-                    rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
+                    if (dsUngDung.size() != 0) {
+                        rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.border_pick);
+                    }
                 } else if (didIndex > main - 1 + dsChuDe.size()
                         && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size() - 8
                         && dsUngDung.size() > 8) {
@@ -282,7 +284,9 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                         rcUngDung1.getChildAt(didIndex - main - dsChuDe.size() - dsUngDung.size() - 1).setBackgroundResource(R.drawable.none);
                     }
                     didIndex = main + dsChuDe.size() + dsUngDung.size() - 1;
-                    rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
+                    if (dsUngDung.size() != 0 ) {
+                        rcUngDung.getChildAt(didIndex - main - dsChuDe.size()).setBackgroundResource(R.drawable.border_pick);
+                    }
 
                 }
                 break;
@@ -301,7 +305,9 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_textpick);
                 } else if (didIndex > main && didIndex <= main + dsChuDe.size()) {
                     if (didIndex == main + dsChuDe.size()) {
-                        rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.none);
+                        if (dsUngDung.size() != 0) {
+                            rcUngDung.getChildAt(0).setBackgroundResource(R.drawable.none);
+                        }
                     }
                     didIndex--;
                     rcChuDe.getChildAt(didIndex - main).callOnClick();
