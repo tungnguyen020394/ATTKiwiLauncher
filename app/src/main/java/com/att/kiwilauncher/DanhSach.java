@@ -22,6 +22,8 @@ import com.att.kiwilauncher.adapter.ChuDeDsAdapter;
 import com.att.kiwilauncher.adapter.UngDungDsAdapter;
 import com.att.kiwilauncher.database.DatabaseHelper;
 import com.att.kiwilauncher.model.ChuDe;
+import com.att.kiwilauncher.xuly.AppInfoHelper;
+import com.att.kiwilauncher.xuly.AppInstallHelper;
 import com.att.kiwilauncher.xuly.LunarCalendar;
 
 import java.util.ArrayList;
@@ -34,8 +36,8 @@ import static com.att.kiwilauncher.TrangChu.listApps;
 
 public class DanhSach extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout reLay1, reLay2, reLay3, reLay13, reLay12, reLay113, reLay111, reLay112, reLay11, reLay121;
-    int didIndex = 0;
-    int main = 5;
+    static int didIndex = 0;
+    static int main = 5;
     int indexChuDe;
     static int demDsApp = 0;
     static List<ChuDe> dsChuDe;
@@ -174,7 +176,7 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
         i.addCategory(Intent.CATEGORY_LAUNCHER);
 
         int soUngDung = 0;
-       // dsUngDung.addAll(mDatabaseHelper.getListUngDung(mDatabaseHelper.getListChuDe().get(4)));
+        // dsUngDung.addAll(mDatabaseHelper.getListUngDung(mDatabaseHelper.getListChuDe().get(4)));
         dsUngDung.addAll(mDatabaseHelper.getListUngDungById(idTheLoai));
 
         rcUngDung.setHasFixedSize(true);
@@ -408,24 +410,63 @@ public class DanhSach extends AppCompatActivity implements View.OnClickListener 
 
         @Override
         public void onClick(View v) {
-            if (rcUngDung.callOnClick()) {
+            if (didIndex > main - 1 + dsChuDe.size()
+                    && didIndex <= main - 1 + dsChuDe.size() + dsUngDung.size()){
                 int position = rcUngDung.getChildPosition(v);
-                try {
+                if (AppInstallHelper.checkInstalledApplication(dsUngDung.get(position).getPackageName(), context)) {
+                    AppInfoHelper.launchApp(dsUngDung.get(position).getPackageName(), context);
+                } else {
+                    Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
+                    intent.putExtra("idApp", dsUngDung.get(position).getId());
+                    context.startActivity(intent);
+                }
+                Toast.makeText(context,"t1"+ position + "== package name" + dsUngDung.get(position).getPackageName() + "== size" + dsUngDung.size(), Toast.LENGTH_SHORT).show();
+            }else{
+                int position = rcUngDung1.getChildPosition(v);
+                if (AppInstallHelper.checkInstalledApplication(listUngDungDaCai.get(demDsApp).get(position).getPackageName(), context)) {
+                    AppInfoHelper.launchApp(listUngDungDaCai.get(demDsApp).get(position).getPackageName(), context);
+                } else {
+                    Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
+                  //  intent.putExtra("idApp", dsUngDung.get(position).getId());
+                    context.startActivity(intent);
+                }
+               // Toast.makeText(context,"t2"+ position + "== package name" + listUngDungDaCai.get(demDsApp).get(position).getPackageName() + "== size" + dsUngDung.size(), Toast.LENGTH_SHORT).show();
+            }
+                      // v.get
+            if (rcUngDung.callOnClick()) {
+                 /*if (AppInstallHelper.checkInstalledApplication(dsUngDung.get(position).getPackageName(), context)) {
+                    AppInfoHelper.launchApp(dsUngDung.get(position).getPackageName(), context);
+                } else {
+                    Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
+                    intent.putExtra("idApp", listAppBottom.get(position).getId());
+                    context.startActivity(intent);
+                }*/
+                /*try {
                     Intent i = manager.getLaunchIntentForPackage(dsUngDung.get(position).getNameApp().toString());
                     context.startActivity(i);
                 } catch (Exception e) {
                     Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
                     context.startActivity(intent);
-                }
-            } else {
-                int position = rcUngDung1.getChildPosition(v);
-                try {
+                }*/
+            } else if (rcUngDung1.callOnClick()) {
+          //      int position = rcUngDung1.getChildPosition(v);
+             /*   Toast.makeText(context,"t2"+  position + "== package name" + listUngDungDaCai.get(demDsApp).get(position).getPackageName()
+                        + "== size" + listUngDungDaCai.get(demDsApp).size(), Toast.LENGTH_SHORT).show();
+*/
+              /*  if (AppInstallHelper.checkInstalledApplication(listUngDungDaCai.get(demDsApp).get(position).getPackageName(), context)) {
+                    AppInfoHelper.launchApp(listUngDungDaCai.get(demDsApp).get(position).getPackageName(), context);
+                } else {
+                    Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
+                    intent.putExtra("idApp", listUngDungDaCai.get(demDsApp).get(position).getId());
+                    context.startActivity(intent);
+                }*/
+               /* try {
                     Intent i = manager.getLaunchIntentForPackage(listUngDungDaCai.get(demDsApp).get(position).getNameApp().toString());
                     context.startActivity(i);
                 } catch (Exception e) {
                     Intent intent = manager.getLaunchIntentForPackage("com.example.tienh.kiwistore10");
                     context.startActivity(intent);
-                }
+                }*/
             }
         }
     }
