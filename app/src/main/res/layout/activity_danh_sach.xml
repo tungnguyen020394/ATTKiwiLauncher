@@ -245,7 +245,7 @@
         android:id="@+id/relay4_ds"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_height="@dimen/_24sdp"
+        android:layout_height="@dimen/_19sdp"
         android:layout_below="@+id/relay3_ds"
         android:layout_marginLeft="@dimen/_17sdp"
         android:layout_marginRight="@dimen/_17sdp">
