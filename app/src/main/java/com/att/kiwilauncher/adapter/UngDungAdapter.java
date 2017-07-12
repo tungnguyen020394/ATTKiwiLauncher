@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import com.att.kiwilauncher.R;
 import com.att.kiwilauncher.TrangChu;
 import com.att.kiwilauncher.UngDung;
-import com.bumptech.glide.Glide;
+import com.att.kiwilauncher.xuly.ImageEdit;
 
 import java.util.List;
 
@@ -40,7 +40,8 @@ public class UngDungAdapter extends RecyclerView.Adapter<UngDungAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder,  int position) {
-        Glide.with(context).load(apps.get(position).getIcon()).into(holder.imgApp);
+       // Glide.with(context).load(apps.get(position).getIcon()).into(holder.imgApp);
+        holder.imgApp.setImageBitmap(ImageEdit.decodeBase64(apps.get(position).getIcon()));
     }
 
     @Override
