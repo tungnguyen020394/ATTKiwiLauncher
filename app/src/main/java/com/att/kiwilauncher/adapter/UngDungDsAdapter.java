@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.att.kiwilauncher.DanhSach;
 import com.att.kiwilauncher.R;
@@ -56,11 +57,13 @@ public class UngDungDsAdapter extends RecyclerView.Adapter<UngDungDsAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgApp;
         RelativeLayout layout;
+        TextView nameApp;
 
         public ViewHolder(View itemView) {
             super(itemView);
             imgApp = (ImageView) itemView.findViewById(R.id.image_app);
             layout = (RelativeLayout) itemView.findViewById(R.id.relay_app);
+            nameApp = (TextView) itemView.findViewById(R.id.nameApp);
         }
     }
 }
