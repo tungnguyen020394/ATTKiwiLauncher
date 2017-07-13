@@ -723,10 +723,12 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 break;
 
             case R.id.img_nhac:
-                Intent i2 = new Intent(TrangChu.this, DanhSach.class);
-                i2.putExtra("tenChuDe", "Nhạc Tổng Hợp");
-                i2.putExtra("idTheLoai", 9);
-                startActivity(i2);
+                Intent i2 = new Intent(Intent.ACTION_VIEW, Uri.parse("http://kiwibox.vn"));
+                try {
+                    startActivity(i2);
+                } catch (Exception e ) {
+                    Toast.makeText(getApplicationContext(),"Bạn cần cài đặt trình duyệt web",Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             case R.id.img_kara:
