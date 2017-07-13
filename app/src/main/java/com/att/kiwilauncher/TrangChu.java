@@ -157,7 +157,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         reLay121.setOnClickListener(this);
         reLay111.setOnClickListener(this);
         reLay112.setOnClickListener(this);
-        reLay2221.setOnClickListener(this);
         relayTatCa.setOnClickListener(this);
 
         // Video Click
@@ -235,7 +234,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
         super.onResume();
         initNetworkConnectDialog();
         ibtPlay.setImageResource(R.drawable.ic_pause);
-        ibtNext.callOnClick();
         playing = true;
         try {
             ibtVolumeOn.setImageResource(R.drawable.ic_volumeoff);
@@ -404,7 +402,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     willIndex = didIndex - 4;
                     changeListItemBackGround(didIndex, willIndex);
                     if (didIndex == 7 || didIndex == 11) {
-                        listItem.get(didIndex).callOnClick();
+                        didIndex = 12;
+                        if (listItem.get(didIndex) instanceof ImageView)
+                            ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                     }
                 } else if (didIndex >= main && didIndex < main + bonusmain) {
                     if (didIndex == 12 && listItem.get(didIndex) instanceof ImageView)
@@ -446,7 +446,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     willIndex = didIndex + 4;
                     changeListItemBackGround(didIndex, willIndex);
                     if (didIndex == 7 || didIndex == 11) {
-                        listItem.get(didIndex).callOnClick();
+                        didIndex = 12;
+                        if (listItem.get(didIndex) instanceof ImageView)
+                            ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                     }
                 } else if ((didIndex >= main - 4) && (didIndex < main + bonusmain)) {
                     listItem.get(didIndex).setBackgroundResource(R.drawable.none);
@@ -484,7 +486,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     willIndex = didIndex - 1;
                     changeListItemBackGround(didIndex, willIndex);
                     if (didIndex == 7 || didIndex == 11) {
-                        listItem.get(didIndex).callOnClick();
+                        didIndex = 12;
+                        if (listItem.get(didIndex) instanceof ImageView)
+                            ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                     }
                 } else if (didIndex >= main
                         && didIndex < main + bonusmain) {
@@ -544,7 +548,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     willIndex = didIndex + 1;
                     changeListItemBackGround(didIndex, willIndex);
                     if (didIndex == 7 || didIndex == 11) {
-                        listItem.get(didIndex).callOnClick();
+                        didIndex = 12;
+                        if (listItem.get(didIndex) instanceof ImageView)
+                            ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                     }
                 } else if (didIndex >= main
                         && didIndex < main + bonusmain) {
@@ -777,13 +783,6 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 } else {
                     Toast.makeText(getApplicationContext(), "Bạn đang ở danh sách các ứng dụng đầu tiên ", Toast.LENGTH_SHORT).show();
                 }
-                break;
-
-            // layout 1 Click
-            case R.id.relay2221:
-                didIndex = 12;
-                if (listItem.get(didIndex) instanceof ImageView)
-                    ((ImageView) listItem.get(didIndex)).setImageResource(R.drawable.ic_web);
                 break;
 
             case R.id.relay121:

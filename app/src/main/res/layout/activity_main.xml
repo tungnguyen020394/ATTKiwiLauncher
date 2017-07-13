@@ -555,9 +555,11 @@
             android:id="@+id/recycler1"
             android:layout_centerVertical="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/layout_tatca1"></android.support.v7.widget.RecyclerView>
 
         <RelativeLayout
+            android:id="@id/layout_tatca1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/_3sdp">
@@ -565,7 +567,7 @@
                 android:id="@+id/layout_tatca"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentRight="true">
+                android:layout_alignParentLeft="true">
                 <ImageView
                     android:id="@+id/img_tatca"
                     android:layout_width="@dimen/_15sdp"
