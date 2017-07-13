@@ -416,16 +416,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
                 } else if ((didIndex >= main + bonusmain) && (didIndex < main + bonusmain + cates.size())) {
                     rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
-                    if ((didIndex - 4) < main + bonusmain) {
-                        didIndex = didIndex - cates.size() - bonusmain;
-                        listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
-                        if (didIndex == 7 || didIndex == 11) {
-                            listItem.get(didIndex).setBackgroundResource(R.drawable.border_video);
-                        }
-                    } else {
                         didIndex = main - 4;
                         listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
-                    }
+                    //}
                 } else if ((didIndex >= main + 2 + cates.size() + bonusmain)
                         && (didIndex < main + bonusmain + 2 + cates.size() + listApps.get(demdsApp).size())) {
                     rcApp.getChildAt(didIndex - main - 2 - cates.size() - bonusmain).setBackgroundResource(R.drawable.none);
@@ -437,6 +430,9 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                 } else if (didIndex == main + cates.size() + bonusmain + 1) {
                     imageMinus.setImageResource(R.drawable.ic_minus1);
                     didIndex = indexChuDe + main + bonusmain;
+                } else if (didIndex == main + bonusmain + cates.size()) {
+                    didIndex = main - 4;
+                    listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
                 }
                 return true;
 
@@ -461,7 +457,11 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     if (listItem.get(didIndex) instanceof ImageButton) {
                         ((ImageButton) listItem.get(didIndex)).setColorFilter(getResources().getColor(R.color.colorWhite));
                     }
-                    didIndex = indexChuDe + main + bonusmain;
+                    didIndex = main + bonusmain + cates.size();
+                    relayTatCa.setBackgroundResource(R.drawable.bordercate);
+                    imageTatCa.setColorFilter(getResources().getColor(R.color.colorcatenew));
+                    txtTatCa.setTextColor(getResources().getColor(R.color.colorcatenew));
+                    pick = 1;
                     rcCategory.getChildAt(indexChuDe).callOnClick();
                 } else if ((didIndex >= main + bonusmain) && (didIndex < main + bonusmain + cates.size())
                         && listAppBottom.size() != 0) {
@@ -516,6 +516,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     imageTatCa.setColorFilter(getResources().getColor(R.color.colorcatenone));
                     txtTatCa.setTextColor(getResources().getColor(R.color.colorcatenone));
                     didIndex--;
+                    indexChuDe = 0;
                     rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
                 } else if (didIndex == (main + cates.size() + bonusmain + 1)) {
                     imageMinus.setImageResource(R.drawable.ic_minus1);
@@ -523,9 +524,13 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
                     rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
                     indexChuDe = didIndex - main - bonusmain;
                 } else if (didIndex == main + bonusmain) {
+                    pick = 1;
+                    rcCategory.getChildAt(didIndex - main - bonusmain).callOnClick();
                     indexChuDe = 0;
-                    didIndex = 10;
-                    listItem.get(didIndex).setBackgroundResource(R.drawable.border_pick);
+                    didIndex = main + bonusmain + cates.size();
+                    relayTatCa.setBackgroundResource(R.drawable.bordercate);
+                    imageTatCa.setColorFilter(getResources().getColor(R.color.colorcatenew));
+                    txtTatCa.setTextColor(getResources().getColor(R.color.colorcatenew));
                 } else if (didIndex == main + 2 + cates.size() + bonusmain) {
                     imageMinus.setImageResource(R.drawable.ic_minus);
                     rcApp.getChildAt(0).setBackgroundResource(R.drawable.none);
