@@ -232,7 +232,7 @@ public class TrangChu extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onResume() {
         super.onResume();
-        initNetworkConnectDialog();
+        //initNetworkConnectDialog();
         ibtPlay.setImageResource(R.drawable.ic_pause);
         playing = true;
         try {
