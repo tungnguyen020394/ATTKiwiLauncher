@@ -63,7 +63,6 @@ public class UngDungDsAdapter extends RecyclerView.Adapter<UngDungDsAdapter.View
             super(itemView);
             imgApp = (ImageView) itemView.findViewById(R.id.image_app);
             layout = (RelativeLayout) itemView.findViewById(R.id.relay_app);
-            nameApp = (TextView) itemView.findViewById(R.id.nameApp);
         }
     }
 }
